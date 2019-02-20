@@ -38,5 +38,7 @@ On how to contribute, see [CONTRIBUTING.md](https://github.com/nyu-software-engi
 
 ## Authors
 
+* **Zach Li** - *Initial work* - [zichen-li](https://github.com/zichen-li)
+* **Amanda Labuda** - *Initial work* - [alabuda98](https://github.com/alabuda98)
 * **Jing Hwan Khoo** - *Initial work* - [khoojh](https://github.com/khoojh)
 * **Wei Jie Chua** - *Initial work* - [weijie9512](https://github.com/weijie9512)
