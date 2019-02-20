@@ -32,7 +32,3 @@ The results of a market research are shown below.
 ### Use Cases
 
 ### Domain modeling
-
-
-
-
