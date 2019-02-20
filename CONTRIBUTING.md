@@ -4,6 +4,8 @@
 Agile - We value change over constant, and believe in constantly improving our code to make the product more effective.
 
 ## Git workflow for this team
+1. Update to branch before update to master.
+2. Discuss the change and make sure no bug in the branch, and merge it in daily standup.
 
 ## How to start contributing
 While we value contribution, it is vital for us to make sure the code will run at all times. Please refer to pull request process below for more information.
