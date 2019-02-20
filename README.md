@@ -28,12 +28,12 @@ Reverse profile picture look-up using facial detection and recognition algorithm
 
 ## Project Requirements
 
-On project requirements, see [REQUIREMENTS.md] (https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/REQUIREMENTS.md)
+On project requirements, see [REQUIREMENTS.md](https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/REQUIREMENTS.md)
 
 
 ## Contributing
 
-On how to contribute, see [CONTRIBUTING.md] (https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/CONTRIBUTING.md)
+On how to contribute, see [CONTRIBUTING.md](https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/CONTRIBUTING.md)
 
 
 ## Authors
