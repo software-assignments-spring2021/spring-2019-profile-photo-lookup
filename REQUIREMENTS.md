@@ -31,4 +31,6 @@ The results of a market research are shown below.
 
 ### Use Cases
 
-### Domain modeling
+### Domain Model
+
+![Domain Model Diagram](https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/DomainModelDiagram.png)
