@@ -13,7 +13,7 @@ Reverse profile picture look-up using facial detection and recognition algorithm
 ### Install
 
     $ git clone https://github.com/nyu-software-engineering/profile-photo-lookup.git
-    $ cd
+    $ cd profile-photo-lookup
     $
 
 ### Start & watch
