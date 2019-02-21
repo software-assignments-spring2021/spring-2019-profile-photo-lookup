@@ -16,6 +16,11 @@ Agile - We value change over constant, and believe in constantly improving our c
 2. If could not complete tasks on time, ask for help/let others know in advance
 3. Stick with what we agree on in meeting
 
+### Meeting Schedule
+1. Tuesday and Thursday after class
+2. Monday at 3:30 at 
+3. Remote meeting on the weekend via Slack 
+
 ### How we resolve conflicts
 1. Discuss right away
 2. If a member does not complete their respnsibility, they will be confronted by the rest of the team. This will be considered a "strike".
