@@ -18,7 +18,7 @@ Agile - We value change over constant, and believe in constantly improving our c
 
 ### Meeting Schedule
 1. Tuesday and Thursday after class
-2. Monday at 3:30 at 
+2. Monday at 3:30 at ARC 
 3. Remote meeting on the weekend via Slack 
 
 ### How we resolve conflicts
