@@ -1,13 +1,39 @@
-# Reverse Profile Photo Search - Project Requirements
+# Reverse Profile Image Search - Project Requirements
 
 ## Introduction
-This project aims to create a web application that provides a comprehensive reverse profile photo serach service using facial detection and recognition algorithms. Given an user-input image, the system the  The user will upload any picture that contain a human face, and our algorithm will try to match an existing face on social media profile picture, and provides a link to the social media.
+This project aims to create a website that provides a social-media-oriented facial recognition service of NYU students and public figures using facial detection and recognition algorithms. Given an user-input image, the system applies machine learning algorithms to detect and identify human faces that are present. If there is a potential match to a NYU student or a public figure, the system will return key information about the queried person, which could include name, occupation, social media profiles, and/or Wikipedia/IMDB pages(if available).
 
 
 ## Service Description
-1. Allow user to upload a picture
-2. Return a link of social media to the user if the social media of the person is found
-3. Allow any user to prohibit himself/herself from being search in social media
+Our program starts by asking the user to upload an image containing human face(s) to our website. The system would then automatically detect any potential face that is present in the image and give the user an option to selete which face or faces they want to run the program on. Once the target faces have been seleted, our facial recognition model would attempt to find matching/similar faces in existing profile pictures of NYU students on different social media platforms, popular stock images of models, and photographs of celebrities/public figures. If potential matches are found, the system returns tailored outputs specific to which category the queried individual belongs to - the system output can be summarized into the list below:
+
+
+NYU Student
+ - name
+ - profile picture
+ - links to social media profiles
+ - related information extracted from social media
+ 
+Actor/Actress
+ - name
+ - picture
+ - IMHD
+ - related information extracted from IMHD/Wikipedia
+
+Musician
+ - name
+ - picture
+ - link to Spotify
+ - Wikipedia
+ - related information extracted from Spotify/Wikipedia
+ 
+Politican
+ - name
+ - picture
+ - party
+ - geographic area
+ - wikipedia page
+ - related information extracted from Wikipedia
 
 
 ### Domain Model
