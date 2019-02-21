@@ -17,7 +17,14 @@ Agile - We value change over constant, and believe in constantly improving our c
 3. Stick with what we agree on in meeting
 
 ### How we resolve conflicts
-1. 
+1. Discuss right away
+2. If a member does not complete their respnsibility, they will be confronted by the rest of the team. This will be considered a "strike".
+3. If a member accumulates three "strikes", they will be reported to professor.
+4. If there is an emergency/extrenuating circumstance, members will agree to redraft responsibilities among the team members. 
+5. Group voting will occur to determine what is considered a "strike". 
+
+### How we vote as a team
+1. Since there's five people on our team, we will vote/break a tie by majority rule. 
 
 ## Git workflow for this team
 1. Update to branch before update to master.
