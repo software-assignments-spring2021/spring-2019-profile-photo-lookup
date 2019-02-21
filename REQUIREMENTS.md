@@ -62,4 +62,8 @@ The results of a market research are shown below.
 
 
 ### End-user observation
-1. Persona 1
+1. Persona 1- Celebrity Lookup
+
+Lorraine Johnson is a 68 year old grandma, who recently watched the Grammy’s with her six year old granddaughter. She saw Lady Gaga accept her awards, and asked her daughter who the lady was. A few days later, she wanted to research more about her, but could not remember her name. She had to google “girl singer won grammys”, however none of the images directly matched the woman she was looking for. She could ask her granddaughter again who the woman was, but she won’t see her for two more weeks. In this situation, our software would be useful because Lorraine can easily look up who Lady Gaga is with only her picture. She will also be directly linked to things such as her songs, wikipedia, etc., which would take longer to find if she attempted to Google the information. 
+
+2. Persona 2- NYU/Social Media Lookup
