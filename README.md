@@ -8,8 +8,6 @@ Reverse profile picture look-up using facial detection and recognition algorithm
 ### Prerequisites
 
 * [Node](http://nodejs.org/) is really easy to install & now include [NPM](https://npmjs.org/).
-* foo
-* bar
 
 ### Install
 
