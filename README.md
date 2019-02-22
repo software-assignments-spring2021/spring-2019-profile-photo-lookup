@@ -7,24 +7,41 @@ Reverse profile picture look-up using facial detection and recognition algorithm
 
 ### Prerequisites
 
+* [Node](http://nodejs.org/) is really easy to install & now include [NPM](https://npmjs.org/).
 * foo
 * bar
 
 ### Install
 
+To install dependencies for server
+
     $ git clone https://github.com/nyu-software-engineering/profile-photo-lookup.git
-    $ cd profile-photo-lookup
-    $
+    $ cd profile-photo-lookup/app/server
+    $ npm install
+
+To install dependencies for client
+
+    $ cd client
+    $ npm install
+
 
 ### Start & watch
 
-    $ foobar
+To run server, from the root folder do
+
+    $ cd profile-photo-lookup/app/server
+    $ PORT=3001 nodemon bin/www
+    
+To run client, from the root folder do
+
+    $ cd profile-photo-lookup/app/server/client
+    $ npm start
+    
 
 ## Built With
 
-* foo
-* bar
-
+* [ExpressJS](https://expressjs.com/)
+* [React](http://facebook.github.io/react) is used for UI.
 
 ## Project Requirements
 
