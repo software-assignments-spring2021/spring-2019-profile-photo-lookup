@@ -28,7 +28,7 @@ To install dependencies for client
 To run server, from the root folder do
 
     $ cd profile-photo-lookup/app/server
-    $ PORT=3001 nodemon bin/www
+    $ PORT=3001 node bin/www
     
 To run client, from the root folder do
 
