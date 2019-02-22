@@ -5,35 +5,34 @@ This project aims to create a website that provides a social-media-oriented faci
 
 
 ## Service Description
-Our program starts by asking the user to upload an image containing human face(s) to our website. The system would then automatically detect any potential face that is present in the image and give the user an option to selete which face or faces they want to run the program on. Once the target faces have been seleted, our facial recognition model would attempt to find matching/similar faces in existing profile pictures of NYU students on different social media platforms, popular stock images of models, and photographs of celebrities/public figures. If potential matches are found, the system returns tailored outputs specific to which category the queried individual belongs to - the system output can be summarized into the list below:
+Our program starts by asking the user to upload an image containing human face(s) to our website. The system would then automatically detect any potential face that is present in the image and give the user an option to selete which face or faces they want to run the program on. Once the target faces have been seleted, our facial recognition model would attempt to find matching/similar faces in existing profile pictures of NYU students on different social media platforms, popular stock images of models, and photographs of celebrities/public figures. If potential matches are found, the system would return tailored outputs specific to which category the queried individual belongs to - the system output can be summarized into the list below:
 
 
 NYU Student
- - name
- - profile picture
+ - name & picture
  - links to social media profiles
- - related information extracted from social media
+ - relevant information extracted from social media
  
 Actor/Actress
- - name
- - picture
- - IMHD
- - related information extracted from IMHD/Wikipedia
+ - name & picture
+ - link to IMHD page
+ - relevant information extracted from IMHD/Wikipedia
 
 Musician
- - name
- - picture
+ - name & picture
  - link to Spotify
- - Wikipedia
- - related information extracted from Spotify/Wikipedia
+ - relevant information extracted from Spotify/Wikipedia
+ 
+Athelete
+ - name & picture
+ - sport & professional team
+ - relevant information extracted from ESPN/Wikipedia
  
 Politican
- - name
- - picture
- - party
- - geographic area
+ - name & picture
+ - party & geographic representation
  - wikipedia page
- - related information extracted from Wikipedia
+ - relevant information extracted from Wikipedia
 
 
 ### Domain Model
