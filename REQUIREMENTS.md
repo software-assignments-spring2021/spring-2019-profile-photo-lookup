@@ -42,7 +42,7 @@ Politican
 
 
 ## Use Cases
-![Use Diagram](https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/asset/DomainModelDiagram.png)
+![Use Diagram](https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/asset/Use%20Case.jpg)
 This program would be useful for (1) people who have a picture of someone that they met at a social event or a professional networking event but does not know his or her name or forgot to get their contact information down. (2) companies or college admissions that want to look up an applicant's social media presence to see if there are any red flags(this would circumvent the problem where the applicant would change their social media name or use a nickname) (3) people on dating apps who want to know if their match is a real person or some catfish using fake profiles. (4) people who seen a video or image of a celebrity/public figure(perhaps those who are less well-known) and just cannot remember his or her name.
 
 
