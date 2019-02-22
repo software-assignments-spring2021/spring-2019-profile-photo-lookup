@@ -54,19 +54,15 @@ This program would be useful for (1) people who have a picture of someone that t
 
 
 
-## Results
-The results of a market research are shown below.
+## End-user Observation
+1. Persona 1 - Celebrity Lookup
 
-### Stakeholder interviews
-1. Professor
-2. Tutor
+Lorraine Johnson is a 68 year old grandma, who recently watched the Grammy’s with her sixteen year old granddaughter. She saw Lady Gaga perform and accept her awards, and asked her daughter who the lady was. A few days later, Lorraine wants to research more about Lady Gaga because she really liked her perfomrance and wants to listen to more; however, she could not remember her name. She googled “girl singer grammys”, but none of the images directly matched the woman she was looking for. She could ask her granddaughter again who the woman was, but she won’t see her for two more weeks. In this situation, our software would be useful because Lorraine can easily look up who Lady Gaga is with only her picture. She will also be directly linked to things such as her songs, wikipedia, etc., which would take longer to find if she attempted to Google the information. 
 
+2. Persona 2 - Athelte Lookup
 
-### End-user observation
-1. Persona 1- Celebrity Lookup
+Tom Olsen is a retired cop from Ohio and he has been a Cleveland Browns fan since he was a child. However, Tom has stopped following the Browns in recent years because they have been terrible. One day, Tom is hanging out at a bar and he caught the end of the Browns-Jets game on TV. The Browns won their first game in 2 years and a young man was interviewed after the game and credited for the victory. He does not recognize the player and is eager to find out. However he only saw the interview and does not know his name or his playing position. Tom could dig through the 53-men roster of the Browns, which could take a really long time, or he can simply take a picture of the interview on TV and use our website to find our who the player is. 
 
-Lorraine Johnson is a 68 year old grandma, who recently watched the Grammy’s with her six year old granddaughter. She saw Lady Gaga accept her awards, and asked her daughter who the lady was. A few days later, she wanted to research more about her, but could not remember her name. She had to google “girl singer won grammys”, however none of the images directly matched the woman she was looking for. She could ask her granddaughter again who the woman was, but she won’t see her for two more weeks. In this situation, our software would be useful because Lorraine can easily look up who Lady Gaga is with only her picture. She will also be directly linked to things such as her songs, wikipedia, etc., which would take longer to find if she attempted to Google the information. 
+2. Persona 3 - NYU/Social Media Lookup
 
-2. Persona 2- NYU/Social Media Lookup
-
-Sabrina Gonzalez is a dance major at NYU, double majoring in Computer Science. She just attended her first NYU WiNC meeting, and although she knew no one going in, she made a friend there. Unfortunately, she forgot her name and did not exchange contact information. Sarina would have to wait until the next meeting to talk to her, if she even comes. To potentially find her, she could look through all of NYU WiNC’s followers on instagram and facebook, but that is extremely tedious and frustrating if you have no recollection of their name, or if they didn’t give their last name. If she took a snapchat with her, or has a picture from the events meeting, she could use our facial recognition website to find their name and a link to any of their social media. 
+Sabrina Gonzalez is a dance major at NYU, double majoring in Computer Science. She just attended her first NYU WiNC meeting, and although she knew no one going in, she made a friend there. Unfortunately, she forgot her name and did not exchange contact information. Sarina would have to wait until the next meeting to talk to her, if she even comes. To potentially find her, she could look through all of NYU WiNC’s followers on instagram and facebook, but that is extremely tedious and frustrating if you have no recollection of their name, or if they didn’t give their last name. If she took a snapchat with her, or has a group photo from the events meeting, she could use our facial recognition website to find his or her name and link(s) to any of their social media pages. 
