@@ -1,11 +1,11 @@
 # Reverse Profile Image Search - Project Requirements
 
 ## Introduction
-This project aims to create a website that provides a social-media-oriented facial recognition service of NYU students and public figures using facial detection and recognition algorithms. Given an user-input image, the system applies machine learning algorithms to detect and identify human faces that are present. If there is a potential match to a NYU student or a public figure, the system will return key information about the queried person, which could include name, occupation, social media profiles, and/or Wikipedia/IMDB pages(if available).
+This project aims to create a website that provides a social-media-oriented facial recognition service of NYU students and public figures using facial detection and recognition algorithms. Given a user-input image, the system applies machine learning algorithms to detect and identify human faces that are present. If there is a potential match to a NYU student or a public figure, the system will return key information about the queried person, which could include name, occupation, social media profiles, and/or Wikipedia/IMDB pages (if available).
 
 
 ## Service Description
-Our program starts by asking the user to upload an image containing human face(s) to our website. The system would then automatically detect any potential face that is present in the image and give the user an option to selete which face or faces they want to run the program on. Once the target faces have been seleted, our facial recognition model would attempt to find matching/similar faces in existing profile pictures of NYU students on different social media platforms, popular stock images of models, and photographs of celebrities/public figures. If potential matches are found, the system would return tailored outputs specific to which category the queried individual belongs to - the system output can be summarized into the list below:
+Our program starts by asking the user to upload an image containing human face(s) to our website. The system would then automatically detect any potential face that is present in the image and give the user an option to select which face or faces they want to run the program on. Once the target faces have been selected, our facial recognition model would attempt to find matching/similar faces in existing profile pictures of NYU students on different social media platforms, popular stock images of models, and photographs of celebrities/public figures. If potential matches are found, the system would return tailored outputs specific to which category the queried individual belongs to - the system output can be summarized into the list below:
 
 
 NYU Student
@@ -23,15 +23,15 @@ Musician
  - link to Spotify
  - relevant information extracted from Spotify/Wikipedia
  
-Athelete
+Athlete
  - name & picture
  - sport & professional team
  - relevant information extracted from ESPN/Wikipedia
  
-Politican
+Politician
  - name & picture
  - party & geographic representation
- - wikipedia page
+ - Wikipedia page
  - relevant information extracted from Wikipedia
 
 
@@ -43,7 +43,7 @@ Politican
 ## Use Cases
 ![Use Diagram](https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/asset/Use%20Case.jpg)
 
-This program would be useful for (1) people who have a picture of someone that they met at a social event or a professional networking event but does not know his or her name or forgot to get their contact information down. (2) companies or college admissions that want to look up an applicant's social media presence to see if there are any red flags(this would circumvent the problem where the applicant would change their social media name or use a nickname) (3) people on dating apps who want to know if their match is a real person or some catfish using fake profiles. (4) people who seen a video or image of a celebrity/public figure(perhaps those who are less well-known) and just cannot remember his or her name.
+This program would be useful for (1) people who have a picture of someone that they met at a social event or a professional networking event but does not know his or her name or forgot to get their contact information down. (2) companies or college admissions that want to look up an applicant's social media presence to see if there are any red flags(this would circumvent the problem where the applicant would change their social media name or use a nickname) (3) people on dating apps who want to know if their match is a real person or some catfish using fake profiles. (4) people who seen a video or image of a celebrity/public figure (perhaps those who are less well-known) and just cannot remember his or her name.
 
 
 
@@ -57,12 +57,13 @@ This program would be useful for (1) people who have a picture of someone that t
 ## End-user Observation
 1. Persona 1 - Celebrity Lookup
 
-Lorraine Johnson is a 68 year old grandma, who recently watched the Grammy’s with her sixteen year old granddaughter. She saw Lady Gaga perform and accept her awards, and asked her daughter who the lady was. A few days later, Lorraine wants to research more about Lady Gaga because she really liked her perfomrance and wants to listen to more; however, she could not remember her name. She googled “girl singer grammys”, but none of the images directly matched the woman she was looking for. She could ask her granddaughter again who the woman was, but she won’t see her for two more weeks. In this situation, our software would be useful because Lorraine can easily look up who Lady Gaga is with only her picture. She will also be directly linked to things such as her songs, wikipedia, etc., which would take longer to find if she attempted to Google the information. 
+Lorraine Johnson is a 68-year-old grandma, who recently watched the Grammy’s with her sixteen year old granddaughter. She saw Lady Gaga perform and accept her awards and asked her daughter who the lady was. A few days later, Lorraine wants to research more about Lady Gaga because she really liked her performance and wants to listen to more; however, she could not remember her name. She googled “girl singer Grammys”, but none of the images directly matched the woman she was looking for. She could ask her granddaughter again who the woman was, but she won’t see her for two more weeks. In this situation, our software would be useful because Lorraine can easily look up who Lady Gaga is with only her picture. She will also be directly linked to things such as her songs, Wikipedia, etc., which would take longer to find if she attempted to Google the information. 
 
-2. Persona 2 - Athelte Lookup
+2. Persona 2 - Athlete Lookup
 
-Tom Olsen is a retired cop from Ohio and he has been a Cleveland Browns fan since he was a child. However, Tom has stopped following the Browns in recent years because they have been terrible. One day, Tom is hanging out at a bar and he caught the end of the Browns-Jets game on TV. The Browns won their first game in 2 years and a young man was interviewed after the game and credited for the victory. He does not recognize the player and is eager to find out. However he only saw the interview and does not know his name or his playing position. Tom could dig through the 53-men roster of the Browns, which could take a really long time, or he can simply take a picture of the interview on TV and use our website to find our who the player is. 
+Tom Olsen is a retired cop from Ohio, and he has been a Cleveland Browns fan since he was a child. However, Tom has stopped following the Browns in recent years because they have been terrible. One day, Tom is hanging out at a bar and he caught the end of the Browns-Jets game on TV. The Browns won their first game in 2 years and a young man was interviewed after the game and credited for the victory. He does not recognize the player and is eager to find out. However, he only saw the interview and does not know his name or his playing position. Tom could dig through the 53-men roster of the Browns, which could take a really long time, or he can simply take a picture of the interview on TV and use our website to find out who the player is. 
 
 2. Persona 3 - NYU/Social Media Lookup
 
-Sabrina Gonzalez is a dance major at NYU, double majoring in Computer Science. She just attended her first NYU WiNC meeting, and although she knew no one going in, she made a friend there. Unfortunately, she forgot her name and did not exchange contact information. Sarina would have to wait until the next meeting to talk to her, if she even comes. To potentially find her, she could look through all of NYU WiNC’s followers on instagram and facebook, but that is extremely tedious and frustrating if you have no recollection of their name, or if they didn’t give their last name. If she took a snapchat with her, or has a group photo from the events meeting, she could use our facial recognition website to find his or her name and link(s) to any of their social media pages. 
+Sabrina Gonzalez is a dance major at NYU, double majoring in Computer Science. She just attended her first NYU WiNC meeting, and although she knew no one going in, she made a friend there. Unfortunately, she forgot her name and did not exchange contact information. Sarina would have to wait until the next meeting to talk to her, if she even comes. To potentially find her, she could look through all of NYU WiNC’s followers on Instagram and Facebook, but that is extremely tedious and frustrating if you have no recollection of their name, or if they didn’t give their last name. If she took a snapchat with her, or has a group photo from the events meeting, she could use our facial recognition website to find his or her name and link(s) to any of their social media pages.
+
