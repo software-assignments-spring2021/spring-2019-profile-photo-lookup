@@ -43,15 +43,12 @@ Politician
 ## Use Cases
 ![Use Diagram](https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/asset/Use%20Case.jpg)
 
-This program would be useful for (1) people who have a picture of someone that they met at a social event or a professional networking event but does not know his or her name or forgot to get their contact information down. (2) companies or college admissions that want to look up an applicant's social media presence to see if there are any red flags(this would circumvent the problem where the applicant would change their social media name or use a nickname) (3) people on dating apps who want to know if their match is a real person or some catfish using fake profiles. (4) people who seen a video or image of a celebrity/public figure (perhaps those who are less well-known) and just cannot remember his or her name.
-
-
-
-## Constraints
-1. Time constraints - how long does it take to find the social media
-2. Size constraints - how expensive to store huge amount of datasets
-3. Privacy - how acceptable are people towards the idea of profile potentially being found by someone completely random
-
+Goal: Find Relevant Information about Individuals in Image
+Actor: system user
+Scenario: 
+ 1. upload image containing the faces of individuals to lookup
+ 2. select which face(s) in image to perform the search on 
+ 3. read through system output
 
 
 ## End-user Observation
@@ -63,7 +60,11 @@ Lorraine Johnson is a 68-year-old grandma, who recently watched the Grammy’s w
 
 Tom Olsen is a retired cop from Ohio, and he has been a Cleveland Browns fan since he was a child. However, Tom has stopped following the Browns in recent years because they have been terrible. One day, Tom is hanging out at a bar and he caught the end of the Browns-Jets game on TV. The Browns won their first game in 2 years and a young man was interviewed after the game and credited for the victory. He does not recognize the player and is eager to find out. However, he only saw the interview and does not know his name or his playing position. Tom could dig through the 53-men roster of the Browns, which could take a really long time, or he can simply take a picture of the interview on TV and use our website to find out who the player is. 
 
-2. Persona 3 - NYU/Social Media Lookup
+3. Persona 3 - NYU/Social Media Lookup
 
 Sabrina Gonzalez is a dance major at NYU, double majoring in Computer Science. She just attended her first NYU WiNC meeting, and although she knew no one going in, she made a friend there. Unfortunately, she forgot her name and did not exchange contact information. Sarina would have to wait until the next meeting to talk to her, if she even comes. To potentially find her, she could look through all of NYU WiNC’s followers on Instagram and Facebook, but that is extremely tedious and frustrating if you have no recollection of their name, or if they didn’t give their last name. If she took a snapchat with her, or has a group photo from the events meeting, she could use our facial recognition website to find his or her name and link(s) to any of their social media pages.
 
+
+4. Persona 4 - Catfish Lookup
+
+Ed Miller is a college student that is new to Tinder. During his first few days using the app, he got matched with a girl from NYU that is out of his league, which makes him suspect that her profile is fake. After chatting with her they set up a date and location to meet. Although she seems normal when they were chatting online, Ed still wants to make sure that there are no surprises. In this scenario, Ed can use our website to see who she actually is. After he uploads her Tinder picture,  our system will be able to confirm whether his match is a NYU student or some stock photo model/celebrity whose picture has been borrowed to make a fake Tinder profile.
