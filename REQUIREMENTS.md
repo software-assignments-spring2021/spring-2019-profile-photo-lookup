@@ -34,6 +34,9 @@ Politician
  - Wikipedia page
  - relevant information extracted from Wikipedia
 
+## Constraints
+After the user uploads an image and selects the target face(s), our system should output relevant results under one minute.
+
 
 ## Domain Model
 <img src="https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/asset/domain_model.png" width="80%">
