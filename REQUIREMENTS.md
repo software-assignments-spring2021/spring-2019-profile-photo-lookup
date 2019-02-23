@@ -36,12 +36,12 @@ Politician
 
 
 ## Domain Model
-
-![Domain Model Diagram](https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/asset/domain_model.png)
+<img src="https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/asset/domain_model.png" width="80%">
 
 
 ## Use Cases
-![Use Diagram](https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/asset/Use%20Case.jpg)
+<img src="https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/asset/use_cases.png" width="60%">
+
 
 Goal: Upload Image to Website <br />
 Actor: General User <br />
