@@ -35,7 +35,7 @@ Politician
  - relevant information extracted from Wikipedia
 
 
-### Domain Model
+## Domain Model
 
 ![Domain Model Diagram](https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/asset/domain_model.png)
 
