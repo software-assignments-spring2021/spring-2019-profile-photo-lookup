@@ -1,15 +1,13 @@
-# profile-photo-lookup
+# Reverse Profile Image Search
 
-Reverse profile picture look-up using facial detection and recognition algorithms
-
+## Introduction
+This project aims to create a website that provides a social-media-oriented facial recognition service of NYU students and public figures using facial detection and recognition algorithms. Given an user-input image, the system applies machine learning algorithms to detect and identify human faces that are present. If there is a potential match to a NYU student or a public figure, the system will return key information about the queried person, which could include name, occupation, social media profiles, and/or Wikipedia/IMDB pages(if available).
 
 ## Getting Started
 
 ### Prerequisites
 
 * [Node](http://nodejs.org/) is really easy to install & now include [NPM](https://npmjs.org/).
-* foo
-* bar
 
 ### Install
 
@@ -30,7 +28,7 @@ To install dependencies for client
 To run server, from the root folder do
 
     $ cd profile-photo-lookup/app/server
-    $ PORT=3001 nodemon bin/www
+    $ PORT=3001 node bin/www
     
 To run client, from the root folder do
 
