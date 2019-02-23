@@ -49,14 +49,16 @@ Scenario:
  - click the 'Upload Image' button to select image from local machine
  - OR drag and drop desired image from local machine to our website
  
+
  
 Goal: Select Face(s) in Image <br />
 Actor: General User <br />
 Scenario:
  1. upload image containing the faces of individuals to lookup
  2. system returns the same image with selectable bounding box aorund each detected human face
- 3. click on the bounding box of face(s) that you want to perform the search
+ 3. click on the bounding box of face(s) that you want to perform the search on
  4. press 'Run' button to perform search on selected face(s)
+
 
 
 Goal: Find Relevant Information about Individuals in Image <br />
