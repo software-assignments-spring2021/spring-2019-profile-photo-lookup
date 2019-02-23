@@ -50,7 +50,6 @@ Scenario:
  - OR drag and drop desired image from local machine to our website
  
 
- 
 Goal: Select Face(s) in Image <br />
 Actor: General User <br />
 Scenario:
@@ -60,13 +59,20 @@ Scenario:
  4. press 'Run' button to perform search on selected face(s)
 
 
-
 Goal: Find Relevant Information about Individuals in Image <br />
-Actor: General System User <br />
+Actor: General User <br />
 Scenario: 
  1. upload image containing the faces of individuals to lookup
  2. select which face(s) in image to perform the search
  3. receive system output
+ 
+ 
+Goal: Add/Update New Face to Database <br />
+Actor: Administrator <br />
+Scenario: 
+ 1. click button to add a new person
+ 2. enter peron's name
+ 3. upload a photo collection of the new person's face
 
 
 ## End-user Observation
