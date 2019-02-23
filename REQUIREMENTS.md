@@ -34,8 +34,9 @@ Politician
  - Wikipedia page
  - relevant information extracted from Wikipedia
 
-## Constraints
-After the user uploads an image and selects the target face(s), our system should output relevant results under one minute.
+
+## Constraint
+After the user uploads an image and selects the target face(s), our system should output relevant results in under one minute.
 
 
 ## Domain Model
