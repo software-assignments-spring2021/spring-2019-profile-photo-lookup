@@ -5,7 +5,7 @@ This project aims to create a website that provides a social-media-oriented faci
 
 
 ## Service Description
-Our program starts by asking the user to upload an image containing human face(s) to our website. The system would then automatically detect any potential face that is present in the image and give the user an option to select which face or faces they want to run the program on. Once the target faces have been selected, our facial recognition model would attempt to find matching/similar faces in existing profile pictures of NYU students on different social media platforms, popular stock images of models, and photographs of celebrities/public figures. If potential matches are found, the system would return tailored outputs specific to which category the queried individual belongs to - the system output can be summarized into the list below:
+Our program starts by asking the user to upload an image containing human face(s) to our website. The system would then automatically detect any potential face that is present in the image and give the user an option to select which face or faces they want to run the program on. Once the target faces have been selected, our facial recognition model would attempt to find matching/similar faces in existing profile pictures of NYU students on different social media platforms, popular stock images of models, and photographs of celebrities/public figures. If potential matches are found, the system would return tailored outputs specific to which category the queried individual belongs to - the system output can be broken down into the list below:
 
 
 NYU Student
