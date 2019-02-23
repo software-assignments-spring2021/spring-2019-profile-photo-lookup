@@ -37,7 +37,7 @@ Politician
 
 ### Domain Model
 
-![Domain Model Diagram](https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/asset/domain_model.jpg)
+![Domain Model Diagram](https://github.com/nyu-software-engineering/profile-photo-lookup/blob/master/asset/domain_model.png)
 
 
 ## Use Cases
