@@ -1,14 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Switch } from "react-router-dom";
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+import reducer from './redux/reducer';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import history from './history';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
+    <Provider store={store}>
         <Router history={history}>
             <div>
                 <Switch>
@@ -16,7 +22,8 @@ ReactDOM.render(
                     <Route path="/home" component={App}/>
                 </Switch>
             </div>
-        </Router>,
+        </Router>
+    </Provider>,
     document.getElementById('root')
 );
 
