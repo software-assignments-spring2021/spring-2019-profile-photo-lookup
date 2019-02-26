@@ -19,7 +19,7 @@ To install dependencies for server
 
 To install dependencies for client
 
-    $ cd client
+    $ cd profile-photo-lookup/app/client
     $ npm install
 
 
@@ -32,7 +32,7 @@ To run server, from the root folder do
     
 To run client, from the root folder do
 
-    $ cd profile-photo-lookup/app/server/client
+    $ cd profile-photo-lookup/app/client
     $ npm start
     
 
