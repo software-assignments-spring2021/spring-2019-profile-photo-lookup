@@ -27,6 +27,14 @@ If you have Anaconda installed, then run <br>
 
 If you don't, then you have to follow the instruction [here](https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html).
 
+### AWS Set Up
+On your terminal, run `aws configure`
+
+It will prompt you to enter __"AWS Access Key ID"__, __"AWS Secret Access Key"__, __"Default Region Name"__(you should enter "us-east-1"), and leave the output format blank by just pressing enter. Check Slack for the credentials.
+
+If it says something like "aws: command not found" you should go back [here](https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html) and keep following the instructions to set the program PATH and bash profile. It was really messy for me so I'd suggest you download anaconda if you run into this problem.
+
+
 ### Django
 Go to the directory where "requirements.txt" is located and run <br>
 `pip install -r requirements.txt` <br>
