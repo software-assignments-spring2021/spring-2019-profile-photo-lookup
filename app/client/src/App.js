@@ -20,7 +20,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <h1>Users</h1>
+                <h1>Usersss</h1>
                 {this.props.users ? this.props.users.map(user =>
                     <div key={user.id}>{user.username}</div>
                 ) : null}
