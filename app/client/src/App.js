@@ -3,7 +3,6 @@ import './App.css';
 import { connect } from 'react-redux';
 import fetchTest from './redux/analysis/action.js';
 
-
 class App extends Component {
 
     constructor(props) {
@@ -20,6 +19,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
+               
                 <h1>Users</h1>
                 {this.props.users ? this.props.users.map(user =>
                     <div key={user.id}>{user.username}</div>
