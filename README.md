@@ -39,7 +39,7 @@ If it says something like "aws: command not found" you should go back [here](htt
 Go to the directory where "requirements.txt" is located and run <br>
 `pip install -r requirements.txt` <br>
 
-It should install all necesary libraries for the Django Environment(new libraries will be added as project expands, run the command again if neccesary).
+It should install all necesary libraries for the Django Environment(new libraries will be added as project expands, run this command again if neccesary).
 
 ### Getting the App Running
 1. Open your terminal
