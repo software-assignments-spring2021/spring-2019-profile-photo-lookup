@@ -45,21 +45,15 @@ It should install all necesary libraries for the Django Environment(new librarie
 1. Open your terminal
 2. Go into folder __RIS__
 3. Run the server: `python manage.py runserver`
-3. Go to the url provided on the terminal 
+3. Go to the url provided on the terminal
 
-## Prerequisites(React/Node.js)
+## Prerequisites(React.js)
 
 ### Node.js
 
 * [Node](http://nodejs.org/) is really easy to install & now include [NPM](https://npmjs.org/).
 
 ### Install
-
-To install dependencies for server
-
-    $ git clone https://github.com/nyu-software-engineering/profile-photo-lookup.git
-    $ cd profile-photo-lookup/app/server
-    $ npm install
 
 To install dependencies for client
 
@@ -69,20 +63,24 @@ To install dependencies for client
 
 ### Start & watch
 
-To run server, from the root folder do
-
-    $ cd profile-photo-lookup/app/server
-    $ PORT=3001 node bin/www
-    
 To run client, from the root folder do
 
     $ cd profile-photo-lookup/app/client
     $ npm start
-    
+
+
+### Test
+
+To run test
+
+    $ npm test
+
+To generate coverage report
+
+    $ npm run coverage
 
 ## Built With
 
-* [ExpressJS](https://expressjs.com/)
 * [React](http://facebook.github.io/react) is used for UI.
 
 ## Project Requirements
