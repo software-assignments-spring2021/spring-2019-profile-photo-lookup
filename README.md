@@ -43,7 +43,7 @@ It should install all necesary libraries for the Django Environment(new librarie
 
 ### Getting the App Running
 1. Open your terminal
-2. Go into folder __RIS__
+2. Go to folder app/server
 3. Run the server: `python manage.py runserver`
 3. Go to the url provided on the terminal
 
