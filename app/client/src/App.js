@@ -21,9 +21,7 @@ class App extends Component {
             <div className="App">
 
                 <h1>Users</h1>
-                {this.props.users ? this.props.users.map(user =>
-                    <div key={user.id}>{user.username}</div>
-                ) : null}
+                {this.props.users ? <div>this.props.users</div> : null}
                 <button type="button" className="btn btn-primary" onClick={() => {this.handleClick()}}>Fetch from backend</button>
             </div>
         );

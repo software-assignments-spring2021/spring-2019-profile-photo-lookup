@@ -3,7 +3,7 @@ import {
 } from './types';
 
 const initialState = {
-    users: null
+    users: 'user'
 };
 
 export default function(state=initialState, action) {
