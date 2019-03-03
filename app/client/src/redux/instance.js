@@ -5,11 +5,14 @@ let baseURL;
 if (process.env.NODE_ENV === 'production') {
     baseURL = window.location.origin;
 } else {
-    baseURL = 'http://localhost:3000/';
+    baseURL = 'http://localhost:8000/';
 }
 
 let instance = axios.create({
-    baseURL: baseURL
+    baseURL: baseURL,
+    withCredentials: true,
+    xsrfCookieName: 'csrftoken',
+    xsrfHeaderName: 'X-CSRFToken'
 });
 
 export default instance;

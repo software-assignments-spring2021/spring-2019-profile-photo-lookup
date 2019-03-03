@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import fetchTest from './redux/analysis/action.js';
+import { fetchTest } from './redux/analysis/action.js';
 
 class App extends Component {
 
@@ -12,17 +12,17 @@ class App extends Component {
         };
     }
 
-    handleClick = () => {
-        this.props.fetchTest();
-    }
+    // handleClick = () => {
+    //     this.props.fetchTest();
+    // }
 
     render() {
         return (
             <div className="App">
 
-                <h1>Users</h1>
-                {this.props.users ? <div>this.props.users</div> : null}
-                <button type="button" className="btn btn-primary" onClick={() => {this.handleClick()}}>Fetch from backend</button>
+                {/*}<h1>Users</h1>
+                {this.props.users ? <div>{this.props.users}</div> : null}
+                <button type="button" className="btn btn-primary" onClick={() => {this.handleClick()}}>Fetch from backend</button>*/}
             </div>
         );
     }
