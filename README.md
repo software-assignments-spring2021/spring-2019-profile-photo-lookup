@@ -79,6 +79,11 @@ To generate coverage report
 
     $ npm run coverage
 
+To view the coverage report in your browser
+
+    $ cd coverage/lcov-report
+    $ open index.html
+
 ## Built With
 
 * [React](http://facebook.github.io/react) is used for UI.
