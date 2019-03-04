@@ -3,11 +3,10 @@ import {
     TEST_GET
 } from './types';
 
-
-export default function fetchTest() {
+export function fetchTest() {
     return (dispatch) => {
         return instance.get(
-            `/users`
+            `/`
         ).then((response) => {
             dispatch({
                 type: TEST_GET,
