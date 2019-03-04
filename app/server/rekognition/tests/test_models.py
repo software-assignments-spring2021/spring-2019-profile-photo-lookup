@@ -9,8 +9,6 @@ class test_models(TestCase):
         test_file = open('rekognition/tests/asset/test_img.jpg', 'rb')
         img = SimpleUploadedFile(test_file.name, test_file.read(), content_type="image/jpeg")
         model= ImageRekognition(picture=img)
-        print(str(model))
-        print(model.picture)
         self.assertEqual(str(model), model.picture)
         
 
