@@ -47,6 +47,12 @@ It should install all necesary libraries for the Django Environment(new librarie
 3. Run the server: `python manage.py runserver`
 3. Go to the url provided on the terminal
 
+### Get Unit Test Coverage
+1. On terminal, go to app/servers
+2. `coverage run --source='.' manage.py test rekognition`
+3. `coverage report`
+4. `coverage html`
+
 ## Prerequisites(React.js)
 
 ### Node.js
