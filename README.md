@@ -56,10 +56,11 @@ All unit tests are in a separate module under __app/server/rekognition/tests__
 3. To see coverage report
     - `coverage run --source='.' manage.py test rekognition`
     - `coverage report`
-4. Or to see a detailed coverage report
+4. To see a detailed coverage report
     - run `coverage html` instead of `coverage report`
     - the report will be save in a folder named "htmlcov" inside the "server" folder
     - open "index.html" inside "htmlcov" to see the detailed report
+    - __note: a detailed coverage report has already been generated for viewing__
 
 ## Prerequisites(React.js)
 
