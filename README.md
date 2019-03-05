@@ -60,7 +60,7 @@ All unit tests are in a separate module under __app/server/rekognition/tests__
     - run `coverage html` instead of `coverage report`
     - the report will be save in a folder named "htmlcov" inside the "server" folder
     - open "index.html" inside "htmlcov" to see the detailed report
-    - __note: a detailed coverage report has already been generated for viewing__
+    - __note: a pre-generated coverage report has already been included in the repo for viewing__
 
 ## Prerequisites(React.js)
 
