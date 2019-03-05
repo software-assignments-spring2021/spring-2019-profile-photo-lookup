@@ -48,10 +48,15 @@ It should install all necesary libraries for the Django Environment(new librarie
 3. Go to the url provided on the terminal
 
 ### Get Unit Test Coverage
-1. On terminal, go to app/servers
-2. `coverage run --source='.' manage.py test rekognition`
-3. `coverage report`
-4. `coverage html`
+1. On terminal, go to app/server
+2. To run tests
+    - `coverage run --source='.' manage.py test rekognition`
+3. To see coverage report
+    - `coverage report`
+4. To see a detailed coverage report
+    - `coverage html`
+    - the report will be save in a folder called "htmlcoov" in the "server" folder
+    - open "index.html" to see the detailed report
 
 ## Prerequisites(React.js)
 
