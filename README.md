@@ -5,19 +5,21 @@ This project aims to create a website that provides a social-media-oriented faci
 
 ## Prerequisites(Django)
 
-### Anaconda/Python
-Anaconda is an extremely useful platform/distribution for Python that I urge everyone to have. It allows you to create a 'sandbox-like' conda environment to install libraries and test your code without messing up the dependencies on your local machine. You don't absolutely need it, but you might have trouble instaling the command-line-interface for AWS on MacOS if you don't have anaconda(you can skip this step for now and come back later if needed).
+### Python/Anaconda
+This project requires python version 3.X (specifically 3.6 was used in development). Additionally, we recommend using the Anaconda distribution of Python to take advantage of its virtual environment funationality. It allows you to create a 'sandbox-like' conda environment to install libraries and test your code without messing up the dependencies on your local machine. 
 
 *Download the Anaconda Python 3.7 version [here](https://www.anaconda.com/distribution/#download-section).*
 
-### Set up Conda Envrionemnt(if you have Anaconda installed)
+### Set up Conda Envrionemnt(Optional)
+If you have Anaconda installed:
+
 Create a new environment: `conda create -n <env_name> python=3.6` <br>
 Use the environment: `conda activate <env_name>` <br>
 Deactivate the envrionment:`conda deactivate` <br>
 
 replace <env_name> with the name of your environment.
 
-This the 'sandbox-like' environment that I was talking about before. All libraries and dependencies you install in this environment are self-contained and does not affect your local machine. Two biggest reasons that it is useful is (1) if the the program you use runs on a different version of Python compare to what your machine has, there would be conflicts and (2) if you screw somthing up when you install the dependecies and libraries for you project, you can just delete the environment and start over very easily. For more instructions, see [here](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
+This is very useful if (1) the program you intend to run is based on a different version of Python than what your local machine currently has installed or (2) if you screw somthing up when you install the dependecies and libraries for you project, you can just delete the environment and start over very easily. For more instructions, see [here](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
 
 **If you have Anaconda, please activate your conda environment BEFORE you do the following steps.**
 
@@ -30,10 +32,9 @@ If you don't, then you have to follow the instruction [here](https://docs.aws.am
 ### AWS Set Up
 On your terminal, run `aws configure`
 
-It will prompt you to enter __"AWS Access Key ID"__, __"AWS Secret Access Key"__, __"Default Region Name"__(you should enter "us-east-1"), and leave the output format blank by just pressing enter. Check Slack for the credentials.
+It will prompt you to enter __"AWS Access Key ID"__, __"AWS Secret Access Key"__, __"Default Region Name"__(you should enter "us-east-1"), and leave the __"output format"__ blank by just pressing enter. Check Slack for the credentials.
 
-If it says something like "aws: command not found" you should go back [here](https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html) and keep following the instructions to set the program PATH and bash profile. It was really messy for me so I'd suggest you download anaconda if you run into this problem.
-
+If it says something like "aws: command not found" you should go back [here](https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html) and keep following the instructions to set the program PATH and bash profile. It was really messy for me so I'd suggest you download Anaconda and use conda install if you run into this problem.
 
 ### Django
 Go to the directory where "requirements.txt" is located and run <br>
@@ -48,15 +49,17 @@ It should install all necesary libraries for the Django Environment(new librarie
 3. Go to the url provided on the terminal
 
 ### Get Unit Test Coverage
+All unit tests are in a separate module under __app/server/rekognition/tests__
 1. On terminal, go to app/server
 2. To run tests
-    - `coverage run --source='.' manage.py test rekognition`
+    - `python manage.py test`
 3. To see coverage report
+    - `coverage run --source='.' manage.py test rekognition`
     - `coverage report`
-4. To see a detailed coverage report
-    - `coverage html`
-    - the report will be save in a folder called "htmlcoov" inside the "server" folder
-    - open "index.html" to see the detailed report
+4. Or to see a detailed coverage report
+    - run `coverage html` instead of `coverage report`
+    - the report will be save in a folder named "htmlcov" inside the "server" folder
+    - open "index.html" inside "htmlcov" to see the detailed report
 
 ## Prerequisites(React.js)
 
