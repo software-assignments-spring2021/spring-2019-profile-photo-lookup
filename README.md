@@ -55,7 +55,7 @@ It should install all necesary libraries for the Django Environment(new librarie
     - `coverage report`
 4. To see a detailed coverage report
     - `coverage html`
-    - the report will be save in a folder called "htmlcoov" in the "server" folder
+    - the report will be save in a folder called "htmlcoov" inside the "server" folder
     - open "index.html" to see the detailed report
 
 ## Prerequisites(React.js)
