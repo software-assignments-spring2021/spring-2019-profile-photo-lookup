@@ -1,19 +1,15 @@
-from django.test import TestCase
-from django.core.files.uploadedfile import SimpleUploadedFile
 from ..views import *
+from rest_framework.test import APITestCase
+from django.core.files.uploadedfile import SimpleUploadedFile
 
-class test_rekognize_faces(TestCase):
-    def test_request_GET(self):
-        response = self.client.get('')
-        self.assertEqual(response.status_code, 200)
 
-    def test_request_POST(self):
+class test_ImageRekognition(APITestCase):
+    def test_POST(self):
         test_file = open('rekognition/tests/asset/test_img.jpg', 'rb')
-        image = SimpleUploadedFile(test_file.name, test_file.read(), content_type="image/jpeg")
-        response = self.client.post('', {'input_image': image})
+        test_image = SimpleUploadedFile(test_file.name, test_file.read(), content_type="image/jpeg")
+        response = self.client.post('/rekognition', {'image': test_image})
         self.assertEqual(response.status_code, 200)
 
-class test_get_local_img(TestCase):
-    def test_get_local_img_return_rb(self):
-        the_img = get_local_img('rekognition/tests/asset/test_img.jpg')
-        self.assertIsInstance(the_img, bytes)
+    def test_get_local_img(self):
+        test_img = get_local_img('rekognition/tests/asset/test_img.jpg')
+        self.assertIsInstance(test_img, bytes)
