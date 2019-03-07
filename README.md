@@ -44,12 +44,12 @@ It should install all necesary libraries for the Django Environment(new librarie
 
 ### Getting the App Running
 1. Open your terminal
-2. Go to folder app/server
+2. Go to folder __demo__
 3. Run the server: `python manage.py runserver`
 3. Go to the url provided on the terminal
 
 ### Get Unit Test Coverage
-All unit tests are in a separate module under __app/server/rekognition/tests__
+All unit tests are in a separate module under __demo/rekognition/tests__
 1. On terminal, go to rhe __demo__ folder
 2. To run tests
     - `python manage.py test`
