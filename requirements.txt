@@ -3,3 +3,4 @@ django-cleanup
 Boto3
 Pillow
 coverage
+djangorestframework
