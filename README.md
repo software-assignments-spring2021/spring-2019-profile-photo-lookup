@@ -50,7 +50,7 @@ It should install all necesary libraries for the Django Environment(new librarie
 
 ### Get Unit Test Coverage
 All unit tests are in a separate module under __app/server/rekognition/tests__
-1. On terminal, go to app/server
+1. On terminal, go to rhe __demo__ folder
 2. To run tests
     - `python manage.py test`
 3. To see coverage report
