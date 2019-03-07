@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rekognition.apps.RekognitionConfig',
-    'django_cleanup'
+    'django_cleanup',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
