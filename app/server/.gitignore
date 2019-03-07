@@ -1,9 +1,11 @@
 *.log
-*.pot
-*.pyc
-__pycache__/
-local_settings.py
-rekognition/asset
 
-.env
-db.sqlite3
+*.pot
+
+*.pyc
+
+*/*/*/__pycache__/
+
+*/*/__pycache__/
+
+*/__pycache__/
