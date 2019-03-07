@@ -3,6 +3,7 @@
 *.pyc
 __pycache__/
 local_settings.py
+rekognition/asset
 
 .env
 db.sqlite3
