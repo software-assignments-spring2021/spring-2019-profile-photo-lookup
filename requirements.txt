@@ -4,3 +4,4 @@ Boto3
 Pillow
 coverage
 djangorestframework
+django-cors-headers

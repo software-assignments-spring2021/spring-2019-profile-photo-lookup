@@ -1,15 +1,16 @@
 import instance from '../instance';
 import {
-    TEST_GET
+    UPLOAD_IMAGE
 } from './types';
 
-export function fetchTest() {
+export function uploadImage(image) {
     return (dispatch) => {
-        return instance.get(
-            `/`
+        return instance.post(
+            `/rekognition`,
+            image
         ).then((response) => {
             dispatch({
-                type: TEST_GET,
+                type: UPLOAD_IMAGE,
                 payload: response.data
             });
         }).catch((error) => {

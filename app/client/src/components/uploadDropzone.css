@@ -1,0 +1,18 @@
+.dropzone-content {
+    height: 350px;
+    width: 500px;
+}
+
+.dropzone-content-text {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 0;
+    left: 0;
+    text-align: center;
+}
+
+#upload-icon {
+    font-size: 80px;
+}

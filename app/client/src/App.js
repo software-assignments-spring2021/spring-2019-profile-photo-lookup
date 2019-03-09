@@ -1,28 +1,27 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { fetchTest } from './redux/analysis/action.js';
+import UploadDropzone from './components/uploadDropzone.js';
+import UploadResult from './components/uploadResult.js';
 
 class App extends Component {
+
 
     constructor(props) {
         super(props);
         this.state = {
-            users: []
+
         };
     }
 
-    // handleClick = () => {
-    //     this.props.fetchTest();
-    // }
+
 
     render() {
         return (
-            <div className="App">
-
-                {/*}<h1>Users</h1>
-                {this.props.users ? <div>{this.props.users}</div> : null}
-                <button type="button" className="btn btn-primary" onClick={() => {this.handleClick()}}>Fetch from backend</button>*/}
+            <div className="App container">
+                <h1>Welcome to RIS!</h1>
+                <div><UploadDropzone /></div>
+                <div>{this.props.names ? <UploadResult names={this.props.names}/> : null}</div>
             </div>
         );
     }
@@ -30,8 +29,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
     return {
-        users: state.analysis.users
+        names: state.analysis.names
     };
 }
 
-export default connect(mapStateToProps, { fetchTest })(App);
+export default connect(mapStateToProps, null)(App);
