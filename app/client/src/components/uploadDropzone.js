@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './uploadDropzone.css';
+import DragAndDrop from './dragAndDrop.js'
 import { connect } from 'react-redux';
 import { uploadImage } from '../redux/analysis/action.js';
 
@@ -9,7 +10,20 @@ class UploadDropzone extends Component {
         super(props);
         this.state = {
             newImage: null
+            // files: [
+            //
+            // ]
         };
+    }
+
+    handleDrop = (files) => {
+        // let fileList = this.state.files
+        // for (var i = 0; i < files.length; i++) {
+        //   if (!files[i].name) return
+        //   fileList.push(files[i].name)
+        // }
+        // this.setState({files: fileList})
+        this.setState({ newImage: files[0] });
     }
 
     handleChangeImageUpload = (e) => {
@@ -28,8 +42,12 @@ class UploadDropzone extends Component {
     render() {
         return (
             <div>
-                <h1>Welcome to RIS!</h1>
                 <form>
+                    <DragAndDrop handleDrop={this.handleDrop}>
+                        <div className="dropzone-content">
+                            {this.state.newImage ? this.state.newImage.name : null}
+                        </div>
+                    </DragAndDrop>
                     <div className="form-group">
                         <label htmlFor="image">Upload image</label>
                         <input type="file" className="form-control-file" id="imageUpload" onChange={this.handleChangeImageUpload} accept="image/*"/>
