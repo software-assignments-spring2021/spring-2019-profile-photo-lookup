@@ -23,13 +23,12 @@ class UploadDropzone extends Component {
             formData.append("image", this.state.newImage);
         }
         this.props.uploadImage(formData);
-        this.setState({ newImage: null });
     }
 
     render() {
         return (
             <div>
-                <h1>HELLO WORLD</h1>
+                <h1>Welcome to RIS!</h1>
                 <form>
                     <div className="form-group">
                         <label htmlFor="image">Upload image</label>

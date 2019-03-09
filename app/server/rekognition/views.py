@@ -3,6 +3,7 @@ from rekognition.models import ImageUpload
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.parsers import MultiPartParser
 
 import boto3
 
@@ -13,6 +14,7 @@ def get_local_img(filename):
         return imgfile.read()
 
 class ImageRekognition(APIView):
+    parser_classes = (MultiPartParser,)
     def post(self, request, format=None):
         img = ImageUpload(image = request.FILES['image'])
         img.save()

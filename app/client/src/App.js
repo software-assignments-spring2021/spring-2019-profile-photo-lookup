@@ -2,20 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import UploadDropzone from './components/uploadDropzone.js';
+import UploadResult from './components/uploadResult.js';
 
 class App extends Component {
 
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         names: []
-    //     };
-    // }
-
     render() {
         return (
-            <div className="App">
+            <div className="App container">
                 <UploadDropzone />
+                {this.props.names ? <UploadResult names={this.props.names}/> : null}
             </div>
         );
     }
