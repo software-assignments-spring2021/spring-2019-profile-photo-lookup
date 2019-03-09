@@ -53,7 +53,7 @@ class UploadDropzone extends Component {
                     </div>
                     <div>
                         <input type="file" id="imageUpload" onChange={this.handleChangeImageUpload} accept="image/*"/>
-                        <button type="submit" className="btn btn-success" onClick={(e) => {this.handleClickImageUpload(e)}}>Upload</button>
+                        <button type="submit" className="btn btn-dark" onClick={(e) => {this.handleClickImageUpload(e)}}>Upload</button>
                     </div>
                 </form>
             </div>
