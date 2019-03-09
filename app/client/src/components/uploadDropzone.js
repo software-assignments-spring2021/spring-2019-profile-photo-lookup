@@ -3,6 +3,7 @@ import './uploadDropzone.css';
 import DragAndDrop from './dragAndDrop.js'
 import { connect } from 'react-redux';
 import { uploadImage } from '../redux/analysis/action.js';
+import { FaFileUpload } from 'react-icons/fa';
 
 class UploadDropzone extends Component {
 
@@ -10,19 +11,10 @@ class UploadDropzone extends Component {
         super(props);
         this.state = {
             newImage: null
-            // files: [
-            //
-            // ]
         };
     }
 
     handleDrop = (files) => {
-        // let fileList = this.state.files
-        // for (var i = 0; i < files.length; i++) {
-        //   if (!files[i].name) return
-        //   fileList.push(files[i].name)
-        // }
-        // this.setState({files: fileList})
         this.setState({ newImage: files[0] });
     }
 
@@ -43,16 +35,26 @@ class UploadDropzone extends Component {
         return (
             <div>
                 <form>
-                    <DragAndDrop handleDrop={this.handleDrop}>
-                        <div className="dropzone-content">
-                            {this.state.newImage ? this.state.newImage.name : null}
-                        </div>
-                    </DragAndDrop>
-                    <div className="form-group">
-                        <label htmlFor="image">Upload image</label>
-                        <input type="file" className="form-control-file" id="imageUpload" onChange={this.handleChangeImageUpload} accept="image/*"/>
+                    <div>
+                        <DragAndDrop handleDrop={this.handleDrop}>
+                            <div className="dropzone-content">
+                                <div className="dropzone-content-text">
+                                    {
+                                        this.state.newImage ?
+                                            <div>{this.state.newImage.name}</div>:
+                                            <div>
+                                                <div id="upload-icon"><FaFileUpload /></div>
+                                                <div>DRAG FILE TO UPLOAD</div>
+                                            </div>
+                                    }
+                                </div>
+                            </div>
+                        </DragAndDrop>
                     </div>
-                    <button type="submit" className="btn btn-success" onClick={(e) => {this.handleClickImageUpload(e)}}>Upload</button>
+                    <div>
+                        <input type="file" id="imageUpload" onChange={this.handleChangeImageUpload} accept="image/*"/>
+                        <button type="submit" className="btn btn-success" onClick={(e) => {this.handleClickImageUpload(e)}}>Upload</button>
+                    </div>
                 </form>
             </div>
         );

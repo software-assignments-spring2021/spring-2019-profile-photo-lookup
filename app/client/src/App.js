@@ -20,8 +20,8 @@ class App extends Component {
         return (
             <div className="App container">
                 <h1>Welcome to RIS!</h1>
-                <UploadDropzone />
-                {this.props.names ? <UploadResult names={this.props.names}/> : null}
+                <div><UploadDropzone /></div>
+                <div>{this.props.names ? <UploadResult names={this.props.names}/> : null}</div>
             </div>
         );
     }
