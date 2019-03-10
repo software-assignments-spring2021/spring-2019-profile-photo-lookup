@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import './uploadResult.css';
+import './resultPage.css';
+import { connect } from 'react-redux';
 
-class UploadResult extends Component {
+class ResultPage extends Component {
+
     renderNames() {
         return this.props.names.map((name, i) => {
             return <h1 key={i}>{name}</h1>
@@ -10,7 +12,7 @@ class UploadResult extends Component {
 
     render() {
         return (
-            <div>
+            <div id="result-page">
                 <h2>Results</h2>
                 {this.renderNames()}
             </div>
@@ -18,4 +20,10 @@ class UploadResult extends Component {
     }
 }
 
-export default UploadResult;
+function mapStateToProps(state) {
+    return {
+        names: state.analysis.names
+    };
+}
+
+export default connect(mapStateToProps, null)(ResultPage);
