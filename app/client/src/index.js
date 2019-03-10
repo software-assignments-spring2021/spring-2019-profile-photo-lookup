@@ -10,6 +10,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import history from './history';
+import Navbar from './components/navbar.js';
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
@@ -17,6 +18,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <div>
+                <Navbar />
                 <Switch>
                     <Route exact path="/" component={App}/>
                     <Route path="/home" component={App}/>
