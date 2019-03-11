@@ -7,9 +7,12 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import reducer from './redux/reducer';
 import './index.css';
-import App from './App';
+import Home from './components/home/home.js';
+import Navbar from './components/navbar.js';
+import ResultPage from './components/result/resultPage.js';
 import * as serviceWorker from './serviceWorker';
 import history from './history';
+
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
@@ -17,9 +20,11 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <div>
+                <Navbar />
                 <Switch>
-                    <Route exact path="/" component={App}/>
-                    <Route path="/home" component={App}/>
+                    <Route exact path="/" component={Home}/>
+                    <Route path="/home" component={Home}/>
+                    <Route path="/results" component={ResultPage}/>
                 </Switch>
             </div>
         </Router>

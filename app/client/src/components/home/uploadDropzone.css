@@ -16,3 +16,12 @@
 #upload-icon {
     font-size: 80px;
 }
+
+.browse-button-grp {
+    width: 500px;
+    margin: auto;
+}
+
+.browse-button-grp:focus {
+    outline: 0;
+}
