@@ -1,0 +1,3 @@
+language: python # => 1
+    python: # => 2
+      - "3.6"
