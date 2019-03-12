@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/nyu-software-engineering/profile-photo-lookup.svg?branch=master)](https://travis-ci.com/nyu-software-engineering/profile-photo-lookup)
+
 # Reverse Profile Image Search
 
 ## Introduction
