@@ -1,14 +1,18 @@
 language: python
 python:
-  - "3.6"
-  - "2.7"
-# command to install dependencies
+    - '3.6'
+    - '2.7'
+before_install:
+    - ./ecr_credentials.sh
 install:
-  - pip install -r requirements.txt
-# command to run tests
+    - pip install -r requirements.txt
 before_script:
-  - cd demo
+    - cd demo
 script:
-  - python manage.py test
+    - python manage.py test
 notifications:
   slack: nyu-agile-software:4Ll9V7RPK8fkqf2dGDvWiEGt
+env:
+  global:
+  - secure: uwdlZpbeXOjFjCFEHcrsHx8sRd/VRypyXGZ8qEEsDZHc95B8VCwQ6xHbGNvZQ76PDxoaXHD1fEaIMV69iuqNiBRbWeup/AzaUHENvmCBNpY87g/DVUoaoUxAhN5KikZqOjdKn2MHzmXX/02WWOc8v4PkkV3fGfq7D+t7pjKghgPZiK9PtLBBMwhD188b2K09kR/uB+GffmPVhz1l8ZR8bEzMzdn9VVDtY5whvbbzJV1pcNPCcoo6etm3nV1xPKhQ5dLpUbGTQsaX3T6dnQ598UIZJezwyyW4eLzmR9+6q3CPb15COUQG0c6G9v7kPMqW4KMyqQ7B/kYR9McDkL1kikFAtRXkteCH8GqcrzeSVx1q56/KTaaIRVvHtTYZny0tkHYl7Vf6Ike18+Qhna8L8x+MgsmHeS2UNPri4TtOhp892i6zWhbz2veecZu/CEdCgYm2ikT4LFH2yHV5IWNpTZTTWrBeT/nP2ZS3LkFcMxBsvvy1bpiSMO5ny+tWooENaEMZrceDgDsLQqhqd9nmj/1dzAZN8Knvq+/sfIdCusmkB3OZimEtcH08hozPXGaaSx4patIa+foND5gIjFf02zHb83IjmwkX/pNlaMzpNGrWjdiGJ/pMW7OC1mFoNZENunAnF/itH1/M71IuZfVt4tSApzGXibvXtwTvGYuGlhA=
+  - secure: B4CcMzuDBTvQ16A/wH9o50gN2ki6JbVw+Bh8yoG7zCUMv3+sbUe90Syw3Wh1Ksz21iRlyNvKnLMQidx8W04l17tXhc16wG82UWVExwzH0X2AwaclMRzKj8figjAayShvgXGHUueBvBWbbSG2s2uyTW6duBA3p1908/wzJVhkHBfrh8HCYuSdKllomc9P7ra6rsibhqvJm2xZcDK3Qljnqa5VXf1Iv0Wm26rWPjpZyBEWD04Pa1XQfBeV1Ky1xCV6VlQqaeHog+9M019bHARezt0r9WIJYVP87ubexX7X3C2ozcCrUcCJ1QNMraM9Ax0XU3NzYPEZPWUWV54ElPiVU299S6bTMHZhZvTW222RehHgvBHGSOTKFFspCK+sMtGVAvXK5LMndeTsXqdl9mNt8Ry+U0t4PlTwI33Bcp676fXpxZmkSx58GvDX3Ts9T0E3kObWTJ3jXBUU9/sffKNQCAV603FA3U48AFCtqltY90B/OnodWWeRZa04t/qktoNWcbCsDeFIAjT0kA+U8MNFbFuI/e1W1G6ASeBFfEUFjM7FAGkLXTbxFK6EAmX0AODPKVAY0ttTohPavyWfMHvZ3fidk3M8ujOQuA306Pu/Vn2IT1iRbLRfSwIV1EYWbwwUS/1sQwoWOTqivwTIJPoh3WHKHSBog7VbfCqiPwNe9oA=
