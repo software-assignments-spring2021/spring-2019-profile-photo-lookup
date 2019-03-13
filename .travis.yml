@@ -1,18 +1,14 @@
 language: python
 python:
-  - '3.6'
-  - '2.7'
-before_install:
-    - ./aws_credentials.sh
+  - "3.6"
+  - "2.7"
+# command to install dependencies
 install:
   - pip install -r requirements.txt
+# command to run tests
 before_script:
   - cd demo
 script:
   - python manage.py test
 notifications:
   slack: nyu-agile-software:4Ll9V7RPK8fkqf2dGDvWiEGt
-env:
-  global:
-  - secure: bJfnZz9juVI4SMTAoyCVSwzKFMVM0MOwXdY+2T7QUCoXDU5Rjjpu8HpVhBYm3wQolDgl+33rw8BuXdEXwc+pcDlZ4ytKF5ZFriAiOFEmDRRMOHxe2EYkElcwK1bEoxiYTFUL0001jKCffmt8Dp1RA9c9MkZo4uHIh+cYt0kViG4bmsKpgGiKaMqzOogoYFZQfKBlSXAUXIjIxBxguMaQ6/7OlDYfDpKp5lGRCljbb+6lfAyxxjNpD38BYLs/K8Jjx8A8ug4jJRa0ES38dNkv79w73h6Xr3Oavlnrk9XI7w4rWrcqK8Y+jyyxiIGY7wM1ZFRSK71gRVQdGKn+TCcsY2AYvxelO21E1Qdxl233U9z6B7d/0QK3bZqatfYYn9TXhfgv2eP7Hoh/3xSAG7RO5/bVP/rlhARpKxLwGqULCMiU7ohgtl4tGwi1VVbaCxEslnfecOnzZ9Hf81YaG3Lrh7wVW6+euOm/NyPMa1k39JJ2uVHWt6qKDYk5PO15/D44N3OiuHkvLv4SG5ApGefMrc7NF1+cQglz0Ql/i1WVcL3nXtyrDzxxtHfH2UuJoc7zOhnHxnEiEvYUtDFa+fd+txzQFR+SGW1Jl135vYeb1+tLYtfdhFapMDlmQf9m86fGmVFPwlTCZMngTgXvkChn3vDWQ1pld9Z9JXXvpSRXjX0=
-  - secure: f+MTCwdeVild8SgX72t456Kib1bXK1nkDZDkSMX7HM9LbFpZJ/t3Z83Pwx6ZJ2O2OriaPHZlRxvY5eRGpp8GB2gPjA1W8xFBoZZaqE8nuOoKrt9v1UgeHjPB154hovKeM2ZmDPdl+ukw7WKgqwpEthfvjT/KI8hh7srV7ABzp8hzb43BjzktnZEAyjXRT2jkb/WfbodutOz9r6RhuRV3ATTClE/KyjQjLMEoD04ylFbH8bb5Z078d/qUSuE0M9DUioeUPGUZa3cXLaGK5pSYWeIifDkhxUUq8jKUsJuzPWau86Lu8yZTQVO90YcHFCaTVS6c7Qhyj/q0i0RS/rCPDD6CzMLDcGqGU25gCcVFHMhUhfh9zHEK7+YKMsJyRVvBwXgFqGmo7vmdGmKrKq2vN539bQ12ABMkpRKlFYDlAYspldV6j/SEd8XlaERnVrwH99dtyIy3t9lwOhkcQR38NJI0JNWKJd8KOjgh5SBXdqzC7co17uZuVCQGtfQV0HxBxY5OfIFq40LcRw9sPp/8bY9CJtItDU8umKLJ3RrpDOCo0EmRwHJbSa/fqgspAx+Bw+2YE8nZIMuHC95yR2cqavOD1KG06Lx8MCWDdt+fYWSE4JGfZ4uKmjDHjZn2ftjQRaIFCS51GwIQXBiKvhFL5PvvMn7gd3yEQDMza/r5tvo=
