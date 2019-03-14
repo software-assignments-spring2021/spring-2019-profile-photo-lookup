@@ -5,26 +5,26 @@ describe('todos reducer', () => {
     it('should return the initial state', () => {
         expect(reducer(undefined, {})).toEqual(
             {
-                users: 'user'
+                names: []
             }
         )
     });
 
-    it('should handle TEST_GET', () => {
+    it('should handle UPLOAD_IMAGE', () => {
 
         expect(
             reducer(
                 {
-                    users: 'user'
+                    names: []
                 },
                 {
-                    type: types.TEST_GET,
-                    payload: 'Hello world'
+                    type: types.UPLOAD_IMAGE,
+                    payload: ['Neil deGrasse Tyson']
                 }
             )
         ).toEqual(
             {
-                users: 'Hello world'
+                names: ['Neil deGrasse Tyson']
             }
         )
 
