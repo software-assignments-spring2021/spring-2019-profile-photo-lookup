@@ -1,16 +1,3 @@
-# language: python
-# python:
-#   - '3.6'
-# install:
-#   - pip install -r requirements.txt
-# before_script:
-#   - cd demo
-# script:
-#   - python manage.py test
-# notifications:
-#   slack: nyu-agile-software:4Ll9V7RPK8fkqf2dGDvWiEGt
-
-
 matrix:
   include:
     - language: python
@@ -32,8 +19,6 @@ matrix:
         - npm install
       script:
         - npm run coverage
-
-
 
 # notifications:
 #   slack: nyu-agile-software:4Ll9V7RPK8fkqf2dGDvWiEGt
