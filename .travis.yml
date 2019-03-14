@@ -11,7 +11,7 @@ matrix:
         - python manage.py test
 
     - language: node_js
-      node_js: node
+      node_js: '11.10.0'
       before_install:
         - cd app/client
         - npm i -g npm@6.7.0
