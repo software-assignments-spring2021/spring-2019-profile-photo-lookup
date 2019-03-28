@@ -7,8 +7,9 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import reducer from './redux/reducer';
 import './index.css';
-import Home from './components/home/home.js';
 import Navbar from './components/navbar.js';
+import Home from './components/home/home.js';
+import About from './components/about/about.js';
 import ResultPage from './components/result/resultPage.js';
 import * as serviceWorker from './serviceWorker';
 import history from './history';
@@ -25,6 +26,7 @@ ReactDOM.render(
                     <Route exact path="/" component={Home}/>
                     <Route path="/home" component={Home}/>
                     <Route path="/results" component={ResultPage}/>
+                    <Route path="/about" component={About}/>
                 </Switch>
             </div>
         </Router>
