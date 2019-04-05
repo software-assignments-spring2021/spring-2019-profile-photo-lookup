@@ -1,4 +1,4 @@
-django==2.1
+django
 django-cleanup
 Boto3
 Pillow
