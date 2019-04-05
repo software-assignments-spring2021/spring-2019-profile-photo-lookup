@@ -44,13 +44,15 @@ Go to the directory where "requirements.txt" is located and run <br>
 
 It should install all necesary libraries for the Django Environment(new libraries will be added as project expands, run this command again if neccesary).
 
-### Getting the App Running
-1. Open your terminal
-2. Go to folder __demo__
-3. Run the server: `python manage.py runserver`
-3. Go to the url provided on the terminal
+## Start the App
+1. On 2 __separate__ terminals
+2. Go to folder __app/client__, do
+    - `npm install`
+    - `nom start`
+3. Go to __app/server__, do
+    - `python manage.py runserver`
 
-### Get Unit Test Coverage
+## Unit Test Coverage
 All unit tests are in a separate module under __demo/rekognition/tests__
 1. On terminal, go to rhe __demo__ folder
 2. To run tests
