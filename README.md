@@ -62,13 +62,13 @@ It should install all necesary libraries for the Django Environment(new librarie
 1. On two *separate* terminal windows
 2. Go to folder __app/client__, do
     - `npm install`
-    - `nom start`
+    - `npm start`
 3. Go to __app/server__, do
     - `python manage.py runserver`
 
 ## Unit Test Coverage
 ### Front-End
-1. Go to app/client
+1. Go to __app/client__
 2. To run test
     - `npm test`
 3. To generate coverage report
@@ -78,8 +78,7 @@ It should install all necesary libraries for the Django Environment(new librarie
     - open index.html
 
 ### Back-End
-All server-side unit tests are under __demo/rekognition/tests__
-1. Go to demo folder
+1. Go to __demo__
 2. To run tests
     - `python manage.py test`
 3. To see coverage report
@@ -89,8 +88,6 @@ All server-side unit tests are under __demo/rekognition/tests__
     - run `coverage html` instead of `coverage report`
     - the report will be save in a folder named "htmlcov" inside the "server" folder
     - open "index.html" inside "htmlcov" to see the detailed report
-    - __note: a pre-generated coverage report has already been included in the repo for viewing__
-
 
 
 ## Built With
