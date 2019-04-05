@@ -10,7 +10,8 @@ class UploadDropzone extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            newImage: null
+            newImage: null, // uploaded image, to be sent to backend
+            displayImg: null // uploaded image, parsed with FileReader to be displayed
         };
     }
 
@@ -19,7 +20,16 @@ class UploadDropzone extends Component {
     }
 
     handleChangeImageUpload = (e) => {
-        this.setState({ newImage: e.target.files[0] });
+        var file = e.target.files[0];
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = function (e) {
+            console.log("ONLOADEND")
+            this.setState({
+                displayImg: [reader.result],
+                newImage: file
+            })
+        }.bind(this);
     };
 
     handleClickImageUpload = (e) => {
@@ -40,8 +50,8 @@ class UploadDropzone extends Component {
                             <div className="dropzone-content">
                                 <div className="dropzone-content-text">
                                     {
-                                        this.state.newImage ?
-                                            <div>{this.state.newImage.name}</div>:
+                                        this.state.displayImg ?
+                                            <img src={this.state.displayImg} alt="user upload" id="uploaded-img"/>:
                                             <div>
                                                 <div id="upload-icon"><FaFileUpload /></div>
                                                 <div>DRAG FILE TO UPLOAD</div>

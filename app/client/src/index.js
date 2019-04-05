@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import reducer from './redux/reducer';
 import './index.css';
-import Navbar from './components/navbar.js';
+import Navbar from './components/navbar/navbar.js';
 import Home from './components/home/home.js';
 import About from './components/about/about.js';
 import ResultPage from './components/result/resultPage.js';
