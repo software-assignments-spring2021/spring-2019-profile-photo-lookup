@@ -4,11 +4,9 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "p5": "^0.7.3",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-icons": "^3.5.0",
-    "react-p5-wrapper": "0.0.4",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
