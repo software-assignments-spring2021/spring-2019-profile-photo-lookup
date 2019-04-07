@@ -17,6 +17,11 @@
     font-size: 80px;
 }
 
+#uploaded-img {
+    max-width: 500px;
+    max-height: 350px;
+}
+
 .browse-button-grp {
     width: 500px;
     margin: auto;

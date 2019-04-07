@@ -15,12 +15,38 @@ class UploadDropzone extends Component {
     }
 
     handleDrop = (files) => {
-        this.setState({ newImage: files[0] });
+        this.drawCanvas(files[0]);
     }
 
     handleChangeImageUpload = (e) => {
-        this.setState({ newImage: e.target.files[0] });
+        this.drawCanvas(e.target.files[0]);
     };
+
+    drawCanvas = (file) => {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        const canvas = this.refs.canvas;
+        const ctx = canvas.getContext('2d');
+
+        reader.onloadend = function (e) {
+            this.setState({
+                newImage: file
+            })
+
+            var img = new Image();
+            img.onload = function(){
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img,0,0);
+
+                // TODO: UNCOMMENT TO DRAW RECTANGLE AROUND A FACE
+                // ctx.rect(50, 20, 75, 75);
+                // ctx.stroke();
+            }
+            img.src = e.target.result;
+        }.bind(this);
+    }
 
     handleClickImageUpload = (e) => {
         e.preventDefault();
@@ -39,13 +65,13 @@ class UploadDropzone extends Component {
                         <DragAndDrop handleDrop={this.handleDrop}>
                             <div className="dropzone-content">
                                 <div className="dropzone-content-text">
+                                    <canvas ref="canvas" id="uploaded-img"/>
                                     {
-                                        this.state.newImage ?
-                                            <div>{this.state.newImage.name}</div>:
+                                        !this.state.newImage ?
                                             <div>
                                                 <div id="upload-icon"><FaFileUpload /></div>
                                                 <div>DRAG FILE TO UPLOAD</div>
-                                            </div>
+                                            </div> : null
                                     }
                                 </div>
                             </div>
