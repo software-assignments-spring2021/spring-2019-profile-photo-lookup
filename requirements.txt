@@ -2,6 +2,8 @@ django
 django-cleanup
 Boto3
 Pillow
+requests
+beautifulsoup4
 coverage
 djangorestframework
 django-cors-headers

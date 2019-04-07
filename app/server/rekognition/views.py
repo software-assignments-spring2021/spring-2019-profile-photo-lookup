@@ -31,8 +31,10 @@ class ImageRekognition(APIView):
         for face in output['CelebrityFaces']:
             names.append(face['Name'])
 
+        output = {"names": names}
+
         # delete all model instances once result is obtained
         # django-cleanup automatically deletes old images in system
         ImageUpload.objects.all().delete()
 
-        return Response(names, status = status.HTTP_200_OK)
+        return Response(output, status = status.HTTP_200_OK)
