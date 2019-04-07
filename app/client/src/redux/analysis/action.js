@@ -12,7 +12,7 @@ export function uploadImage(image) {
         ).then((response) => {
             dispatch({
                 type: UPLOAD_IMAGE,
-                payload: response.data
+                payload: response.data.names
             });
             history.push('/results');
         }).catch((error) => {
