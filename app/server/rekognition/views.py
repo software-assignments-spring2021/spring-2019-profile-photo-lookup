@@ -26,12 +26,14 @@ class ImageRekognition(APIView):
         # feed image to Amazon Rekognition API
         output = client.recognize_celebrities(Image={'Bytes': img_bytes})
 
-        # process output from Amazon Rekognition
+        # extract names and face bounding box locations
         names = []
+        bbox = []
         for face in output['CelebrityFaces']:
             names.append(face['Name'])
+            bbox.append(face['Face']['BoundingBox'])
 
-        output = {"names": names}
+        output = {"names": names, "bbox": bbox}
 
         # delete all model instances once result is obtained
         # django-cleanup automatically deletes old images in system
