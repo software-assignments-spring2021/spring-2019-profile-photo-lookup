@@ -2,13 +2,13 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
-SPORTS = ['football', 'basketball', 'baseball', 'soccer',
-          'hockey', 'tennis', 'volleyball', 'cricket', 'rugby']
+SPORT1 = ["basketball", "badminton", "archery", "baseball", "volleyball", 
+"bmx", "bobsleigh", "canoe", "equestrian", "football", "soccer", "golf", "hockey", "judo", 
+"karate", "luge", "pentathlon", "rugby",  "softball",  "table tennis", "taekwondo", "tennis", 
+"trampoline", "triathlon", "water polo"]
 
-SPORTER = ['swimmer', 'golfer', 'boxer', 'fencer', 'wrestler']
-
-SPORT_OTHER = ['gymnast']
-
+SPORT2 = ["gymnast", "ski", "swimm", "box", "curl", "dive", "fenc", "figure skat", "mountain bik", "cycl", 
+"speed skat", "row", "sail", "shoot", "ski jump", "snow board", "surf", "weightlift", "wrestl", "driv", "rac", "sprint", "runn"]
 def repl_func(m):
     """process regular expression match groups for word upper-casing problem"""
     return m.group(1) + m.group(2).upper()
@@ -36,10 +36,19 @@ def find_occupations(wiki_data):
             occupations.append('Politician')
 
         # Athletes
-        for sport in SPORTS:
+        for sport in SPORT1:
             if sport in wiki_desc.lower():
-                occupations.append('Professional ' + sport.title() + ' Player')
-
+                athlete_type= 'Professional ' + sport.title() + ' Player'
+                occupations.append(athlete_type)
+        for sport in SPORT2:
+            if sport in wiki_desc.lower():
+                if(sport != "gymnast"):
+                    if(sport != "dive"):
+                        sport= sport + 'er'
+                    else:
+                        sport= sport + 'r'
+                athlete_type= 'Professional ' + sport.title()
+                occupations.append(athlete_type)
         output[name] = occupations
 
     return output
