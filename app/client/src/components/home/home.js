@@ -8,7 +8,11 @@ class Home extends Component {
     render() {
         return (
             <div className="App container">
-                <h1>Welcome to RIS!</h1>
+                <div className="logo-text">
+                 <img src={require('./logo/logo-name.png')} alt='logo' />
+                </div>
+               
+
                 <div><UploadDropzone /></div>
             </div>
         );
