@@ -9,7 +9,7 @@ import reducer from './redux/reducer';
 import './index.css';
 import Navbar from './components/navbar/navbar.js';
 import Home from './components/home/home.js';
-import Musician from './components/result/musician/musician.jsx'
+import Musician from './components/result/musician/musician.js'
 import About from './components/about/about.js';
 import ResultPage from './components/result/resultPage.js';
 import * as serviceWorker from './serviceWorker';
