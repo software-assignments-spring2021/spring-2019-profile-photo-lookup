@@ -1,8 +1,14 @@
-from .wikiAPI import *
-from .occupation import *
+from .wikiAPI import search_wiki
+from .occupation import find_occupations
 
 def construct_profiles(names):
-    wiki_data = get_wiki_data(names)
-    output = find_occupations(wiki_data)
+    output = []
+    for name in names:
+        profile = {}
+        profile["name"] = name
+        wiki_data = search_wiki(name)
+        profile['occID'], profile["occupations"] = find_occupations(wiki_data)
+        profile['info'] = {}
+        output.append(profile)
 
     return output
