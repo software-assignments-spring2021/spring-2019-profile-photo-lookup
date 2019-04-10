@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 class ResultPage extends Component {
 
     renderNames() {
-        return this.props.names.map((name, i) => {
-            return <h1 key={i}>{name}</h1>
+        return this.props.info.map((name, i) => {
+            return <h1 key={i}>{name.name}</h1>
         });
     }
 
@@ -22,7 +22,8 @@ class ResultPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        names: state.analysis.names
+        names: state.analysis.names,
+        info: state.analysis.info
     };
 }
 
