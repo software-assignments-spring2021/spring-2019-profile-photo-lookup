@@ -1,4 +1,4 @@
-from .profile import *
+from .profile import construct_profiles
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
