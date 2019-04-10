@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import "./musician.css";
 
 class Musician extends Component {
-  // state = {
-  //   url: "https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3"
-  // };
 
     constructor(props) {
         super(props);
@@ -27,7 +24,7 @@ class Musician extends Component {
                 />
             </div>
         );
-  }
+    }
 }
 
 export default Musician;
