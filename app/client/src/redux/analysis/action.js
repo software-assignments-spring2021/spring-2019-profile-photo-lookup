@@ -37,7 +37,7 @@ export function getInfo(dispatch, names) {
     // }
     var payload = [
         {
-            name: "Lady Gaga",
+            name: "ladygaga",
             occ_id: "musician",
             occupation: [
                 "Singer",
