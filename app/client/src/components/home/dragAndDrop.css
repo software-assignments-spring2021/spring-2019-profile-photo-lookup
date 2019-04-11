@@ -1,7 +1,8 @@
 .dropzone {
     display: inline-block;
     position: relative;
-    border-style: solid;
+    border-style: dashed;
+    border-color: gray
 }
 
 .dropzone-hover-box {
