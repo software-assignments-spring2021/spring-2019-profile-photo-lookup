@@ -32,8 +32,12 @@ def find_occupations(wiki_data):
                 occupations.append(occ)
 
         # Politicians
-        if 'politician' in wiki_desc.lower():
-            occupations.append('Politician')
+        if 'politic' in wiki_desc.lower():
+            if 'president' in wiki_desc.lower():
+                pres= re.search("[\w]+ (president of the united states)", wiki_desc.lower())
+                occupations.append(pres.title())
+            else:
+                occupations.append('Politician')
 
         # Athletes
         for sport in SPORT1:
