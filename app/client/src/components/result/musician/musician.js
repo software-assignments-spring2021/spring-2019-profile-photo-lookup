@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./musician.css";
 import SpotifyPlaylist from './spotifyplaylist.js';
-import { connect } from 'react-redux';
 
 class Musician extends Component {
 
@@ -17,14 +16,6 @@ class Musician extends Component {
             <SpotifyPlaylist url={this.state.url}/>
         );
     }
-
-
 }
 
-function mapStateToProps(state) {
-    return {
-        info: state.analysis.info
-    };
-}
-
-export default connect(mapStateToProps, null)(Musician);
+export default Musician;

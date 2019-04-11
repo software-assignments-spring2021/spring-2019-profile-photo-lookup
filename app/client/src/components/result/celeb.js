@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import "./celeb.css";
 import { Redirect } from 'react-router-dom';
+import Actor from './actor/actor.js';
+import Athlete from './athlete/athlete.js';
 import Musician from './musician/musician.js';
+import Politician from './politician/politician.js';
 
 class Celeb extends Component {
 
@@ -19,13 +22,13 @@ class Celeb extends Component {
         const celeb = this.props.location.celeb;
         switch(celeb.occ_id) {
             case "actor":
-                break;
+                return <Actor />;
             case "athlete":
-                break;
+                return <Athlete />;
             case "musician":
                 return <Musician />;
             case "politician":
-                break;
+                return <Politician />;
             default:
                 break;
         }
@@ -43,9 +46,7 @@ class Celeb extends Component {
                 {this.renderInfo()}
             </div>
         )
-}
-
-
+    }
 }
 
 export default Celeb;
