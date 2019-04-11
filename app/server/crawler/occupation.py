@@ -10,7 +10,7 @@ SPORT1 = ["basketball", "badminton", "archery", "baseball", "volleyball",
 "trampoline", "triathlon", "water polo"]
 
 SPORT2 = ["gymnast", "ski", "swimm", "box", "curl", "dive", "fenc", "figure skat", "mountain bik", "cycl", 
-"speed skat", "row", "sail", "shoot", "ski jump", "snow board", "surf", "weightlift", "wrestl", "driv", "rac", "sprint", "runn"]
+"speed skat", "row", "sail", "shoot", "ski jump", "snow board", "surf", "weightlift", "wrestl", "driv", "sprint", "runn"]
 
 def repl_func(m):
     """process regular expression match groups for word upper-casing problem"""
@@ -39,10 +39,13 @@ def find_occupations(data):
                 occID = 'actor'
                 continue
 
-    # Politicians
-    if 'politician' in wiki_desc.lower():
+    #Politicians
+    if 'politic' in wiki_desc.lower():
         occupations.append('Politician')
-        occID = 'politician'
+        if 'president' in wiki_desc.lower():
+            pres= re.search("[\w]+ (president of the united states)", wiki_desc.lower())
+            occupations.append(pres[0].title())
+
 
     # Athletes
     for sport in SPORT1:
