@@ -9,10 +9,8 @@ class Home extends Component {
         return (
             <div className="App container">
                 <div className="logo-text">
-                 <img src={require('./logo/logo-name.png')} alt='logo' />
+                    <img src={require('./logo/logo-name.png')} alt='logo' />
                 </div>
-               
-
                 <div><UploadDropzone /></div>
             </div>
         );
