@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './resultPage.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import SpotifyPlaylist from './musician/spotifyplaylist.js';
 
 class ResultPage extends Component {
 
@@ -61,12 +62,11 @@ class ResultPage extends Component {
     }
 
     renderAccordionContent() {
-
         return this.state.celebs.map((celeb, i) => {
             return (
                 <div className="card" key={i}>
                     <button type="button" className="btn text-white bg-dark btn-lg btn-block" data-toggle="collapse" data-target={`#blah${i}`}>{celeb.name}</button>
-                    <div id={`blah${i}`} className="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div id={`blah${i}`} className={i === 0 ? "collapse show" : "collapse"} aria-labelledby="headingOne" data-parent="#accordion">
                         <div className="card-body">
                             {celeb.occupation.map((occ, i) => {
                                 return(
@@ -75,6 +75,7 @@ class ResultPage extends Component {
                                     </div>
                                 )
                             })}
+                            <SpotifyPlaylist />
                         </div>
                     </div>
                 </div>
@@ -84,11 +85,11 @@ class ResultPage extends Component {
 
     render() {
         return (
-            <div id="result-page" className="container">
-                <h2>Results</h2>
+            <div id="result-page" className="">
+                {/*}<h2>Results</h2>*/}
                 <div id="accordion">
-                    {this.renderNames()}
-                    {/*this.renderAccordionContent()*/}
+                    {/*this.renderNames()*/}
+                    {this.renderAccordionContent()}
                 </div>
             </div>
         );
