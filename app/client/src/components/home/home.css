@@ -1,8 +1,8 @@
-
 .App {
     text-align: center;
-    
+
 }
+
 .logo-text{
     margin-top: 50px;
     margin-bottom: 50px;
@@ -12,7 +12,7 @@ h1.display-4{
     text-align: center;
     font-size: 8em;
     letter-spacing: .1em;
-    
+
 }
 
 .lead{
@@ -24,4 +24,67 @@ h1.display-4{
 
 .my-4{
     text-align: center;
+}
+
+.homepage {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.btn-header {
+    background-color: white;
+    color: #77C9D4;
+}
+
+.btn-header:hover {
+    color: #57BC90;
+}
+
+.header {
+	width: 100vw;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px;
+	color: #fff;
+	background: linear-gradient(-45deg, #3a926c, #57BC90, #77C9D4, #CEEBEF);
+	background-size: 500% 500%;
+	-webkit-animation: Gradient 5s ease infinite;
+	-moz-animation: Gradient 5s ease infinite;
+	animation: Gradient 5s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
 }
