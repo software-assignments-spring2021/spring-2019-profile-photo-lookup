@@ -4,7 +4,8 @@ import {
 } from './types';
 
 const initialState = {
-    names: []
+    names: [],
+    info: []
 };
 
 export default function(state=initialState, action) {

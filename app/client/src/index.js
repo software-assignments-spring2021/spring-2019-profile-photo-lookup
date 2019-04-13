@@ -9,7 +9,7 @@ import reducer from './redux/reducer';
 import './index.css';
 import Navbar from './components/navbar/navbar.js';
 import Home from './components/home/home.js';
-import Musician from './components/result/musician/musician.js'
+import Celeb from './components/result/celeb.js'
 import About from './components/about/about.js';
 import ResultPage from './components/result/resultPage.js';
 import * as serviceWorker from './serviceWorker';
@@ -28,7 +28,7 @@ ReactDOM.render(
                     <Route path="/home" component={Home}/>
                     <Route path="/about" component={About}/>
                     <Route exact path="/results" component={ResultPage}/>
-                    <Route path="/results/musician" component={Musician}/>
+                    <Route path="/results/:id" component={Celeb}/>
                 </Switch>
             </div>
         </Router>
