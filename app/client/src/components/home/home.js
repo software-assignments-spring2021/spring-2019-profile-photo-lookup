@@ -18,8 +18,8 @@ class Home extends Component {
                     </p>
                 </div>
                 <section className="section">
-                    <div className="modal-left"><div className="modal-text">CELEBRITY</div></div>
-                    <div className="modal-right">STUDENT</div>
+                    <div className="modal-left"><a className="modal-link" href="/celebrityupload">CELEBRITY</a></div>
+                    <div className="modal-right"><a className="modal-link" href="/studentupload">STUDENT</a></div>
                 </section>
             </div>
         );
