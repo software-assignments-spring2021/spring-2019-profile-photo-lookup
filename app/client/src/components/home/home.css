@@ -112,16 +112,18 @@ h1.display-4{
     color: white;
     font-size: 40px;
     cursor: pointer;
+    transition: 0.3s ease;
 }
 
 .modal-left:hover {
-    background-color: white;
-    color: #77C9D4;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .modal-left:active {
-    background-color: #77C9D4;
-    color: white;
+    background-color: white;
+    color: #77C9D4;
 }
 
 .modal-right {
@@ -135,14 +137,16 @@ h1.display-4{
     text-align: center;
     font-size: 40px;
     cursor: pointer;
+    transition: 0.3s ease;
 }
 
 .modal-right:hover {
-    background-color: white;
-    color: #57BC90;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .modal-right:active {
-    background-color: #57BC90;
-    color: white;
+    background-color: white;
+    color: #57BC90;
 }
