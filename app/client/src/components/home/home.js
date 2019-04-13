@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './home.css';
-import { connect } from 'react-redux';
-import UploadDropzone from './uploadDropzone.js';
 
 class Home extends Component {
 
@@ -19,21 +17,9 @@ class Home extends Component {
                         <a className="btn btn-primary btn-lg" href="/about" role="button">Learn more</a>
                     </p>
                 </div>
-                <div className="App container">
-                    <div className="logo-text">
-                    {/*<img src={require('./logo/logo-name.png')} alt='logo' />*/}
-                    </div>
-                    <div><UploadDropzone /></div>
-                </div>
             </div>
         );
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        names: state.analysis.names
-    };
-}
-
-export default connect(mapStateToProps, null)(Home);
+export default Home;

@@ -9,7 +9,8 @@ import reducer from './redux/reducer';
 import './index.css';
 import Navbar from './components/navbar/navbar.js';
 import Home from './components/home/home.js';
-import Celeb from './components/result/celeb.js'
+import CelebrityUpload from './components/upload/celebrityUpload.js'
+import StudentUpload from './components/upload/studentUpload.js'
 import About from './components/about/about.js';
 import ResultPage from './components/result/resultPage.js';
 import * as serviceWorker from './serviceWorker';
@@ -27,8 +28,10 @@ ReactDOM.render(
                     <Route exact path="/" component={Home}/>
                     <Route path="/home" component={Home}/>
                     <Route path="/about" component={About}/>
+                    <Route path="/celebrityupload" component={CelebrityUpload}/>
+                    <Route path="/studentupload" component={StudentUpload}/>
                     <Route exact path="/results" component={ResultPage}/>
-                    <Route path="/results/:id" component={Celeb}/>
+                    {/*}<Route path="/results/:id" component={Celeb}/>*/}
                 </Switch>
             </div>
         </Router>
