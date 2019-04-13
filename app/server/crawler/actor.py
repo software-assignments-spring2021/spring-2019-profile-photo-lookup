@@ -21,11 +21,25 @@ def getActorID(name):
 
 def getKnownTitles(actorID):
    url = 'https://www.imdb.com/name/'+actorID
+   print(url)
    html = requests.get(url).content
    actor_page = BeautifulSoup(html, features="html.parser")
-   titles = actor_page.findAll("div", {"class": "knownfor-title-role"})
-   return titles
+  # titles = actor_page.find_all("div", {"class": "knownfor-title-role"})
+   titles = actor_page.find_all("a", {"class": "knownfor-ellipsis"})
+   data = []
+   i = 0
+   while i < len(titles):
+      att = (titles[i].attrs)
+     # print(att['title'])
+      data.append(att['title'])
+      i+=1
+   
+  # print(titles2)
+   return data
 
 
+x = getActorID("Tom Cruise")
+titles = getKnownTitles(x)
+print(titles)
 
 
