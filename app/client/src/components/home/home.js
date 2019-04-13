@@ -17,6 +17,10 @@ class Home extends Component {
                         <a className="btn btn-lg btn-header" href="/about" role="button">Learn more</a>
                     </p>
                 </div>
+                <section className="section">
+                    <div className="modal-left"><div className="modal-text">CELEBRITY</div></div>
+                    <div className="modal-right">STUDENT</div>
+                </section>
             </div>
         );
     }
