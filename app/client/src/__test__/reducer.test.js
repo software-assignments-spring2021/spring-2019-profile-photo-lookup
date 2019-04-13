@@ -5,6 +5,7 @@ describe('todos reducer', () => {
     it('should return the initial state', () => {
         expect(reducer(undefined, {})).toEqual(
             {
+                info: [],
                 names: []
             }
         )
@@ -15,6 +16,7 @@ describe('todos reducer', () => {
         expect(
             reducer(
                 {
+                    info: [],
                     names: []
                 },
                 {
@@ -24,6 +26,7 @@ describe('todos reducer', () => {
             )
         ).toEqual(
             {
+                info: [],
                 names: ['Neil deGrasse Tyson']
             }
         )
