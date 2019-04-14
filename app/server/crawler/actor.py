@@ -35,10 +35,12 @@ def getTitles(actor_page):
       i+=1
    return data
 
+
 def getAwards(actor_page):
-   awards = actor_page.find_all("span", {"class": "awards-blurb" })
-   print(awards)
-   return 0
+   awards = str(actor_page.find("span", {"class": "awards-blurb" }).contents[1].get_text()).replace("  ", "").replace("\n", " ")
+   return awards
+   
+  
 
 
 
