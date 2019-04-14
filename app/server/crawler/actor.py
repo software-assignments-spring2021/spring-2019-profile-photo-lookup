@@ -35,12 +35,11 @@ def getTitles(actor_page):
       i+=1
    return data
 
-
-def getUpcoming(actor_page):
-   titles = actor_page.find_all("div", {"class": "filmo-row"})
-   title = titles
-   print(title)
+def getAwards(actor_page):
+   awards = actor_page.find_all("span", {"class": "awards-blurb" })
+   print(awards)
    return 0
+
 
 
 
