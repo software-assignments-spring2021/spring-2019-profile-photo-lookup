@@ -8,3 +8,4 @@ coverage
 djangorestframework
 django-cors-headers
 imdbpy
+spotipy
