@@ -3,43 +3,46 @@ from requests.models import PreparedRequest
 from bs4 import BeautifulSoup
 
 
+
+
 def getActorID(name):
-   nameSplit = name.split(" ")
-   query = nameSplit[0] + nameSplit[1]
-   req = PreparedRequest()
-   base_url = "https://www.imdb.com/find"
+   name = name.split(" ")
+   query = name[0] + name[1]
+   request = PreparedRequest()
    params = {query: 'nm'}
-   req.prepare_url(base_url, params)   
-   html = requests.get(req.url).content 
+   request.prepare_url("https://www.imdb.com/find", params)  
+
+   html = requests.get(request.url).content 
    page = BeautifulSoup(html, features="html.parser")
-   person = page.find("td", {"class": "result_text"}).contents[1]
-  # print(person)
-   nameID = str(person)
-   id_num = nameID.split('/')[2]
+   id_num = str(page.find("td", {"class": "result_text"}).contents[1]).split('/')[2]
    return id_num
 
-
-def getKnownTitles(actorID):
+def getActorPage(actorID):
    url = 'https://www.imdb.com/name/'+actorID
-   print(url)
+   #print(url)
    html = requests.get(url).content
    actor_page = BeautifulSoup(html, features="html.parser")
-  # titles = actor_page.find_all("div", {"class": "knownfor-title-role"})
+   return actor_page
+
+
+def getTitles(actor_page):
    titles = actor_page.find_all("a", {"class": "knownfor-ellipsis"})
    data = []
    i = 0
    while i < len(titles):
       att = (titles[i].attrs)
-     # print(att['title'])
       data.append(att['title'])
       i+=1
-   
-  # print(titles2)
    return data
 
 
-x = getActorID("Tom Cruise")
-titles = getKnownTitles(x)
-print(titles)
+def getUpcoming(actor_page):
+   titles = actor_page.find_all("div", {"class": "filmo-row"})
+   title = titles
+   print(title)
+   return 0
+
+
+
 
 
