@@ -7,7 +7,7 @@ class Home extends Component {
         return (
             <div className = "container-fluid homepage">
                 <div className="jumbotron header">
-                    <div>
+                    <div className="rise">
                         <h1 className="display-4">R.I.S.E</h1>
                     </div>
                     <p className="lead">Welcome to the Reverse Image Search Engine!</p>
