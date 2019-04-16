@@ -23,6 +23,9 @@ class UploadDropzone extends Component {
     };
 
     drawCanvas = (file) => {
+        // var element = document.getElementById("upload-icon");
+        // element.classList.toggle("canvas-size");
+
         var reader = new FileReader();
         reader.readAsDataURL(file);
 
@@ -68,7 +71,7 @@ class UploadDropzone extends Component {
                                     <canvas ref="canvas" id="uploaded-img"/>
                                     {
                                         !this.state.newImage ?
-                                            <div>
+                                            <div className="upload-grp">
                                                 <div id="upload-icon"><FaFileUpload /></div>
                                                 <div>DRAG FILE TO UPLOAD</div>
                                             </div> : null
@@ -84,7 +87,7 @@ class UploadDropzone extends Component {
                             <label className="custom-file-label" htmlFor="imageUpload">{this.state.newImage ? this.state.newImage.name : "Choose file"}</label>
                         </div>
                     </div>
-                        <button type="submit" className="btn btn-dark browse-button-grp" onClick={(e) => {this.handleClickImageUpload(e)}}>Upload</button>
+                        <button type="submit" className="btn upload-btn browse-button-grp" onClick={(e) => {this.handleClickImageUpload(e)}}>Upload</button>
                     </div>
                 </form>
             </div>
