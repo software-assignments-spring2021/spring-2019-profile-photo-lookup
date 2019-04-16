@@ -10,4 +10,4 @@ def getAthleteName(name):
     url_link = "https://en.wikipedia.org/wiki/" + name
     return name, url_link
 
-print(getAthleteName("Lee Chong Wei"))
+#print(getAthleteName("Lee Chong Wei"))

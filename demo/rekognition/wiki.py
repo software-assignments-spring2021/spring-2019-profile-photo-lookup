@@ -3,6 +3,7 @@ import wikipedia
 import numpy as np
 
 titles = ['David Beckham', 'Michael Jordan']
+personal_life = ['Personal Life', 'Personal life', 'personal life']
 
 
 def getPlot(names):
@@ -24,9 +25,26 @@ def getPlot(names):
             plot = np.Nan
 
 
-def findPlot(name):
-    name_with_underscore,url_link = athlete.getAthleteName(name)
+def getSummary(name):
+    name_with_underscore,url_link = Athlete.getAthleteName(name)
     summary = wikipedia.WikipediaPage(title=name_with_underscore).summary
+    personal_life = wikipedia.WikipediaPage(name_with_underscore).section('Personal Life')
+    return summary
+
+    #personal_life = section.replace('\n','').replace("\'"\,"")
+
+def getPersonalLife(name):
+    name_with_underscore,url_link = Athlete.getAthleteName(name)
+    for i in personal_life:
+        try:
+            result = wikipedia.WikipediaPage(name_with_underscore).section(i)
+            if result != None:
+                return result
+        except:
+            result = np.NaN
+    #personal_life = wikipedia.WikipediaPage(name_with_underscore).section('Personal Life')
+    return result
 
 
-print(findPlot("Lee Chong Wei"))
+
+print(getPersonalLife("Lee Chong Wei"))
