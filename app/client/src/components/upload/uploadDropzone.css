@@ -47,3 +47,7 @@
     background-color: #015249;
     color: white;
 }
+
+.upload-btn:hover {
+    color: #57BC90;
+}
