@@ -1,0 +1,12 @@
+.upload-page {
+    color: white;
+    min-width: 100vw;
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #57BC90, #77C9D4);
+}
+
+.upload-header {
+    padding-top: 40px;
+    padding-bottom: 15px;
+    font-weight: 200;
+}

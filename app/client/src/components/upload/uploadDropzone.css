@@ -13,6 +13,13 @@
     text-align: center;
 }
 
+.upload-grp {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+}
+
 #upload-icon {
     font-size: 80px;
 }
@@ -22,6 +29,11 @@
     max-height: 350px;
 }
 
+/* .canvas-size {
+    max-width: 500px;
+    max-height: 350px;
+} */
+
 .browse-button-grp {
     width: 500px;
     margin: auto;
@@ -29,4 +41,9 @@
 
 .browse-button-grp:focus {
     outline: 0;
+}
+
+.upload-btn {
+    background-color: #015249;
+    color: white;
 }
