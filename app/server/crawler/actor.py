@@ -41,8 +41,14 @@ def getAwards(actor_page):
    return awards
    
   
-
-
+def getBio(actorID):
+   url = 'https://www.imdb.com/name/'+actorID+'/'+'bio'
+ 
+   html = requests.get(url).content
+   page = BeautifulSoup(html, features="html.parser")
+   bio = (page.find('div', {'class': 'soda odd'}).contents[1])
+   return bio.get_text()
+   
 
 
 
