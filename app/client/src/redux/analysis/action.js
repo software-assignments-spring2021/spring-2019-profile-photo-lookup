@@ -8,7 +8,7 @@ import history from '../../history.js';
 export function uploadImage(image) {
     return (dispatch) => {
         return instance.post(
-            `/rekognition`,
+            `/rekognition/celebrity`,
             image
         ).then((response) => {
             dispatch({
