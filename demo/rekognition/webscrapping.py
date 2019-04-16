@@ -13,9 +13,9 @@ def parseBeautifulSoup():
     pageContent = getPage()
     soup = BeautifulSoup(pageContent, 'html.parser')
     result = soup.find_all('div', class_='col-md-4 col-sm-4 col-xs-12 catprofiles')
-    return result[:10]
+    person_result = soup.find_all('a', {'class':'tileLink'})
+    return person_result[:10]
     #print(soup.prettify())
 
 
 print(parseBeautifulSoup())
-    
