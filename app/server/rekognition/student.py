@@ -1,15 +1,22 @@
+import re
 import cv2
 import boto3
 
 client = boto3.client('rekognition', region_name='us-east-1')
 
+def get_name(name):
+    name = re.sub(":", "'", name)
+    lst = name.split('-')
+    if len(lst[0]) == 1:
+        name = re.sub('-', '. ', name)
+    return name
 
 def construct_student_profile(ID):
     info = ID.split('_') 
     student = {
         'uid': info[0],
-        'first': info[1],
-        'last': info[2],
+        'first': get_name(info[1]),
+        'last': get_name(info[2]),
         'school': info[3],
         'year': info[4]
     }
