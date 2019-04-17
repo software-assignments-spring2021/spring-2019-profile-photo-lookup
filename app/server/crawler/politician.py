@@ -1,6 +1,7 @@
 import requests
 from requests.models import PreparedRequest
 from bs4 import BeautifulSoup
+from .wikiAPI import search_wiki
 
 def check_Senate(name):
 
@@ -28,7 +29,6 @@ def check_Senate(name):
                 if(member["first_name"]== first_name):
                     member_ID= member["id"]
                     check_found=1
-                    print("found in Senate")
                     break
         if check_found==1:
             break
@@ -62,7 +62,6 @@ def check_House(name):
                 if(member["first_name"]== first_name):
                     member_ID= member["id"]
                     check_found=1
-                    print("found in House")
                     break
         if check_found==1:
             break
@@ -70,7 +69,7 @@ def check_House(name):
     return member_ID
 
 
-def construct_profile(member_ID):
+def construct_congress_profile(member_ID):
     headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
     url= "https://api.propublica.org/congress/v1/" + "members/" + member_ID
     response= requests.get(url, headers=headers)
@@ -108,18 +107,16 @@ def construct_profile(member_ID):
 
 
 
-def main():
-    name= "Conor Lamb"
+def main(name):
     member_ID=check_Senate(name)
     if member_ID== 0:
-        print("not found in Senate")
         member_ID= check_House(name)
     profile= {}
-    if member_ID==0:
-        print("not found")
-        profile["error"]= "This person was never in the U.S. Congress"
-    else:
-        profile= construct_profile(member_ID)
+    if member_ID!=0:
+        profile= construct_congress_profile(member_ID)
+    wiki_data = search_wiki(name)
+    wiki_desc= wiki_data[2][0]
+    profile['info']= wiki_desc
     for key in profile:
         print(profile[key])
     
