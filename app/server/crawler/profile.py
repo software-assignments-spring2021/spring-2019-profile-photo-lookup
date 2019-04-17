@@ -16,7 +16,6 @@ def construct_profiles(names):
         if profile['occID']== 'politician':
             wiki_desc = wiki_data[2][0]
             wiki_desc= wiki_desc.split(" ")
-            print("desc", wiki_desc)
             name= name.split()
             first_name= wiki_desc[0]
             last_name= name[1]
