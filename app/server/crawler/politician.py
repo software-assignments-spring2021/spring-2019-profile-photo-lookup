@@ -108,8 +108,7 @@ def construct_profile(member_ID):
 
 
 
-def main():
-    name= "Conor Lamb"
+def main(name):
     member_ID=check_Senate(name)
     if member_ID== 0:
         print("not found in Senate")

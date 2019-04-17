@@ -41,6 +41,7 @@ def find_occupations(data):
 
     #Politicians
     if 'politic' in wiki_desc.lower():
+        occID= 'politician'
         occupations.append('Politician')
         pres= re.search("[\w]+ (president of the united states)", wiki_desc.lower())
         if(pres):
