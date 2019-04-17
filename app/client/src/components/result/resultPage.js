@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './resultPage.css';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import SpotifyPlaylist from './musician/spotifyplaylist.js';
+// import { Link } from 'react-router-dom';
+// import SpotifyPlaylist from './musician/spotifyplaylist.js';
+import Celeb from './celeb.js';
 
 class ResultPage extends Component {
 
@@ -24,7 +25,7 @@ class ResultPage extends Component {
                 },
                 {
                     name: "David Bowie",
-                    occ_id: "musician",
+                    occ_id: "politician",
                     occupation: [
                         "Singer",
                         "Songwriter",
@@ -35,7 +36,7 @@ class ResultPage extends Component {
                 },
                 {
                     name: "Axl Rose",
-                    occ_id: "musician",
+                    occ_id: "actor",
                     occupation: [
                         "Singer",
                         "Songwriter",
@@ -48,34 +49,22 @@ class ResultPage extends Component {
         };
     }
 
-    renderNames() {
-        return this.state.celebs.map((celeb, i) => {
-            return (
-                <h1 key={i}><Link
-                    to={{
-                        pathname: `results/${celeb.name}`,
-                        celeb: celeb
-                    }}
-                >{celeb.name}</Link></h1>
-            );
-        });
-    }
-
     renderAccordionContent() {
         return this.state.celebs.map((celeb, i) => {
             return (
                 <div className="card" key={i}>
-                    <button type="button" className="btn text-white bg-dark btn-lg btn-block" data-toggle="collapse" data-target={`#blah${i}`}>{celeb.name}</button>
+                    <button type="button" className="btn text-white accordion-card" data-toggle="collapse" data-target={`#blah${i}`}>{celeb.name}</button>
                     <div id={`blah${i}`} className={i === 0 ? "collapse show" : "collapse"} aria-labelledby="headingOne" data-parent="#accordion">
                         <div className="card-body">
-                            {celeb.occupation.map((occ, i) => {
+                            {/*}{celeb.occupation.map((occ, i) => {
                                 return(
                                     <div key={i}>
                                         {occ}
                                     </div>
                                 )
                             })}
-                            <SpotifyPlaylist />
+                            <SpotifyPlaylist />*/}
+                            <Celeb celeb={celeb} />
                         </div>
                     </div>
                 </div>
@@ -85,10 +74,8 @@ class ResultPage extends Component {
 
     render() {
         return (
-            <div id="result-page" className="">
-                {/*}<h2>Results</h2>*/}
+            <div id="result-page">
                 <div id="accordion">
-                    {/*this.renderNames()*/}
                     {this.renderAccordionContent()}
                 </div>
             </div>

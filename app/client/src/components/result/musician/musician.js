@@ -13,7 +13,10 @@ class Musician extends Component {
 
     render() {
         return (
-            <SpotifyPlaylist url={this.state.url}/>
+            <div>
+                <h1>This is a musician</h1>
+                <SpotifyPlaylist url={this.state.url}/>
+            </div>
         );
     }
 }
