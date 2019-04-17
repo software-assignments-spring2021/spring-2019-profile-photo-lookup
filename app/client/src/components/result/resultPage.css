@@ -1,3 +1,10 @@
 #result-page {
     text-align: center;
 }
+
+.accordion-card {
+    background-color: #015249;
+    height: 30vh;
+    font-size: 080px;
+    font-weight: lighter;
+}

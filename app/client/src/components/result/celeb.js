@@ -1,16 +1,11 @@
 import React, { Component } from "react";
 import "./celeb.css";
-import { Redirect } from 'react-router-dom';
 import Actor from './actor/actor.js';
 import Athlete from './athlete/athlete.js';
 import Musician from './musician/musician.js';
 import Politician from './politician/politician.js';
 
 class Celeb extends Component {
-
-    // use local storage?
-    // Clear upon loading home page?
-    // Show info not found page if user routes back again
 
     renderOccupation = (occupation) => {
         return occupation.map((occ, i) => {
@@ -19,26 +14,23 @@ class Celeb extends Component {
     }
 
     renderInfo = () => {
-        const celeb = this.props.location.celeb;
+        const celeb = this.props.celeb;
         switch(celeb.occ_id) {
             case "actor":
-                return <Actor />;
+                return <Actor celeb={celeb}/>;
             case "athlete":
-                return <Athlete />;
+                return <Athlete celeb={celeb}/>;
             case "musician":
-                return <Musician />;
+                return <Musician celeb={celeb}/>;
             case "politician":
-                return <Politician />;
+                return <Politician celeb={celeb}/>;
             default:
                 break;
         }
     }
 
     render() {
-        if (!this.props.location.celeb) {
-            return <Redirect to='/home' />
-        }
-        const celeb = this.props.location.celeb;
+        const celeb = this.props.celeb;
         return (
             <div className="container">
                 <h1>{celeb.name}</h1>
