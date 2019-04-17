@@ -2,7 +2,7 @@
     display: inline-block;
     position: relative;
     border-style: dashed;
-    border-color: gray
+    border-color: #A5A5AF;
 }
 
 .dropzone-hover-box {
