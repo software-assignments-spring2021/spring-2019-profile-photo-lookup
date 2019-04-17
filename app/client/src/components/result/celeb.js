@@ -17,13 +17,13 @@ class Celeb extends Component {
         const celeb = this.props.celeb;
         switch(celeb.occ_id) {
             case "actor":
-                return <Actor />;
+                return <Actor celeb={celeb}/>;
             case "athlete":
-                return <Athlete />;
+                return <Athlete celeb={celeb}/>;
             case "musician":
-                return <Musician />;
+                return <Musician celeb={celeb}/>;
             case "politician":
-                return <Politician />;
+                return <Politician celeb={celeb}/>;
             default:
                 break;
         }
