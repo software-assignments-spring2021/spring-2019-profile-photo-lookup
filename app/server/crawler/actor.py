@@ -50,6 +50,38 @@ def getBio(actorID):
    return bio.get_text()
    
 
+def getUpcomingTitlesByName(movie_id):
+   api = "?api_key=4567404023e93988b15756b26b82c5ee"
+   url = "https://api.themoviedb.org/3/movie/"+movie_id+api
+   #print(url)
+   req = requests.get(url)
+   if req.status_code == 200:
+      data = req.json()
+      return data['original_title']
+   else:
+      return 
+   
+
+
+def getUpcomingTitlesByID(actor_page):
+   upcoming = actor_page.find_all("a", {"class": "in_production"})
+   data = []
+   i = 0
+   while i < len(upcoming):
+      att = upcoming[i].attrs
+      #print(att)
+      link = str(att['href']).split('?')[0].split('/')
+      #print(link)
+      movie_id = link[len(link)-1]
+      #print(movie_id)
+      movie_title = getUpcomingTitlesByName(movie_id)
+      
+      #data.append(link[len(link)-1])
+      #print(movie_title)
+      data.append(movie_title)
+      i+=1   
+   return data
+
 
 
 
