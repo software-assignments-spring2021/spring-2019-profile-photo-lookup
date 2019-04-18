@@ -9,12 +9,12 @@ def filter_name(name):
     lst = name.split('-')
     if len(lst[0]) == 1:
         name = re.sub('-', '. ', name)
-        
+
     return name
 
 
 def construct_student_profile(ID):
-    info = ID.split('_') 
+    info = ID.split('_')
     student = {
         'uid': info[0],
         'first': filter_name(info[1]),
@@ -65,19 +65,17 @@ def detect_faces(filename):
 
 def rekognize_student(img_path):
     faces = detect_faces(img_path)
+    output = []
     for face_bytes in faces:
         response = client.search_faces_by_image(CollectionId = 'RISE_NYU',
                                                 Image = {'Bytes': face_bytes},
                                                 FaceMatchThreshold = 80,
                                                 MaxFaces = 1)
-        faceMatches=response['FaceMatches']
-        output = []
-        for match in faceMatches:
-            uid = match['Face']['ExternalImageId']
-            profile = construct_student_profile(uid)
-            profile['bbox'] = match['Face']['BoundingBox']
-            profile['confidence'] = "{:.2f}".format(match['Similarity']) + "%"
-            output.append(profile)
+        match = response['FaceMatches'][0]
+        uid = match['Face']['ExternalImageId']
+        profile = construct_student_profile(uid)
+        profile['bbox'] = match['Face']['BoundingBox']
+        profile['confidence'] = "{:.2f}".format(match['Similarity']) + "%"
+        output.append(profile)
 
     return {"students": output}
-

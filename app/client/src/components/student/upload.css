@@ -1,0 +1,53 @@
+.dropzone-content {
+    height: 350px;
+    width: 500px;
+}
+
+.dropzone-content-text {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 0;
+    left: 0;
+    text-align: center;
+}
+
+.upload-grp {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+}
+
+#upload-icon {
+    font-size: 80px;
+}
+
+#uploaded-img {
+    max-width: 500px;
+    max-height: 350px;
+}
+
+/* .canvas-size {
+    max-width: 500px;
+    max-height: 350px;
+} */
+
+.browse-button-grp {
+    width: 500px;
+    margin: auto;
+}
+
+.browse-button-grp:focus {
+    outline: 0;
+}
+
+.upload-btn {
+    background-color: #015249;
+    color: white;
+}
+
+.upload-btn:hover {
+    color: #57BC90;
+}
