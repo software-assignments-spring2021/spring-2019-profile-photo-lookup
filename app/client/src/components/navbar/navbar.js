@@ -21,7 +21,7 @@ class Navbar extends Component {
                             <Link to="/celebrityupload" className="nav-link navbar-text">Celebrity</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/studentupload" className="nav-link navbar-text">Student</Link>
+                            <Link to="/student" className="nav-link navbar-text">Student</Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/about" className="nav-link navbar-text">About</Link>
