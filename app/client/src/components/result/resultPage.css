@@ -3,8 +3,15 @@
 }
 
 .accordion-card {
-    background-color: #015249;
+    /* background-color: #015249; */
+    background-color: black;
+    /* color: #77C9D4 !important; */
     height: 30vh;
     font-size: 080px;
     font-weight: lighter;
+    border-radius: 0px;
+}
+
+.celeb-card {
+    padding: 0px;
 }

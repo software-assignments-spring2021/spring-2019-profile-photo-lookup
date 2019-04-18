@@ -2,3 +2,64 @@
   background-color: black;
   text-align: center;
 }
+
+.musician-section {
+    background-color: black;
+}
+
+.info {
+    padding-bottom: 80px;
+}
+
+.info-header {
+    width: 40%;
+    background-color: black;
+    float: left;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
+    /* font-style: oblique; */
+}
+
+.info-bubble {
+    background-color: #77C9D4;
+    color: black;
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    margin-left: 47%;
+    text-align: center;
+    line-height: 120px;
+}
+
+.genre-bubble {
+    font-size: 40px;
+}
+
+.release-bubble {
+    color: black;
+    line-height: normal;
+    font-size: 26px;
+}
+
+.release-bubble-latest {
+    padding-top: 25px;
+}
+
+.awards-bubble {
+
+    font-size: 38px;
+}
+
+.genre-content {
+    margin-left: 40%;
+    padding-left: 10px;
+    padding-right: 30px;
+    height: 120px;
+    line-height: 120px;
+    background-color: black;
+    color: #77C9D4;
+    text-align: justify;
+    font-size: 50px;
+    font-style: italic;
+    font-weight: lighter;
+}

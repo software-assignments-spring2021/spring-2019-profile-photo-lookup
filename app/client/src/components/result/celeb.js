@@ -7,10 +7,21 @@ import Politician from './politician/politician.js';
 
 class Celeb extends Component {
 
-    renderOccupation = (occupation) => {
-        return occupation.map((occ, i) => {
-            return <h2 key={i}>{occ}</h2>
-        });
+    renderOccupation = (celeb) => {
+        return (
+            <div className="occupation-section">
+                <section>
+                    <div className="occupation">{celeb.occupation.map((occ) => {
+                        return (
+                            <div>
+                                {occ}
+                            </div>
+                        );
+                    })}</div>
+                    <div className="biography"><span className="biography-span">{celeb.info.biography}</span></div>
+                </section>
+            </div>
+        )
     }
 
     renderInfo = () => {
@@ -32,9 +43,8 @@ class Celeb extends Component {
     render() {
         const celeb = this.props.celeb;
         return (
-            <div className="container">
-                <h1>{celeb.name}</h1>
-                {this.renderOccupation(celeb.occupation)}
+            <div>
+                {this.renderOccupation(celeb)}
                 {this.renderInfo()}
             </div>
         )

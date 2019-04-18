@@ -1,0 +1,38 @@
+.occupation-section {
+    background-color: black;
+    color: white;
+    padding-bottom: 70px;
+}
+
+.occupation {
+    width: 40%;
+    background-color: inherit;
+    float: left;
+    text-align: center;
+    color: #77C9D4;
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
+    font-style: oblique;
+}
+
+.biography {
+    margin-left: 40%;
+    padding-left: 10px;
+    padding-right: 30px;
+    background-color: inherit;
+    color: #77C9D4;
+    text-align: justify;
+    font-size: 20px;
+}
+
+.biography-span {
+    color: black;
+    background-color: #77C9D4;
+    padding: 1.5px;
+}
+
+
+/* #77C9D4
+#015249
+#57BC90
+#A5A5AF */
