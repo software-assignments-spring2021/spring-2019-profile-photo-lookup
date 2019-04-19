@@ -45,11 +45,10 @@
 }
 
 .awards-bubble {
-
     font-size: 38px;
 }
 
-.genre-content {
+.info-content {
     margin-left: 40%;
     padding-left: 10px;
     padding-right: 30px;
@@ -61,4 +60,25 @@
     font-size: 50px;
     font-style: italic;
     font-weight: lighter;
+}
+
+
+
+@media only screen and (max-width: 550px) {
+    .info-header {
+        width: 100%;
+        float: none;
+    }
+
+    .info-bubble {
+        margin-left: 0;
+        margin: 0 auto;
+    }
+
+    .info-content {
+        height: 120px;
+        line-height: 50px;
+        margin-left: 0;
+        text-align: center;
+    }
 }
