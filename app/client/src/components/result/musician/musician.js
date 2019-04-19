@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./musician.css";
+import "./musician2.css";
 import SpotifyPlaylist from './spotifyplaylist.js';
 
 class Musician extends Component {

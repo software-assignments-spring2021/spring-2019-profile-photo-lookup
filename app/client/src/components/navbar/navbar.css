@@ -1,7 +1,7 @@
 .navbar-text {
-    color: #015249
+    color: #015249 !important;
 }
 
 .navbar-text:hover {
-    color: #57BC90;
+    color: #57BC90 !important;
 }

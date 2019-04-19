@@ -1,6 +1,5 @@
 .App {
     text-align: center;
-
 }
 
 .logo-text{
@@ -18,6 +17,7 @@ h1.display-4{
 .lead{
     text-align: center;
 }
+
 .button-primary{
     text-align: center;
 }
@@ -47,7 +47,7 @@ h1.display-4{
     border-radius: 0px;
     margin-bottom: 0px;
     min-width: 100vh;
-	color: #fff;
+	color: white;
 	background: linear-gradient(-45deg, #3a926c, #57BC90, #77C9D4, #CEEBEF);
 	background-size: 500% 500%;
 	-webkit-animation: Gradient 5s ease infinite;
@@ -94,7 +94,6 @@ h1.display-4{
 .section {
     margin: auto;
     padding: 50px;
-    color: white;
     background: white;
 }
 
@@ -112,6 +111,15 @@ h1.display-4{
     font-size: 40px;
     cursor: pointer;
     transition: 0.3s ease;
+
+    /* background-color: #77C9D4;
+    color: black;
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    margin-left: 40%;
+    text-align: center;
+    line-height: 120px; */
 }
 
 .modal-left:hover {

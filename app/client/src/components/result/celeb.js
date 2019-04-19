@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./celeb.css";
+import "./celeb2.css";
 import Actor from './actor/actor.js';
 import Athlete from './athlete/athlete.js';
 import Musician from './musician/musician.js';
@@ -13,9 +13,7 @@ class Celeb extends Component {
                 <section>
                     <div className="occupation">{celeb.occupation.map((occ, i) => {
                         return (
-                            <div key={i}>
-                                {occ}
-                            </div>
+                            <div key={i}>{occ}</div>
                         );
                     })}</div>
                     <div className="biography"><span className="biography-span">{celeb.info.biography}</span></div>

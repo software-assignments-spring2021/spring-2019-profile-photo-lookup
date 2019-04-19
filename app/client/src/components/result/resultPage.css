@@ -1,11 +1,12 @@
-#result-page {
+/* #result-page {
     text-align: center;
 }
 
 .accordion-card {
     background-color: black;
+    color: white;
     height: 30vh;
-    font-size: 080px;
+    font-size: 40px;
     font-weight: lighter;
     border-radius: 0px;
 }
@@ -16,4 +17,4 @@
 
 .celeb-card {
     padding: 0px;
-}
+} */

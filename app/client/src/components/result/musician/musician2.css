@@ -1,10 +1,10 @@
-/* #spotify {
-  background-color: black;
+#spotify {
+  background-color: inherit;
   text-align: center;
 }
 
 .musician-section {
-    background-color: black;
+    background-color: inherit;
 }
 
 .info {
@@ -13,19 +13,19 @@
 
 .info-header {
     width: 40%;
-    background-color: black;
+    background-color: inherit;
     float: left;
     text-align: center;
     font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
 }
 
 .info-bubble {
-    background-color: #77C9D4;
-    color: black;
+    background-color: #015249;
+    color: white;
     width: 120px;
     height: 120px;
     border-radius: 100%;
-    margin-left: 40%;
+    margin-left: 60%;
     text-align: center;
     line-height: 120px;
 }
@@ -35,7 +35,7 @@
 }
 
 .release-bubble {
-    color: black;
+    color: white;
     line-height: normal;
     font-size: 26px;
 }
@@ -45,7 +45,7 @@
 }
 
 .awards-bubble {
-    font-size: 38px;
+    font-size: 35px;
 }
 
 .info-content {
@@ -54,8 +54,8 @@
     padding-right: 30px;
     height: 120px;
     line-height: 120px;
-    background-color: black;
-    color: #77C9D4;
+    background-color: inherit;
+    color: #015249;
     text-align: justify;
     font-size: 50px;
     font-style: italic;
@@ -81,4 +81,4 @@
         margin-left: 0;
         text-align: center;
     }
-} */
+}

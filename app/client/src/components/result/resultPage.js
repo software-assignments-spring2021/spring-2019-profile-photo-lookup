@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './resultPage.css';
+import './resultPage2.css';
 import { connect } from 'react-redux';
 import Celeb from './celeb.js';
 
