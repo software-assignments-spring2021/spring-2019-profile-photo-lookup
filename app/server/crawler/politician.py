@@ -3,6 +3,7 @@ from requests.models import PreparedRequest
 from bs4 import BeautifulSoup
 from .wikiAPI import search_wiki
 
+
 def check_Senate(name):
 
     new_name = name.split()
@@ -105,6 +106,40 @@ def construct_congress_profile(member_ID):
     profile['committees']=committees
     return(profile)
 
+def check_execs(name):
+    execs= requests.get("https://theunitedstates.io/congress-legislators/executive.json").json()
+    name= name.split(" ")
+    president={}
+    profile={}
+    for pres in execs:
+        pname= pres["name"]
+        first_name= pname["first"]
+        last_name= pname["last"]
+        if(first_name== name[0] and last_name== name[1]):
+            president=pres
+            full_name= ""
+            fname= president['name']
+            for key in fname:
+                if(key== 'nickname'):
+                    profile['nickname']= fname[key]
+                else:
+                    full_name= full_name + fname[key] + " "
+            profile['name']= full_name
+            profile['birthday']= president['bio']['birthday']
+            profile['service_span']= []
+            for term in president['terms']:
+                if(term['type']=="prez"):
+                    profile['title']= "President of the United States"
+                else:
+                    profile['title']= "Vice President of the United States"
+                term_time= "From "+ term["start"] + " to " + term['end']
+                profile['service_span'].append(term_time)
+                profile['party']= term['party']
+                return profile
+
+
+
+
 
 
 def main(name):
@@ -114,11 +149,13 @@ def main(name):
     profile= {}
     if member_ID!=0:
         profile= construct_congress_profile(member_ID)
+    profile= check_execs(name)
     wiki_data = search_wiki(name)
     wiki_desc= wiki_data[2][0]
-    profile['info']= wiki_desc
+    print(name)
+    profile['bio']= wiki_desc
     for key in profile:
-        print(profile[key])
+        print(key, profile[key], "\n")
     
         
 
