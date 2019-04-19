@@ -1,7 +1,8 @@
 import requests
 from requests.models import PreparedRequest
 from bs4 import BeautifulSoup
-from .wikiAPI import search_wiki
+from .wikiAPI import search_wiki, get_infobox
+
 
 def check_Senate(name):
 
@@ -114,9 +115,11 @@ def main(name):
     profile= {}
     if member_ID!=0:
         profile= construct_congress_profile(member_ID)
+    pres= requests.get("https://theunitedstates.io/congress-legislators/executive.json").json()
+    print(pres)
     wiki_data = search_wiki(name)
     wiki_desc= wiki_data[2][0]
-    profile['info']= wiki_desc
+    profile['bio']= wiki_desc
     for key in profile:
         print(profile[key])
     
