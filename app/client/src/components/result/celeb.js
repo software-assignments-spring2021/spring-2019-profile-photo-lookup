@@ -11,9 +11,9 @@ class Celeb extends Component {
         return (
             <div className="occupation-section">
                 <section>
-                    <div className="occupation">{celeb.occupation.map((occ) => {
+                    <div className="occupation">{celeb.occupation.map((occ, i) => {
                         return (
-                            <div>
+                            <div key={i}>
                                 {occ}
                             </div>
                         );
