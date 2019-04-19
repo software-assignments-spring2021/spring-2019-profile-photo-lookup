@@ -83,5 +83,24 @@ def getUpcomingTitlesByID(actor_page):
    return data
 
 
+def GET_PERSON(name):
+   actorID = getActorID(name)
+   page = getActorPage(actorID)
+   ACTOR_BIO = getBio(actorID)
+   AWARDS = getAwards(page)
+   KNOWN_FOR = getTitles(page)
+   UPCOMING = getUpcomingTitlesByID(page)
+
+   thisdict = {
+      "name": name,
+      "bio": ACTOR_BIO,
+      "awards": AWARDS,
+      "known_for": KNOWN_FOR,
+      "upcoming": UPCOMING
+   }
+   return thisdict
+
+
+
 
 
