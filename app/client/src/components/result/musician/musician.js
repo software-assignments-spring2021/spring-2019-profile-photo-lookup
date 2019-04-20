@@ -10,7 +10,7 @@ class Musician extends Component {
             <div className="musician-section">
                 <section className="info">
                     <div className="info-header"><div className="info-bubble genre-bubble">Genre</div></div>
-                    <div className="info-content">{celeb.info.genres}</div>
+                    <div className="info-content">{celeb.info.genres.join(', ')}</div>
                 </section>
                 <section className="info">
                     <div className="info-header"><div className="info-bubble release-bubble"><div className="release-bubble-latest">Latest</div><div>Releases</div></div></div>
