@@ -3,12 +3,6 @@ import './result.css'
 
 class Result extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
-    }
-
     renderStudents = (students) => {
         if(students){
             var html = []

@@ -42,7 +42,7 @@ class Recognize extends Component {
             })
         })
     }
-    
+
     renderInner() {
         if(this.state.students){
             const students = this.state.students
@@ -54,15 +54,16 @@ class Recognize extends Component {
         return (
         <div className='upload-page'>
             <div id ="webcam">
-            <Webcam 
-                audio={false}
-                minScreenshotHeight={480}
-                minScreenshotWidth={640}
-                screenshotFormat="image/jpeg"
-                ref='webcam'
-            />
-            <br></br>
-            <button onClick={this.captureUpload.bind(this)}> Who is here? </button>
+                <Webcam
+                    audio={false}
+                    minScreenshotHeight={480}
+                    minScreenshotWidth={640}
+                    screenshotFormat="image/jpeg"
+                    ref='webcam'
+                />
+                <br></br>
+                {/*}<button onClick={this.captureUpload.bind(this)}> Who is here? </button>*/}
+                <button type="submit" className="btn upload-btn browse-button-grp" onClick={this.captureUpload.bind(this)}>Who is here?</button>
             </div>
             {this.renderInner()}
         </div>
