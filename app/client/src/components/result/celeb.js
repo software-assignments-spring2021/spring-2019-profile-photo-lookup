@@ -11,12 +11,12 @@ class Celeb extends Component {
         return (
             <div className="occupation-section">
                 <section>
-                    <div className="occupation">{celeb.occupation.map((occ, i) => {
+                    <div className="occupation">{celeb.occupations.map((occ, i) => {
                         return (
                             <div key={i}>{occ}</div>
                         );
                     })}</div>
-                    <div className="biography"><span className="biography-span">{celeb.info.biography}</span></div>
+                    {/*}<div className="biography"><span className="biography-span">{celeb.info.biography}</span></div>*/}
                 </section>
             </div>
         )
@@ -24,7 +24,7 @@ class Celeb extends Component {
 
     renderInfo = () => {
         const celeb = this.props.celeb;
-        switch(celeb.occ_id) {
+        switch(celeb.occID) {
             case "actor":
                 return <Actor celeb={celeb}/>;
             case "athlete":

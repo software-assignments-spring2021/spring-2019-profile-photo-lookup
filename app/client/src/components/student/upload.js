@@ -7,8 +7,6 @@ import { uploadStudentImage } from '../../redux/analysis/action.js';
 
 import './upload.css';
 
-
-
 class Upload extends Component {
 
     constructor(props) {
@@ -63,7 +61,6 @@ class Upload extends Component {
     }
 
     renderResult() {
-        console.log("RENRES", this.props.students)
         if(this.props.students){
             return <Result students = {this.props.students}/>
         }
