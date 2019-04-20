@@ -16,14 +16,14 @@ class Celeb extends Component {
                             <div key={i}>{occ}</div>
                         );
                     })}</div>
-                    {/*}<div className="biography"><span className="biography-span">{celeb.info.biography}</span></div>*/}
+                    <div className="biography"><span className="biography-span">This is the biography section</span></div>
                 </section>
             </div>
         )
     }
 
     renderInfo = () => {
-        const celeb = this.props.celeb;
+        let celeb = this.props.celeb;
         switch(celeb.occID) {
             case "actor":
                 return <Actor celeb={celeb}/>;
