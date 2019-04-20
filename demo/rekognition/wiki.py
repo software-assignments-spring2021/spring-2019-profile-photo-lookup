@@ -60,5 +60,6 @@ def getAwards(name):
 
 
 
-
+print(getSummary("Lee Chong Wei"))
+print(getPersonalLife("Lee Chong Wei"))
 print(getAwards("Lee Chong Wei"))
