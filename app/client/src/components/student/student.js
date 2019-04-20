@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import Switch from "react-switch"
-
 import Recognize from './webcam.js';
 import Upload from './upload.js'
-
 import './student.css';
-
-
 
 class Student extends Component {
     constructor(props) {
@@ -25,11 +21,11 @@ class Student extends Component {
 
     renderInner() {
         let { display } = this.state;
-    
+
         if (display === true) {
-          return <Recognize />
+            return <Recognize />
         } else if (display === false){
-          return <Upload />
+            return <Upload />
         }
     }
 

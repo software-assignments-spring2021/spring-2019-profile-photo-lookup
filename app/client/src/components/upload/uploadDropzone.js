@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './uploadDropzone.css';
 import DragAndDrop from './dragAndDrop.js'
 import { connect } from 'react-redux';
-import { uploadImage } from '../../redux/analysis/action.js';
+import { uploadCelebrityImage } from '../../redux/analysis/action.js';
 import { FaFileUpload } from 'react-icons/fa';
 
 class UploadDropzone extends Component {
@@ -23,8 +23,6 @@ class UploadDropzone extends Component {
     };
 
     drawCanvas = (file) => {
-        // var element = document.getElementById("upload-icon");
-        // element.classList.toggle("canvas-size");
 
         var reader = new FileReader();
         reader.readAsDataURL(file);
@@ -57,7 +55,7 @@ class UploadDropzone extends Component {
         if (this.state.newImage) {
             formData.append("image", this.state.newImage);
         }
-        this.props.uploadImage(formData);
+        this.props.uploadCelebrityImage(formData);
     }
 
     render() {
@@ -95,10 +93,4 @@ class UploadDropzone extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        users: state.analysis.users
-    };
-}
-
-export default connect(mapStateToProps, { uploadImage })(UploadDropzone);
+export default connect(null, { uploadCelebrityImage })(UploadDropzone);

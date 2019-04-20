@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { FaFileUpload } from 'react-icons/fa';
-import { post } from 'axios';
-
-import DragAndDrop from '../upload/dragAndDrop.js'
-import Result from './result.js'
+import DragAndDrop from '../upload/dragAndDrop.js';
+import Result from './result.js';
+import { connect } from 'react-redux';
+import { uploadStudentImage } from '../../redux/analysis/action.js';
 
 import './upload.css';
 
@@ -28,9 +28,6 @@ class Upload extends Component {
     };
 
     drawCanvas = (file) => {
-        // var element = document.getElementById("upload-icon");
-        // element.classList.toggle("canvas-size");
-
         var reader = new FileReader();
         reader.readAsDataURL(file);
 
@@ -62,12 +59,13 @@ class Upload extends Component {
         if (this.state.newImage) {
             formData.append("image", this.state.newImage);
         }
-        const url = 'http://127.0.0.1:8000/rekognition/student';
-        return post(url, formData).then((response)=>{
-            this.setState({
-                students: response.data.students
-            })
-        })
+        this.props.uploadStudentImage(formData);
+        // const url = 'http://127.0.0.1:8000/rekognition/student';
+        // return post(url, formData).then((response)=>{
+        //     this.setState({
+        //         students: response.data.students
+        //     })
+        // })
     }
 
     renderResult() {
@@ -113,4 +111,4 @@ class Upload extends Component {
     }
 }
 
-export default Upload
+export default connect(null, { uploadStudentImage })(Upload);

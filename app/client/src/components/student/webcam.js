@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { post } from 'axios';
 import Webcam from 'react-webcam';
+import { connect } from 'react-redux';
+import { uploadStudentImage } from '../../redux/analysis/action.js';
 
 import Result from './result.js'
 
@@ -33,14 +34,15 @@ class Recognize extends Component {
         this.setState({screenshot: capture});
         var blob = this.base64toBlob(capture)
 
-        const url = 'http://127.0.0.1:8000/rekognition/student';
+        // const url = 'http://127.0.0.1:8000/rekognition/student';
         var formData = new FormData();
         formData.append("image", blob)
-        return post(url, formData).then((response)=>{
-            this.setState({
-                students: response.data.students
-            })
-        })
+        this.props.uploadStudentImage(formData)
+        // return post(url, formData).then((response)=>{
+        //     this.setState({
+        //         students: response.data.students
+        //     })
+        // })
     }
 
     renderInner() {
@@ -70,4 +72,5 @@ class Recognize extends Component {
        )
     }
 }
-export default Recognize
+
+export default connect(null, { uploadStudentImage })(Recognize);

@@ -32,7 +32,6 @@ class Result extends Component {
             </div>
         );
     }
-
 }
 
 export default Result
