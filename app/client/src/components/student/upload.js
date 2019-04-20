@@ -60,18 +60,12 @@ class Upload extends Component {
             formData.append("image", this.state.newImage);
         }
         this.props.uploadStudentImage(formData);
-        // const url = 'http://127.0.0.1:8000/rekognition/student';
-        // return post(url, formData).then((response)=>{
-        //     this.setState({
-        //         students: response.data.students
-        //     })
-        // })
     }
 
     renderResult() {
-        if(this.state.students){
-            const students = this.state.students
-            return <Result students = {students}/>
+        console.log("RENRES", this.props.students)
+        if(this.props.students){
+            return <Result students = {this.props.students}/>
         }
     }
 
@@ -111,4 +105,10 @@ class Upload extends Component {
     }
 }
 
-export default connect(null, { uploadStudentImage })(Upload);
+function mapStateToProps(state) {
+    return {
+        students: state.analysis.students
+    };
+}
+
+export default connect(mapStateToProps, { uploadStudentImage })(Upload);

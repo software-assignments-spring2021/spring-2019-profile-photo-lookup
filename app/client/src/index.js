@@ -28,10 +28,9 @@ ReactDOM.render(
                     <Route exact path="/" component={Home}/>
                     <Route path="/home" component={Home}/>
                     <Route path="/about" component={About}/>
-                    <Route path="/celebrityupload" component={CelebrityUpload}/>
+                    <Route path="/celebrity" component={CelebrityUpload}/>
                     <Route path="/student" component={Student}/>
                     <Route exact path="/results" component={ResultPage}/>
-                    {/*}<Route path="/results/:id" component={Celeb}/>*/}
                 </Switch>
             </div>
         </Router>

@@ -41,10 +41,9 @@ export function uploadStudentImage(image) {
             `/rekognition/student`,
             image
         ).then((response) => {
-            console.log("RESPONSE", response.data)
             dispatch({
                 type: UPLOAD_STUDENT_IMAGE,
-                payload: response.data
+                payload: response.data.students
             });
         }).catch((error) => {
             console.log("ERROR", error);

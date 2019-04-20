@@ -34,21 +34,14 @@ class Recognize extends Component {
         this.setState({screenshot: capture});
         var blob = this.base64toBlob(capture)
 
-        // const url = 'http://127.0.0.1:8000/rekognition/student';
         var formData = new FormData();
         formData.append("image", blob)
         this.props.uploadStudentImage(formData)
-        // return post(url, formData).then((response)=>{
-        //     this.setState({
-        //         students: response.data.students
-        //     })
-        // })
     }
 
     renderInner() {
-        if(this.state.students){
-            const students = this.state.students
-            return <Result students = {students}/>
+        if(this.props.students){
+            return <Result students = {this.props.students}/>
         }
     }
 
@@ -64,7 +57,6 @@ class Recognize extends Component {
                     ref='webcam'
                 />
                 <br></br>
-                {/*}<button onClick={this.captureUpload.bind(this)}> Who is here? </button>*/}
                 <button type="submit" className="btn upload-btn browse-button-grp" onClick={this.captureUpload.bind(this)}>Who is here?</button>
             </div>
             {this.renderInner()}
@@ -73,4 +65,10 @@ class Recognize extends Component {
     }
 }
 
-export default connect(null, { uploadStudentImage })(Recognize);
+function mapStateToProps(state) {
+    return {
+        students: state.analysis.students
+    };
+}
+
+export default connect(mapStateToProps, { uploadStudentImage })(Recognize);
