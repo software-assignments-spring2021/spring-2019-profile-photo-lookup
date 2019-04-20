@@ -60,6 +60,8 @@ def detect_faces(filename):
 
 def rekognize_student(img_path):
     faces = detect_faces(img_path)
+    if faces == []:
+        return {"students": [{"error": "No Face Deteced!"}]}
     output = []
     for face_bytes in faces:
         response = client.search_faces_by_image(CollectionId = 'RISE_NYU',
@@ -72,8 +74,9 @@ def rekognize_student(img_path):
             profile = construct_student_profile(ID)
             profile['bbox'] = match['Face']['BoundingBox']
             profile['confidence'] = "{:.2f}".format(match['Similarity']) + "%"
+            profile['error'] = 'None'
             output.append(profile)
-        else:
-            print("No Matches")
+    if output == []:
+        return {"students": [{"error": "Sorry, we don't recognize anyone here :("}]}
 
     return {"students": output}

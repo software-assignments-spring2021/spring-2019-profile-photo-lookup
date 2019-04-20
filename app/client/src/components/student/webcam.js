@@ -2,18 +2,21 @@ import React, { Component } from 'react';
 import Webcam from 'react-webcam';
 import { connect } from 'react-redux';
 import { uploadStudentImage } from '../../redux/analysis/action.js';
+import { css } from '@emotion/core';
+import { CircleLoader } from 'react-spinners';
 
 import Result from './result.js'
-
 import "./webcam.css"
 
 
 class Recognize extends Component {
+
     constructor(props){
         super(props);
         this.state = {
+            students: null,
             screenshot: null,
-            students: null
+            loading: false
         }
     }
 
@@ -29,19 +32,37 @@ class Recognize extends Component {
         return blob
     }
 
+    componentDidUpdate(prevProps){
+        if(this.props.students.length !== 0){
+            if(prevProps.students !== this.props.students){
+                this.setState({
+                    students: this.props.students
+                })
+                if(this.state.loading === true){
+                    this.setState({
+                        loading: false
+                    })
+                }
+            }
+        }
+    }
+
     captureUpload() {
         var capture = this.refs.webcam.getScreenshot();
-        this.setState({screenshot: capture});
+        this.setState({
+            students: null,
+            screenshot: capture,
+            loading: true
+        });
         var blob = this.base64toBlob(capture)
-
         var formData = new FormData();
         formData.append("image", blob)
         this.props.uploadStudentImage(formData)
     }
 
-    renderInner() {
-        if(this.props.students){
-            return <Result students = {this.props.students}/>
+    renderResult() {
+        if(this.state.students){
+            return <Result students = {this.state.students}/>
         }
     }
 
@@ -59,7 +80,20 @@ class Recognize extends Component {
                 <br></br>
                 <button type="submit" className="btn upload-btn browse-button-grp" onClick={this.captureUpload.bind(this)}>Who is here?</button>
             </div>
-            {this.renderInner()}
+            <CircleLoader
+                css={css`
+                position: relative;
+                top: 20px;
+                display: block;
+                margin: 0 auto;
+                border-color: red;
+            `   }
+                sizeUnit={"px"}
+                size={80}
+                color={'white'}
+                loading={this.state.loading}
+            />
+            {this.renderResult()}
         </div>
        )
     }
