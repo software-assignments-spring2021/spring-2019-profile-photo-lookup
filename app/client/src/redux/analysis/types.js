@@ -1,2 +1,2 @@
-export const UPLOAD_IMAGE = "upload_image";
-export const GET_INFO = "get_info";
+export const UPLOAD_CELEBRITY_IMAGE = "upload_celebrity_image";
+export const UPLOAD_STUDENT_IMAGE = "upload_student_image";

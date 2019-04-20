@@ -81,8 +81,7 @@ class ResultPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        names: state.analysis.names,
-        info: state.analysis.info
+        celebs: state.analysis.celebs
     };
 }
 

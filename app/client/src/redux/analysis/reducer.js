@@ -1,19 +1,19 @@
 import {
-    UPLOAD_IMAGE,
-    GET_INFO
+    UPLOAD_CELEBRITY_IMAGE,
+    UPLOAD_STUDENT_IMAGE
 } from './types';
 
 const initialState = {
-    names: [],
-    info: []
+    celebs: [],
+    students: []
 };
 
 export default function(state=initialState, action) {
     switch(action.type) {
-        case UPLOAD_IMAGE:
-            return { ...state, names: action.payload };
-        case GET_INFO:
-            return { ...state, info: action.payload}
+        case UPLOAD_CELEBRITY_IMAGE:
+            return { ...state, celebs: action.payload };
+        case UPLOAD_STUDENT_IMAGE:
+            return { ...state, students: action.payload };
         default:
             return state
     }

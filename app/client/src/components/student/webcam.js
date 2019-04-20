@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { post } from 'axios';
 import Webcam from 'react-webcam';
+import { connect } from 'react-redux';
+import { uploadStudentImage } from '../../redux/analysis/action.js';
 
 import Result from './result.js'
 
@@ -33,20 +34,14 @@ class Recognize extends Component {
         this.setState({screenshot: capture});
         var blob = this.base64toBlob(capture)
 
-        const url = 'http://127.0.0.1:8000/rekognition/student';
         var formData = new FormData();
         formData.append("image", blob)
-        return post(url, formData).then((response)=>{
-            this.setState({
-                students: response.data.students
-            })
-        })
+        this.props.uploadStudentImage(formData)
     }
-    
+
     renderInner() {
-        if(this.state.students){
-            const students = this.state.students
-            return <Result students = {students}/>
+        if(this.props.students){
+            return <Result students = {this.props.students}/>
         }
     }
 
@@ -54,19 +49,26 @@ class Recognize extends Component {
         return (
         <div className='upload-page'>
             <div id ="webcam">
-            <Webcam 
-                audio={false}
-                minScreenshotHeight={480}
-                minScreenshotWidth={640}
-                screenshotFormat="image/jpeg"
-                ref='webcam'
-            />
-            <br></br>
-            <button onClick={this.captureUpload.bind(this)}> Who is here? </button>
+                <Webcam
+                    audio={false}
+                    minScreenshotHeight={480}
+                    minScreenshotWidth={640}
+                    screenshotFormat="image/jpeg"
+                    ref='webcam'
+                />
+                <br></br>
+                <button type="submit" className="btn upload-btn browse-button-grp" onClick={this.captureUpload.bind(this)}>Who is here?</button>
             </div>
             {this.renderInner()}
         </div>
        )
     }
 }
-export default Recognize
+
+function mapStateToProps(state) {
+    return {
+        students: state.analysis.students
+    };
+}
+
+export default connect(mapStateToProps, { uploadStudentImage })(Recognize);
