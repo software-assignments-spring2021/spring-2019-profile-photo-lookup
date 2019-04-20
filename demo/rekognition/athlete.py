@@ -10,9 +10,9 @@ def getAthleteName(name):
     url_link = "https://en.wikipedia.org/wiki/" + name
     return name, url_link
 
-#print(getAthleteName("Lee Chong Wei"))
 
-
+# This can be used as prototype. A wikipedia page will be retrieved first before used
+# by other classes
 def getPage(name):
     name = name.replace(" ", "_")
     url_link = "https://en.wikipedia.org/wiki/" + name

@@ -1,6 +1,10 @@
 import athlete as Athlete
 import wikipedia
 import numpy as np
+import sys
+
+#reload(sys)
+#sys.setdefaultencoding('utf8')
 
 titles = ['David Beckham', 'Michael Jordan']
 personal_life = ['Personal Life', 'Personal life', 'personal life']
@@ -23,15 +27,17 @@ def getPlot(names):
                 if wik.section(j) != None:
                     plot = wik.section(j).replace('\n', '').replace('\n', '')
         except:
-            plot = np.Nan
+            plot = np.NaN
 
 
 def getSummary(name):
     name_with_underscore,url_link = Athlete.getAthleteName(name)
-    result = wikipedia.WikipediaPage(title=name_with_underscore).summary
+    try:
+        result = wikipedia.WikipediaPage(title=name_with_underscore).summary
+        result = result.encode('utf-8')
+    except:
+        result = np.NaN
     return result
-
-    #personal_life = section.replace('\n','').replace("\'"\,"")
 
 def getPersonalLife(name):
     name_with_underscore,url_link = Athlete.getAthleteName(name)
@@ -39,10 +45,10 @@ def getPersonalLife(name):
         try:
             result = wikipedia.WikipediaPage(name_with_underscore).section(i)
             if result != None:
+                result = result.encode('utf-8')
                 return result
         except:
             result = np.NaN
-    #personal_life = wikipedia.WikipediaPage(name_with_underscore).section('Personal Life')
     return result
 
 def getAwards(name):
@@ -51,15 +57,30 @@ def getAwards(name):
         try:
             result = wikipedia.WikipediaPage(name_with_underscore).section(i)
             if result != None:
+                result = result.encode('utf-8')
                 return result
         except:
             result = np.NaN
-    #personal_life = wikipedia.WikipediaPage(name_with_underscore).section('Personal Life')
+    return result
+
+def getExternalLinks(name):
+    name_with_underscore, url_link = Athlete.getAthleteName(name)
+    try:
+        result = wikipedia.WikipediaPage(name_with_underscore).section('External links')
+        result = result.encode('utf-8')
+    except:
+        result = np.NaN
+
     return result
 
 
-
-
+<<<<<<< Updated upstream
 print(getSummary("Lee Chong Wei"))
 print(getPersonalLife("Lee Chong Wei"))
 print(getAwards("Lee Chong Wei"))
+=======
+
+#print(getSummary("Nicol David"))
+#print(getPersonalLife("Michael Jordan"))
+print(getExternalLinks("Michael Jordan"))
+>>>>>>> Stashed changes

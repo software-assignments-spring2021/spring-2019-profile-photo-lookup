@@ -25,3 +25,6 @@ def createTable(name):
     """
 
 createTable('Lee Chong Wei')
+
+
+def printInfoCard(name):

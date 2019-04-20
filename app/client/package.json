@@ -9,7 +9,13 @@
     "react-icons": "^3.5.0",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
+<<<<<<< Updated upstream
     "react-scripts": "2.1.5",
+=======
+    "react-scripts": "^2.1.8",
+    "react-switch": "^4.1.0",
+    "react-webcam": "^1.1.1",
+>>>>>>> Stashed changes
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
