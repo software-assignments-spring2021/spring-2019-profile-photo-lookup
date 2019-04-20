@@ -1,10 +1,42 @@
+/* #result-page {
+    text-align: center;
+}
+
+.accordion-card {
+    background-color: black;
+    color: white;
+    height: 30vh;
+    font-size: 40px;
+    font-weight: lighter;
+    border-radius: 0px;
+}
+
+.accordion-card:hover {
+    text-decoration: underline;
+}
+
+.celeb-card {
+    padding: 0px;
+} */
+
 #result-page {
     text-align: center;
 }
 
 .accordion-card {
-    background-color: #015249;
+    background: linear-gradient(-90deg, #57BC90, #77C9D4);
+    color: white !important;
     height: 30vh;
-    font-size: 080px;
-    font-weight: lighter;
+    font-size: 40px;
+    font-weight: 250;
+    border-radius: 0px;
+}
+
+.accordion-card:hover {
+    text-decoration: underline;
+}
+
+.celeb-card {
+    padding: 0px;
+    background: linear-gradient(-90deg, #57BC90, #77C9D4);
 }
