@@ -30,10 +30,37 @@
     color: black;
     background-color: #77C9D4;
     padding: 1.5px;
+} */
+
+
+.occupation-section {
+    background-color: inherit;
+    color: black;
+    padding-bottom: 70px;
 }
 
+.occupation {
+    width: 40%;
+    background-color: inherit;
+    float: left;
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
+    font-style: oblique;
+    padding-top: 30px;
+}
 
-/* #77C9D4
-#57BC90
-#015249
-#A5A5AF */ */
+.biography {
+    margin-left: 40%;
+    padding-left: 10px;
+    padding-right: 30px;
+    background-color: inherit;
+    text-align: justify;
+    font-size: 20px;
+}
+
+.biography-span {
+    color: #015249;
+    padding: 1.5px;
+}

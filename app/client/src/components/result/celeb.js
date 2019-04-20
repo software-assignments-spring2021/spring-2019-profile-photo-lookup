@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./celeb2.css";
+import "./celeb.css";
 import Actor from './actor/actor.js';
 import Athlete from './athlete/athlete.js';
 import Musician from './musician/musician.js';
