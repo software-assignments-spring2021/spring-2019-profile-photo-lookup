@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { post } from 'axios';
 import Webcam from 'react-webcam';
+import { css } from '@emotion/core';
+import { CircleLoader } from 'react-spinners';
 
 import Result from './result.js'
 
@@ -12,7 +14,8 @@ class Recognize extends Component {
         super(props);
         this.state = {
             screenshot: null,
-            students: null
+            students: null,
+            loading: false
         }
     }
 
@@ -30,7 +33,10 @@ class Recognize extends Component {
 
     captureUpload() {
         var capture = this.refs.webcam.getScreenshot();
-        this.setState({screenshot: capture});
+        this.setState({
+            screenshot: capture,
+            loading: true
+        });
         var blob = this.base64toBlob(capture)
 
         const url = 'http://127.0.0.1:8000/rekognition/student';
@@ -38,7 +44,8 @@ class Recognize extends Component {
         formData.append("image", blob)
         return post(url, formData).then((response)=>{
             this.setState({
-                students: response.data.students
+                students: response.data.students,
+                loading: false
             })
         })
     }
@@ -64,6 +71,19 @@ class Recognize extends Component {
             <br></br>
             <button onClick={this.captureUpload.bind(this)}> Who is here? </button>
             </div>
+            <CircleLoader
+                    css={css`
+                    position: relative;
+                    top: 20px;
+                    display: block;
+                    margin: 0 auto;
+                    border-color: red;
+                `   }
+                    sizeUnit={"px"}
+                    size={80}
+                    color={'white'}
+                    loading={this.state.loading}
+            />
             {this.renderInner()}
         </div>
        )

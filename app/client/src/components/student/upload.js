@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { FaFileUpload } from 'react-icons/fa';
+import { RingLoader } from 'react-spinners';
+import { css } from '@emotion/core';
 import { post } from 'axios';
 
 import DragAndDrop from '../upload/dragAndDrop.js'
@@ -7,15 +9,14 @@ import Result from './result.js'
 
 import './upload.css';
 
-
-
 class Upload extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             newImage: null,
-            students: null
+            students: null,
+            loading: false
         };
     }
 
@@ -39,7 +40,7 @@ class Upload extends Component {
 
         reader.onloadend = function (e) {
             this.setState({
-                newImage: file,
+                newImage: file
             })
 
             var img = new Image();
@@ -57,6 +58,9 @@ class Upload extends Component {
     }
 
     handleClickImageUpload = (e) => {
+        this.setState({
+            loading: true
+        })
         e.preventDefault();
         let formData = new FormData();
         if (this.state.newImage) {
@@ -65,7 +69,8 @@ class Upload extends Component {
         const url = 'http://127.0.0.1:8000/rekognition/student';
         return post(url, formData).then((response)=>{
             this.setState({
-                students: response.data.students
+                students: response.data.students,
+                loading: false
             })
         })
     }
@@ -107,6 +112,19 @@ class Upload extends Component {
                         <button type="submit" className="btn upload-btn browse-button-grp" onClick={(e) => {this.handleClickImageUpload(e)}}>Upload</button>
                     </div>
                 </form>
+                <RingLoader
+                    css={css`
+                    position: relative;
+                    top: 20px;
+                    display: block;
+                    margin: 0 auto;
+                    border-color: red;
+                `   }
+                    sizeUnit={"px"}
+                    size={80}
+                    color={'white'}
+                    loading={this.state.loading}
+                />
                 {this.renderResult()}
             </div>
         );
