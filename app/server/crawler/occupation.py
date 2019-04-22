@@ -1,5 +1,6 @@
 import re
 import requests
+from .wikiAPI import search_wiki
 from bs4 import BeautifulSoup
 
 MUSICIAN = ['music', 'sing', 'song', 'DJ', 'record', 'remix']
@@ -16,7 +17,10 @@ def repl_func(m):
     """process regular expression match groups for word upper-casing problem"""
     return m.group(1) + m.group(2).upper()
 
-def find_occupations(data):
+def find_occupations(name):
+
+    data = search_wiki(name)
+
     wiki_desc = data[2][0]
     wiki_url = data[3][0]
     wiki_html = requests.get(wiki_url).content

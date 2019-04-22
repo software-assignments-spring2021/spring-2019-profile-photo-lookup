@@ -2,6 +2,32 @@ import requests
 from requests.models import PreparedRequest
 from bs4 import BeautifulSoup
 from .wikiAPI import search_wiki
+from .celebrity import Celebrity
+
+
+
+class Politician(Celebrity):
+
+    def __init__(self, name, occupations):
+        Celebrity.__init__ (self, name, occupations)
+        self.occID = 'politician'
+        self.info = self.retrieve_info()
+
+    def retrieve_info(self):
+        member_ID = check_Senate(self.name)
+        if member_ID == 0:
+            member_ID= check_House(self.name)
+        info = {}
+        if member_ID != 0:
+            info = construct_congress_profile(member_ID)
+        info = check_execs(self.name)
+        wiki_data = search_wiki(self.name)
+        wiki_desc = wiki_data[2][0]
+        info['bio']= wiki_desc
+
+        return info
+
+
 
 
 def check_Senate(name):
@@ -10,14 +36,12 @@ def check_Senate(name):
     headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
 
     member_ID= 0
-    x=115
-    while x>79:
+    x = 115
+    while x > 79:
         add_on= str(x)+ "/senate/members"
         url= "https://api.propublica.org/congress/v1/" + add_on
         response= requests.get(url, headers=headers)
         data= response.json()
-        results= data["results"]
-        result= results[0]
 
         first_name= new_name[0]
         last_name= new_name[1]
@@ -49,8 +73,6 @@ def check_House(name):
         url= "https://api.propublica.org/congress/v1/" + add_on
         response= requests.get(url, headers=headers)
         data= response.json()
-        results= data["results"]
-        result= results[0]
 
         first_name= name[0]
         last_name= name[1]
@@ -136,29 +158,3 @@ def check_execs(name):
                 profile['service_span'].append(term_time)
                 profile['party']= term['party']
                 return profile
-
-
-
-
-
-
-def main(name):
-    member_ID=check_Senate(name)
-    if member_ID== 0:
-        member_ID= check_House(name)
-    profile= {}
-    if member_ID!=0:
-        profile= construct_congress_profile(member_ID)
-    profile= check_execs(name)
-    wiki_data = search_wiki(name)
-    wiki_desc= wiki_data[2][0]
-    print(name)
-    profile['bio']= wiki_desc
-    for key in profile:
-        print(key, profile[key], "\n")
-    
-        
-
-
-if __name__ == '__main__':
-    main()
