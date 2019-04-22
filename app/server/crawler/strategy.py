@@ -8,12 +8,30 @@ exec_branch = ExecBranchStrategy()
 
 
 class Politician(Celebrity):
-    def __init__(self, name, memeber_ID, strategy):
+    def __init__(self, name, occupations):
         self.name= name
-        self.strategy= strategy
+        self.occupations= occupations
         self.occID = 'politician'
-        self.info = {}
         self.member_ID= 0
+        self.strategy= self.determine_strategy()
+        self.info = self.retrieve_info()
+
+    def determine_strategy(self):
+        self.strategy= senate_rep
+        member_ID= politician.strategy.find_role()
+        if member_ID== 0:
+            self.strategy= house_rep
+            member_ID= politician.strategy.find_role()
+        self.member_ID= member_ID
+        old_strategy= self.strategy
+        self.strategy= exec_branch
+        check= self.strategy.find_role()
+        if check==1:
+            self.strategy= exec_branch
+        else:
+            self.strategy= old_strategy
+
+        return strategy 
 
     def retrieve_info(self):
         info= self.strategy.construct_profile()
@@ -23,32 +41,19 @@ class Politician(Celebrity):
 
         return info
 
-#Types of Politicians 
-class President(Politician):
-    def __init__(self, name):
-        super(President, self).__init__(name, senate_rep)
+# #Types of Politicians 
+# class President(Politician):
+#     def __init__(self, name):
+#         super(President, self).__init__(name, occupations)
+#         self.strategy= exec_branch
 
 
-class CongressRep(Politician):
-    def __init__(self, name):
-        super(CongressRep, self).__init__(name, house_rep)
+# class CongressRep(Politician):
+#     def __init__(self, name):
+#         super(CongressRep, self).__init__(name, occupations)
+#         self.strategy= house_rep
 
-class SenateRep(Politician):
-    def __init__(self, name):
-        super(SenateRep, self).__init__(name, exec_branch)
-
-def main(name):
-    politician= SenateRep(name)
-    member_ID= politician.strategy.find_role()
-    if member_ID== 0:
-        politician= CongressRep(name)
-        member_ID= politician.strategy.find_role()
-    politician.member_ID= member_ID
-    old_strategy= politician.strategy
-    politician.strategy= exec_branch
-    check= politician.strategy.find_role()
-    if check==1:
-        politician= President(name)
-    else:
-        politician.strategy= old_strategy
-    politician.retrieve_info()
+# class SenateRep(Politician):
+#     def __init__(self, name):
+#         super(SenateRep, self).__init__(name, occupations)
+#         self.strategy= senate_rep
