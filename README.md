@@ -5,14 +5,20 @@
 ## Introduction
 This project aims to create a website that provides a social-media-oriented facial recognition service of NYU students and public figures using facial detection and recognition algorithms. Given an user-input image, the system applies machine learning algorithms to detect and identify human faces that are present. If there is a potential match to a NYU student or a public figure, the system will return key information about the queried person, which could include name, occupation, social media profiles, and/or Wikipedia/IMDB pages(if available).
 
+
+## Built With
+
+* [React](http://facebook.github.io/react) is used for UI.
+* [Django](https://www.djangoproject.com/) is used for back-end.
+
 ## Prerequisites
 
 ### Node.js
 
-* [Node](http://nodejs.org/) is really easy to install & now include [NPM](https://npmjs.org/).
+* Download and Install Node.js [here](http://nodejs.org/) (now includes [NPM](https://npmjs.org/)).
 
 ### Python/Anaconda
-* This project requires python version 3.X (specifically 3.6 was used in development). Additionally, we recommend using the Anaconda distribution of Python to take advantage of its virtual environment funationality. It allows you to create a 'sandbox-like' conda environment to install libraries and test your code without messing up the dependencies on your local machine. 
+* This project requires python version 3.X (specifically 3.6 was used in development). Additionally, we recommend using the Anaconda distribution of Python to take advantage of its virtual environment funationality.
 
 *Download the Anaconda Python 3.7 version [here](https://www.anaconda.com/distribution/#download-section).*
 
@@ -33,7 +39,7 @@ Deactivate the envrionment
 
 replace <env_name> with the name of your environment.
 
-This is very useful if (1) the program you intend to run is based on a different version of Python than what your local machine currently has installed or (2) if you screw somthing up when you install the dependecies and libraries for you project, you can just delete the environment and start over very easily. For more instructions, see [here](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
+For more instructions, see [here](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
 
 **If you have Anaconda, please activate your conda environment BEFORE you do the following steps.**
 
@@ -51,6 +57,11 @@ It will prompt you to enter __"AWS Access Key ID"__, __"AWS Secret Access Key"__
 
 If it says something like "aws: command not found" you should go back [here](https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html) and keep following the instructions to set the program PATH and bash profile. It was really messy for me so I'd suggest you download Anaconda and use conda install if you run into this problem.
 
+## ReactJS
+Go to __app/client__ and run
+
+    $ npm install
+
 ### Django
 Go to the directory where "requirements.txt" is located and run <br>
 
@@ -61,7 +72,7 @@ It should install all necesary libraries for the Django Environment(new librarie
 ## Start the App
 1. On two *separate* terminal windows
 2. Go to folder __app/client__, do
-    - `npm install`
+    - `npm install`(ignore if done in previous step)
     - `npm start`
 3. Go to __app/server__, do
     - `python manage.py runserver`
@@ -88,12 +99,6 @@ It should install all necesary libraries for the Django Environment(new librarie
     - run `coverage html` instead of `coverage report`
     - the report will be save in a folder named "htmlcov" inside the "server" folder
     - open "index.html" inside "htmlcov" to see the detailed report
-
-
-## Built With
-
-* [React](http://facebook.github.io/react) is used for UI.
-* [Django](https://www.djangoproject.com/) is used for back-end.
 
 
 ## Project Requirements
