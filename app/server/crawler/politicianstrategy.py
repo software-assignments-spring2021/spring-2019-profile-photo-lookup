@@ -43,7 +43,7 @@ class HouseRepStrategy(PoliticianStrategyAbstract):
     def construct_profile(self):
         profile= self.info
         headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
-        url= "https://api.propublica.org/congress/v1/" + "members/" + member_ID
+        url= "https://api.propublica.org/congress/v1/" + "members/" + self.member_ID
         response= requests.get(url, headers=headers)
         data= response.json()
         result= data["results"]
@@ -112,7 +112,7 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
     def construct_profile(self):
         profile= self.info
         headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
-        url= "https://api.propublica.org/congress/v1/" + "members/" + member_ID
+        url= "https://api.propublica.org/congress/v1/" + "members/" + self.member_ID
         response= requests.get(url, headers=headers)
         data= response.json()
         result= data["results"]

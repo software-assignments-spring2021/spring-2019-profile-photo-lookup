@@ -8,11 +8,12 @@ exec_branch = ExecBranchStrategy()
 
 
 class Politician(Celebrity):
-    def __init__(self, name, strategy):
+    def __init__(self, name, memeber_ID, strategy):
         self.name= name
         self.strategy= strategy
         self.occID = 'politician'
         self.info = {}
+        self.member_ID= 0
 
     def retrieve_info(self):
         info= self.strategy.construct_profile()
@@ -40,13 +41,14 @@ def main(name):
     politician= SenateRep(name)
     member_ID= politician.strategy.find_role()
     if member_ID== 0:
-        politician= CongressRep()
+        politician= CongressRep(name)
         member_ID= politician.strategy.find_role()
-    if member_ID!=0:
-        profile= politician.strategy.construct_profile()
+    politician.member_ID= member_ID
+    old_strategy= politician.strategy
     politician.strategy= exec_branch
     check= politician.strategy.find_role()
     if check==1:
-        politician= President()
-        profile= politician.strategy.construct_profile()
+        politician= President(name)
+    else:
+        politician.strategy= old_strategy
     politician.retrieve_info()
