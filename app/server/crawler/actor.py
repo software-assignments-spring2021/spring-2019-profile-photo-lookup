@@ -1,6 +1,33 @@
 import requests
 from requests.models import PreparedRequest
 from bs4 import BeautifulSoup
+from .celebrity import Celebrity
+
+
+class Actor(Celebrity):
+
+    def __init__(self, name, occupations):
+        Celebrity.__init__ (self, name, occupations)
+        self.occID = 'actor'
+        self.info = self.retrieve_info()
+
+    def retrieve_info(self):
+        actorID = getActorID(self.name)
+        page = getActorPage(actorID)
+        ACTOR_BIO = getBio(actorID)
+        AWARDS = getAwards(page)
+        KNOWN_FOR = getTitles(page)
+        UPCOMING = getUpcomingTitlesByID(page)
+
+        info = {
+            "name": self.name,
+            "bio": ACTOR_BIO,
+            "awards": AWARDS,
+            "known_for": KNOWN_FOR,
+            "upcoming": UPCOMING
+        }
+
+        return info
 
 
 
@@ -80,26 +107,6 @@ def getUpcomingTitlesByID(actor_page):
       data.append(movie_title)
       i+=1   
    return data
-
-# Takes actor's name and returns dictionary object
-# containing bio, awards, well known films, and 
-# upcoming films
-def getPersonObject(name):
-   actorID = getActorID(name)
-   page = getActorPage(actorID)
-   ACTOR_BIO = getBio(actorID)
-   AWARDS = getAwards(page)
-   KNOWN_FOR = getTitles(page)
-   UPCOMING = getUpcomingTitlesByID(page)
-
-   actor_dict = {
-      "name": name,
-      "bio": ACTOR_BIO,
-      "awards": AWARDS,
-      "known_for": KNOWN_FOR,
-      "upcoming": UPCOMING
-   }
-   return actor_dict
 
 
 
