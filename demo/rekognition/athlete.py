@@ -2,12 +2,28 @@ import requests
 from requests.models import PreparedRequest
 from bs4 import BeautifulSoup
 
-class pageInformation(name):
-    this.name = name
-    this.name_with_underscore = name = name.replace(" ", "_")
-    this.page = getPage(name)
-    name, info = getAthleteName(name)
-    this.link = info
+class pageInformation:
+    def __init__(self, name):
+        name_with_underscore = name.replace(" ", "_")
+        request = PreparedRequest()
+        request.prepare_url("https://en.wikipedia.org/wiki/", name)
+        url_link = "https://en.wikipedia.org/wiki/" + name
+        website_url = requests.get(url_link).text
+        soup = BeautifulSoup(website_url, 'lxml')
+
+        this.name = name
+        this.name_with_underscore = name_with_unscore
+        this.page = soup
+        this.link = url_link
+
+    def getNameWithUnderScore():
+        return this.name_with_unscore
+
+    def getPage():
+        return this.page
+
+    def getLink():
+        return this.link
 
 def getAthleteName(name):
     name = name.replace(" ", "_")
