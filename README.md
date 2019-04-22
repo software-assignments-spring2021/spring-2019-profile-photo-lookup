@@ -37,9 +37,7 @@ Deactivate the envrionment
 
     $ conda deactivate
 
-replace <env_name> with the name of your environment.
-
-For more instructions, see [here](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
+Replace <env_name> with the name of your environment. For more instructions, see [here](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
 
 **If you have Anaconda, please activate your conda environment BEFORE you do the following steps.**
 
@@ -75,6 +73,7 @@ It should install all necesary libraries for the Django Environment(new librarie
     - `npm install`(ignore if done in previous step)
     - `npm start`
 3. Go to __app/server__, do
+    - `python manage.py migrate` (if starting first time)
     - `python manage.py runserver`
 
 ## Unit Test Coverage
