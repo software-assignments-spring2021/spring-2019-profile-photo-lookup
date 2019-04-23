@@ -4,11 +4,24 @@ from bs4 import BeautifulSoup
 from .celebrity import Celebrity
 from abc import ABCMeta, abstractclassmethod
 
-class Person(Celebrity):
+      
+class Actor(Celebrity):
+  
    def __init__(self, name, occupations):
-      Celebrity.__init__ (self, name, occupations)
+      Celebrity.__init__(self, name, occupations)
       self.occID = 'actor'
-      #self.info = self.__retrieve_info()
+      self.info = self.retrieve_info()
+      self.__name = name
+      self.__bio = None
+      self.__awards = None
+      self.__upcoming = None
+
+
+
+   def retrieve_info(self):
+      name = self.__name
+      occID = self.occID
+      occupations = self.occupations
       NAME_ID = getActorID(name)
       PAGE = getActorPage(NAME_ID)
       BIO = getBio(PAGE)
@@ -16,30 +29,23 @@ class Person(Celebrity):
       TITLES = getTitles(PAGE)
       UPCOMING = getUpcomingTitlesByID(PAGE)
 
-
-      actor = ActorBuilderDirector.construct(name, BIO, AWARDS, TITLES, UPCOMING)
-
-class Actor(object):
-
-   def __init__(self):
-      self.__name = None
-      self.__bio = None
-      self.__awards = None
-      self.__upcoming = None
-
-   def __retrieve_info__(self):
+      actor = ActorBuilderDirector.construct(occID, occupations,name, BIO, AWARDS, TITLES, UPCOMING)
       actor_dict = {
-         'name': self.name,
-         'bio': self.bio,
-         'awards': self.awards,
-         'titles': self.titles,
-         'upcoming': self.upcoming
+         'occID': actor.occID,
+         'occupations': actor.occupations,
+         'name': actor.name,
+         'bio': actor.bio,
+         'awards': actor.awards,
+         'titles': actor.titles,
+         'upcoming': actor.upcoming
+
       }
       return actor_dict
 
-class Builder:
+class Builder(Actor):
     __metaclass__ = ABCMeta
     def set_name(self, value): pass
+    def set_bio(self, value): pass
     def set_awards(self, value): pass
     def set_titles(self, value): pass
     def set_upcoming(self, value): pass
@@ -48,18 +54,23 @@ class Builder:
 
 class ActorBuilder(Builder):
     def __init__(self):
-        self.actor = Actor()
+        self.actor = Actor(self.name, self.occupations )
 
     def set_name(self, value):
         self.actor.name = value
         return self
-
+    def set_occID(self, value):
+        self.actor.occID = value
+        return self
+    def set_occupation(self, value):
+        self.actor.occupations = value
+        return self
     def set_bio(self, value):
         self.actor.bio = value
         return self
     def set_awards(self, value):
-       self.actor.awards = value
-       return self
+        self.actor.awards = value
+        return self
     def set_titles(self, value):
         self.actor.titles = value
         return self
@@ -73,8 +84,8 @@ class ActorBuilder(Builder):
 
 class ActorBuilderDirector(object):
     @staticmethod
-    def construct(name, bio, awards, titles, upcoming):
-        return ActorBuilder().set_name(name).set_bio(bio).set_awards(awards).set_titles(titles).set_upcoming(upcoming).get_result()
+    def construct(occID, occupations, name, bio, awards, titles, upcoming):
+        return ActorBuilder().set_occID(occID).set_occupation(occupations).set_name(name).set_bio(bio).set_awards(awards).set_titles(titles).set_upcoming(upcoming).get_result()
 
 
 
