@@ -32,7 +32,8 @@ class Politician(Celebrity):
             self.strategy= exec_branch
         else:
             self.strategy= old_strategy
-
+        print("done")
+        strategy=self.strategy
         return strategy 
 
     def retrieve_info(self):
