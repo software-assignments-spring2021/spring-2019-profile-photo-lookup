@@ -1,7 +1,11 @@
 import requests
+import copy
 from requests.models import PreparedRequest
 from bs4 import BeautifulSoup
 
+# Refactored to have a cloneable class, so that information only need to be retrieved
+# once. When youtube information is included, this prototype will help save a lot of
+# bandwidth
 class pageInformation:
     def __init__(self, name):
         name_with_underscore = name.replace(" ", "_")
@@ -25,6 +29,7 @@ class pageInformation:
     def getLink():
         return this.link
 
+
 def getAthleteName(name):
     name = name.replace(" ", "_")
     request = PreparedRequest()
@@ -33,9 +38,6 @@ def getAthleteName(name):
     url_link = "https://en.wikipedia.org/wiki/" + name
     return name, url_link
 
-#print(getAthleteName("Lee Chong Wei"))
-
-# Web crawl once so that dont have to do it twice
 def getPage(name):
     name = name.replace(" ", "_")
     url_link = "https://en.wikipedia.org/wiki/" + name
@@ -49,3 +51,8 @@ def getLink(name):
 
     url_link = "https://en.wikipedia.org/wiki/" + name
     return url_link
+
+def makeCopy():
+    pageInformation = PageInformation()
+    pageInformationCopy = copy.deepcopy(pageInformation)
+    return pageInformationCopy
