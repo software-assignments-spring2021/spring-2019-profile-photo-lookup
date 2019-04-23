@@ -90,6 +90,8 @@
 
 .musician-section {
     background-color: inherit;
+    clear: left;
+    padding-top: 70px;
 }
 
 .info {

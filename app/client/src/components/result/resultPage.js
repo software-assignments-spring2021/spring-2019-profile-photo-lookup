@@ -87,7 +87,7 @@ class ResultPage extends Component {
     }
 
     renderAccordionContent() {
-        return this.props.celebs.map((celeb, i) => {
+        return this.state.celebs.map((celeb, i) => {
             return (
                 <div className="card" key={i}>
                     <button type="button" className="btn text-white accordion-card" data-toggle="collapse" data-target={`#celeb${i}`}>{celeb.name}</button>

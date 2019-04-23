@@ -7,7 +7,7 @@ class Musician extends Component {
     render() {
         let celeb = this.props.celeb;
         return (
-            <div className="musician-section">
+            <div className="musician-section container">
                 <section className="info">
                     <div className="info-header"><div className="info-bubble genre-bubble">Genre</div></div>
                     <div className="info-content">{celeb.info.genres.join(', ')}</div>
