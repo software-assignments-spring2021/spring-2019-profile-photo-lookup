@@ -11,36 +11,26 @@ class Actor(Celebrity):
       Celebrity.__init__(self, name, occupations)
       self.occID = 'actor'
       self.info = self.retrieve_info()
-      self.__name = name
-      self.__bio = None
-      self.__awards = None
-      self.__upcoming = None
-
-
+      self.bio = None
+      self.awards = None
+      self.upcoming = None
 
    def retrieve_info(self):
-      name = self.__name
-      occID = self.occID
-      occupations = self.occupations
-      NAME_ID = getActorID(name)
+      NAME_ID = getActorID(self.name)
+      BIO = getBio(NAME_ID)
       PAGE = getActorPage(NAME_ID)
-      BIO = getBio(PAGE)
       AWARDS = getAwards(PAGE)
       TITLES = getTitles(PAGE)
       UPCOMING = getUpcomingTitlesByID(PAGE)
 
-      actor = ActorBuilderDirector.construct(occID, occupations,name, BIO, AWARDS, TITLES, UPCOMING)
-      actor_dict = {
-         'occID': actor.occID,
-         'occupations': actor.occupations,
-         'name': actor.name,
+      actor = ActorBuilderDirector.construct(self.occID, self.occupations, self.name, BIO, AWARDS, TITLES, UPCOMING)
+      info = {
          'bio': actor.bio,
          'awards': actor.awards,
          'titles': actor.titles,
          'upcoming': actor.upcoming
-
       }
-      return actor_dict
+      return info
 
 class Builder(Actor):
     __metaclass__ = ABCMeta
@@ -59,18 +49,23 @@ class ActorBuilder(Builder):
     def set_name(self, value):
         self.actor.name = value
         return self
+
     def set_occID(self, value):
         self.actor.occID = value
         return self
+      
     def set_occupation(self, value):
         self.actor.occupations = value
         return self
+
     def set_bio(self, value):
         self.actor.bio = value
         return self
+      
     def set_awards(self, value):
         self.actor.awards = value
         return self
+
     def set_titles(self, value):
         self.actor.titles = value
         return self
@@ -82,11 +77,11 @@ class ActorBuilder(Builder):
     def get_result(self):
         return self.actor
 
+      
 class ActorBuilderDirector(object):
     @staticmethod
     def construct(occID, occupations, name, bio, awards, titles, upcoming):
         return ActorBuilder().set_occID(occID).set_occupation(occupations).set_name(name).set_bio(bio).set_awards(awards).set_titles(titles).set_upcoming(upcoming).get_result()
-
 
 
 
@@ -120,11 +115,13 @@ def getTitles(actor_page):
       data.append(att['title'])
       i+=1
    return data  
+
 # Takes actor imdb page and returns the number of awards/nominations they 
 # have received
 def getAwards(actor_page):
    awards = str(actor_page.find("span", {"class": "awards-blurb" }).contents[1].get_text()).replace("  ", "").replace("\n", " ")
    return awards  
+
 # Takes actor imdb id and returns brief bio
 def getBio(actorID):
    url = 'https://www.imdb.com/name/'+actorID+'/'+'bio'
@@ -132,6 +129,7 @@ def getBio(actorID):
    page = BeautifulSoup(html, features="html.parser")
    bio = (page.find('div', {'class': 'soda odd'}).contents[1])
    return bio.get_text()
+
 # Take a imdb movie id and returns the title
 def getUpcomingTitlesByName(movie_id):
    api = "?api_key=4567404023e93988b15756b26b82c5ee"
@@ -143,7 +141,6 @@ def getUpcomingTitlesByName(movie_id):
       return data['original_title']
    else:
       return 
-
 
 def getUpcomingTitlesByID(actor_page):
    upcoming = actor_page.find_all("a", {"class": "in_production"})
