@@ -22,8 +22,11 @@ class Politician(Celebrity):
         self.strategy= senate_rep
         member_ID= self.strategy.find_role(self)
         if member_ID== 0:
+            print("going to house")
             self.strategy= house_rep
             member_ID= self.strategy.find_role(self)
+        print(self.name)
+        print("ID", member_ID)
         self.member_ID= member_ID
         old_strategy= self.strategy
         self.strategy= exec_branch

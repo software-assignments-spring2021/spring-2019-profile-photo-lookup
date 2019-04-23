@@ -36,19 +36,19 @@ class HouseRepStrategy(PoliticianStrategyAbstract):
                 if(member["last_name"]==last_name):
                     if(member["first_name"]== first_name):
                         member_ID= member["id"]
-                        check_found=1
-                        break
-            if check_found==1:
-                break
+                        return member_ID
             x=x-1
         return member_ID    
     
     def construct_profile(self, politician):
         profile= {}
         headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
-        url= "https://api.propublica.org/congress/v1/" + "members/" + self.member_ID
+        str_id= str(politician.member_ID)
+        print(str_id)
+        url= "https://api.propublica.org/congress/v1/" + "members/" + str_id
         response= requests.get(url, headers=headers)
         data= response.json()
+        print(data)
         result= data["results"]
         member= result[0]
         profile= {}
@@ -105,17 +105,16 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
                 if(member["last_name"]==last_name):
                     if(member["first_name"]== first_name):
                         member_ID= member["id"]
-                        check_found=1
-                        break
-            if check_found==1:
-                break
+                        return member_ID           
             x=x-1
         return member_ID
     
     def construct_profile(self, politician):
         profile= {}
         headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
-        url= "https://api.propublica.org/congress/v1/" + "members/" + self.member_ID
+        str_id= str(politician.member_ID)
+        print(str_id)
+        url= "https://api.propublica.org/congress/v1/" + "members/" + str_id
         response= requests.get(url, headers=headers)
         data= response.json()
         result= data["results"]
