@@ -11,6 +11,7 @@ from .student import rekognize_student
 class CelebrityRekognition(APIView):
     parser_classes = (MultiPartParser,)
     def post(self, request, format=None):
+        ImageUpload.objects.all().delete()
         # save image from POST request form
         img = ImageUpload(image = request.FILES['image'])
         img.save()
@@ -31,6 +32,7 @@ class CelebrityRekognition(APIView):
 class StudentRekognition(APIView):
     parser_classes = (MultiPartParser,)
     def post(self, request, format=None):
+        ImageUpload.objects.all().delete()
         # save image from POST request form
         img = ImageUpload(image = request.FILES['image'])
         img.save()
@@ -45,4 +47,3 @@ class StudentRekognition(APIView):
         ImageUpload.objects.all().delete()
 
         return Response(output, status = status.HTTP_200_OK)
-

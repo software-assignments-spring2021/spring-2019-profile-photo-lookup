@@ -1,3 +1,4 @@
+
 from strategy import HouseRepStrategy
 from strategy import SenateRepStrategy
 from strategy import ExecBranchStrategy
@@ -41,19 +42,3 @@ class Politician(Celebrity):
 
         return info
 
-# #Types of Politicians 
-# class President(Politician):
-#     def __init__(self, name):
-#         super(President, self).__init__(name, occupations)
-#         self.strategy= exec_branch
-
-
-# class CongressRep(Politician):
-#     def __init__(self, name):
-#         super(CongressRep, self).__init__(name, occupations)
-#         self.strategy= house_rep
-
-# class SenateRep(Politician):
-#     def __init__(self, name):
-#         super(SenateRep, self).__init__(name, occupations)
-#         self.strategy= senate_rep
