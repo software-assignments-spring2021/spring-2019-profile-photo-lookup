@@ -8,3 +8,9 @@ coverage
 djangorestframework
 django-cors-headers
 imdbpy
+spotipy
+opencv-python
+pandas
+numpy
+tqdm
+unidecode

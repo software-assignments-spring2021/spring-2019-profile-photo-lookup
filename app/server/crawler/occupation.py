@@ -1,5 +1,6 @@
 import re
 import requests
+from .wikiAPI import search_wiki
 from bs4 import BeautifulSoup
 
 MUSICIAN = ['music', 'sing', 'song', 'DJ', 'record', 'remix']
@@ -16,7 +17,10 @@ def repl_func(m):
     """process regular expression match groups for word upper-casing problem"""
     return m.group(1) + m.group(2).upper()
 
-def find_occupations(data):
+def find_occupations(name):
+
+    data = search_wiki(name)
+
     wiki_desc = data[2][0]
     wiki_url = data[3][0]
     wiki_html = requests.get(wiki_url).content
@@ -41,12 +45,13 @@ def find_occupations(data):
 
     #Politicians
     if 'politic' in wiki_desc.lower():
+        occID= 'politician'
         occupations.append('Politician')
-        pres= re.search("[\w]+ (president of the united states)", wiki_desc.lower())
+        pres= re.search("[\w]+ (president of the United States)", wiki_desc)
+        world_leader= re.search("([A-Z][a-z]+ )+(of )(the )*([A-Z][a-z]+('s )*[of ]*)+", wiki_desc)
         if(pres):
             occupations.append(pres[0].title())
-        world_leader= re.search("([Pp](rime Minister)|[Pp](resident)|[Cc](hancellor)) (of )(the )*([A-Z][a-z]+('s )*[of ]*)+", wiki_desc)
-        if(world_leader):
+        elif(world_leader):
            occupations.append(world_leader[0])
 
 

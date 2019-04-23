@@ -1,18 +1,26 @@
-import crawler.musician as musician
-from .wikiAPI import search_wiki
 from .occupation import find_occupations
+from .musician import Musician
+from .politician import Politician
+from .actor import Actor
 
 
-def construct_profiles(names):
-    output = []
-    for name in names:
-        profile = {}
-        profile["name"] = name
-        wiki_data = search_wiki(name)
-        profile['occID'], profile["occupations"] = find_occupations(wiki_data)
-        profile['info'] = {}
-        if profile['occID'] == "musician":
-            profile['info'] = musician.construct_profile(name)
-        output.append(profile)
+class CelebrityFactory(object):
+    
+    def __init__(self, names):
+        self.names = names
 
-    return output
+    def construct_profiles(self):
+        output = []
+        for name in self.names:
+            occID, occupations = find_occupations(name)
+            if occID == 'musician':
+                profile = Musician(name, occupations).generate_profile()
+                output.append(profile)
+            elif occID == 'politician':
+                profile = Politician(name, occupations).generate_profile()
+                output.append(profile)
+            elif occID == 'actor':
+                profile = Actor(name, occupations).generate_profile()
+                output.append(profile)   
+
+        return output

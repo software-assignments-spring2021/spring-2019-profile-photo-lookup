@@ -1,8 +1,28 @@
+.about-page {
+    color: white;
+    min-width: 100vw;
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #57BC90, #77C9D4);
+}
+
 .about-header {
     text-align: center;
-    margin: 50px;
+    padding: 50px;
+    padding-top: 150px;
 }
 
 .about-body {
-    margin: 50px;
+    font-size: 20px !important;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.about-link {
+    color: #015249;
+}
+
+.about-link:hover {
+    color: #015249;
 }
