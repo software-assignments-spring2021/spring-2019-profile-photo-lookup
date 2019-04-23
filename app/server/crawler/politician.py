@@ -2,6 +2,8 @@
 from strategy import HouseRepStrategy
 from strategy import SenateRepStrategy
 from strategy import ExecBranchStrategy
+from .celebrity import Celebirty
+from .wikiAPI import search_wiki
 
 house_rep = HouseRepStrategy()
 senate_rep = SenateRepStrategy()
