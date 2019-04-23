@@ -73,14 +73,3 @@ def getExternalLinks(name):
 
     return result
 
-
-<<<<<<< Updated upstream
-print(getSummary("Lee Chong Wei"))
-print(getPersonalLife("Lee Chong Wei"))
-print(getAwards("Lee Chong Wei"))
-=======
-
-#print(getSummary("Nicol David"))
-#print(getPersonalLife("Michael Jordan"))
-print(getExternalLinks("Michael Jordan"))
->>>>>>> Stashed changes
