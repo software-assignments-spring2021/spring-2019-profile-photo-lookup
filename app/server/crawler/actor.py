@@ -43,20 +43,8 @@ class Builder(Actor):
 
 
 class ActorBuilder(Builder):
-    def __init__(self):
-        self.actor = Actor(self.name, self.occupations )
-
-    def set_name(self, value):
-        self.actor.name = value
-        return self
-
-    def set_occID(self, value):
-        self.actor.occID = value
-        return self
-      
-    def set_occupation(self, value):
-        self.actor.occupations = value
-        return self
+    def __init__(self, name, occupations):
+        self.actor = Actor(name, occupations)
 
     def set_bio(self, value):
         self.actor.bio = value
@@ -81,7 +69,7 @@ class ActorBuilder(Builder):
 class ActorBuilderDirector(object):
     @staticmethod
     def construct(occID, occupations, name, bio, awards, titles, upcoming):
-        return ActorBuilder().set_occID(occID).set_occupation(occupations).set_name(name).set_bio(bio).set_awards(awards).set_titles(titles).set_upcoming(upcoming).get_result()
+        return ActorBuilder().set_bio(bio).set_awards(awards).set_titles(titles).set_upcoming(upcoming).get_result()
 
 
 
