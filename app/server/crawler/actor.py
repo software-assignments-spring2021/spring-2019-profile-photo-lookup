@@ -2,32 +2,80 @@ import requests
 from requests.models import PreparedRequest
 from bs4 import BeautifulSoup
 from .celebrity import Celebrity
+from abc import ABCMeta, abstractclassmethod
+
+class Person(Celebrity):
+   def __init__(self, name, occupations):
+      Celebrity.__init__ (self, name, occupations)
+      self.occID = 'actor'
+      #self.info = self.__retrieve_info()
+      NAME_ID = getActorID(name)
+      PAGE = getActorPage(NAME_ID)
+      BIO = getBio(PAGE)
+      AWARDS = getAwards(PAGE)
+      TITLES = getTitles(PAGE)
+      UPCOMING = getUpcomingTitlesByID(PAGE)
 
 
-class Actor(Celebrity):
+      actor = ActorBuilderDirector.construct(name, BIO, AWARDS, TITLES, UPCOMING)
 
-    def __init__(self, name, occupations):
-        Celebrity.__init__ (self, name, occupations)
-        self.occID = 'actor'
-        self.info = self.retrieve_info()
+class Actor(object):
 
-    def retrieve_info(self):
-        actorID = getActorID(self.name)
-        page = getActorPage(actorID)
-        ACTOR_BIO = getBio(actorID)
-        AWARDS = getAwards(page)
-        KNOWN_FOR = getTitles(page)
-        UPCOMING = getUpcomingTitlesByID(page)
+   def __init__(self):
+      self.__name = None
+      self.__bio = None
+      self.__awards = None
+      self.__upcoming = None
 
-        info = {
-            "name": self.name,
-            "bio": ACTOR_BIO,
-            "awards": AWARDS,
-            "known_for": KNOWN_FOR,
-            "upcoming": UPCOMING
-        }
+   def __retrieve_info__(self):
+      actor_dict = {
+         'name': self.name,
+         'bio': self.bio,
+         'awards': self.awards,
+         'titles': self.titles,
+         'upcoming': self.upcoming
+      }
+      return actor_dict
 
-        return info
+class Builder:
+    __metaclass__ = ABCMeta
+    def set_name(self, value): pass
+    def set_awards(self, value): pass
+    def set_titles(self, value): pass
+    def set_upcoming(self, value): pass
+    def get_result(self): pass
+
+
+class ActorBuilder(Builder):
+    def __init__(self):
+        self.actor = Actor()
+
+    def set_name(self, value):
+        self.actor.name = value
+        return self
+
+    def set_bio(self, value):
+        self.actor.bio = value
+        return self
+    def set_awards(self, value):
+       self.actor.awards = value
+       return self
+    def set_titles(self, value):
+        self.actor.titles = value
+        return self
+    
+    def set_upcoming(self, value):
+        self.actor.upcoming = value
+        return self
+
+    def get_result(self):
+        return self.actor
+
+class ActorBuilderDirector(object):
+    @staticmethod
+    def construct(name, bio, awards, titles, upcoming):
+        return ActorBuilder().set_name(name).set_bio(bio).set_awards(awards).set_titles(titles).set_upcoming(upcoming).get_result()
+
 
 
 
@@ -51,7 +99,6 @@ def getActorPage(actorID):
    html = requests.get(url).content
    actor_page = BeautifulSoup(html, features="html.parser")
    return actor_page
-
 # Takes actor imdb page and returns films they are most known for
 def getTitles(actor_page):
    titles = actor_page.find_all("a", {"class": "knownfor-ellipsis"})
@@ -61,15 +108,12 @@ def getTitles(actor_page):
       att = (titles[i].attrs)
       data.append(att['title'])
       i+=1
-   return data
-
-   
+   return data  
 # Takes actor imdb page and returns the number of awards/nominations they 
 # have received
 def getAwards(actor_page):
    awards = str(actor_page.find("span", {"class": "awards-blurb" }).contents[1].get_text()).replace("  ", "").replace("\n", " ")
-   return awards
-   
+   return awards  
 # Takes actor imdb id and returns brief bio
 def getBio(actorID):
    url = 'https://www.imdb.com/name/'+actorID+'/'+'bio'
@@ -77,7 +121,6 @@ def getBio(actorID):
    page = BeautifulSoup(html, features="html.parser")
    bio = (page.find('div', {'class': 'soda odd'}).contents[1])
    return bio.get_text()
-
 # Take a imdb movie id and returns the title
 def getUpcomingTitlesByName(movie_id):
    api = "?api_key=4567404023e93988b15756b26b82c5ee"
@@ -89,9 +132,8 @@ def getUpcomingTitlesByName(movie_id):
       return data['original_title']
    else:
       return 
-   
 
-# Takes actor imdb page and returns list of upcoming films 
+
 def getUpcomingTitlesByID(actor_page):
    upcoming = actor_page.find_all("a", {"class": "in_production"})
    data = []
