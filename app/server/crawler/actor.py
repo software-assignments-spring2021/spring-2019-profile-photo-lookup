@@ -23,7 +23,7 @@ class Actor(Celebrity):
       TITLES = getTitles(PAGE)
       UPCOMING = getUpcomingTitlesByID(PAGE)
 
-      actor = ActorBuilderDirector.construct(self.occID, self.occupations, self.name, BIO, AWARDS, TITLES, UPCOMING)
+      actor = ActorBuilderDirector.construct(self.name, self.occupations, BIO, AWARDS, TITLES, UPCOMING)
       info = {
          'bio': actor.bio,
          'awards': actor.awards,
@@ -68,8 +68,8 @@ class ActorBuilder(Builder):
       
 class ActorBuilderDirector(object):
     @staticmethod
-    def construct(occID, occupations, name, bio, awards, titles, upcoming):
-        return ActorBuilder().set_bio(bio).set_awards(awards).set_titles(titles).set_upcoming(upcoming).get_result()
+    def construct(name, occupations, bio, awards, titles, upcoming):
+        return ActorBuilder(name, occupations).set_bio(bio).set_awards(awards).set_titles(titles).set_upcoming(upcoming).get_result()
 
 
 
