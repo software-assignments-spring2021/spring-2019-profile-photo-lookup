@@ -12,3 +12,4 @@ def search_wiki(keyword):
     }
     data = requests.Session().get(url=url, params=params).json()
     return data
+
