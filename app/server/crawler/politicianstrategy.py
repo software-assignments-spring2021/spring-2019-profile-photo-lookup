@@ -1,18 +1,19 @@
 import abc
+import requests 
 
 class PoliticianStrategyAbstract(object):
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def find_role(self):
+    def find_role(self, politician):
         pass
     @abc.abstractmethod
-    def construct_profile(self):
+    def construct_profile(self, politician):
         pass
 
 class HouseRepStrategy(PoliticianStrategyAbstract):
-    def find_role(self):
-        name = self.name.split(" ")
+    def find_role(self, politician):
+        name = politician.name.split(" ")
         headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
 
         member_ID= 0
@@ -42,8 +43,8 @@ class HouseRepStrategy(PoliticianStrategyAbstract):
             x=x-1
         return member_ID    
     
-    def construct_profile(self):
-        profile= self.info
+    def construct_profile(self, politician):
+        profile= politician.info
         headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
         url= "https://api.propublica.org/congress/v1/" + "members/" + self.member_ID
         response= requests.get(url, headers=headers)
@@ -80,8 +81,8 @@ class HouseRepStrategy(PoliticianStrategyAbstract):
         return(profile)
 
 class SenateRepStrategy(PoliticianStrategyAbstract):
-    def find_role(self):
-        new_name = self.name.split()
+    def find_role(self, politician):
+        new_name = politician.name.split()
         headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
 
         member_ID= 0
@@ -111,8 +112,8 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
             x=x-1
         return member_ID
     
-    def construct_profile(self):
-        profile= self.info
+    def construct_profile(self, politician):
+        profile= politician.info
         headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
         url= "https://api.propublica.org/congress/v1/" + "members/" + self.member_ID
         response= requests.get(url, headers=headers)
@@ -149,11 +150,11 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
         return(profile)
 
 class ExecBranchStrategy(PoliticianStrategyAbstract):
-    def find_role(self):
+    def find_role(self, politician):
         execs= requests.get("https://theunitedstates.io/congress-legislators/executive.json").json()
-        name= self.name.split(" ")
+        name= politician.name.split(" ")
         president={}
-        profile=self.info
+        profile=politician.info
         check= ""
         for pres in execs:
             pname= pres["name"]
@@ -163,11 +164,11 @@ class ExecBranchStrategy(PoliticianStrategyAbstract):
                 return 1
         return 0 
 
-    def construct_profile(self):
+    def construct_profile(self, politician):
         execs= requests.get("https://theunitedstates.io/congress-legislators/executive.json").json()
-        name= self.name.split(" ")
+        name= politician.name.split(" ")
         president={}
-        profile=self.info
+        profile=politician.info
         check= ""
         for pres in execs:
             pname= pres["name"]

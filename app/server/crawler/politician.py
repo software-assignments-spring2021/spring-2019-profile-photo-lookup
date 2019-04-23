@@ -20,14 +20,14 @@ class Politician(Celebrity):
 
     def determine_strategy(self):
         self.strategy= senate_rep
-        member_ID= politician.strategy.find_role()
+        member_ID= self.strategy.find_role(self)
         if member_ID== 0:
             self.strategy= house_rep
-            member_ID= politician.strategy.find_role()
+            member_ID= self.strategy.find_role(self)
         self.member_ID= member_ID
         old_strategy= self.strategy
         self.strategy= exec_branch
-        check= self.strategy.find_role()
+        check= self.strategy.find_role(self)
         if check==1:
             self.strategy= exec_branch
         else:
@@ -36,7 +36,7 @@ class Politician(Celebrity):
         return strategy 
 
     def retrieve_info(self):
-        info= self.strategy.construct_profile()
+        info= self.strategy.construct_profile(self)
         wiki_data = search_wiki(self.name)
         wiki_desc = wiki_data[2][0]
         info['bio']= wiki_desc
