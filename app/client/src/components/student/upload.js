@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { FaFileUpload } from 'react-icons/fa';
 import DragAndDrop from '../upload/dragAndDrop.js';
 import Result from './result.js';
+import { RingLoader } from 'react-spinners';
+import { css } from '@emotion/core';
 import { connect } from 'react-redux';
 import { uploadStudentImage } from '../../redux/analysis/action.js';
-
 import './upload.css';
 
 class Upload extends Component {
@@ -13,7 +14,8 @@ class Upload extends Component {
         super(props);
         this.state = {
             newImage: null,
-            students: null
+            students: null,
+            loading: false
         };
     }
 
@@ -42,16 +44,33 @@ class Upload extends Component {
                 canvas.width = img.width;
                 canvas.height = img.height;
                 ctx.drawImage(img,0,0);
-
-                // TODO: UNCOMMENT TO DRAW RECTANGLE AROUND A FACE
-                // ctx.rect(50, 20, 75, 75);
-                // ctx.stroke();
             }
             img.src = e.target.result;
         }.bind(this);
     }
 
+
+    componentDidUpdate(prevProps){
+        if(this.props.students.length !== 0){
+            if(prevProps.students !== this.props.students){
+                console.log(prevProps.students, this.props.students)
+                this.setState({
+                    students: this.props.students
+                })
+                if(this.state.loading === true){
+                    this.setState({
+                        loading: false
+                    })
+                }
+            }
+        }
+    }
+
     handleClickImageUpload = (e) => {
+        this.setState({
+            students: null,
+            loading: true
+        })
         e.preventDefault();
         let formData = new FormData();
         if (this.state.newImage) {
@@ -60,11 +79,13 @@ class Upload extends Component {
         this.props.uploadStudentImage(formData);
     }
 
+
     renderResult() {
-        if(this.props.students){
-            return <Result students = {this.props.students}/>
+        if(this.state.students){
+            return <Result students = {this.state.students}/>
         }
     }
+
 
     render() {
         return (
@@ -96,6 +117,19 @@ class Upload extends Component {
                         <button type="submit" className="btn upload-btn browse-button-grp" onClick={(e) => {this.handleClickImageUpload(e)}}>Upload</button>
                     </div>
                 </form>
+                <RingLoader
+                    css={css`
+                    position: relative;
+                    top: 20px;
+                    display: block;
+                    margin: 0 auto;
+                    border-color: red;
+                `   }
+                    sizeUnit={"px"}
+                    size={80}
+                    color={'white'}
+                    loading={this.state.loading}
+                />
                 {this.renderResult()}
             </div>
         );

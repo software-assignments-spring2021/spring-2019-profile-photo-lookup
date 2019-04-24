@@ -12,14 +12,19 @@ def createTable(name):
     soup = Athlete.getPage(name)
     table = soup.find('table', {'class': 'wikitable'})
     table_header = table.find_all('th')
+    print(type(table_header[0]))
     table_info = table.find_all('td')
 
+    """
     for head in table_header:
         print(type(head))
         head = head.replace('<th>',"")
         head = head.replace('</th>',"")
         result_head.append(head)
     print(result_head)
-
+    """
 
 createTable('Lee Chong Wei')
+
+
+def printInfoCard(name):

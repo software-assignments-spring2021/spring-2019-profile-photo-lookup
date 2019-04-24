@@ -8,6 +8,9 @@ class Result extends Component {
             var html = []
             for (var i = 0; i < students.length; i++){
                 const s = students[i]
+                if (s.error !== "None"){
+                    return <p className = "student-info"> {s.error} </p>
+                }
                 html.push(
                     <p key={i} className="student-info">
                     {s.first} {s.last}: {s.school} Class of {s.year}
