@@ -6,9 +6,7 @@ import { RingLoader } from 'react-spinners';
 import { css } from '@emotion/core';
 import { connect } from 'react-redux';
 import { uploadStudentImage } from '../../redux/analysis/action.js';
-
 import './upload.css';
-
 
 class Upload extends Component {
 

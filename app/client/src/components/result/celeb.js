@@ -9,22 +9,20 @@ class Celeb extends Component {
 
     renderOccupation = (celeb) => {
         return (
-            <div className="occupation-section">
-                <section>
-                    <div className="occupation">{celeb.occupation.map((occ, i) => {
-                        return (
-                            <div key={i}>{occ}</div>
-                        );
-                    })}</div>
-                    <div className="biography"><span className="biography-span">{celeb.info.biography}</span></div>
-                </section>
+            <div className="occupation-section container">
+                <div className="occupation">{celeb.occupations.map((occ, i) => {
+                    return (
+                        <div key={i}>{occ}</div>
+                    );
+                })}</div>
+                <div className="biography"><span className="biography-span">This is the biography section</span></div>
             </div>
         )
     }
 
     renderInfo = () => {
-        const celeb = this.props.celeb;
-        switch(celeb.occ_id) {
+        let celeb = this.props.celeb;
+        switch(celeb.occID) {
             case "actor":
                 return <Actor celeb={celeb}/>;
             case "athlete":

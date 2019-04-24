@@ -10,47 +10,81 @@ class ResultPage extends Component {
         this.state = {
             celebs: [
                 {
-                    name: "Lady Gaga",
-                    occ_id: "musician",
-                    occupation: [
+                    "name": "Lady Gaga",
+                    "occID": "musician",
+                    "occupations": [
                         "Singer",
                         "Songwriter",
                         "Actress",
-                        "Record Producer"],
-                    info: {
-                        biography: "Stefani Joanne Angelina Germanotta (born March 28, 1986), known professionally as Lady Gaga, is an American singer, songwriter and actress. She is known for her unconventionality, provocative work, and visual experimentation. She began performing as a teenager, singing at open mic nights and acting in school plays. She studied at Collaborative Arts Project 21, through New York University's Tisch School of the Arts, before dropping out to pursue a music career. When Def Jam Recordings canceled her contract, she worked as a songwriter for Sony/ATV Music Publishing, where Akonhelped her sign a joint deal with Interscope Records and his own label KonLive Distribution in 2007. She rose to prominence the following year with her debut album, the electropop record The Fame, and its chart-topping singles \"Just Dance\" and \"Poker Face\". A follow-up EP, The Fame Monster (2009), featuring the singles \"Bad Romance\", \"Telephone\" and \"Alejandro\"uccessful.",
-                        genre: "Heavy metal",
-                        release: "Poker Face",
-                        awards: "Best country singer",
-                        playlist: "https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3"
-                    }
-                },
-                {
-                    name: "David Bowie",
-                    occ_id: "politician",
-                    occupation: [
-                        "Singer",
-                        "Songwriter",
-                        "Rock God"],
-                    info: {
-                        biography: "David Robert Jones (8 January 1947 – 10 January 2016), known professionally as David Bowie was an English singer, songwriter and actor. He was a leading figure in the music industry and is considered one of the most influential musicians of the 20th century, acclaimed by critics and musicians, particularly for his innovative work during the 1970s. His career was marked by reinvention and visual presentation, with his music and stagecraft having a significant impact on popular music. During his lifetime, his record sales, estimated at 140 million albums worldwide, made him one of the world's best-selling music artists. In the UK, he was awarded ten platinum album certifications, eleven gold and eight silver, and released eleven number-one albums. In the US, he received five platinum and nine gold certifications. He was inducted into the Rock and Roll Hall of Fame in 1996.",
-                        playlist: "https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3"
-                    }
-                },
-                {
-                    name: "Axl Rose",
-                    occ_id: "actor",
-                    occupation: [
-                        "Singer",
-                        "Songwriter",
-                        "Rock God"],
-                    info: {
-                        biography: "W. Axl Rose (born William Bruce Rose Jr.; raised as William Bruce Bailey; born February 6, 1962) is an American singer, songwriter, record producer and musician. He is the lead vocalist of the hard rock band Guns N' Roses, and has also been the band's sole constant member since its inception in 1985. In addition to Guns N' Roses, he also toured with Australian rock band AC/DC in 2016 during their Rock or Bust World Tour when Brian Johnson took a break due to hearing problems. Rose has been named one of the greatest singers of all time by various media outlets, including Rolling Stone and NME.",
-                        playlist: "https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3"
+                        "Record Producer"
+                    ],
+                    "info": {
+                        "genres": [
+                            "dance pop",
+                            "pop"
+                        ],
+                        "release": "Poker Face",
+                        "image": {
+                            "height": 640,
+                            "url": "https://i.scdn.co/image/ea76c82c05174105751f850c8a1db426dd03aa78",
+                            "width": 640
+                        },
+                        "top tracks": "https://open.spotify.com/embed/artist/1HY2Jd0NmPuamShAr6KMms",
+                        "related artists": [
+                            {
+                                "name": "Carly Rae Jepsen",
+                                "id": "6sFIWsNpZYqfjUpaCgueju",
+                                "image": {
+                                    "height": 640,
+                                    "url": "https://i.scdn.co/image/ed2a8594692503329560e33509aa86b116904d02",
+                                    "width": 640
+                                },
+                                "genres": [
+                                    "canadian pop",
+                                    "dance pop",
+                                    "electropop",
+                                    "indie poptimism",
+                                    "pop",
+                                    "post-teen pop",
+                                    "uk pop"
+                                ]
+                            },
+                            {
+                                "name": "Kesha",
+                                "id": "6LqNN22kT3074XbTVUrhzX",
+                                "image": {
+                                    "height": 640,
+                                    "url": "https://i.scdn.co/image/89b1ac81bbe79cd957772a13092e871b549aff63",
+                                    "width": 640
+                                },
+                                "genres": [
+                                    "dance pop",
+                                    "electropop",
+                                    "pop",
+                                    "pop rap",
+                                    "post-teen pop"
+                                ]
+                            },
+                            {
+                                "name": "Miley Cyrus",
+                                "id": "5YGY8feqx7naU7z4HrwZM6",
+                                "image": {
+                                    "height": 640,
+                                    "url": "https://i.scdn.co/image/38107822778afc4eccd9f740704ac6e2cdb5f5fe",
+                                    "width": 640
+                                },
+                                "genres": [
+                                    "dance pop",
+                                    "pop",
+                                    "post-teen pop"
+                                ]
+                            }
+                        ],
+                        "related tracks": "https://open.spotify.com/embed/user/spotify/playlist/37i9dQZF1DXcZDD7cfEKhW"
                     }
                 }
             ]
-        };
+        }
     }
 
     renderAccordionContent() {
