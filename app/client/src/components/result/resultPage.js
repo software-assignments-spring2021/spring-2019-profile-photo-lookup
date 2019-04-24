@@ -23,6 +23,7 @@ class ResultPage extends Component {
                             "dance pop",
                             "pop"
                         ],
+                        "release": "Poker Face",
                         "image": {
                             "height": 640,
                             "url": "https://i.scdn.co/image/ea76c82c05174105751f850c8a1db426dd03aa78",

@@ -9,11 +9,11 @@ class SpotifyPlaylist extends Component {
                 <iframe
                     title="Spotify playlist"
                     src={this.props.celeb.info['top tracks']}
-                    width="500"
-                    height="580"
+
                     frameBorder="0"
                     allowtransparency="true"
                     allow="encrypted-media"
+                    id="spotify-iframe"
                 />
             </div>
         );
