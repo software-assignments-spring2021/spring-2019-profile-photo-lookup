@@ -36,19 +36,19 @@ class HouseRepStrategy(PoliticianStrategyAbstract):
                 if(member["last_name"]==last_name):
                     if(member["first_name"]== first_name):
                         member_ID= member["id"]
-                        check_found=1
-                        break
-            if check_found==1:
-                break
+                        return member_ID
             x=x-1
         return member_ID    
     
     def construct_profile(self, politician):
-        profile= politician.info
+        profile= {}
         headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
-        url= "https://api.propublica.org/congress/v1/" + "members/" + self.member_ID
+        str_id= str(politician.member_ID)
+        print(str_id)
+        url= "https://api.propublica.org/congress/v1/" + "members/" + str_id
         response= requests.get(url, headers=headers)
         data= response.json()
+        print(data)
         result= data["results"]
         member= result[0]
         profile= {}
@@ -105,17 +105,16 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
                 if(member["last_name"]==last_name):
                     if(member["first_name"]== first_name):
                         member_ID= member["id"]
-                        check_found=1
-                        break
-            if check_found==1:
-                break
+                        return member_ID           
             x=x-1
         return member_ID
     
     def construct_profile(self, politician):
-        profile= politician.info
+        profile= {}
         headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
-        url= "https://api.propublica.org/congress/v1/" + "members/" + self.member_ID
+        str_id= str(politician.member_ID)
+        print(str_id)
+        url= "https://api.propublica.org/congress/v1/" + "members/" + str_id
         response= requests.get(url, headers=headers)
         data= response.json()
         result= data["results"]
@@ -154,7 +153,6 @@ class ExecBranchStrategy(PoliticianStrategyAbstract):
         execs= requests.get("https://theunitedstates.io/congress-legislators/executive.json").json()
         name= politician.name.split(" ")
         president={}
-        profile=politician.info
         check= ""
         for pres in execs:
             pname= pres["name"]
@@ -168,14 +166,13 @@ class ExecBranchStrategy(PoliticianStrategyAbstract):
         execs= requests.get("https://theunitedstates.io/congress-legislators/executive.json").json()
         name= politician.name.split(" ")
         president={}
-        profile=politician.info
+        profile={}
         check= ""
         for pres in execs:
             pname= pres["name"]
             first_name= pname["first"]
             last_name= pname["last"]
             if(first_name== name[0] and last_name== name[1]):
-                profile= self._profile
                 president=pres
                 full_name= ""
                 fname= president['name']
