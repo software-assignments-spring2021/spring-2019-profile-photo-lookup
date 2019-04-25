@@ -34,9 +34,9 @@ class Politician extends Component {
         let celeb = this.props.celeb;
         return (
             <div className="politician-section container">
+                {celeb.info.service_span ? this.renderServiceSpan() : null}
                 {celeb.info.party ? this.renderParty() : null}
                 {celeb.info.birthday ? this.renderBirthday() : null}
-                {celeb.info.service_span ? this.renderServiceSpan() : null}
             </div>
         );
     }
