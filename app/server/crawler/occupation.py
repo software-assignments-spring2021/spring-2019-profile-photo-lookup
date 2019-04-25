@@ -3,7 +3,7 @@ import requests
 from .wikiAPI import search_wiki
 from bs4 import BeautifulSoup
 
-MUSICIAN = ['music', 'sing', 'song', 'DJ', 'record', 'remix']
+MUSICIAN = ['music', 'sing', 'song', 'DJ', 'record', 'remix', 'singer-songwriter']
 
 SPORT1 = ["basketball", "badminton", "archery", "baseball", "volleyball", 
 "bmx", "bobsleigh", "canoe", "equestrian", "football", "soccer", "golf", "hockey", "judo", 
@@ -31,18 +31,39 @@ def find_occupations(name):
 
     # Actor and Musicians
     info_card = wiki_page.find("td", {"class": "role"})
+    info_card_alt = info_card.find('a', {'class': 'mw-redirect'}).attrs['title'].lower()
+    
+
+        
+            
+
+    #print(info_card)
+  
     if info_card is not None:
+        alt = info_card.find('a', {'class': 'mw-redirect'}).attrs['title'].lower()
+        if alt is not None:
+            if alt == 'singer':
+                occID = 'musician'
+                occupations.append('Singer')
+                return occID, occupations
         for occ in info_card.findChildren('li'):
+            
             occ = re.sub("(^|\s)(\S)", repl_func, occ.contents[0])
+            print(occ)
             occupations.append(occ)
             for term in MUSICIAN:
                 if term in occ.lower():
                     occID = 'musician'
                     continue
+                
             if 'act' in occ.lower():
                 occID = 'actor'
                 continue
+ 
+    
+        
 
+        
     if 'actor' in wiki_desc.lower():
         occID = 'actor'
         occupations.append('Actor')
