@@ -15,7 +15,7 @@ class Celeb extends Component {
                         <div key={i}>{occ}</div>
                     );
                 })}</div>
-                <div className="biography"><span className="biography-span">This is the biography section</span></div>
+                <div className="biography"><span className="biography-span">{celeb.info.bio || "This is the biography section"}</span></div>
             </div>
         )
     }

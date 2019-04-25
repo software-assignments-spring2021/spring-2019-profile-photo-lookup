@@ -82,6 +82,26 @@ class ResultPage extends Component {
                         ],
                         "related tracks": "https://open.spotify.com/embed/user/spotify/playlist/37i9dQZF1DXcZDD7cfEKhW"
                     }
+                },
+                {
+                    "name": "Barack Obama",
+                    "occID": "politician",
+                    "occupations": [
+                        "Actor",
+                        "Politician",
+                        "44Th President Of The United States"
+                    ],
+                    "info": {
+                        "name": "Barack Hussein Obama ",
+                        "birthday": "1961-08-04",
+                        "service_span": [
+                            "From 2009-01-20 to 2013-01-20",
+                            "From 2013-01-20 to 2017-01-20"
+                        ],
+                        "title": "President of the United States",
+                        "party": "Democrat",
+                        "bio": "Barack Hussein Obama II ( (listen); born August 4, 1961) is an American attorney and politician who served as the 44th president of the United States from 2009 to 2017. A member of the Democratic Party, he was the first African American to be elected to the presidency."
+                    }
                 }
             ]
         }
