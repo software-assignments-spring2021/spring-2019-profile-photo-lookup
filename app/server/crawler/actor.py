@@ -115,8 +115,8 @@ def getBio(actorID):
    url = 'https://www.imdb.com/name/'+actorID+'/'+'bio'
    html = requests.get(url).content
    page = BeautifulSoup(html, features="html.parser")
-   bio = (page.find('div', {'class': 'soda odd'}).contents[1])
-   return bio.get_text()
+   bio = (page.find('div', {'class': 'soda odd'}).contents[1]).prettify()
+   return bio
 
 # Take a imdb movie id and returns the title
 def getUpcomingTitlesByName(movie_id):
