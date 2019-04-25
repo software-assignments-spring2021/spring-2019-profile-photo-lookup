@@ -15,6 +15,7 @@ class Actor(Celebrity):
       self.titles = None
       self.awards = None
       self.upcoming = None
+      self.interview = None
 
    def retrieve_info(self):
       nameID = getActorID(self.name)
@@ -23,12 +24,13 @@ class Actor(Celebrity):
       self.awards = getAwards(page)
       self.titles = getTitles(page)
       self.upcoming = getUpcomingTitlesByID(page)
-
+      self.interview = getVideoLink(page)
       info = {
          'bio': self.bio,
          'awards': self.awards,
          'titles': self.titles,
-         'upcoming': self.upcoming
+         'upcoming': self.upcoming,
+         'interview': self.interview
       }
       return info
 
@@ -39,6 +41,7 @@ class Builder(Actor):
     def set_awards(self, value): pass
     def set_titles(self, value): pass
     def set_upcoming(self, value): pass
+    def set_interview(self, value): pass
     def get_result(self): pass
 
 
@@ -61,15 +64,17 @@ class ActorBuilder(Builder):
     def set_upcoming(self, value):
         self.actor.upcoming = value
         return self
-
+    def set_interview(self, value):
+        self.actor.interview = value
+        return self
     def get_result(self):
         return self.actor
 
 
 class ActorBuilderDirector(object):
     @staticmethod
-    def construct(name, occupations, bio, awards, titles, upcoming):
-        return ActorBuilder(name, occupations).set_bio(bio).set_awards(awards).set_titles(titles).set_upcoming(upcoming).get_result()
+    def construct(name, occupations, bio, awards, titles, upcoming, interview):
+        return ActorBuilder(name, occupations).set_bio(bio).set_awards(awards).set_titles(titles).set_upcoming(upcoming).set_interview(interview).get_result()
 
 
 
@@ -145,3 +150,10 @@ def getUpcomingTitlesByID(actor_page):
       data.append(movie_title)
       i+=1
    return data
+
+
+
+def getVideoLink(actor_page):
+    link = actor_page.find("a", {"class": "slate_button prevent-ad-overlay video-modal"}).attrs['href']
+    url = "https://www.imdb.com" + link
+    return url
