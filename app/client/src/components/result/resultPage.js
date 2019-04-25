@@ -87,7 +87,6 @@ class ResultPage extends Component {
                     "name": "Barack Obama",
                     "occID": "politician",
                     "occupations": [
-                        "Actor",
                         "Politician",
                         "44Th President Of The United States"
                     ],
