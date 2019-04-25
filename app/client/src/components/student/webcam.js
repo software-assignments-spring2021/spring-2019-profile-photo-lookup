@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Webcam from 'react-webcam';
 import { connect } from 'react-redux';
-import { uploadStudentImage } from '../../redux/analysis/action.js';
 import { css } from '@emotion/core';
 import { CircleLoader } from 'react-spinners';
 
-import Result from './result.js'
+import InfoCard from './result.js';
+import { uploadStudentImage } from '../../redux/analysis/action.js';
 import "./webcam.css"
 
 
@@ -62,7 +62,7 @@ class Recognize extends Component {
 
     renderResult() {
         if(this.state.students){
-            return <Result students = {this.state.students}/>
+            return <InfoCard students = {this.state.students}/>
         }
     }
 
