@@ -7,6 +7,21 @@
 import os
 
 import googleapiclient.discovery
+class Video:
+    def __ini__(self, title, videoId, description):
+        self.title = title
+        self.videoId = videoId
+        self.description = description
+
+    def getTitle():
+        return self.title
+
+    def getVideoID():
+        return self.videoId
+
+    def getDescrption():
+        return self.description
+
 
 def main(query, num_result):
     publishedAt = 0
@@ -16,6 +31,7 @@ def main(query, num_result):
     thumbnails = {}
     channelTitle = ""
     liveBroadcastContent = ""
+    videoId = ""
     # Disable OAuthlib's HTTPS verification when running locally.
     # *DO NOT* leave this option enabled in production.
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
@@ -37,11 +53,14 @@ def main(query, num_result):
     #d = {"first_name": "Alfred", "last_name":"Hitchcock"}
 
     for key,val in response.items():
-        #print(type(key))
-        #print(type(val))
         if key == "items":
             #print(type(val[0]))
             #for i in range(4):
+            if isinstance(val, str) == True:
+                val = val.encode('utf-8')
+            print("{} = {}".format(key, val))
+            if key == "id":
+                videoId = key[videoId]
             for k, v in val[0].items():
                 #print(type(v))
                 print("{} = {}".format(k, v))
@@ -50,6 +69,10 @@ def main(query, num_result):
                     for snippet_key, snippet_value in v.items():
                         print("Snippet")
                         print("{} = {}".format(snippet_key, snippet_value))
+                        if isinstance(snippet_value, str) == True:
+                            snippet_key = snippet_key.encode('utf-8')
+                        elif isinstance(snippet_value, int) == True:
+                            snippet_key = snippet_key.encode('utf-8')
                         if snippet_key == "title":
                             title = snippet_value
                         elif snippet_key == "publishedAt":
