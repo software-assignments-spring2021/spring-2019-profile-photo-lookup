@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { FaFileUpload } from 'react-icons/fa';
-import DragAndDrop from '../upload/dragAndDrop.js';
-import Result from './result.js';
 import { RingLoader } from 'react-spinners';
 import { css } from '@emotion/core';
 import { connect } from 'react-redux';
+
 import { uploadStudentImage } from '../../redux/analysis/action.js';
+import InfoCard from './result.js';
+import DragAndDrop from '../upload/dragAndDrop.js';
 import './upload.css';
+
 
 class Upload extends Component {
 
@@ -53,7 +55,6 @@ class Upload extends Component {
     componentDidUpdate(prevProps){
         if(this.props.students.length !== 0){
             if(prevProps.students !== this.props.students){
-                console.log(prevProps.students, this.props.students)
                 this.setState({
                     students: this.props.students
                 })
@@ -82,7 +83,7 @@ class Upload extends Component {
 
     renderResult() {
         if(this.state.students){
-            return <Result students = {this.state.students}/>
+            return <InfoCard students = {this.state.students}/>
         }
     }
 
