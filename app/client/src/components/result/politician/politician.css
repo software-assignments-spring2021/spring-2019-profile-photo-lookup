@@ -1,0 +1,24 @@
+.politician-section {
+    background-color: inherit;
+    clear: left;
+    padding-top: 70px;
+}
+
+.party-bubble {
+    font-size: 45px;
+}
+
+.birthday-bubble {
+    font-size: 30px;
+}
+
+
+.servicespan-bubble {
+    color: white;
+    line-height: normal;
+    font-size: 30px;
+}
+
+.servicespan-bubble-service {
+    padding-top: 25px;
+}
