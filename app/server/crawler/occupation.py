@@ -43,9 +43,9 @@ def find_occupations(name):
                 occID = 'actor'
                 continue
 
-    if 'actor' or 'director' in wiki_desc.lower():
+    if 'actor' in wiki_desc.lower():
         occID = 'actor'
-        occupations = ['Actor']
+        occupations.append('Actor')
         
     #Politicians
     if 'politic' in wiki_desc.lower():
