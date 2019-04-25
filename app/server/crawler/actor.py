@@ -107,7 +107,7 @@ def getTitles(actor_page):
 # Takes actor imdb page and returns the number of awards/nominations they
 # have received
 def getAwards(actor_page):
-   awards = str(actor_page.find("span", {"class": "awards-blurb" }).contents[1].get_text()).replace("  ", "").replace("\n", " ")
+   awards = str(actor_page.find("span", {"class": "awards-blurb" }).contents[1].get_text()).replace("  ", "").replace("\n", " ").strip()
    return awards
 
 # Takes actor imdb id and returns brief bio
@@ -115,7 +115,7 @@ def getBio(actorID):
    url = 'https://www.imdb.com/name/'+actorID+'/'+'bio'
    html = requests.get(url).content
    page = BeautifulSoup(html, features="html.parser")
-   bio = (page.find('div', {'class': 'soda odd'}).contents[1]).prettify()
+   bio = (page.find('div', {'class': 'soda odd'}).contents[1]).get_text().strip()
    return bio
 
 # Take a imdb movie id and returns the title
