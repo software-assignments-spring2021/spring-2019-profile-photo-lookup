@@ -31,7 +31,6 @@ def find_occupations(name):
 
     # Actor and Musicians
     info_card = wiki_page.find("td", {"class": "role"})
-    info_card_alt = info_card.find('a', {'class': 'mw-redirect'}).attrs['title'].lower()
     
 
         
@@ -40,16 +39,18 @@ def find_occupations(name):
     #print(info_card)
   
     if info_card is not None:
-        alt = info_card.find('a', {'class': 'mw-redirect'}).attrs['title'].lower()
+        alt = (info_card).findChildren()
+        #alt = info_card.find('a', {'class': 'mw-redirect'}).attrs['title'].lower()
+        print(alt)
         if alt is not None:
-            if alt == 'singer':
+            if alt == 'singer' or alt == 'songwriter' or alt == 'rapper':
                 occID = 'musician'
                 occupations.append('Singer')
-                return occID, occupations
+              #  return occID, occupations
         for occ in info_card.findChildren('li'):
             
             occ = re.sub("(^|\s)(\S)", repl_func, occ.contents[0])
-            print(occ)
+           # print(occ)
             occupations.append(occ)
             for term in MUSICIAN:
                 if term in occ.lower():
