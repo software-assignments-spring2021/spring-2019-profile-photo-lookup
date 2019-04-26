@@ -1,8 +1,8 @@
-from .politicianstrategy import HouseRepStrategy
-from .politicianstrategy import SenateRepStrategy
-from .politicianstrategy import ExecBranchStrategy
-from .celebrity import Celebrity
-from .wikiAPI import search_wiki
+from politicianstrategy import HouseRepStrategy
+from politicianstrategy import SenateRepStrategy
+from politicianstrategy import ExecBranchStrategy
+from celebrity import Celebrity
+from wikiAPI import search_wiki
 
 house_rep = HouseRepStrategy()
 senate_rep = SenateRepStrategy()

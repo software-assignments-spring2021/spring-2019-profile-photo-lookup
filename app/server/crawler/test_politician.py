@@ -1,6 +1,6 @@
 from django.test import TestCase
-from .politcian import Politician
-
+from politician import Politician
+from politicianstrategy import SenateRepStrategy
 
 class PoliticianTest(TestCase):
     def test_Politician(self):
