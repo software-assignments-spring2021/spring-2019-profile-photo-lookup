@@ -3,7 +3,9 @@ import requests
 from .wikiAPI import search_wiki
 from bs4 import BeautifulSoup
 
-MUSICIAN = ['music', 'sing', 'song', 'DJ', 'record', 'remix']
+MUSICIAN = ['Musician', 'Singer', 'Songwriter', 'DJ' 'Record Producer']
+
+ACTOR = ['Actor', 'Actress', 'Filmmaker', 'Director', 'Producer']
 
 SPORT1 = ["basketball", "badminton", "archery", "baseball", "volleyball", 
 "bmx", "bobsleigh", "canoe", "equestrian", "football", "soccer", "golf", "hockey", "judo", 
@@ -13,43 +15,37 @@ SPORT1 = ["basketball", "badminton", "archery", "baseball", "volleyball",
 SPORT2 = ["gymnast", "ski", "swimm", "box", "curl", "dive", "fenc", "figure skat", "mountain bik", "cycl", 
 "speed skat", "row", "sail", "shoot", "ski jump", "snow board", "surf", "weightlift", "wrestl", "driv", "sprint", "runn"]
 
+
 def repl_func(m):
     """process regular expression match groups for word upper-casing problem"""
     return m.group(1) + m.group(2).upper()
 
+
 def find_occupations(name):
 
     data = search_wiki(name)
-
     wiki_desc = data[2][0]
-    wiki_url = data[3][0]
-    wiki_html = requests.get(wiki_url).content
-    wiki_page = BeautifulSoup(wiki_html, features="html.parser")
 
     occID = ''
     occupations = []
 
-    # Actor and Musicians
-    info_card = wiki_page.find("td", {"class": "role"})
-    if info_card is not None:
-        for occ in info_card.findChildren('li'):
-            occ = re.sub("(^|\s)(\S)", repl_func, occ.contents[0])
-            occupations.append(occ)
-            for term in MUSICIAN:
-                if term in occ.lower():
-                    occID = 'musician'
-                    continue
-            if 'act' in occ.lower():
+    # Musicians
+    for occupation in MUSICIAN:
+        if occupation.lower() in wiki_desc.lower():
+            occID = 'musician'
+            occupations.append(occupation)
+    
+    # Actor
+    for occupation in ACTOR:
+        if occupation.lower() in wiki_desc.lower():
+            if occID == '':
                 occID = 'actor'
-                continue
+            occupations.append(occupation)     
 
-    if 'actor' in wiki_desc.lower():
-        occID = 'actor'
-        occupations.append('Actor')
-        
     #Politicians
     if 'politic' in wiki_desc.lower():
-        occID= 'politician'
+        if occID == '':
+            occID = 'politician'
         occupations.append('Politician')
         pres= re.search("[\w]+ (president of the United States)", wiki_desc)
         world_leader= re.search("([A-Z][a-z]+ )+(of )(the )*([A-Z][a-z]+('s )*[of ]*)+", wiki_desc)
@@ -62,12 +58,15 @@ def find_occupations(name):
     # Athletes
     for sport in SPORT1:
         if sport in wiki_desc.lower():
+            if occID == '':
+                occID = 'athlete'
             athlete_type= 'Professional ' + sport.title() + ' Player'
             occupations.append(athlete_type)
-            occID = 'athlete'
 
     for sport in SPORT2:
         if sport in wiki_desc.lower():
+            if occID == '':
+                occID = 'athlete'
             if(sport != "gymnast"):
                 if(sport != "dive"):
                     sport= sport + 'er'
@@ -75,6 +74,5 @@ def find_occupations(name):
                     sport= sport + 'r'
             athlete_type= 'Professional ' + sport.title()
             occupations.append(athlete_type)
-            occID = 'athlete'
 
     return occID, occupations
