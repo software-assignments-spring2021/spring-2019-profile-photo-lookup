@@ -16,7 +16,7 @@ class Politician(Celebrity):
         self.occID = 'politician'
         self.member_ID= 0
         self.strategy= self.determine_strategy()
-        self.info = self.retrieve_info()
+        self.info = self.retrieve_info(name)
 
     def get_name(self, name):
         split_name= name.split(" ")
@@ -37,6 +37,7 @@ class Politician(Celebrity):
             member_ID= self.strategy.find_role(self)
         print(self.name)
         self.member_ID= member_ID
+        print(member_ID)
         if(member_ID==0):
             self.strategy= None
         old_strategy= self.strategy
@@ -50,11 +51,11 @@ class Politician(Celebrity):
         strategy=self.strategy
         return strategy 
 
-    def retrieve_info(self):
+    def retrieve_info(self, name):
         info= {}
         if self.strategy != None:
             info= self.strategy.construct_profile(self)
-        wiki_data = search_wiki(self.name)
+        wiki_data = search_wiki(name)
         wiki_desc = wiki_data[2][0]
         info['bio']= wiki_desc
 
