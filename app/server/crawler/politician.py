@@ -1,13 +1,12 @@
-from politicianstrategy import HouseRepStrategy
-from politicianstrategy import SenateRepStrategy
-from politicianstrategy import ExecBranchStrategy
-from celebrity import Celebrity
-from wikiAPI import search_wiki
+from .politicianstrategy import HouseRepStrategy
+from .politicianstrategy import SenateRepStrategy
+from .politicianstrategy import ExecBranchStrategy
+from .celebrity import Celebrity
+from .wikiAPI import search_wiki
 
-house_rep = HouseRepStrategy()
-senate_rep = SenateRepStrategy()
-exec_branch = ExecBranchStrategy()
-
+house_rep= HouseRepStrategy()
+senate_rep= SenateRepStrategy()
+exec_branch= ExecBranchStrategy()
 
 class Politician(Celebrity):
     def __init__(self, name, occupations):
@@ -26,7 +25,6 @@ class Politician(Celebrity):
         first_para= wiki_desc.split(" ")
         first_name= first_para[0]
         new_name= first_name + " " + last_name
-        print(new_name)
         return new_name
 
     def determine_strategy(self):
@@ -35,9 +33,7 @@ class Politician(Celebrity):
         if member_ID== 0:
             self.strategy= house_rep
             member_ID= self.strategy.find_role(self)
-        print(self.name)
         self.member_ID= member_ID
-        print(member_ID)
         if(member_ID==0):
             self.strategy= None
         old_strategy= self.strategy
@@ -47,7 +43,6 @@ class Politician(Celebrity):
             self.strategy= exec_branch
         else:
             self.strategy= old_strategy
-        print("done")
         strategy=self.strategy
         return strategy 
 
