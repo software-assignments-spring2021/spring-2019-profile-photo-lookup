@@ -3,11 +3,9 @@ import Webcam from 'react-webcam';
 import { connect } from 'react-redux';
 import { css } from '@emotion/core';
 import { CircleLoader } from 'react-spinners';
-
 import InfoCard from './result.js';
 import { uploadStudentImage } from '../../redux/analysis/action.js';
 import "./webcam.css"
-
 
 class Recognize extends Component {
 

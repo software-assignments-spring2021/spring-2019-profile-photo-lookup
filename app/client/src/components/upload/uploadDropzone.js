@@ -4,13 +4,16 @@ import DragAndDrop from './dragAndDrop.js'
 import { connect } from 'react-redux';
 import { uploadCelebrityImage } from '../../redux/analysis/action.js';
 import { FaFileUpload } from 'react-icons/fa';
+import { RingLoader } from 'react-spinners';
+import { css } from '@emotion/core';
 
 class UploadDropzone extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            newImage: null
+            newImage: null,
+            loading: false
         };
     }
 
@@ -51,6 +54,7 @@ class UploadDropzone extends Component {
 
     handleClickImageUpload = (e) => {
         e.preventDefault();
+        this.setState({ loading: true });
         let formData = new FormData();
         if (this.state.newImage) {
             formData.append("image", this.state.newImage);
@@ -88,6 +92,19 @@ class UploadDropzone extends Component {
                         <button type="submit" className="btn upload-btn browse-button-grp" onClick={(e) => {this.handleClickImageUpload(e)}}>Upload</button>
                     </div>
                 </form>
+                <RingLoader
+                    css={css`
+                    position: relative;
+                    top: 20px;
+                    display: block;
+                    margin: 0 auto;
+                    border-color: red;
+                `   }
+                    sizeUnit={"px"}
+                    size={80}
+                    color={'white'}
+                    loading={this.state.loading}
+                />
             </div>
         );
     }
