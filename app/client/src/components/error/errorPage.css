@@ -1,0 +1,20 @@
+#error-page {
+    text-align: center;
+    color: white;
+    min-width: 100vw;
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #57BC90, #77C9D4);
+    padding-top: 270px;
+}
+
+.error-text {
+    font-weight: 250;
+}
+
+.eror-contact-us {
+    color: #015249;
+}
+
+.eror-contact-us:hover {
+    color: #015249;
+}
