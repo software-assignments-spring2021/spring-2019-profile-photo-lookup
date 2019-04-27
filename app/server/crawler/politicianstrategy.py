@@ -1,5 +1,5 @@
 import abc
-import requests 
+import requests
 
 class PoliticianStrategyAbstract(object):
     __metaclass__ = abc.ABCMeta
@@ -38,8 +38,8 @@ class HouseRepStrategy(PoliticianStrategyAbstract):
                         member_ID= member["id"]
                         return member_ID
             x=x-1
-        return member_ID    
-    
+        return member_ID
+
     def construct_profile(self, politician):
         profile= {}
         headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
@@ -106,7 +106,7 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
                 if(member["last_name"]==last_name):
                     if(member["first_name"]== first_name):
                         member_ID= member["id"]
-                        return member_ID           
+                        return member_ID
             x=x-1
         return member_ID
 
@@ -114,7 +114,6 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
         profile= {}
         headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
         str_id= str(politician.member_ID)
-        print(str_id)
         url= "https://api.propublica.org/congress/v1/" + "members/" + str_id
         response= requests.get(url, headers=headers)
         data= response.json()
@@ -164,7 +163,7 @@ class ExecBranchStrategy(PoliticianStrategyAbstract):
             last_name= pname["last"]
             if(first_name== name[0] and last_name== name[1]):
                 return 1
-        return 0 
+        return 0
 
     def construct_profile(self, politician):
         execs= requests.get("https://theunitedstates.io/congress-legislators/executive.json").json()
@@ -200,4 +199,3 @@ class ExecBranchStrategy(PoliticianStrategyAbstract):
 
     def __str__(self):
         return "Exec Branch"
-        
