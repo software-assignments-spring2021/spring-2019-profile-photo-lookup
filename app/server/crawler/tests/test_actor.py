@@ -31,10 +31,6 @@ class ActorTest(TestCase):
                 "Mission: Impossible 8",
                 "Mission: Impossible 7",
                 "Live Die Repeat and Repeat",
-                "Top Gun: Maverick",
-                "Luna Park",
-                "Mission: Impossible 8",
-                "Mission: Impossible 7",
                 "Top Gun: Maverick"
             ]
         self.assertEqual(self.actor.info['upcoming'], upcoming)

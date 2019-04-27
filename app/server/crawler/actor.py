@@ -149,7 +149,9 @@ def getUpcomingTitlesByID(actor_page):
          continue
       data.append(movie_title)
       i+=1
-   return data
+   data_list = list(dict.fromkeys(data))
+   
+   return data_list
 
 
 
