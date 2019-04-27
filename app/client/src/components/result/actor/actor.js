@@ -7,7 +7,7 @@ class Actor extends Component {
         return (
             <section className="info">
                 <div className="info-header"><div className="info-bubble award-bubble">Awards</div></div>
-                <div className="info-content">{this.props.celeb.info.award}</div>
+                <div className="info-content">{this.props.celeb.info.awards}</div>
             </section>
         )
     }
@@ -36,7 +36,7 @@ class Actor extends Component {
             <div>
                 {celeb.info.titles ? this.renderTitles() : null}
                 {celeb.info.upcoming ? this.renderUpcoming() : null}
-                {celeb.info.award ? this.renderAward() : null}
+                {celeb.info.awards ? this.renderAward() : null}
             </div>
         );
     }

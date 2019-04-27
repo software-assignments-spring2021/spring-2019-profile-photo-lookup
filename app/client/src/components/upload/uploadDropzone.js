@@ -12,7 +12,8 @@ class UploadDropzone extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            newImage: null
+            newImage: null,
+            loading: false
         };
     }
 
@@ -53,6 +54,7 @@ class UploadDropzone extends Component {
 
     handleClickImageUpload = (e) => {
         e.preventDefault();
+        this.setState({ loading: true });
         let formData = new FormData();
         if (this.state.newImage) {
             formData.append("image", this.state.newImage);
@@ -90,7 +92,7 @@ class UploadDropzone extends Component {
                         <button type="submit" className="btn upload-btn browse-button-grp" onClick={(e) => {this.handleClickImageUpload(e)}}>Upload</button>
                     </div>
                 </form>
-                {/*}<RingLoader
+                <RingLoader
                     css={css`
                     position: relative;
                     top: 20px;
@@ -102,7 +104,7 @@ class UploadDropzone extends Component {
                     size={80}
                     color={'white'}
                     loading={this.state.loading}
-                />*/}
+                />
             </div>
         );
     }
