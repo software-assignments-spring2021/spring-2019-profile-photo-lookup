@@ -92,6 +92,11 @@ def main(query, num_result):
     #response = response.encode('utf-8')
     #return response
     #print(response)
+    def generateLink(video):
+        videoId = video.getVideoID()
+        result = "www.youtube.com/watch?v="
+        result = result + videoId
+        return result
 
 if __name__ == "__main__":
     main("David Beckham Highlights", 1)
