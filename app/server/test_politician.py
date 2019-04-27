@@ -1,5 +1,5 @@
 from django.test import TestCase
-from . import politician
+import crawler.politician
 
 class PoliticianTest(TestCase):
     def test_Politician(self):
