@@ -22,7 +22,7 @@ This project aims to create a website that provides a social-media-oriented faci
 
 *Download the Anaconda Python 3.7 version [here](https://www.anaconda.com/distribution/#download-section).*
 
-### Set up Conda Envrionemnt(Optional)
+### Set up Conda Environment(Optional)
 If you have Anaconda installed:
 
 Create a new environment
@@ -33,7 +33,7 @@ Activate environment
 
     $ conda activate <env_name>
     
-Deactivate the envrionment
+Deactivate the environment
 
     $ conda deactivate
 
@@ -112,8 +112,8 @@ On how to contribute, see [CONTRIBUTING.md](https://github.com/nyu-software-engi
 
 ## Authors
 
-* **Zach Li** - *Initial work* - [zichenli6](https://github.com/zichenli6)
-* **Amanda Labuda** - *Initial work* - [alabuda98](https://github.com/alabuda98)
-* **Jing Hwan Khoo** - *Initial work* - [khoojh](https://github.com/khoojh)
-* **Wei Jie Chua** - *Initial work* - [weijie9512](https://github.com/weijie9512)
-* **Kayli O'Keefe** - *Initial work* - [kokeefe32](https://github.com/kokeefe32)
+* **Zach Li** - [zichenli6](https://github.com/zichenli6)
+* **Amanda Labuda** - [alabuda98](https://github.com/alabuda98)
+* **Jing Hwan Khoo** - [khoojh](https://github.com/khoojh)
+* **Wei Jie Chua** - [weijie9512](https://github.com/weijie9512)
+* **Kayli O'Keefe** - [kokeefe32](https://github.com/kokeefe32)
