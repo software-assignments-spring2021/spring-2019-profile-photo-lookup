@@ -44,11 +44,9 @@ class HouseRepStrategy(PoliticianStrategyAbstract):
         profile= {}
         headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
         str_id= str(politician.member_ID)
-        print(str_id)
         url= "https://api.propublica.org/congress/v1/" + "members/" + str_id
         response= requests.get(url, headers=headers)
         data= response.json()
-        print(data)
         result= data["results"]
         member= result[0]
         profile= {}
@@ -79,6 +77,9 @@ class HouseRepStrategy(PoliticianStrategyAbstract):
             committees.append(committee["name"])
         profile['committees']=committees
         return(profile)
+
+    def __str__(self):
+        return "House Rep"
 
 class SenateRepStrategy(PoliticianStrategyAbstract):
     def find_role(self, politician):
@@ -108,12 +109,11 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
                         return member_ID           
             x=x-1
         return member_ID
-    
+
     def construct_profile(self, politician):
         profile= {}
         headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
         str_id= str(politician.member_ID)
-        print(str_id)
         url= "https://api.propublica.org/congress/v1/" + "members/" + str_id
         response= requests.get(url, headers=headers)
         data= response.json()
@@ -147,6 +147,9 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
             committees.append(committee["name"])
         profile['committees']=committees
         return(profile)
+
+    def __str__(self):
+        return "Senate Rep"
 
 class ExecBranchStrategy(PoliticianStrategyAbstract):
     def find_role(self, politician):
@@ -193,5 +196,7 @@ class ExecBranchStrategy(PoliticianStrategyAbstract):
                     profile['service_span'].append(term_time)
                     profile['party']= term['party']
                 return profile
-        
+
+    def __str__(self):
+        return "Exec Branch"
         
