@@ -28,20 +28,12 @@ class PoliticianTest(TestCase):
         self.assertEqual(self.politician.occupations, self.occupations)
 
     def test_info(self):
-        test_info= {"name": "Bernard Sanders",
-                    "party": "Other",
-                    "title": "U.S. Senate, Senator, 1st Class",
-                    "state": "VT",
-                    "service_span": "From 2019-01-03 to 2021-01-03",
-                    "website": "https://www.sanders.senate.gov",
-                    "twitter": "@SenSanders",
-                    "facebook": "senatorsanders",
-                    "address": "332 Dirksen Senate Office Building",
-                    "phone": "202-224-5141",
-                    "committees": ["Committee on Energy and Natural Resources",
-                                    "Committee on Environment and Public Works",
-                                    "Committee on Veterans' Affairs",
-                                    "Committee on the Budget",
-                                    "Committee on Health, Education, Labor, and Pensions"],
-                    "bio": "Bernard Sanders (born September 8, 1941) is an American politician who has served as the junior United States Senator from Vermont since 2007. The longest-serving Independent in congressional history, he was elected to the U.S."}
-        self.assertEqual(self.politician.info, test_info)
+        self.assertEqual(self.politician.info['party'], "Other")
+        self.assertEqual(self.politician.info['title'], "U.S. Senate, Senator, 1st Class")
+        self.assertEqual(self.politician.info['state'], "VT")
+        self.assertEqual(self.politician.info['service_span'], ["From 2019-01-03 to 2021-01-03"])
+        self.assertEqual(self.politician.info['website'], "https://www.sanders.senate.gov")
+        self.assertEqual(self.politician.info['twitter'], "@SenSanders")
+        self.assertEqual(self.politician.info['facebook'], "senatorsanders")
+        self.assertEqual(self.politician.info['address'], "332 Dirksen Senate Office Building")
+        self.assertEqual(self.politician.info['phone'], "202-224-5141")
