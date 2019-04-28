@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 # once. When youtube information is included, this prototype will help save a lot of
 # bandwidth
 #(Pushed to the wrong branch, now rebranching)
-class pageInformation:
+class Athlete:
     def __init__(self, name):
         name_with_underscore = name.replace(" ", "_")
         request = PreparedRequest()
