@@ -4,6 +4,7 @@ import {
     UPLOAD_STUDENT_IMAGE
 } from './types';
 import history from '../../history.js';
+import _ from 'lodash';
 
 export function uploadCelebrityImage(image) {
     return (dispatch) => {
@@ -29,7 +30,12 @@ export function getInfo(dispatch, names) {
             type: UPLOAD_CELEBRITY_IMAGE,
             payload: response.data
         });
-        history.push('/results');
+        if (_.isEmpty(response.data)) {
+            history.push('/noresults');
+        } else {
+            history.push('/results');
+        }
+
     }).catch((error) => {
         console.log("ERROR", error);
     });
