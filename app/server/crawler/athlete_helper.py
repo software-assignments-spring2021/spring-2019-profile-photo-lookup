@@ -2,6 +2,9 @@ import athlete as Athlete
 import wikipedia
 import numpy as np
 import sys
+import json
+import os
+import googleapiclient.discovery
 
 personal_life = ['Personal Life', 'Personal life', 'personal life']
 awards = ['Award', 'Awards', 'award', 'awards']
@@ -31,6 +34,7 @@ def getPersonalLife(name):
             result = np.NaN
     return result
 
+#get award later
 #return string
 def getAwards(name):
     name_with_underscore,url_link = Athlete.getAthleteName(name)
@@ -67,7 +71,7 @@ def getVideo(name, num_of_results):
 
     api_service_name = "youtube"
     api_version = "v3"
-    DEVELOPER_KEY = ""
+    DEVELOPER_KEY = "AIzaSyA3a9G_aBAfROe6uVPOfOGxdqSiOEcR8wE"
 
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, developerKey = DEVELOPER_KEY)
