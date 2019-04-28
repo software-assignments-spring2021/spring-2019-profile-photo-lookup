@@ -3,7 +3,6 @@ import { FaFileUpload } from 'react-icons/fa';
 import { RingLoader } from 'react-spinners';
 import { css } from '@emotion/core';
 import { connect } from 'react-redux';
-
 import { uploadStudentImage } from '../../redux/analysis/action.js';
 import InfoCard from './result.js';
 import DragAndDrop from '../upload/dragAndDrop.js';
