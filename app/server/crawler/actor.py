@@ -211,10 +211,10 @@ def getTitlesOverview(actor_page):
    i = 0
    while i < len(titles):
       att = (titles[i].attrs)
-      #print(att)
+  
       ref = att['href'].split("/")[2]
       title_ids.append(ref)
-      print(ref)
+      
       data.append(att['href'])
       i+=1
    for t in title_ids:
