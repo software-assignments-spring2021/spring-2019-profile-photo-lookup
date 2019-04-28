@@ -49,4 +49,5 @@ class ActorTest(TestCase):
                 "No description provided",
                 "Plot unknown. The follow-up to 2014s 'Edge of Tomorrow'.",
                 "Set in the world of drone technology and fifth generation fighters, this sequel will explore the end of the era of dogfighting."]
+                #"Set in the world of drone technology and fifth generation fighters, this sequel will explore the end of the era of dogfighting."]
         self.assertEqual(str(self.actor.info['upcoming_overview']), str(overview))
