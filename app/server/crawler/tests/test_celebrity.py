@@ -11,5 +11,7 @@ class CelebrityTest(TestCase):
 
     def test_generateProfile(self):
         self.celebrity.profile= self.celebrity.generate_profile()
-        test_profile= {'name': 'Bernie Sanders', 'occID': '', 'occupations': 'Politician', 'info': ''}
+        test_profile= {'name': 'Bernie Sanders', 'occID': '', 'occupations': ['Politician'], 'info': {}}
+        print(test_profile)
+        print(self.celebrity.profile)
         self.assertTrue(self.celebrity.profile==test_profile)
