@@ -75,7 +75,7 @@ class ActorBuilder(Builder):
         self.actor.upcoming = value
         return self
     def set_upcoming_overview(self, value):
-       self.actor.upcomin_overview = value
+       self.actor.upcoming_overview = value
        return self
     def set_interview(self, value):
         self.actor.interview = value
