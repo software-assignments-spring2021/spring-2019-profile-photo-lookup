@@ -13,6 +13,8 @@ import CelebrityUpload from './components/upload/celebrityUpload.js'
 import Student from './components/student/student.js'
 import About from './components/about/about.js';
 import ResultPage from './components/result/resultPage.js';
+import NoResultPage from './components/result/noResultPage.js';
+import ErrorPage from './components/error/errorPage.js';
 import * as serviceWorker from './serviceWorker';
 import history from './history';
 
@@ -31,6 +33,8 @@ ReactDOM.render(
                     <Route path="/celebrity" component={CelebrityUpload}/>
                     <Route path="/student" component={Student}/>
                     <Route exact path="/results" component={ResultPage}/>
+                    <Route path="/noresults" component={NoResultPage}/>
+                    <Route path="/error" component={ErrorPage}/>
                 </Switch>
             </div>
         </Router>
