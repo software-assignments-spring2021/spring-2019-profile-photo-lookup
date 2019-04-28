@@ -8,7 +8,6 @@ class Celebrity(object):
 
         
     def generate_profile(self):
-
         profile = {
             'name': self.name,
             'occID': self.occID,

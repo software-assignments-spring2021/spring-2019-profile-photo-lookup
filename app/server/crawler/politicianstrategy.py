@@ -1,5 +1,5 @@
 import abc
-import requests
+import requests 
 
 class PoliticianStrategyAbstract(object):
     __metaclass__ = abc.ABCMeta
@@ -38,8 +38,8 @@ class HouseRepStrategy(PoliticianStrategyAbstract):
                         member_ID= member["id"]
                         return member_ID
             x=x-1
-        return member_ID
-
+        return member_ID    
+    
     def construct_profile(self, politician):
         profile= {}
         headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
@@ -65,7 +65,8 @@ class HouseRepStrategy(PoliticianStrategyAbstract):
         roles= roles_list[0]
         profile['title']= "U.S. " + roles["chamber"] + ", " + roles["title"]
         profile['state']= roles["state"]
-        profile['service_span']= "From " + roles["start_date"]+ " to " + roles["end_date"]
+        profile['service_span']=[]
+        profile['service_span'].append("From " + roles["start_date"]+ " to " + roles["end_date"])
         profile['website']= member["url"]
         if(member["twitter_account"]):
             profile['twitter']= "@" + member["twitter_account"]
@@ -106,7 +107,7 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
                 if(member["last_name"]==last_name):
                     if(member["first_name"]== first_name):
                         member_ID= member["id"]
-                        return member_ID
+                        return member_ID           
             x=x-1
         return member_ID
 
@@ -135,7 +136,8 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
         roles= roles_list[0]
         profile['title']= "U.S. " + roles["chamber"] + ", " + roles["title"]
         profile['state']= roles["state"]
-        profile['service_span']= "From " + roles["start_date"]+ " to " + roles["end_date"]
+        profile['service_span']=[]
+        profile['service_span'].append("From " + roles["start_date"]+ " to " + roles["end_date"])
         profile['website']= member["url"]
         if(member["twitter_account"]):
             profile['twitter']= "@" + member["twitter_account"]
@@ -163,7 +165,7 @@ class ExecBranchStrategy(PoliticianStrategyAbstract):
             last_name= pname["last"]
             if(first_name== name[0] and last_name== name[1]):
                 return 1
-        return 0
+        return 0 
 
     def construct_profile(self, politician):
         execs= requests.get("https://theunitedstates.io/congress-legislators/executive.json").json()
@@ -199,3 +201,4 @@ class ExecBranchStrategy(PoliticianStrategyAbstract):
 
     def __str__(self):
         return "Exec Branch"
+        
