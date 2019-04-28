@@ -88,7 +88,7 @@ It should install all necesary libraries for the Django Environment(new librarie
     - open index.html
 
 ### Back-End
-1. Go to __demo__
+1. Go to __app/server__
 2. To run tests
     - `python manage.py test`
 3. To see coverage report
