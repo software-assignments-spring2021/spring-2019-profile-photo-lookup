@@ -73,3 +73,4 @@ def getExternalLinks(name):
 
     return result
 
+print(getPersonalLife("David Beckham"))

@@ -1,10 +1,5 @@
-# -*- coding: utf-8 -*-
-
-# Sample Python code for youtube.search.list
-# See instructions for running these code samples locally:
-# https://developers.google.com/explorer-help/guides/code_samples#python
-
 import os
+import json
 
 import googleapiclient.discovery
 class Video:
@@ -23,80 +18,49 @@ class Video:
         return self.description
 
 
-def main(query, num_result):
-    publishedAt = 0
-    channelId = 0
-    title = ""
-    description = ""
-    thumbnails = {}
-    channelTitle = ""
-    liveBroadcastContent = ""
-    videoId = ""
+
+# The code below is modified from Youtube developer's sample code 
+
+
+def main(query, num_of_results):
+    videoList = []
     # Disable OAuthlib's HTTPS verification when running locally.
     # *DO NOT* leave this option enabled in production.
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
     api_service_name = "youtube"
     api_version = "v3"
-    DEVELOPER_KEY = ""
+    DEVELOPER_KEY = "AIzaSyA3a9G_aBAfROe6uVPOfOGxdqSiOEcR8wE"
 
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, developerKey = DEVELOPER_KEY)
 
     request = youtube.search().list(
         part="snippet",
-        maxResults=num_result,
+        maxResults=num_of_results,
         q=query
+
     )
-
     response = request.execute()
-    #d = {"first_name": "Alfred", "last_name":"Hitchcock"}
+    for k, v in response.items():
+        if k == "items":
+            for i in range(len(v)):
+                try:
+                    result = json.dumps(v[i], sort_keys=True)
+                    videoList.append(result)
+                    print(result)
+                except:
+                    print("Cannot display format not in UTF-8!")
 
-    for key,val in response.items():
-        if key == "items":
-            #print(type(val[0]))
-            #for i in range(4):
-            if isinstance(val, str) == True:
-                val = val.encode('utf-8')
-            print("{} = {}".format(key, val))
-            if key == "id":
-                videoId = key[videoId]
-            for k, v in val[0].items():
-                #print(type(v))
-                print("{} = {}".format(k, v))
-                if k == "snippet":
-                    #print(type(v))
-                    for snippet_key, snippet_value in v.items():
-                        print("Snippet")
-                        print("{} = {}".format(snippet_key, snippet_value))
-                        if isinstance(snippet_value, str) == True:
-                            snippet_key = snippet_key.encode('utf-8')
-                        elif isinstance(snippet_value, int) == True:
-                            snippet_key = snippet_key.encode('utf-8')
-                        if snippet_key == "title":
-                            title = snippet_value
-                        elif snippet_key == "publishedAt":
-                            publishedAt = snippet_value
-                        elif snippet_key == "description":
-                            description = snippet_value
-                        elif snippet_key == "thumbnails":
-                            thumbnails = snippet_value
-                        elif snippet_key == "channelTitle":
-                            channelTitle = snippet_value
-                        elif snippet_key == "liveBroadcastContent":
-                            liveBroadcastContent = snippet_value
+    return videoList
 
-        else:
-            print("")
-            #print("{} = {}".format(key, val))
-    #response = response.encode('utf-8')
-    #return response
-    #print(response)
-    def generateLink(video):
-        videoId = video.getVideoID()
-        result = "www.youtube.com/watch?v="
-        result = result + videoId
-        return result
+def generateLink(video):
+    videoId = video.getVideoID()
+    result = "www.youtube.com/watch?v="
+    result = result + videoId
+    return result
 
 if __name__ == "__main__":
-    main("David Beckham Highlights", 1)
+    #video = main("David Beckham Highlights", 1)
+    videoList = main("David Beckham Highlights", 5)
+    #print(generateLink(video))
