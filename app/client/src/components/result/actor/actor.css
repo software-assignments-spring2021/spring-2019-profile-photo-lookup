@@ -9,3 +9,8 @@
 .award-bubble {
     font-size: 35px;
 }
+
+.list-group-item{
+    background: none;
+    border: hidden;
+}

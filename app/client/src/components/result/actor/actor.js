@@ -13,19 +13,33 @@ class Actor extends Component {
     }
 
     renderUpcoming() {
+        
         return (
             <section className="info">
                 <div className="info-header"><div className="info-bubble upcoming-bubble">Upcoming</div></div>
-                <div className="info-content">{this.props.celeb.info.upcoming.join(', ')}</div>
+                <div className="info-content">
+                <ul className="list-group">
+                {this.props.celeb.info.upcoming.map(item =>(
+                    <li className="list-group-item"key={item}>{item}</li>
+                ))}
+                </ul></div>
             </section>
-        )
+        );  
+        
     }
 
     renderTitles() {
         return (
             <section className="info">
                 <div className="info-header"><div className="info-bubble title-bubble">Titles</div></div>
-                <div className="info-content">{this.props.celeb.info.titles.join(', ')}</div>
+                
+            <div className="info-content">
+            <ul className="list-group">
+            {this.props.celeb.info.titles.map(item =>(
+                <li className="list-group-item"key={item}>{item}</li>
+            ))}
+            </ul></div>
+            
             </section>
         );
     }
