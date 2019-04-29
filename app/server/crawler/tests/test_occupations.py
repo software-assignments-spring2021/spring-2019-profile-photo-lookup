@@ -17,5 +17,4 @@ class OccupationsTest(TestCase):
         self.assertTrue(occupations== ["Actor", "Producer"])
         occID, occupations= find_occupations("David Beckham")
         self.assertTrue(occID== "athlete")
-        print(occupations)
         self.assertTrue(occupations==["Professional Football Player"])
