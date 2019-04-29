@@ -136,7 +136,7 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
         roles= roles_list[0]
         profile['title']= "U.S. " + roles["chamber"] + ", " + roles["title"]
         profile['state']= roles["state"]
-        profile['service_span']=[]
+        profile['service_span']= []
         profile['service_span'].append("From " + roles["start_date"]+ " to " + roles["end_date"])
         profile['website']= member["url"]
         if(member["twitter_account"]):
