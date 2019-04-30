@@ -20,19 +20,13 @@ const styles = theme => ({
     },
     media: {
         height: 0,
-        paddingTop: "56.25%" // 16:9 aspect ratio
+        paddingTop: "56.25%" // 16:9
     },
     name: {
         fontSize: 20,
-        fontWeight: "bold",
+        fontStyle: "bold",
         textAlign: "center",
         paddingBottom: 10  
-    },
-    heading: {
-        fontSize: 20,
-        fontStyle: "bold",
-        textDecoration: "underline",
-        paddingBottom: 10
     },
     actions: {
         display: "flex"
@@ -49,7 +43,7 @@ const styles = theme => ({
     }
 });
 
-class PoliticianCard extends React.Component {
+class InfoCard extends React.Component {
     state = { expanded: false };
 
     handleExpandClick = () => {
@@ -57,22 +51,21 @@ class PoliticianCard extends React.Component {
     };
 
     render() {
-        const classes = this.props.classes;
-        const celeb = this.props.celeb;
+        const { classes } = this.props;
 
         return (
         <Card className={classes.card}>
             <CardMedia
                 className={classes.media}
-                image={celeb.info.image}
-                title="Politician"
+                image={this.props.celeb.info.image}
+                title="Paella dish"
             />
             <CardContent>
                 <Typography className={classes.name}>
-                    {celeb.name}
+                    {this.props.celeb.name}
                 </Typography>
                 <Typography component="p">
-                    {celeb.info.bio}
+                    {this.props.celeb.info.bio}
                 </Typography>
             </CardContent>
             <CardActions className={classes.actions} disableActionSpacing>
@@ -95,12 +88,9 @@ class PoliticianCard extends React.Component {
             </CardActions>
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <Typography className={classes.heading}>
-                            Heading/Title
-                    </Typography>
-                    <Typography>
-                        Info/Content blah blah blah
-                    </Typography>  
+                <Typography component="p">
+                    {this.props.celeb.info.bio}
+                </Typography>
                 </CardContent>
             </Collapse>
         </Card>
@@ -108,8 +98,8 @@ class PoliticianCard extends React.Component {
     }
 }
 
-PoliticianCard.propTypes = {
+InfoCard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(PoliticianCard);
+export default withStyles(styles)(InfoCard);

@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
-import './resultPage.css';
 import { connect } from 'react-redux';
-import Celeb from './celeb.js';
+import Grid from '@material-ui/core/Grid';
+
+import InfoCard from './card.js'
+import PoliticianCard from './politician/politician.js'
+import ActorCard from './actor/actor.js'
+import MusicianCard from './musician/musician.js'
+import AthleteCard from './athlete/athlete.js'
+import './resultPage.css';
+
 
 class ResultPage extends Component {
 
@@ -19,16 +26,13 @@ class ResultPage extends Component {
                         "Record Producer"
                     ],
                     "info": {
+                        "bio": "Stefani Joanne Angelina Germanotta, known professionally as Lady Gaga, is an American singer, songwriter and actress. She is known for her unconventionality, provocative work, and visual experimentation. She began performing as a teenager, singing at open mic nights and acting in school plays.",
                         "genres": [
                             "dance pop",
                             "pop"
                         ],
                         "release": "Poker Face",
-                        "image": {
-                            "height": 640,
-                            "url": "https://i.scdn.co/image/ea76c82c05174105751f850c8a1db426dd03aa78",
-                            "width": 640
-                        },
+                        "image": "https://timedotcom.files.wordpress.com/2019/04/lady-gaga-time-100-2019-057-1.jpg?quality=85&zoom=2",
                         "top tracks": "https://open.spotify.com/embed/artist/1HY2Jd0NmPuamShAr6KMms",
                         "related artists": [
                             {
@@ -92,6 +96,7 @@ class ResultPage extends Component {
                     ],
                     "info": {
                         "name": "Barack Hussein Obama ",
+                        "image": "https://timedotcom.files.wordpress.com/2017/12/barack-obama.jpeg",
                         "birthday": "1961-08-04",
                         "service_span": [
                             "From 2009-01-20 to 2013-01-20",
@@ -109,8 +114,9 @@ class ResultPage extends Component {
                         "Actor"
                     ],
                     "info": {
-                        "bio": "In 1976, if you had told fourteen year-old Franciscan seminary student Thomas Cruise Mapother IV that one day in the not too distant future he would be Tom Cruise, one of the top 100 movie stars of all time, he would have probably grinned and told you that his ambition was to join the priesthood. Nonetheless, this sensitive, deeply religious youngster who was born in 1962 in Syracuse, New York, was destined to become one of the highest paid and most sought after actors in screen history.Tom is the only son (among four children) of nomadic parents, Mary Lee (Pfeiffer), a special education teacher, and Thomas Cruise Mapother III, an electrical engineer. His parents were both from Louisville, Kentucky, and he has German, Irish, and English ancestry. Young Tom spent his boyhood always on the move, and by the time he was 14 he had attended 15 different schools in the U.S. and Canada. He finally settled in Glen Ridge, New Jersey, with his mother and her new husband. While in high school, Tom wanted to become a Priest but pretty soon he developed an interest in acting and abandoned his plans of becoming a priest, dropped out of school, and at age 18 headed for New York and a possible acting career. The next 15 years of his life are the stuff of legends. He made his film debut with a small part in Endless Love (1981) and from the outset exhibited an undeniable box office appeal to both male and female audiences.With handsome movie star looks and a charismatic smile, within 5 years Tom Cruise was starring in some of the top grossing films of the 1980s including Top Gun (1986); The Color of Money (1986), Rain Man (1988) and Born on the Fourth of July (1989). By the 1990s he was one of the highest paid actors in the world earning an average 15 million dollars a picture in such blockbuster hits as Interview with the Vampire: The Vampire Chronicles (1994), Mission: Impossible (1996) and Jerry Maguire (1996) for which he received an Academy Award Nomination for best actor. Tom Cruise's biggest franchise , Mission Impossible has also earned a total of 3 billion dollars worldwide. Tom cruise has also shown lots of interest in producing with his biggest producer credits being the Mission impossible franchise.In 1990 he renounced his devout Catholic beliefs and embraced The Church Of Scientology claiming that Scientology teachings had cured him of the dyslexia that had plagued him all of his life. A kind and thoughtful man well known for his compassion and generosity, Tom Cruise is one of the best liked members of the movie community. He was married to actress Nicole Kidman until 2001. Thomas Cruise Mapother IV has indeed come a long way from the lonely wanderings of his youth to become one of the biggest movie stars ever.",
+                        "bio": "Thomas Cruise is an American actor and producer. Primarily known for his work in action films, he has also received several accolades for more dramatic work, including three Golden Globe Awards and nominations for three Academy Awards.",
                         "awards": "Nominated for 3 Oscars.",
+                        "image": "https://timedotcom.files.wordpress.com/2017/06/tom-cruise1.jpg?quality=85",
                         "titles": [
                             "Top Gun",
                             "The Last Samurai",
@@ -134,26 +140,65 @@ class ResultPage extends Component {
         }
     }
 
-    renderAccordionContent() {
-        return this.props.celebs.map((celeb, i) => {
-            return (
-                <div className="card" key={i}>
-                    <button type="button" className="btn text-white accordion-card" data-toggle="collapse" data-target={`#celeb${i}`}>{celeb.name}</button>
-                    <div id={`celeb${i}`} className={i === 0 ? "collapse show" : "collapse"} aria-labelledby="headingOne" data-parent="#accordion">
-                        <div className="card-body celeb-card">
-                            <Celeb celeb={celeb} />
-                        </div>
-                    </div>
-                </div>
-            );
-        })
+    renderInfoCards() {
+        var html = []
+        let celebrities = this.state.celebs
+
+        for (var i = 0; i < celebrities.length; i++){
+            let celeb = celebrities[i]
+            switch(celeb.occID) {
+                case "actor":
+                    html.push(
+                        <Grid item xs={4} key={i}>
+                            <ActorCard celeb={celeb} />
+                        </Grid>
+                    );
+                    break;
+                case "athlete":
+                    html.push(
+                        <Grid item xs={4} key={i}>
+                            <AthleteCard celeb={celeb} />
+                        </Grid>
+                    );
+                    break;
+                case "musician":
+                    html.push(
+                        <Grid item xs={4} key={i}>
+                            <MusicianCard celeb={celeb} />
+                        </Grid>
+                    );
+                    break;
+                case "politician":
+                    html.push(
+                        <Grid item xs={4} key={i}>
+                            <PoliticianCard celeb={celeb} />
+                        </Grid>
+                    );
+                    break;
+                case "other":
+                    html.push(
+                        <Grid item xs={4} key={i}>
+                            <InfoCard celeb={celeb} />
+                        </Grid>
+                    );
+                    break;
+                default:
+                    break;
+            }
+        }
+        return html
     }
 
     render() {
         return (
-            <div id="result-page">
-                <div id="accordion">
-                    {this.renderAccordionContent()}
+            <div id="main-page">
+                <div id="bbox-image">
+                    <img src={require("./celeb.jpg")} alt="bbox"/>
+                </div>
+                <div id="result-section">
+                    <Grid container spacing={24} justify="flex-start" alignItems="flex-start">
+                        {this.renderInfoCards()}
+                    </Grid>
                 </div>
             </div>
         );
