@@ -88,11 +88,11 @@ def checkAthlete(name, wiki_desc):
 
 def findPrimaryOccupation(rankings, wiki_desc):
     indx = min(rankings)
-    desc= wiki_desc.split()
+    desc = wiki_desc.split()
     occID = 'other'
 
-    if(indx<len(desc)):
-        occupation = wiki_desc.split()[indx]
+    if(indx < len(desc)):
+        occupation = desc[indx]
         if occupation in [x.lower() for x in MUSICIAN]:
             occID = 'musician'
         elif occupation in [x.lower() for x in ACTOR]:
