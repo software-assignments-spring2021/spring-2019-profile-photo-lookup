@@ -23,9 +23,9 @@ class CelebrityFactory(object):
             elif occID == 'actor':
                 profile = Actor(name, occupations).generate_profile()
                 output.append(profile)   
-            elif occID== 'other':
-                occupations= ["Public Figure"]
-                profile= OtherCelebrity(name, occupations).generate_profile()
+            elif occID == 'other':
+                occupations = ["Public Figure"]
+                profile = OtherCelebrity(name, occupations).generate_profile()
                 output.append(profile)
 
         return output
