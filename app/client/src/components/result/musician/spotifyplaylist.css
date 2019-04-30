@@ -1,11 +1,9 @@
 #spotify {
-    clear: left;
-    background-color: black;
-    margin-left: -77px;
-    margin-right: -76px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #spotify-iframe {
-    width: 500px;
+    width: 100%;
     height: 400px;
 }
