@@ -8,8 +8,7 @@ class SpotifyPlaylist extends Component {
             <div id="spotify">
                 <iframe
                     title="Spotify playlist"
-                    src={this.props.celeb.info['top tracks']}
-
+                    src={this.props.url}
                     frameBorder="0"
                     allowtransparency="true"
                     allow="encrypted-media"

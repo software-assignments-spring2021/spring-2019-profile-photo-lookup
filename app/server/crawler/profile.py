@@ -2,6 +2,7 @@ from .occupation import find_occupations
 from .musician import Musician
 from .politician import Politician
 from .actor import Actor
+from .othercelebrity import OtherCelebrity
 
 
 class CelebrityFactory(object):
@@ -22,4 +23,8 @@ class CelebrityFactory(object):
             elif occID == 'actor':
                 profile = Actor(name, occupations).generate_profile()
                 output.append(profile)   
+            elif occID == 'other':
+                occupations = ["Public Figure"]
+                profile = OtherCelebrity(name, occupations).generate_profile()
+                output.append(profile)
         return output
