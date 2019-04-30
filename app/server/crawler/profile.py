@@ -27,5 +27,4 @@ class CelebrityFactory(object):
                 occupations = ["Public Figure"]
                 profile = OtherCelebrity(name, occupations).generate_profile()
                 output.append(profile)
-
         return output
