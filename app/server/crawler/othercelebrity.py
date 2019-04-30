@@ -3,15 +3,14 @@ from .wikiAPI import search_wiki
 
 class OtherCelebrity(Celebrity):
     def __init__(self, name, occupations):
-        self.name = name    
+        Celebrity.__init__ (self, name, occupations)
         self.occID = 'other'
-        self.occupations = occupations
-        self.info = self.retrieve_info(name)
+        self.info = self.retrieve_info()
     
-    def retrieve_info(self, name):
-        info= {}
-        wiki_data = search_wiki(name)
+    def retrieve_info(self):
+        info = {}
+        wiki_data = search_wiki(self.name)
         wiki_desc = wiki_data[2][0]
-        info['bio']= wiki_desc
+        info['bio'] = wiki_desc
         return info
 
