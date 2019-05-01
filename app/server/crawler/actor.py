@@ -197,8 +197,8 @@ def getUpcomingOverviewByID(actor_page):
          movie_overview = "No description provided"
       data.append(movie_overview)
       i+=1
-   data_list = list(dict.fromkeys(data))
-   return data_list
+   #data_list = list(dict.fromkeys(data))
+   return data
 
 def getTitlesOverview(actor_page):
    titles = actor_page.find_all("a", {"class": "knownfor-ellipsis"})
