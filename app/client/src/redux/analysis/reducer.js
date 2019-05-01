@@ -1,16 +1,20 @@
 import {
-    UPLOAD_CELEBRITY_IMAGE,
+    GET_CELEBRITY_BBOX,
+    GET_CELEBRITY_INFO,
     UPLOAD_STUDENT_IMAGE
 } from './types';
 
 const initialState = {
+    bbox: null,
     celebs: [],
     students: []
 };
 
 export default function(state=initialState, action) {
     switch(action.type) {
-        case UPLOAD_CELEBRITY_IMAGE:
+        case GET_CELEBRITY_BBOX:
+            return { ...state, bbox: action.payload };
+        case GET_CELEBRITY_INFO:
             return { ...state, celebs: action.payload };
         case UPLOAD_STUDENT_IMAGE:
             return { ...state, students: action.payload };

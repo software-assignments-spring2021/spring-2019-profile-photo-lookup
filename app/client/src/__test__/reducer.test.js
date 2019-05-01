@@ -5,6 +5,7 @@ describe('todos reducer', () => {
     it('should return the initial state', () => {
         expect(reducer(undefined, {})).toEqual(
             {
+                bbox: null,
                 celebs: [],
                 students: []
             }
@@ -16,16 +17,18 @@ describe('todos reducer', () => {
         expect(
             reducer(
                 {
+                    bbox: null,
                     celebs: [],
                     students: []
                 },
                 {
-                    type: types.UPLOAD_CELEBRITY_IMAGE,
+                    type: types.GET_CELEBRITY_INFO,
                     payload: ['Neil deGrasse Tyson']
                 }
             )
         ).toEqual(
             {
+                bbox: null,
                 celebs: ['Neil deGrasse Tyson'],
                 students: []
             }

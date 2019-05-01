@@ -1,6 +1,7 @@
 import instance from '../instance';
 import {
-    UPLOAD_CELEBRITY_IMAGE,
+    GET_CELEBRITY_BBOX,
+    GET_CELEBRITY_INFO,
     UPLOAD_STUDENT_IMAGE
 } from './types';
 import history from '../../history.js';
@@ -12,6 +13,14 @@ export function uploadCelebrityImage(image) {
             `/rekognition/celebrity`,
             image
         ).then((response) => {
+            var payload = {
+                image,
+                data: response.data
+            };
+            dispatch({
+                type: GET_CELEBRITY_BBOX,
+                payload
+            });
             getInfo(dispatch, response.data.names);
         }).catch((error) => {
             console.log("ERROR", error);
@@ -27,7 +36,7 @@ export function getInfo(dispatch, names) {
         }
     ).then((response) => {
         dispatch({
-            type: UPLOAD_CELEBRITY_IMAGE,
+            type: GET_CELEBRITY_INFO,
             payload: response.data
         });
         if (_.isEmpty(response.data)) {

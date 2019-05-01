@@ -140,6 +140,41 @@ class ResultPage extends Component {
         }
     }
 
+    componentDidMount() {
+        if (this.props.bbox) {
+            var reader = new FileReader();
+            reader.readAsDataURL(this.props.bbox.image.get("image"));
+
+            const canvas = this.refs.resultcanvas;
+            const ctx = canvas.getContext('2d');
+            var bbox = this.props.bbox.data.bbox;
+
+            reader.onloadend = function (e) {
+                var img = new Image();
+                img.onload = function(){
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img,0,0);
+
+                    bbox.forEach((b) => {
+                        b.Left = b.Left * canvas.width;
+                        b.Top = b.Top * canvas.height;
+                        b.Width = b.Width * canvas.width;
+                        b.Height = b.Height * canvas.height;
+                    })
+
+                    bbox.forEach((b) => {
+                        ctx.strokeStyle = "#FF0000";
+                        ctx.lineWidth = 5;
+                        ctx.rect(b.Left, b.Top, b.Width, b.Height);
+                        ctx.stroke();
+                    });
+                }
+                img.src = e.target.result;
+            };
+        }
+    }
+
     renderInfoCards() {
         var html = []
         let celebrities = this.state.celebs
@@ -193,7 +228,8 @@ class ResultPage extends Component {
         return (
             <div id="main-page">
                 <div id="bbox-image">
-                    <img src={require("./celeb.jpg")} alt="bbox"/>
+                    {/*}<img src={require("./celeb.jpg")} alt="bbox"/>*/}
+                    <canvas ref="resultcanvas" id="result-uploaded-img" />
                 </div>
                 <div id="result-section">
                     <Grid container spacing={24} justify="flex-start" alignItems="flex-start">
@@ -207,6 +243,7 @@ class ResultPage extends Component {
 
 function mapStateToProps(state) {
     return {
+        bbox: state.analysis.bbox,
         celebs: state.analysis.celebs
     };
 }
