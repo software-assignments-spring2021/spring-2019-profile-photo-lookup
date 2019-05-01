@@ -58,7 +58,7 @@ class Musician(Celebrity):
         info = {}
         info['bio'] = self.get_bio()
         info['genres'] = data['items'][0]['genres']
-        info['image'] = data['items'][0]['images'][0]
+        info['image'] = data['items'][0]['images'][0]['url']
         info['top tracks'] = "https://open.spotify.com/embed/artist/" + artistID
         info['related artists'] = self.find_related_artists(artistID)
         info['related tracks'] = self.find_related_tracks(info['genres'])
