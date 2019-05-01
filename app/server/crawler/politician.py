@@ -3,6 +3,7 @@ from .politicianstrategy import SenateRepStrategy
 from .politicianstrategy import ExecBranchStrategy
 from .celebrity import Celebrity
 from .wikiAPI import search_wiki
+from .wikiAPI import get_image
 
 house_rep= HouseRepStrategy()
 senate_rep= SenateRepStrategy()
@@ -53,6 +54,6 @@ class Politician(Celebrity):
         wiki_data = search_wiki(name)
         wiki_desc = wiki_data[2][0]
         info['bio']= wiki_desc
-
+        info['image']= get_image(name)
         return info
 
