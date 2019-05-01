@@ -1,5 +1,5 @@
 from django.test import TestCase
-from ..occupation import *
+from ..occupation import find_occupations
 
 class OccupationsTest(TestCase):
     def __init__(self, *args, **kwargs):
