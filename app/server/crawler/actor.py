@@ -3,7 +3,7 @@ from requests.models import PreparedRequest
 from bs4 import BeautifulSoup
 from .celebrity import Celebrity
 from abc import ABCMeta, abstractclassmethod
-
+from .wikiAPI import search_wiki
 
 class Actor(Celebrity):
 
@@ -22,7 +22,7 @@ class Actor(Celebrity):
    def retrieve_info(self):
       nameID = getActorID(self.name)
       page = getActorPage(nameID)
-      self.bio = getBio(nameID)
+      self.bio = getBio(self.name)
       self.awards = getAwards(page)
       self.titles = getTitles(page)
       self.titles_overview = getTitlesOverview(page)
@@ -129,12 +129,11 @@ def getAwards(actor_page):
    return awards
 
 # Takes actor imdb id and returns brief bio
-def getBio(actorID):
-   url = 'https://www.imdb.com/name/'+actorID+'/'+'bio'
-   html = requests.get(url).content
-   page = BeautifulSoup(html, features="html.parser")
-   bio = (page.find('div', {'class': 'soda odd'}).contents[1]).get_text().strip()
-   return bio
+def getBio(name):
+   wiki_data = search_wiki(name)
+   wiki_desc = wiki_data[2][0]
+   return wiki_desc
+
 
 # Take a imdb movie id and returns the title
 def getUpcomingTitlesByName(movie_id):
