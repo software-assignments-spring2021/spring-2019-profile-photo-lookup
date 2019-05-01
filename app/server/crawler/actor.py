@@ -171,7 +171,6 @@ def getUpcomingTitlesByID(actor_page):
 def getUpcomingOverviewByName(movie_id):
    api = "?api_key=4567404023e93988b15756b26b82c5ee"
    url = "https://api.themoviedb.org/3/movie/"+movie_id+api
-   #print(url)
    req = requests.get(url)
    if req.status_code == 200:
       data = req.json()
@@ -222,9 +221,9 @@ def getTitlesOverview(actor_page):
        if req.status_code == 200:
             ov = req.json()
             overviews.append(ov['overview'])
-   #data_list = list(dict.fromkeys(overviews))
+   data_list = list(dict.fromkeys(overviews))
 
-   return overviews
+   return data_list
 
 def getVideoLink(actor_page):
     link = actor_page.find("a", {"class": "slate_button prevent-ad-overlay video-modal"}).attrs['href']
