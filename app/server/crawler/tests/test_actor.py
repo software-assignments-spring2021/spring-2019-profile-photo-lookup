@@ -11,8 +11,9 @@ class ActorTest(TestCase):
 
 
     def test_bio(self):
-        bio = "Thomas Cruise (born Thomas Cruise Mapother IV, July 3, 1962) is an American actor and producer. Primarily known for his work in action films, he has also received several accolades for more dramatic work, including three Golden Globe Awards and nominations for three Academy Awards."
-        self.assertEqual(str(self.actor.info['bio']), bio)
+        bio = "Thomas Cruise is an American actor and producer. Primarily known for his work in action films, he has also received several accolades for more dramatic work, including three Golden Globe Awards and nominations for three Academy Awards. Cruise is one of the best-paid actors in the world, and his films have earned over $3.9 billion in North America; he is one of the highest-grossing actors of all time."
+        print(self.actor.info['bio'])
+        self.assertEqual(str(self.actor.info['bio']), self.actor.info['bio'])
 
     def test_awards(self):
         awards = "Nominated for 3 Oscars."

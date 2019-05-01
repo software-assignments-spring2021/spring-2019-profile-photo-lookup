@@ -2,8 +2,7 @@ from .politicianstrategy import HouseRepStrategy
 from .politicianstrategy import SenateRepStrategy
 from .politicianstrategy import ExecBranchStrategy
 from .celebrity import Celebrity
-from .wikiAPI import search_wiki
-from .wikiAPI import get_image
+from .utilsAPI import WikiAPI, GoogleAPI
 
 house_rep= HouseRepStrategy()
 senate_rep= SenateRepStrategy()
@@ -21,7 +20,7 @@ class Politician(Celebrity):
     def get_name(self, name):
         split_name= name.split(" ")
         last_name= split_name[1]
-        wiki_data = search_wiki(name)
+        wiki_data = WikiAPI().search(name)
         wiki_desc = wiki_data[2][0]
         first_para= wiki_desc.split(" ")
         first_name= first_para[0]
@@ -51,9 +50,9 @@ class Politician(Celebrity):
         info= {}
         if self.strategy != None:
             info= self.strategy.construct_profile(self)
-        wiki_data = search_wiki(name)
+        wiki_data = WikiAPI().search(name)
         wiki_desc = wiki_data[2][0]
         info['bio']= wiki_desc
-        info['image']= get_image(name)
+        info['image']= GoogleAPI().get_image(name)
         return info
 

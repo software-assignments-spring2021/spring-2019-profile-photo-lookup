@@ -2,7 +2,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials as SpotifyCC
 
 from .celebrity import Celebrity
-from .wikiAPI import search_wiki, get_wiki_data
+from .utilsAPI import WikiAPI, GoogleAPI
 
 
 CCManager = SpotifyCC(client_id = 'a1ea005deef446c2861253ea2f998105',
@@ -19,11 +19,13 @@ class Musician(Celebrity):
         self.occID = 'musician'
         self.info = self.retrieve_info()
 
+
     def get_bio(self):
-        data = search_wiki(self.name)
+        data = WikiAPI().search(self.name)
         wikiID = data[3][0].split('/')[-1]
-        bio = get_wiki_data(wikiID)['bio']
+        bio = WikiAPI().get_bio(wikiID)
         return bio
+
 
     def find_related_tracks(self, seed_genres):
         response = spotify.search(q = seed_genres[0],
@@ -55,10 +57,12 @@ class Musician(Celebrity):
 
         artistID = data['items'][0]['id']
 
+        image = GoogleAPI().get_image(self.name)
+
         info = {}
         info['bio'] = self.get_bio()
         info['genres'] = data['items'][0]['genres']
-        info['image'] = data['items'][0]['images'][0]['url']
+        info['image'] = image
         info['top tracks'] = "https://open.spotify.com/embed/artist/" + artistID
         info['related artists'] = self.find_related_artists(artistID)
         info['related tracks'] = self.find_related_tracks(info['genres'])
