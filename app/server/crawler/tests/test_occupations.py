@@ -8,7 +8,7 @@ class OccupationsTest(TestCase):
     def testOccupation(self):
         occID, occupations= find_occupations("Barack Obama")
         self.assertEqual(occID, "politician")
-        self.assertEqual(occupations, ["Politician", "44Th President Of The United States"])
+        self.assertEqual(occupations, ["Politician"])
         occID, occupations= find_occupations("Bruno Mars")
         self.assertEqual(occID, "musician")
         self.assertEqual(occupations, ["Singer", "Songwriter", "Producer"])
