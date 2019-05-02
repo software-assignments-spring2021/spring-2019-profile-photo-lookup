@@ -3,7 +3,7 @@ from requests.models import PreparedRequest
 from bs4 import BeautifulSoup
 from .celebrity import Celebrity
 from abc import ABCMeta, abstractclassmethod
-from .utilsAPI import WikiAPI
+from .utilsAPI import WikiAPI, GoogleAPI
 
 class Actor(Celebrity):
 
@@ -31,6 +31,7 @@ class Actor(Celebrity):
       self.interview = getVideoLink(page)
       info = {
          'bio': self.bio,
+         'image': GoogleAPI().get_image(self.name),
          'awards': self.awards,
          'titles': self.titles,
          'titles_overview': self.titles_overview,
