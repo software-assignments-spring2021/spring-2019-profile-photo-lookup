@@ -1,7 +1,8 @@
 import re
 import requests
-from .wikiAPI import search_wiki
 from bs4 import BeautifulSoup
+
+from .utilsAPI import WikiAPI, GoogleAPI
 
 MUSICIAN = ['Musician', 'Singer', 'Songwriter', 'DJ']
 
@@ -79,7 +80,7 @@ def checkAthlete(name, wiki_desc):
 
 def find_occupations(name):
 
-    data = search_wiki(name)
+    data = WikiAPI().search(name)
     wiki_desc = re.sub(r'[^\w\s]', ' ', data[2][0].lower())
     occupations = []
 
