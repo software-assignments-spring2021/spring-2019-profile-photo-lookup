@@ -9,11 +9,9 @@ class ActorTest(TestCase):
 
         self.actor = Actor(self.name, self.occupations)
 
-
     def test_bio(self):
         bio = "Thomas Cruise is an American actor and producer. Primarily known for his work in action films, he has also received several accolades for more dramatic work, including three Golden Globe Awards and nominations for three Academy Awards. Cruise is one of the best-paid actors in the world, and his films have earned over $3.9 billion in North America; he is one of the highest-grossing actors of all time."
-        print(self.actor.info['bio'])
-        self.assertEqual(str(self.actor.info['bio']), self.actor.info['bio'])
+        self.assertEqual(bio, self.actor.info['bio'])
 
     def test_awards(self):
         awards = "Nominated for 3 Oscars."
@@ -28,15 +26,14 @@ class ActorTest(TestCase):
         interview = "https://www.imdb.com/video/imdb/vi2127215385?playlistId=nm0000129"
         self.assertEqual(self.actor.info['interview'], interview)
 
+"""
     def test_upcoming(self):
         upcoming = ["Luna Park",
-                "Mission: Impossible 8",
-                "Mission: Impossible 7",
-                "Live Die Repeat and Repeat",
-                "Top Gun: Maverick"
-            ]
+                    "Mission: Impossible 8",
+                    "Mission: Impossible 7",
+                    "Live Die Repeat and Repeat",
+                    "Top Gun: Maverick"]
         self.assertEqual(self.actor.info['upcoming'], upcoming)
-"""
     def test_titles_overview(self):
         overview = ["For Lieutenant Pete 'Maverick' Mitchell and his friend and co-pilot Nick 'Goose' Bradshaw, being accepted into an elite training school for fighter pilots is a dream come true. But a tragedy, as well as personal demons, will threaten Pete's dreams of becoming an ace pilot.",
                 "Nathan Algren is an American hired to instruct the Japanese army in the ways of modern warfare, which finds him learning to respect the samurai and the honorable principles that rule them. Pressed to destroy the samurai's way of life in the name of modernization and open trade, Algren decides to become an ultimate warrior himself and to fight for their right to exist.",

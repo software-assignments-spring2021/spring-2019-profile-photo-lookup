@@ -1,10 +1,12 @@
 import json
 import requests
+import re
 import googleapiclient.discovery
+from bs4 import BeautifulSoup
 
 class WikiAPI(object):
     
-    def search(self, keyword):
+    def get_bio(self, keyword):
         url = 'https://en.wikipedia.org/w/api.php'
         
         params = {
@@ -14,14 +16,31 @@ class WikiAPI(object):
             'namespace': 0,
             'format': "json"
         }
+
         response = requests.Session().get(url=url, params=params).json()
-        return response
+        url = response[3][0]
 
+        html = requests.get(url).content
+        page = BeautifulSoup(html, features="html.parser")
+        disambig = len(page.find_all("a", href="/wiki/Help:Disambiguation"))
 
-    def get_bio(self, keyword):
-        url = 'https://en.wikipedia.org/api/rest_v1/page/summary/' + keyword
-        response = requests.Session().get(url=url).json()
-        return response['extract']
+        wikiID = response[3][0].split('/')[-1]
+        if disambig > 0:
+            wikiID = self.handle_disambig(url)
+
+        url = 'https://en.wikipedia.org/api/rest_v1/page/summary/' + wikiID
+        bio = requests.Session().get(url=url).json()['extract']
+
+        return bio
+
+    def handle_disambig(self, url):
+        html = requests.get(url).content
+        page = BeautifulSoup(html, features="html.parser")
+
+        result = page.find_all("a", text = re.compile(r"((\(musician\))|(\(actor\))|(\(artist\)))"))[0]['href']
+        wikiID = result.split('/')[-1]
+
+        return wikiID
 
 
 class GoogleAPI(object):
@@ -41,13 +60,14 @@ class GoogleAPI(object):
             'imageType': 'face'
         }
 
-        response = requests.get(url, params=params).json()
+        #response = requests.get(url, params=params).json()
 
-        for result in response["items"]:
-            if result["image"]["height"] < result["image"]["width"]:
-                return(result["link"])
+        #for result in response["items"]:
+        #    if result["image"]["height"] < result["image"]["width"]:
+        #        return(result["link"])
         
-        return response["items"][0]["link"]
+        #return response["items"][0]["link"]
+        return "placeholder"
 
         
     def get_youtube_video(self, keyword):

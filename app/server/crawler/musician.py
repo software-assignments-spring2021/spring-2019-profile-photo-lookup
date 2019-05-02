@@ -21,10 +21,7 @@ class Musician(Celebrity):
 
 
     def get_bio(self):
-        data = WikiAPI().search(self.name)
-        wikiID = data[3][0].split('/')[-1]
-        bio = WikiAPI().get_bio(wikiID)
-        return bio
+        return WikiAPI().get_bio(self.name)
 
 
     def find_related_tracks(self, seed_genres):

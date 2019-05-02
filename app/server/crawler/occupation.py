@@ -43,8 +43,8 @@ def checkActor(name, wiki_desc):
 def checkPolitician(name, wiki_desc):
     roles = []
     rank = len(wiki_desc) + 1
-    if 'politician' in wiki_desc:
-        rank = min(rank, wiki_desc.index('politician'))
+    if 'politic' in wiki_desc:
+        rank = min(rank, wiki_desc.index('politic'))
         roles.append('Politician')
         pres= re.search("[\w]+ (president of the United States)", wiki_desc)
         world_leader= re.search("([A-Z][a-z]+ )+(of )(the )*([A-Z][a-z]+('s )*[of ]*)+", wiki_desc)
@@ -80,8 +80,7 @@ def checkAthlete(name, wiki_desc):
 
 def find_occupations(name):
 
-    data = WikiAPI().search(name)
-    wiki_desc = re.sub(r'[^\w\s]', ' ', data[2][0].lower())
+    wiki_desc = WikiAPI().get_bio(name)
     occupations = []
 
     # Musicians

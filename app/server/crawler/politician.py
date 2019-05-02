@@ -20,8 +20,7 @@ class Politician(Celebrity):
     def get_name(self, name):
         split_name= name.split(" ")
         last_name= split_name[1]
-        wiki_data = WikiAPI().search(name)
-        wiki_desc = wiki_data[2][0]
+        wiki_desc = WikiAPI().get_bio(name)
         first_para= wiki_desc.split(" ")
         first_name= first_para[0]
         new_name= first_name + " " + last_name
@@ -50,8 +49,7 @@ class Politician(Celebrity):
         info= {}
         if self.strategy != None:
             info= self.strategy.construct_profile(self)
-        wiki_data = WikiAPI().search(name)
-        wiki_desc = wiki_data[2][0]
+        wiki_desc = WikiAPI().get_bio(name)
         info['bio']= wiki_desc
         info['image']= GoogleAPI().get_image(name)
         return info
