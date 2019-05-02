@@ -34,6 +34,7 @@ def getPersonalLife(name):
             result = np.NaN
     return result
 
+'''
 #get award later
 #return string
 def getAwards(name):
@@ -47,8 +48,10 @@ def getAwards(name):
         except:
             result = np.NaN
     return result
+'''
 
 # Don't use this yet, return string
+'''
 def getExternalLinks(name):
     name_with_underscore, url_link = Athlete.getAthleteName(name)
     try:
@@ -58,6 +61,7 @@ def getExternalLinks(name):
         result = np.NaN
 
     return result
+'''
 
 # Get youtube highlight
 # Input example: "David Beckham Highlights"
@@ -89,8 +93,12 @@ def getVideo(name, num_of_results):
                 try:
                     result = json.dumps(v[i], sort_keys=True)
                     videoList.append(result)
-                    print(result)
                 except:
                     print("Cannot display format not in UTF-8!")
 
     return videoList
+
+
+#print(getSummary("David Beckham"))
+#print(getPersonalLife("David Beckham"))
+#print(getVideo("David Beckham",5))
