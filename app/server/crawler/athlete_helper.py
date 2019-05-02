@@ -1,4 +1,4 @@
-from .athlete import Athlete
+import athlete as Athlete
 import wikipedia
 import numpy as np
 import sys

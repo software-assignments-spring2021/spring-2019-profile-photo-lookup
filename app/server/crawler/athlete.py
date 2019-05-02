@@ -12,23 +12,24 @@ class Athlete:
         name_with_underscore = name.replace(" ", "_")
         request = PreparedRequest()
         request.prepare_url("https://en.wikipedia.org/wiki/", name)
-        url_link = "https://en.wikipedia.org/wiki/" + name
+        url_link = "https://en.wikipedia.org/wiki/" + name_with_underscore
         website_url = requests.get(url_link).text
         soup = BeautifulSoup(website_url, 'lxml')
 
-        this.name = name
-        this.name_with_underscore = name_with_unscore
-        this.page = soup
-        this.link = url_link
+        self.name = name
+        self.name_with_underscore = name_with_underscore
+        self.page = soup
+        self.link = url_link
 
-    def getNameWithUnderScore():
-        return this.name_with_unscore
+    def getNameWithUnderScore(self):
+        return self.name_with_underscore
 
-    def getPage():
-        return this.page
+    # Page could not be print. should be used from athlete_helper file
+    def getPage(self):
+        return self.page
 
-    def getLink():
-        return this.link
+    def getLink(self):
+        return self.link
 
 
 def getAthleteName(name):
