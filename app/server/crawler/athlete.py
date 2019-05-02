@@ -58,3 +58,8 @@ def makeCopy():
     pageInformation = PageInformation()
     pageInformationCopy = copy.deepcopy(pageInformation)
     return pageInformationCopy
+
+# Code Example: 
+#david = Athlete("David Beckham")
+#print(david.getNameWithUnderScore())
+#print(david.getLink())

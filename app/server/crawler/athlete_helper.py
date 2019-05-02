@@ -98,7 +98,7 @@ def getVideo(name, num_of_results):
 
     return videoList
 
-
+#Code Example
 #print(getSummary("David Beckham"))
 #print(getPersonalLife("David Beckham"))
 #print(getVideo("David Beckham",5))
