@@ -13,8 +13,8 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import SpotifyPlaylist from "./spotifyplaylist";
-
 import './musician.css'
+
 const styles = theme => ({
     card: {
         maxWidth: 500,
@@ -28,14 +28,14 @@ const styles = theme => ({
         fontSize: 20,
         fontWeight: "bold",
         textAlign: "center",
-        paddingBottom: 10  
+        paddingBottom: 10
     },
     heading: {
         fontSize: 20,
         fontStyle: "bold",
         textDecoration: "underline",
-        paddingBottom: 10,
-        paddingTop: 10
+        paddingBottom: 5,
+        paddingTop: 15
     },
     actions: {
         display: "flex"
@@ -49,6 +49,10 @@ const styles = theme => ({
     },
     expandOpen: {
         transform: "rotate(180deg)"
+    },
+    content: {
+        textTransform: "capitalize",
+        fontSize: 15,
     }
 });
 
@@ -79,12 +83,12 @@ class MusicianCard extends React.Component {
                 </Typography>
             </CardContent>
             <CardActions className={classes.actions} disableActionSpacing>
-                <IconButton aria-label="Add to favorites">
+                {/*}<IconButton aria-label="Add to favorites">
                     <FavoriteIcon />
                 </IconButton>
                 <IconButton aria-label="Share">
                     <ShareIcon />
-                </IconButton>
+                </IconButton>*/}
                 <IconButton
                     className={classnames(classes.expand, {
                     [classes.expandOpen]: this.state.expanded
@@ -99,17 +103,17 @@ class MusicianCard extends React.Component {
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                     <Typography className={classes.heading}>
-                        Top Tracks 
+                        Top Tracks
                     </Typography>
                     <SpotifyPlaylist url={celeb.info['top tracks']} />
                     <Typography className={classes.heading}>
                         Genres
                     </Typography>
                     <Typography>
-                        {celeb.info['genres'].map((item, index) => 
-                            <h1 key={index}>{item}</h1>
+                        {celeb.info['genres'].map((item, index) =>
+                            <div className={classes.content} key={index}>{item}</div>
                         )}
-                    </Typography>  
+                    </Typography>
                 </CardContent>
             </Collapse>
         </Card>

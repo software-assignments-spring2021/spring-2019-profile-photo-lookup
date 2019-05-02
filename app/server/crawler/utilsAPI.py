@@ -3,10 +3,10 @@ import requests
 import googleapiclient.discovery
 
 class WikiAPI(object):
-    
+
     def search(self, keyword):
         url = 'https://en.wikipedia.org/w/api.php'
-        
+
         params = {
             'action': "opensearch",
             'search': keyword,
@@ -25,7 +25,7 @@ class WikiAPI(object):
 
 
 class GoogleAPI(object):
-        
+
     def get_image(self, keyword):
         url = "https://www.googleapis.com/customsearch/v1"
         API_KEY = "AIzaSyD49c5nykh6f1HXBnujidJhi6tEbVwrksk"
@@ -46,10 +46,10 @@ class GoogleAPI(object):
         for result in response["items"]:
             if result["image"]["height"] < result["image"]["width"]:
                 return(result["link"])
-        
+
         return response["items"][0]["link"]
 
-        
+
     def get_youtube_video(self, keyword):
 
         DEVELOPER_KEY = "AIzaSyClNjMhsLYyFo-e3AqFeqgtjzA02cHfA2M"

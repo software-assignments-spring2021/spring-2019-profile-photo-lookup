@@ -26,13 +26,14 @@ const styles = theme => ({
         fontSize: 20,
         fontWeight: "bold",
         textAlign: "center",
-        paddingBottom: 10  
+        paddingBottom: 10
     },
     heading: {
         fontSize: 20,
         fontStyle: "bold",
         textDecoration: "underline",
-        paddingBottom: 10
+        paddingBottom: 5,
+        paddingTop: 15
     },
     actions: {
         display: "flex"
@@ -46,6 +47,10 @@ const styles = theme => ({
     },
     expandOpen: {
         transform: "rotate(180deg)"
+    },
+    content: {
+        textTransform: "capitalize",
+        fontSize: 15
     }
 });
 
@@ -76,12 +81,12 @@ class PoliticianCard extends React.Component {
                 </Typography>
             </CardContent>
             <CardActions className={classes.actions} disableActionSpacing>
-                <IconButton aria-label="Add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="Share">
-                    <ShareIcon />
-                </IconButton>
+            {/*}<IconButton aria-label="Add to favorites">
+                <FavoriteIcon />
+            </IconButton>
+            <IconButton aria-label="Share">
+                <ShareIcon />
+            </IconButton>*/}
                 <IconButton
                     className={classnames(classes.expand, {
                     [classes.expandOpen]: this.state.expanded
@@ -96,11 +101,17 @@ class PoliticianCard extends React.Component {
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                     <Typography className={classes.heading}>
-                            Heading/Title
+                        Party
                     </Typography>
                     <Typography>
-                        Info/Content blah blah blah
-                    </Typography>  
+                        <div className={classes.content}>{celeb.info['party']}</div>
+                    </Typography>
+                    <Typography className={classes.heading}>
+                        Birthday
+                    </Typography>
+                    <Typography>
+                        <div className={classes.content}>{celeb.info['birthday']}</div>
+                    </Typography>
                 </CardContent>
             </Collapse>
         </Card>

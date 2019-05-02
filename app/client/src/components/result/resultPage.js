@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
-
 import InfoCard from './card.js'
 import PoliticianCard from './politician/politician.js'
 import ActorCard from './actor/actor.js'
 import MusicianCard from './musician/musician.js'
 import AthleteCard from './athlete/athlete.js'
 import './resultPage.css';
-
 
 class ResultPage extends Component {
 
