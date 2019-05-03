@@ -46,12 +46,6 @@ def checkPolitician(name, wiki_desc):
     if 'politic' in wiki_desc:
         rank = min(rank, wiki_desc.index('politic'))
         roles.append('Politician')
-        pres= re.search("[\w]+ (president of the United States)", wiki_desc)
-        world_leader= re.search("([A-Z][a-z]+ )+(of )(the )*([A-Z][a-z]+('s )*[of ]*)+", wiki_desc)
-        if(pres):
-            roles.append(pres[0].title())
-        elif(world_leader):
-            roles.append(world_leader[0])
     return (rank, 'politician'), roles
 
 
