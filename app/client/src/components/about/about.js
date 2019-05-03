@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './about.css';
 
 class About extends Component {
-
     render() {
         return (
     <div className="about-page">
@@ -14,29 +13,35 @@ class About extends Component {
                 </h2>
                 <div className="card-deck">
   <div className="card">
-    <img className="card-img-top" src="https://timedotcom.files.wordpress.com/2017/06/tom-cruise1.jpg?quality=85" alt="Card image cap"></img>
+    <img className="card-img-top" src={require("./images/zach.jpg")} alt="Card image cap"></img>
     <div className="card-body">
       <h5 className="card-title">Zach Li</h5>
       <p className="card-text text-muted">CAS Class of 3000</p>
 
       <p className="card-text">Phasellus eget enim eu lectus faucibus vestibulum.</p>
+      <p><a href="#">Github</a> </p>
+      <p><a href="#">LinkedIn</a> </p>
     </div>
   </div>
   <div className="card">
-    <img className="card-img-top" src="https://timedotcom.files.wordpress.com/2017/06/tom-cruise1.jpg?quality=85" alt="Card image cap"></img>
+    <img className="card-img-top" src={require("./images/kayli.jpg")} alt="Card image cap"></img>
     <div className="card-body">
       <h5 className="card-title">Kayli O'Keefe</h5>
-      <p className="card-text text-muted">CAS Class of 3000</p>
+      <p className="card-text text-muted">CAS Class of 2019</p>
 
-      <p className="card-text">Phasellus eget enim eu lectus faucibus vestibulum..</p>
+      <p className="card-text">Kayli is getting ready to graduate with double majors in Psychology and Computer Science. She plans to work as a software developer in Saint Louis upon graduation.</p>
+      <p><a href="https://github.com/kokeefe32">Github</a> </p>
+      <p><a href="https://www.linkedin.com/in/kayli-okeefe/">LinkedIn</a> </p>
     </div>
   </div>
   <div className="card">
-    <img className="card-img-top" src="https://timedotcom.files.wordpress.com/2017/06/tom-cruise1.jpg?quality=85" alt="Card image cap"></img>
+    <img className="card-img-top" src={require("./images/amanda.jpg")} alt="Card image cap"></img>
     <div className="card-body">
       <h5 className="card-title">Amanda Labuda</h5>
       <p className="card-text text-muted">CAS Class of 3000</p>
       <p className="card-text">Phasellus eget enim eu lectus faucibus vestibulum.</p>
+      <p><a href="#">Github</a> </p>
+      <p><a href="#">LinkedIn</a> </p>
     </div>
   </div>
 
@@ -44,21 +49,25 @@ class About extends Component {
 
 
   <div className="card">
-    <img className="card-img-top" src="https://timedotcom.files.wordpress.com/2017/06/tom-cruise1.jpg?quality=85" alt="Card image cap"></img>
+    <img className="card-img-top" src={require("./images/khoojing.jpg")}alt="Card image cap"></img>
     <div className="card-body">
-      <h5 className="card-title">Jing Hwan</h5>
+      <h5 className="card-title">Khoo Jing Hwan</h5>
       <p className="card-text text-muted">CAS Class of 3000</p>
 
       <p className="card-text">Phasellus eget enim eu lectus faucibus vestibulum..</p>
+      <p><a href="#">Github</a> </p>
+      <p><a href="#">LinkedIn</a> </p>
     </div>
   </div>
   <div className="card">
-    <img className="card-img-top" src="https://timedotcom.files.wordpress.com/2017/06/tom-cruise1.jpg?quality=85" alt="Card image cap"></img>
+    <img className="card-img-top" src={require("./images/weijie.jpg")} alt="Card image cap"></img>
     <div className="card-body">
       <h5 className="card-title">Wei Jie Chua</h5>
       <p className="card-text text-muted">CAS Class of 3000</p>
 
       <p className="card-text">Phasellus eget enim eu lectus faucibus vestibulum.</p>
+      <p><a href="#">Github</a> </p>
+      <p><a href="#">LinkedIn</a> </p>
     </div>
   </div>
   
