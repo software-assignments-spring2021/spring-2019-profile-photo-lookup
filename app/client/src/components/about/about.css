@@ -26,3 +26,16 @@
 .about-link:hover {
     color: #015249;
 }
+
+
+.card-body{
+    color: black;
+}
+
+.card-deck{
+    margin: 100px;
+}
+.h5{
+    color: black;
+}
+
