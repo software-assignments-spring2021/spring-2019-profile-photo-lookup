@@ -73,7 +73,7 @@ def checkAthlete(name, wiki_desc):
 
 
 def find_occupations(name):
-
+    
     wiki_desc = WikiAPI().get_bio(name)
     occupations = []
 
@@ -98,7 +98,10 @@ def find_occupations(name):
     occupations.extend(result[1])
 
     # Determine Primary Occupation
-    rankings = [musician_rank, actor_rank, politician_rank, athlete_rank]
-    occID = min(rankings, key = lambda t: t[0])[1]
+    if musician_rank[0] == actor_rank[0] == politician_rank[0] == athlete_rank[0]:
+        occID = "other"
+    else:
+        rankings = [musician_rank, actor_rank, politician_rank, athlete_rank]
+        occID = min(rankings, key = lambda t: t[0])[1]
 
     return occID, occupations
