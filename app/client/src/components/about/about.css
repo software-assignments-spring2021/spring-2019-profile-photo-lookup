@@ -3,6 +3,7 @@
     min-width: 100vw;
     min-height: 100vh;
     background: linear-gradient(-45deg, #57BC90, #77C9D4);
+    padding-bottom: 50px;
 }
 
 .about-header {
@@ -25,4 +26,21 @@
 
 .about-link:hover {
     color: #015249;
+}
+
+.team-header {
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 0px;
+}
+
+.card-body{
+    color: black;
+}
+
+.card-deck{
+    margin: 100px;
+}
+.h5{
+    color: black;
 }
