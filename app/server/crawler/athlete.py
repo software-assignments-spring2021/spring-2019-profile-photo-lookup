@@ -15,9 +15,8 @@ from .wikiAPI import get_image
 # Refactored to have a cloneable class, so that information only need to be retrieved
 # once. When youtube information is included, this prototype will help save a lot of
 # bandwidth
-#(Pushed to the wrong branch, now rebranching)
+
 class Athlete(Celebrity):
-#class Athlete():
     def __init__(self, name, occupation):
         self.name = self.getName(name)
         self.name_with_underscore = self.getNameWithUnderScore(self.name)
@@ -152,7 +151,3 @@ def getVideo(name, num_of_results):
                     print("Cannot display format not in UTF-8!")
 
     return videoList
-
-
-#Code Example:
-#david = Athlete("lebron james", "athlete")
