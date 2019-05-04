@@ -150,4 +150,6 @@ def getVideo(name, num_of_results):
                 except:
                     print("Cannot display format not in UTF-8!")
 
+    for item in videoList:
+        item = json.loads(item)
     return videoList
