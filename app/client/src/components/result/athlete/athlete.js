@@ -12,6 +12,8 @@ import Typography from "@material-ui/core/Typography";
 // import FavoriteIcon from "@material-ui/icons/Favorite";
 // import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import YouTube from 'react-youtube';
+import _ from "lodash";
 
 const styles = theme => ({
     card: {
@@ -54,12 +56,60 @@ const styles = theme => ({
     }
 });
 
+const opts = {
+    width: '100%',
+    playerVars: { // https://developers.google.com/youtube/player_parameters
+        autoplay: 1
+    }
+};
+
 class AthleteCard extends React.Component {
     state = { expanded: false };
 
     handleExpandClick = () => {
         this.setState(state => ({ expanded: !state.expanded }));
     };
+
+    _onReady(event) {
+        // access to player in all event handlers via event.target
+        event.target.pauseVideo();
+    }
+
+    renderPersonalLife() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        return (
+            <div>
+                <Typography className={classes.heading}>
+                    Personal Life
+                </Typography>
+                <Typography component="div">
+                    {celeb.info['personal_life']}
+                </Typography>
+            </div>
+        );
+    }
+
+    renderHighlights() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+            if (!_.isEmpty(celeb.info['highlights'])) {
+            return (
+                <div>
+                    <Typography className={classes.heading}>
+                        Highlights
+                    </Typography>
+                    <Typography component="div">
+                        <YouTube
+                          videoId={celeb.info.highlights[0].id.videoID}
+                          opts={opts}
+                          onReady={this._onReady}
+                        />
+                    </Typography>
+                </div>
+            );
+        }
+    }
 
     render() {
         const classes = this.props.classes;
@@ -100,12 +150,8 @@ class AthleteCard extends React.Component {
             </CardActions>
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <Typography className={classes.heading}>
-                        Heading/Title
-                    </Typography>
-                    <Typography>
-                        Info/Content blah blah blah
-                    </Typography>
+                    {celeb.info.highlights ? this.renderHighlights() : null}}
+                    {celeb.info['personal_life'] ? this.renderPersonalLife() : null}}
                 </CardContent>
             </Collapse>
         </Card>
@@ -114,7 +160,7 @@ class AthleteCard extends React.Component {
 }
 
 AthleteCard.propTypes = {
-  classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(AthleteCard);
