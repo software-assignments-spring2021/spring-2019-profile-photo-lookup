@@ -9,9 +9,10 @@ import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
+// import FavoriteIcon from "@material-ui/icons/Favorite";
+// import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import _ from "lodash";
 
 const styles = theme => ({
     card: {
@@ -57,6 +58,44 @@ class ActorCard extends React.Component {
         this.setState(state => ({ expanded: !state.expanded }));
     };
 
+    renderTitles() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        if (!_.isEmpty(celeb.info['titles'])) {
+            return (
+                <div>
+                    <Typography className={classes.heading}>
+                        Titles
+                    </Typography>
+                    <Typography component="div">
+                        {celeb.info['titles'].map((item, i) =>
+                            <div className={classes.content} key={i}>{item}</div>
+                        )}
+                    </Typography>
+                </div>
+            );
+        }
+    }
+
+    renderUpcoming() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        if (!_.isEmpty(celeb.info['upcoming'])) {
+            return (
+                <div>
+                    <Typography className={classes.heading}>
+                        Upcoming
+                    </Typography>
+                    <Typography component="div">
+                        {celeb.info['upcoming'].map((item, i) =>
+                            <div className={classes.content} key={i}>{item}</div>
+                        )}
+                    </Typography>
+                </div>
+            );
+        }
+    }
+
     render() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
@@ -96,28 +135,8 @@ class ActorCard extends React.Component {
             </CardActions>
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <Typography className={classes.heading}>
-                        Awards
-                    </Typography>
-                    <Typography>
-                        <div className={classes.content}>{celeb.info['awards']}</div>
-                    </Typography>
-                    <Typography className={classes.heading}>
-                        Titles
-                    </Typography>
-                    <Typography>
-                        {celeb.info['titles'].map((item, index) =>
-                            <div className={classes.content} key={index}>{item}</div>
-                        )}
-                    </Typography>
-                    <Typography className={classes.heading}>
-                        Upcoming
-                    </Typography>
-                    <Typography>
-                        {celeb.info['upcoming'].map((item, index) =>
-                            <div className={classes.content} key={index}>{item}</div>
-                        )}
-                    </Typography>
+                    {celeb.info.titles ? this.renderTitles() : null}
+                    {celeb.info.upcoming ? this.renderUpcoming() : null}
                 </CardContent>
             </Collapse>
         </Card>
@@ -126,7 +145,7 @@ class ActorCard extends React.Component {
 }
 
 ActorCard.propTypes = {
-  classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(ActorCard);

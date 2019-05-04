@@ -19,6 +19,7 @@
     "react-spinners": "^0.5.4",
     "react-switch": "^4.1.0",
     "react-webcam": "^1.1.1",
+    "react-youtube": "^7.9.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"

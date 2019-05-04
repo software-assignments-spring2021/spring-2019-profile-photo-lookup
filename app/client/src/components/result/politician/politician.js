@@ -9,8 +9,8 @@ import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
+// import FavoriteIcon from "@material-ui/icons/Favorite";
+// import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const styles = theme => ({
@@ -61,6 +61,51 @@ class PoliticianCard extends React.Component {
         this.setState(state => ({ expanded: !state.expanded }));
     };
 
+    renderTitle() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        return (
+            <div>
+                <Typography className={classes.heading}>
+                    Title
+                </Typography>
+                <Typography component="div">
+                    <div className={classes.content}>{celeb.info['title']}</div>
+                </Typography>
+            </div>
+        );
+    }
+
+    renderParty() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        return (
+            <div>
+                <Typography className={classes.heading}>
+                    Party
+                </Typography>
+                <Typography component="div">
+                    <div className={classes.content}>{celeb.info['party']}</div>
+                </Typography>
+            </div>
+        );
+    }
+
+    renderBirthday() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        return (
+            <div>
+                <Typography className={classes.heading}>
+                    Party
+                </Typography>
+                <Typography component="div">
+                    <div className={classes.content}>{celeb.info['birthday']}</div>
+                </Typography>
+            </div>
+        );
+    }
+
     render() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
@@ -76,7 +121,7 @@ class PoliticianCard extends React.Component {
                 <Typography className={classes.name}>
                     {celeb.name}
                 </Typography>
-                <Typography component="p">
+                <Typography>
                     {celeb.info.bio}
                 </Typography>
             </CardContent>
@@ -100,18 +145,9 @@ class PoliticianCard extends React.Component {
             </CardActions>
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <Typography className={classes.heading}>
-                        Party
-                    </Typography>
-                    <Typography>
-                        <div className={classes.content}>{celeb.info['party']}</div>
-                    </Typography>
-                    <Typography className={classes.heading}>
-                       Birthday
-                   </Typography>
-                   <Typography>
-                       <div className={classes.content}>{celeb.info['birthday']}</div>
-                   </Typography>
+                    {celeb.info.title ? this.renderTitle() : null}
+                    {celeb.info.party ? this.renderParty() : null}
+                    {celeb.info.birthday ? this.renderBirthday() : null}
                 </CardContent>
             </Collapse>
         </Card>

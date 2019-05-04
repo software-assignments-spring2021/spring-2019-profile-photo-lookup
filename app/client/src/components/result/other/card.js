@@ -1,17 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import classnames from "classnames";
+// import classnames from "classnames";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
-import IconButton from "@material-ui/core/IconButton";
+// import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+// import FavoriteIcon from "@material-ui/icons/Favorite";
+// import ShareIcon from "@material-ui/icons/Share";
+// import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const styles = theme => ({
     card: {
@@ -24,9 +24,9 @@ const styles = theme => ({
     },
     name: {
         fontSize: 20,
-        fontStyle: "bold",
+        fontWeight: "bold",
         textAlign: "center",
-        paddingBottom: 10  
+        paddingBottom: 10
     },
     actions: {
         display: "flex"
@@ -40,6 +40,10 @@ const styles = theme => ({
     },
     expandOpen: {
         transform: "rotate(180deg)"
+    },
+    content: {
+        textTransform: "capitalize",
+        fontSize: 15,
     }
 });
 
@@ -58,18 +62,18 @@ class InfoCard extends React.Component {
             <CardMedia
                 className={classes.media}
                 image={this.props.celeb.info.image}
-                title="Paella dish"
+                title="Other"
             />
             <CardContent>
                 <Typography className={classes.name}>
                     {this.props.celeb.name}
                 </Typography>
-                <Typography component="p">
+                <Typography>
                     {this.props.celeb.info.bio}
                 </Typography>
             </CardContent>
             <CardActions className={classes.actions} disableActionSpacing>
-                <IconButton aria-label="Add to favorites">
+                {/*}<IconButton aria-label="Add to favorites">
                     <FavoriteIcon />
                 </IconButton>
                 <IconButton aria-label="Share">
@@ -83,14 +87,11 @@ class InfoCard extends React.Component {
                     aria-expanded={this.state.expanded}
                     aria-label="Show more"
                 >
-                <ExpandMoreIcon />
-                </IconButton>
+                    <ExpandMoreIcon />
+                </IconButton>*/}
             </CardActions>
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                <Typography component="p">
-                    {this.props.celeb.info.bio}
-                </Typography>
                 </CardContent>
             </Collapse>
         </Card>
