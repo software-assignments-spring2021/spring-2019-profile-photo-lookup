@@ -42,8 +42,7 @@ describe('todos reducer', () => {
                 students: []
             }
         )
-
-    })
+    });
 
     it('should handle GET_CELEBRITY_INFO', () => {
         expect(
@@ -65,7 +64,6 @@ describe('todos reducer', () => {
                 students: []
             }
         )
-
     });
 
     it('should handle UPLOAD_STUDENT_IMAGE', () => {
@@ -106,6 +104,5 @@ describe('todos reducer', () => {
                 }
             }
         )
-
     });
 })
