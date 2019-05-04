@@ -150,8 +150,8 @@ class AthleteCard extends React.Component {
             </CardActions>
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    {celeb.info.highlights ? this.renderHighlights() : null}}
-                    {celeb.info['personal_life'] ? this.renderPersonalLife() : null}}
+                    {celeb.info.highlights ? this.renderHighlights() : null}
+                    {celeb.info['personal_life'] ? this.renderPersonalLife() : null}
                 </CardContent>
             </Collapse>
         </Card>

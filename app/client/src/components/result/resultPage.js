@@ -50,41 +50,47 @@ class ResultPage extends Component {
     renderInfoCards() {
         var html = []
         let celebrities = this.props.celebs
+        let gridWidth = 4;
+        if (celebrities.length === 1) {
+            gridWidth = 12;
+        } else if (celebrities.length === 2) {
+            gridWidth = 6;
+        }
 
         for (var i = 0; i < celebrities.length; i++){
             let celeb = celebrities[i]
             switch(celeb.occID) {
                 case "actor":
                     html.push(
-                        <Grid item xs={4} key={i}>
+                        <Grid item xs={gridWidth} key={i}>
                             <ActorCard celeb={celeb} />
                         </Grid>
                     );
                     break;
                 case "athlete":
                     html.push(
-                        <Grid item xs={4} key={i}>
+                        <Grid item xs={gridWidth} key={i}>
                             <AthleteCard celeb={celeb} />
                         </Grid>
                     );
                     break;
                 case "musician":
                     html.push(
-                        <Grid item xs={4} key={i}>
+                        <Grid item xs={gridWidth} key={i}>
                             <MusicianCard celeb={celeb} />
                         </Grid>
                     );
                     break;
                 case "politician":
                     html.push(
-                        <Grid item xs={4} key={i}>
+                        <Grid item xs={gridWidth} key={i}>
                             <PoliticianCard celeb={celeb} />
                         </Grid>
                     );
                     break;
                 case "other":
                     html.push(
-                        <Grid item xs={4} key={i}>
+                        <Grid item xs={gridWidth} key={i}>
                             <InfoCard celeb={celeb} />
                         </Grid>
                     );
