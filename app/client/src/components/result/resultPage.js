@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid';
-
-import InfoCard from './card.js'
+import InfoCard from './other/card.js'
 import PoliticianCard from './politician/politician.js'
 import ActorCard from './actor/actor.js'
 import MusicianCard from './musician/musician.js'
 import AthleteCard from './athlete/athlete.js'
+import _ from 'lodash';
 import './resultPage.css';
 
 
@@ -177,7 +178,7 @@ class ResultPage extends Component {
 
     renderInfoCards() {
         var html = []
-        let celebrities = this.state.celebs
+        let celebrities = this.props.celebs
 
         for (var i = 0; i < celebrities.length; i++){
             let celeb = celebrities[i]
@@ -225,6 +226,9 @@ class ResultPage extends Component {
     }
 
     render() {
+        if (_.isEmpty(this.props.celebs)) {
+            return <Redirect to='/celebrity' />
+        }
         return (
             <div id="main-page">
                 <div id="bbox-image">

@@ -9,8 +9,8 @@ import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
+// import FavoriteIcon from "@material-ui/icons/Favorite";
+// import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const styles = theme => ({
@@ -26,7 +26,7 @@ const styles = theme => ({
         fontSize: 20,
         fontStyle: "bold",
         textAlign: "center",
-        paddingBottom: 10  
+        paddingBottom: 10
     },
     actions: {
         display: "flex"
@@ -40,6 +40,10 @@ const styles = theme => ({
     },
     expandOpen: {
         transform: "rotate(180deg)"
+    },
+    content: {
+        textTransform: "capitalize",
+        fontSize: 15,
     }
 });
 
@@ -69,12 +73,12 @@ class InfoCard extends React.Component {
                 </Typography>
             </CardContent>
             <CardActions className={classes.actions} disableActionSpacing>
-                <IconButton aria-label="Add to favorites">
+                {/*}<IconButton aria-label="Add to favorites">
                     <FavoriteIcon />
                 </IconButton>
                 <IconButton aria-label="Share">
                     <ShareIcon />
-                </IconButton>
+                </IconButton>*/}
                 <IconButton
                     className={classnames(classes.expand, {
                     [classes.expandOpen]: this.state.expanded
