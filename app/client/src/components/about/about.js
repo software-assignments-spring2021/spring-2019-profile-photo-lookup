@@ -36,8 +36,8 @@ class About extends Component {
                         <img className="card-img-top" src={require("./images/amanda.jpg")} alt="Amanda Labuda"></img>
                             <div className="card-body">
                                 <h5 className="card-title">Amanda Labuda</h5>
-                                <p className="card-text text-muted">CAS Class of 2021</p>
-                                <p className="card-text">Phasellus eget enim eu lectus faucibus vestibulum.</p>
+                                <p className="card-text text-muted">Tisch Class of 2020</p>
+                                <p className="card-text">Amanda is in her second year of double majoring in Dance and Computer Science. She will study dance abroad in Berlin over the summer, and she hopes to combine her interests for technology and the arts once graduated.</p>
                                 <p><a href="https://github.com/alabuda98">Github</a> </p>
                                 <p><a href="https://www.linkedin.com/in/amanda-labuda-029070185/">LinkedIn</a> </p>
                             </div>
