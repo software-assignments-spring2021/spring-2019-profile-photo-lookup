@@ -17,7 +17,10 @@ class About extends Component {
                         <div className="card-body">
                             <h5 className="card-title">Zach Li</h5>
                             <p className="card-text text-muted">CAS Class of 2020</p>
-                            <p className="card-text">Phasellus eget enim eu lectus faucibus vestibulum.</p>
+                            <p className="card-text">
+                                Zach is a junior at NYU studing computer science with minors in economics and mathematics. 
+                                He will intern with HERE technology this summer working on 3D mapping for autonomous vehicles.
+                            </p>
                             <p><a href="https://github.com/zichenli6">Github</a> </p>
                             <p><a href="https://www.linkedin.com/in/zichenli/">LinkedIn</a> </p>
                         </div>
