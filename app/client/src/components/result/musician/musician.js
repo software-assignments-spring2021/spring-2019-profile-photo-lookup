@@ -63,6 +63,39 @@ class MusicianCard extends React.Component {
         this.setState(state => ({ expanded: !state.expanded }));
     };
 
+    renderTopTracks() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        return (
+            <div>
+                <Typography className={classes.heading}>
+                    Top Tracks
+                </Typography>
+                <SpotifyPlaylist url={celeb.info['top tracks']} />
+            </div>
+        );
+    }
+
+    renderGenres() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        return (
+            <div>
+                <Typography className={classes.heading}>
+                    Genres
+                </Typography>
+                <Typography component="div">
+                    {celeb.info['genres'].map((item, index) =>
+                        <div className={classes.content} key={index}>{item}</div>
+                    )}
+                </Typography>
+            </div>
+        );
+    }
+
+
+
+
     render() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
@@ -102,18 +135,8 @@ class MusicianCard extends React.Component {
             </CardActions>
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <Typography className={classes.heading}>
-                        Top Tracks
-                    </Typography>
-                    <SpotifyPlaylist url={celeb.info['top tracks']} />
-                    <Typography className={classes.heading}>
-                        Genres
-                    </Typography>
-                    <Typography component="div">
-                        {celeb.info['genres'].map((item, index) =>
-                            <div className={classes.content} key={index}>{item}</div>
-                        )}
-                    </Typography>
+                    {celeb.info['top tracks'] ? this.renderTopTracks() : null}
+                    {celeb.info.genres ? this.renderGenres() : null}
                 </CardContent>
             </Collapse>
         </Card>

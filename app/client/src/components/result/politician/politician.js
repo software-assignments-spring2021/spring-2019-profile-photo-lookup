@@ -73,7 +73,7 @@ class PoliticianCard extends React.Component {
                     <div className={classes.content}>{celeb.info['title']}</div>
                 </Typography>
             </div>
-        )
+        );
     }
 
     renderParty() {
@@ -88,7 +88,7 @@ class PoliticianCard extends React.Component {
                     <div className={classes.content}>{celeb.info['party']}</div>
                 </Typography>
             </div>
-        )
+        );
     }
 
     renderBirthday() {
@@ -103,7 +103,7 @@ class PoliticianCard extends React.Component {
                     <div className={classes.content}>{celeb.info['birthday']}</div>
                 </Typography>
             </div>
-        )
+        );
     }
 
     render() {

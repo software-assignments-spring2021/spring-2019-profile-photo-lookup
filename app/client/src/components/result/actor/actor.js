@@ -57,6 +57,40 @@ class ActorCard extends React.Component {
         this.setState(state => ({ expanded: !state.expanded }));
     };
 
+    renderTitles() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        return (
+            <div>
+                <Typography className={classes.heading}>
+                    Titles
+                </Typography>
+                <Typography component="div">
+                    {celeb.info['titles'].map((item, i) =>
+                        <div className={classes.content} key={i}>{item}</div>
+                    )}
+                </Typography>
+            </div>
+        );
+    }
+
+    renderUpcoming() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        return (
+            <div>
+                <Typography className={classes.heading}>
+                    Upcoming
+                </Typography>
+                <Typography component="div">
+                    {celeb.info['upcoming'].map((item, i) =>
+                        <div className={classes.content} key={i}>{item}</div>
+                    )}
+                </Typography>
+            </div>
+        );
+    }
+
     render() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
@@ -96,28 +130,8 @@ class ActorCard extends React.Component {
             </CardActions>
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <Typography className={classes.heading}>
-                        Awards
-                    </Typography>
-                    <Typography component="div">
-                        <div className={classes.content}>{celeb.info['awards']}</div>
-                    </Typography>
-                    <Typography className={classes.heading}>
-                        Titles
-                    </Typography>
-                    <Typography>
-                        {celeb.info['titles'].map((item, index) =>
-                            <div className={classes.content} key={index}>{item}</div>
-                        )}
-                    </Typography>
-                    <Typography className={classes.heading}>
-                        Upcoming
-                    </Typography>
-                    <Typography component="div">
-                        {celeb.info['upcoming'].map((item, index) =>
-                            <div className={classes.content} key={index}>{item}</div>
-                        )}
-                    </Typography>
+                    {celeb.info.titles ? this.renderTitles() : null}
+                    {celeb.info.upcoming ? this.renderUpcoming() : null}
                 </CardContent>
             </Collapse>
         </Card>
