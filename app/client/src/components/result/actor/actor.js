@@ -99,7 +99,7 @@ class ActorCard extends React.Component {
                     <Typography className={classes.heading}>
                         Awards
                     </Typography>
-                    <Typography>
+                    <Typography component="div">
                         <div className={classes.content}>{celeb.info['awards']}</div>
                     </Typography>
                     <Typography className={classes.heading}>
@@ -113,7 +113,7 @@ class ActorCard extends React.Component {
                     <Typography className={classes.heading}>
                         Upcoming
                     </Typography>
-                    <Typography>
+                    <Typography component="div">
                         {celeb.info['upcoming'].map((item, index) =>
                             <div className={classes.content} key={index}>{item}</div>
                         )}

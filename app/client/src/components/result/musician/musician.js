@@ -109,7 +109,7 @@ class MusicianCard extends React.Component {
                     <Typography className={classes.heading}>
                         Genres
                     </Typography>
-                    <Typography>
+                    <Typography component="div">
                         {celeb.info['genres'].map((item, index) =>
                             <div className={classes.content} key={index}>{item}</div>
                         )}
