@@ -10,7 +10,8 @@ from .celebrity import Celebrity
 import googleapiclient.discovery
 from requests.models import PreparedRequest
 from bs4 import BeautifulSoup
-from .wikiAPI import get_image
+from .utilsAPI import GoogleAPI
+
 
 # Refactored to have a cloneable class, so that information only need to be retrieved
 # once. When youtube information is included, this prototype will help save a lot of
@@ -53,7 +54,7 @@ class Athlete(Celebrity):
        self.personal_life  = getPersonalLife(name)
        self.highlights = getVideo(name, 1)
        try:
-           self.image = get_image(name)
+           self.image = GoogleAPI.get_image(name)
        except:
            self.image = None
        info = {
@@ -149,7 +150,8 @@ def getVideo(name, num_of_results):
                     videoList.append(result)
                 except:
                     print("Cannot display format not in UTF-8!")
-
+    result = []
     for item in videoList:
-        item = json.loads(item)
-    return videoList
+        new_item = json.loads(item)
+        result.append(new_item)
+    return result
