@@ -9,16 +9,16 @@ import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-// import FavoriteIcon from "@material-ui/icons/Favorite";
-// import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import SpotifyPlaylist from "./spotifyplaylist";
+import Grid from '@material-ui/core/Grid';
+import YouTube from 'react-youtube';
 import _ from "lodash";
 import './musician.css';
 
 const styles = theme => ({
     card: {
-        maxWidth: 500,
+        maxWidth: 700,
         margin: "auto",
     },
     media: {
@@ -26,17 +26,36 @@ const styles = theme => ({
         paddingTop: "56.25%" // 16:9
     },
     name: {
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: "bold",
         textAlign: "center",
         paddingBottom: 10
     },
+    bio:{
+        fontSize: 15
+    },
+    info: {
+        paddingBottom: 15
+    },
     heading: {
         fontSize: 20,
-        fontStyle: "bold",
+        fontWeight: "bold",
         textDecoration: "underline",
-        paddingBottom: 5,
+        paddingBottom: 10,
         paddingTop: 15
+    },
+    relatedImg: {
+        width: "150px",
+        height: "auto"
+    },
+    relatedName: {
+        textAlign: "center",
+        fontSize: 17
+    },
+    genres: {
+        textAlign: "center",
+        textTransform: "capitalize",
+        fontSize: 25 
     },
     actions: {
         display: "flex"
@@ -50,12 +69,13 @@ const styles = theme => ({
     },
     expandOpen: {
         transform: "rotate(180deg)"
-    },
-    content: {
-        textTransform: "capitalize",
-        fontSize: 15,
     }
 });
+
+const opts = {
+    width: '100%',
+    playerVars: {autoplay: 0}
+};
 
 class MusicianCard extends React.Component {
     state = { expanded: false };
@@ -64,15 +84,32 @@ class MusicianCard extends React.Component {
         this.setState(state => ({ expanded: !state.expanded }));
     };
 
+    _onReady(event) {
+        event.target.pauseVideo();
+    }
+
     renderTopTracks() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
         return (
-            <div>
+            <div className={classes.info}>
                 <Typography className={classes.heading}>
                     Top Tracks
                 </Typography>
                 <SpotifyPlaylist url={celeb.info['top tracks']} />
+            </div>
+        );
+    }
+
+    renderRelatedTracks() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        return (
+            <div className={classes.info}>
+                <Typography className={classes.heading}>
+                    Related Tracks
+                </Typography>
+                <SpotifyPlaylist url={celeb.info['related tracks']} />
             </div>
         );
     }
@@ -82,17 +119,67 @@ class MusicianCard extends React.Component {
         const celeb = this.props.celeb;
         if (!_.isEmpty(celeb.info['genres'])) {
             return (
-                <div>
+                <div className={classes.info}>
                     <Typography className={classes.heading}>
                         Genres
                     </Typography>
                     <Typography component="div">
                         {celeb.info['genres'].map((item, index) =>
-                            <div className={classes.content} key={index}>{item}</div>
+                            <p className={classes.genres} key={index}>{item}</p>
                         )}
                     </Typography>
                 </div>
             );
+        }
+    }
+
+    renderMusicVideo() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+            if (!_.isEmpty(celeb.info["video"])) {
+            return (
+                <div className={classes.info}>
+                    <Typography className={classes.heading}>
+                        Music Video
+                    </Typography>
+                    <Typography component="div">
+                        <YouTube
+                            videoId={celeb.info.video}
+                            opts={opts}
+                            onReady={this._onReady}
+                        />
+                    </Typography>
+                </div>
+            );
+        }
+    }
+
+    renderRelatedArtists() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+            if (!_.isEmpty(celeb.info["related artists"])) {
+                const artists =  celeb.info["related artists"];
+                return (
+                    <div className={classes.info}>
+                        <Typography className={classes.heading}>
+                            Related Artists
+                        </Typography>
+                        <Grid container spacing={24}>
+                            <Grid item xs={4}>
+                                <img src= {artists[0].image.url} className = {classes.relatedImg} ></img>
+                                <p className = {classes.relatedName}> {artists[0].name} </p>
+                            </Grid>
+                            <Grid item xs={4} >
+                                <img src= {artists[1].image.url} className = {classes.relatedImg} ></img>
+                                <p className = {classes.relatedName}> {artists[1].name} </p>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <img src= {artists[2].image.url} className = {classes.relatedImg} ></img>
+                                <p className = {classes.relatedName}> {artists[2].name} </p>
+                            </Grid>
+                        </Grid>
+                    </div>
+                );
         }
     }
 
@@ -111,17 +198,11 @@ class MusicianCard extends React.Component {
                 <Typography className={classes.name}>
                     {celeb.name}
                 </Typography>
-                <Typography component="p">
+                <Typography className={classes.bio}>
                     {celeb.info.bio}
                 </Typography>
             </CardContent>
             <CardActions className={classes.actions} disableActionSpacing>
-                {/*}<IconButton aria-label="Add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="Share">
-                    <ShareIcon />
-                </IconButton>*/}
                 <IconButton
                     className={classnames(classes.expand, {
                     [classes.expandOpen]: this.state.expanded
@@ -137,6 +218,9 @@ class MusicianCard extends React.Component {
                 <CardContent>
                     {celeb.info['top tracks'] ? this.renderTopTracks() : null}
                     {celeb.info.genres ? this.renderGenres() : null}
+                    {celeb.info.video ? this.renderMusicVideo() : null}
+                    {celeb.info["related artists"] ? this.renderRelatedArtists() : null}
+                    {celeb.info['related tracks'] ? this.renderRelatedTracks() : null}
                 </CardContent>
             </Collapse>
         </Card>

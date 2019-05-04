@@ -76,7 +76,7 @@ class GoogleAPI(object):
             "youtube", "v3", developerKey = DEVELOPER_KEY)
 
         sort = "relevance"
-        publishedTime = "1990-01-01T00:00:00Z"
+        publishedTime = "2000-01-01T00:00:00Z"
 
         if occupation == "athlete":
             sort = "relevance"
@@ -85,8 +85,8 @@ class GoogleAPI(object):
             sort = "relevance"
             publishedTime = "2019-01-01T00:00:00Z"
         elif occupation == "musician":
-            sort = "viewCount"
-            publishedTime = "1990-01-01T00:00:00Z"
+            sort = "relevance"
+            publishedTime = "2000-01-01T00:00:00Z"
 
         query =  keyword
         request = youtube.search().list(
@@ -99,6 +99,6 @@ class GoogleAPI(object):
 
         response = request.execute()
         videoID = response["items"][0]["id"]["videoId"]
-        url = "https://www.youtube.com/embed/" + videoID
+        # url = "https://www.youtube.com/embed/" + videoID
 
-        return url
+        return videoID

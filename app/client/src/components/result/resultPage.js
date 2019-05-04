@@ -103,7 +103,6 @@ class ResultPage extends Component {
         return (
             <div id="main-page">
                 <div id="bbox-image">
-                    {/*}<img src={require("./celeb.jpg")} alt="bbox"/>*/}
                     <canvas ref="resultcanvas" id="result-uploaded-img" />
                 </div>
                 <div id="result-section">

@@ -63,6 +63,7 @@ class Musician(Celebrity):
         info['top tracks'] = "https://open.spotify.com/embed/artist/" + artistID
         info['related artists'] = self.find_related_artists(artistID)
         info['related tracks'] = self.find_related_tracks(info['genres'])
+        info['video'] = GoogleAPI().get_youtube_video(self.name + "music video (official)", "musician")
 
         return info
 
