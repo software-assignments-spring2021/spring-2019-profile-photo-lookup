@@ -9,6 +9,8 @@ from bs4 import BeautifulSoup
 #(Pushed to the wrong branch, now rebranching)
 class Athlete:
     def __init__(self, name):
+        name = name.lower()
+        name = name.title()
         name_with_underscore = name.replace(" ", "_")
         request = PreparedRequest()
         request.prepare_url("https://en.wikipedia.org/wiki/", name)
@@ -59,7 +61,7 @@ def makeCopy():
     pageInformationCopy = copy.deepcopy(pageInformation)
     return pageInformationCopy
 
-# Code Example: 
-#david = Athlete("David Beckham")
+# Code Example:
+#david = Athlete("lebron james")
 #print(david.getNameWithUnderScore())
 #print(david.getLink())
