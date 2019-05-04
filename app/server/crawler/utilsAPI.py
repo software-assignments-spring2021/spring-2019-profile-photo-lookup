@@ -51,7 +51,7 @@ class GoogleAPI(object):
         ID = "013224824088471738258:vahaiv5q6kk"
 
         params = {
-            'q': keyword + " 16 by 9",
+            'q': keyword,
             'cx': ID,
             'key': API_KEY,
             'searchType': 'image',
@@ -60,28 +60,45 @@ class GoogleAPI(object):
             'imageType': 'face'
         }
 
-        #response = requests.get(url, params=params).json()
+        response = requests.get(url, params=params).json()
 
-        #for result in response["items"]:
-        #    if result["image"]["height"] < result["image"]["width"]:
-        #        return(result["link"])
+        for result in response["items"]:
+            if result["image"]["height"] < result["image"]["width"]:
+                return(result["link"])
         
-        #return response["items"][0]["link"]
-        return "placeholder"
+        return response["items"][0]["link"]
 
         
-    def get_youtube_video(self, keyword):
+    def get_youtube_video(self, keyword, occupation):
 
         DEVELOPER_KEY = "AIzaSyClNjMhsLYyFo-e3AqFeqgtjzA02cHfA2M"
         youtube = googleapiclient.discovery.build(
             "youtube", "v3", developerKey = DEVELOPER_KEY)
 
-        query =  keyword + "trailer"
+        sort = "relevance"
+        publishedTime = "1990-01-01T00:00:00Z"
+
+        if occupation == "athlete":
+            sort = "relevance"
+            publishedTime = "2010-01-01T00:00:00Z"
+        elif occupation == "actor":
+            sort = "relevance"
+            publishedTime = "2019-01-01T00:00:00Z"
+        elif occupation == "musician":
+            sort = "viewCount"
+            publishedTime = "1990-01-01T00:00:00Z"
+
+        query =  keyword
         request = youtube.search().list(
             part = "snippet",
-            q = query
+            q = query,
+            maxResults = 1,
+            order = sort,
+            publishedAfter = publishedTime
         )
 
         response = request.execute()
+        videoID = response["items"][0]["id"]["videoId"]
+        url = "https://www.youtube.com/embed/" + videoID
 
-        print(json.dumps(response, indent=4, sort_keys=True))
+        return url
