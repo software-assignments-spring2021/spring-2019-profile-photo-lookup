@@ -35,6 +35,8 @@ class Athlete:
 
 
 def getAthleteName(name):
+    name = name.lower()
+    name = name.title()
     name = name.replace(" ", "_")
     request = PreparedRequest()
     request.prepare_url("https://en.wikipedia.org/wiki/", name)
@@ -43,6 +45,8 @@ def getAthleteName(name):
     return name, url_link
 
 def getPage(name):
+    name = name.lower()
+    name = name.title()
     name = name.replace(" ", "_")
     url_link = "https://en.wikipedia.org/wiki/" + name
     website_url = requests.get(url_link).text
@@ -50,6 +54,8 @@ def getPage(name):
     return(soup)
 
 def getLink(name):
+    name = name.lower()
+    name = name.title()
     request = PreparedRequest()
     request.prepare_url("https://en.wikipedia.org/wiki/", name)
 

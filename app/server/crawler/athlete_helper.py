@@ -13,6 +13,8 @@ awards = ['Award', 'Awards', 'award', 'awards']
 #input example: "David Beckham"
 #return string
 def getSummary(name):
+    name = name.lower()
+    name = name.title()
     name_with_underscore,url_link = Athlete.getAthleteName(name)
     try:
         result = wikipedia.WikipediaPage(title=name_with_underscore).summary
@@ -23,6 +25,8 @@ def getSummary(name):
 
 #return string
 def getPersonalLife(name):
+    name = name.lower()
+    name = name.title()
     name_with_underscore,url_link = Athlete.getAthleteName(name)
     for i in personal_life:
         try:
@@ -38,6 +42,8 @@ def getPersonalLife(name):
 #get award later
 #return string
 def getAwards(name):
+    name = name.lower()
+    name = name.title()
     name_with_underscore,url_link = Athlete.getAthleteName(name)
     for i in awards:
         try:
@@ -53,6 +59,8 @@ def getAwards(name):
 # Don't use this yet, return string
 '''
 def getExternalLinks(name):
+    name = name.lower()
+    name = name.title()
     name_with_underscore, url_link = Athlete.getAthleteName(name)
     try:
         result = wikipedia.WikipediaPage(name_with_underscore).section('External links')
@@ -68,6 +76,8 @@ def getExternalLinks(name):
 # return a list of Json object, each containing the file
 def getVideo(name, num_of_results):
     videoList = []
+    name = name.lower()
+    name = name.title()
     query = name + "highlights"
     # Disable OAuthlib's HTTPS verification when running locally.
     # *DO NOT* leave this option enabled in production.
