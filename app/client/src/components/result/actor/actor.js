@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 // import FavoriteIcon from "@material-ui/icons/Favorite";
 // import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import _ from "lodash";
 
 const styles = theme => ({
     card: {
@@ -60,35 +61,39 @@ class ActorCard extends React.Component {
     renderTitles() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
-        return (
-            <div>
-                <Typography className={classes.heading}>
-                    Titles
-                </Typography>
-                <Typography component="div">
-                    {celeb.info['titles'].map((item, i) =>
-                        <div className={classes.content} key={i}>{item}</div>
-                    )}
-                </Typography>
-            </div>
-        );
+        if (!_.isEmpty(celeb.info['titles'])) {
+            return (
+                <div>
+                    <Typography className={classes.heading}>
+                        Titles
+                    </Typography>
+                    <Typography component="div">
+                        {celeb.info['titles'].map((item, i) =>
+                            <div className={classes.content} key={i}>{item}</div>
+                        )}
+                    </Typography>
+                </div>
+            );
+        }
     }
 
     renderUpcoming() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
-        return (
-            <div>
-                <Typography className={classes.heading}>
-                    Upcoming
-                </Typography>
-                <Typography component="div">
-                    {celeb.info['upcoming'].map((item, i) =>
-                        <div className={classes.content} key={i}>{item}</div>
-                    )}
-                </Typography>
-            </div>
-        );
+        if (!_.isEmpty(celeb.info['upcoming'])) {
+            return (
+                <div>
+                    <Typography className={classes.heading}>
+                        Upcoming
+                    </Typography>
+                    <Typography component="div">
+                        {celeb.info['upcoming'].map((item, i) =>
+                            <div className={classes.content} key={i}>{item}</div>
+                        )}
+                    </Typography>
+                </div>
+            );
+        }
     }
 
     render() {

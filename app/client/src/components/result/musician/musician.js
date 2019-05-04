@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 // import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import SpotifyPlaylist from "./spotifyplaylist";
+import _ from "lodash";
 import './musician.css';
 
 const styles = theme => ({
@@ -79,22 +80,21 @@ class MusicianCard extends React.Component {
     renderGenres() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
-        return (
-            <div>
-                <Typography className={classes.heading}>
-                    Genres
-                </Typography>
-                <Typography component="div">
-                    {celeb.info['genres'].map((item, index) =>
-                        <div className={classes.content} key={index}>{item}</div>
-                    )}
-                </Typography>
-            </div>
-        );
+        if (!_.isEmpty(celeb.info['genres'])) {
+            return (
+                <div>
+                    <Typography className={classes.heading}>
+                        Genres
+                    </Typography>
+                    <Typography component="div">
+                        {celeb.info['genres'].map((item, index) =>
+                            <div className={classes.content} key={index}>{item}</div>
+                        )}
+                    </Typography>
+                </div>
+            );
+        }
     }
-
-
-
 
     render() {
         const classes = this.props.classes;
