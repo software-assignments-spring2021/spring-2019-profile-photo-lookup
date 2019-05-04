@@ -26,13 +26,14 @@ const styles = theme => ({
         fontSize: 20,
         fontWeight: "bold",
         textAlign: "center",
-        paddingBottom: 10  
+        paddingBottom: 10
     },
     heading: {
         fontSize: 20,
         fontStyle: "bold",
         textDecoration: "underline",
-        paddingBottom: 10
+        paddingBottom: 5,
+        paddingTop: 15
     },
     actions: {
         display: "flex"
@@ -46,6 +47,10 @@ const styles = theme => ({
     },
     expandOpen: {
         transform: "rotate(180deg)"
+    },
+    content: {
+        textTransform: "capitalize",
+        fontSize: 15,
     }
 });
 
@@ -76,12 +81,12 @@ class AthleteCard extends React.Component {
                 </Typography>
             </CardContent>
             <CardActions className={classes.actions} disableActionSpacing>
-                <IconButton aria-label="Add to favorites">
+                {/*}<IconButton aria-label="Add to favorites">
                     <FavoriteIcon />
                 </IconButton>
                 <IconButton aria-label="Share">
                     <ShareIcon />
-                </IconButton>
+                </IconButton>*/}
                 <IconButton
                     className={classnames(classes.expand, {
                     [classes.expandOpen]: this.state.expanded
@@ -100,7 +105,7 @@ class AthleteCard extends React.Component {
                     </Typography>
                     <Typography>
                         Info/Content blah blah blah
-                    </Typography>  
+                    </Typography>
                 </CardContent>
             </Collapse>
         </Card>

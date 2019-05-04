@@ -1,7 +1,8 @@
 import re
 import requests
-from .wikiAPI import search_wiki
 from bs4 import BeautifulSoup
+
+from .utilsAPI import WikiAPI, GoogleAPI
 
 MUSICIAN = ['Musician', 'Singer', 'Songwriter', 'DJ']
 
@@ -42,15 +43,9 @@ def checkActor(name, wiki_desc):
 def checkPolitician(name, wiki_desc):
     roles = []
     rank = len(wiki_desc) + 1
-    if 'politician' in wiki_desc:
-        rank = min(rank, wiki_desc.index('politician'))
+    if 'politic' in wiki_desc:
+        rank = min(rank, wiki_desc.index('politic'))
         roles.append('Politician')
-        pres= re.search("[\w]+ (president of the United States)", wiki_desc)
-        world_leader= re.search("([A-Z][a-z]+ )+(of )(the )*([A-Z][a-z]+('s )*[of ]*)+", wiki_desc)
-        if(pres):
-            roles.append(pres[0].title())
-        elif(world_leader):
-            roles.append(world_leader[0])
     return (rank, 'politician'), roles
 
 
@@ -78,9 +73,8 @@ def checkAthlete(name, wiki_desc):
 
 
 def find_occupations(name):
-
-    data = search_wiki(name)
-    wiki_desc = re.sub(r'[^\w\s]', ' ', data[2][0].lower())
+    
+    wiki_desc = WikiAPI().get_bio(name)
     occupations = []
 
     # Musicians
@@ -104,7 +98,10 @@ def find_occupations(name):
     occupations.extend(result[1])
 
     # Determine Primary Occupation
-    rankings = [musician_rank, actor_rank, politician_rank, athlete_rank]
-    occID = min(rankings, key = lambda t: t[0])[1]
+    if musician_rank[0] == actor_rank[0] == politician_rank[0] == athlete_rank[0]:
+        occID = "other"
+    else:
+        rankings = [musician_rank, actor_rank, politician_rank, athlete_rank]
+        occID = min(rankings, key = lambda t: t[0])[1]
 
     return occID, occupations

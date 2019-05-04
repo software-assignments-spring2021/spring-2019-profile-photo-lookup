@@ -1,204 +1,119 @@
 import abc
+import json
 import requests 
 
 class PoliticianStrategyAbstract(object):
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def find_role(self, politician):
-        pass
+    def __init__(self, member):
+        self.member = member
+
     @abc.abstractmethod
-    def construct_profile(self, politician):
+    def collect_info(self):
         pass
 
 class HouseRepStrategy(PoliticianStrategyAbstract):
-    def find_role(self, politician):
-        name = politician.name.split(" ")
-        headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
+    def collect_info(self):
+        member = self.member
+        info = {
+            "title": "U.S Representative",
+            "party": find_party(member["party"]),
+            "state": member["state"],
+            "website": member["url"],
+            "twitter": member["twitter_account"],
+            "facebook": member["facebook_account"],
+            "phone": member["phone"],
+            "address": member["office"],
+            "loyalty": member["votes_with_party_pct"]
+        }
 
-        member_ID= 0
-        x=115
-        while x>102:
-            add_on= str(x)+ "/house/members"
-            url= "https://api.propublica.org/congress/v1/" + add_on
-            response= requests.get(url, headers=headers)
-            data= response.json()
-            results= data["results"]
-            result= results[0]
-
-            first_name= name[0]
-            last_name= name[1]
-            congresses= data["results"]
-            congress= congresses[0]
-            check_found=0
-            members= congress["members"]
-            for member in members:
-                if(member["last_name"]==last_name):
-                    if(member["first_name"]== first_name):
-                        member_ID= member["id"]
-                        return member_ID
-            x=x-1
-        return member_ID    
-    
-    def construct_profile(self, politician):
-        profile= {}
-        headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
-        str_id= str(politician.member_ID)
-        url= "https://api.propublica.org/congress/v1/" + "members/" + str_id
-        response= requests.get(url, headers=headers)
-        data= response.json()
-        result= data["results"]
-        member= result[0]
-        profile= {}
-        if(member["middle_name"]):
-            profile['name']= member["first_name"] + " " + member["middle_name"] + " " + member["last_name"]
-        else:
-            profile['name']= member["first_name"] + " " +  member["last_name"]
-        profile['party']= ""
-        if member["current_party"]== "R":
-            profile['party']= "Republican"
-        elif member["current_party"]== "D":
-            profile['party']= "Democrat"
-        else:
-            profile['party']= "Other"
-        roles_list= member["roles"]
-        roles= roles_list[0]
-        profile['title']= "U.S. " + roles["chamber"] + ", " + roles["title"]
-        profile['state']= roles["state"]
-        profile['service_span']=[]
-        profile['service_span'].append("From " + roles["start_date"]+ " to " + roles["end_date"])
-        profile['website']= member["url"]
-        if(member["twitter_account"]):
-            profile['twitter']= "@" + member["twitter_account"]
-        profile['facebook']= member["facebook_account"]
-        profile['address']= roles["office"]
-        profile['phone']= roles["phone"]
-        committees=[]
-        for committee in roles["committees"]:
-            committees.append(committee["name"])
-        profile['committees']=committees
-        return(profile)
+        return info
 
     def __str__(self):
-        return "House Rep"
+        return "House"
 
 class SenateRepStrategy(PoliticianStrategyAbstract):
-    def find_role(self, politician):
-        new_name = politician.name.split()
-        headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
-
-        member_ID= 0
-        x=115
-        while x>79:
-            add_on= str(x)+ "/senate/members"
-            url= "https://api.propublica.org/congress/v1/" + add_on
-            response= requests.get(url, headers=headers)
-            data= response.json()
-            results= data["results"]
-            result= results[0]
-
-            first_name= new_name[0]
-            last_name= new_name[1]
-            congresses= data["results"]
-            congress= congresses[0]
-            check_found=0
-            members= congress["members"]
-            for member in members:
-                if(member["last_name"]==last_name):
-                    if(member["first_name"]== first_name):
-                        member_ID= member["id"]
-                        return member_ID           
-            x=x-1
-        return member_ID
-
-    def construct_profile(self, politician):
-        profile= {}
-        headers = {"X-API-Key":"KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
-        str_id= str(politician.member_ID)
-        url= "https://api.propublica.org/congress/v1/" + "members/" + str_id
-        response= requests.get(url, headers=headers)
-        data= response.json()
-        result= data["results"]
-        member= result[0]
-        profile= {}
-        if(member["middle_name"]):
-            profile['name']= member["first_name"] + " " + member["middle_name"] + " " + member["last_name"]
-        else:
-            profile['name']= member["first_name"] + " " +  member["last_name"]
-        profile['party']= ""
-        if member["current_party"]== "R":
-            profile['party']= "Republican"
-        elif member["current_party"]== "D":
-            profile['party']= "Democrat"
-        else:
-            profile['party']= "Other"
-        roles_list= member["roles"]
-        roles= roles_list[0]
-        profile['title']= "U.S. " + roles["chamber"] + ", " + roles["title"]
-        profile['state']= roles["state"]
-        profile['service_span']= []
-        profile['service_span'].append("From " + roles["start_date"]+ " to " + roles["end_date"])
-        profile['website']= member["url"]
-        if(member["twitter_account"]):
-            profile['twitter']= "@" + member["twitter_account"]
-        profile['facebook']= member["facebook_account"]
-        profile['address']= roles["office"]
-        profile['phone']= roles["phone"]
-        committees=[]
-        for committee in roles["committees"]:
-            committees.append(committee["name"])
-        profile['committees']=committees
-        return(profile)
+    def collect_info(self):
+        member = self.member
+        info = {
+            "title": "U.S. Senator",
+            "party": find_party(member["party"]),
+            "state": member["state"],
+            "website": member["url"],
+            "twitter": member["twitter_account"],
+            "facebook": member["facebook_account"],
+            "phone": member["phone"],
+            "address": member["office"],
+            "loyalty": member["votes_with_party_pct"]
+        }
+        return info
 
     def __str__(self):
-        return "Senate Rep"
+        return "Senate"
 
 class ExecBranchStrategy(PoliticianStrategyAbstract):
-    def find_role(self, politician):
-        execs= requests.get("https://theunitedstates.io/congress-legislators/executive.json").json()
-        name= politician.name.split(" ")
-        president={}
-        check= ""
-        for pres in execs:
-            pname= pres["name"]
-            first_name= pname["first"]
-            last_name= pname["last"]
-            if(first_name== name[0] and last_name== name[1]):
-                return 1
-        return 0 
 
-    def construct_profile(self, politician):
-        execs= requests.get("https://theunitedstates.io/congress-legislators/executive.json").json()
-        name= politician.name.split(" ")
-        president={}
-        profile={}
-        check= ""
-        for pres in execs:
-            pname= pres["name"]
-            first_name= pname["first"]
-            last_name= pname["last"]
-            if(first_name== name[0] and last_name== name[1]):
-                president=pres
-                full_name= ""
-                fname= president['name']
-                for key in fname:
-                    if(key== 'nickname'):
-                        profile['nickname']= fname[key]
-                    else:
-                        full_name= full_name + fname[key] + " "
-                profile['name']= full_name
-                profile['birthday']= president['bio']['birthday']
-                profile['service_span']= []
-                for term in president['terms']:
-                    if(term['type']=="prez"):
-                        profile['title']= "President of the United States"
-                    else:
-                        profile['title']= "Vice President of the United States"
-                    term_time= "From "+ term["start"] + " to " + term['end']
-                    profile['service_span'].append(term_time)
-                    profile['party']= term['party']
-                return profile
+    def collect_info(self):
+        member = self.member
+        info = {
+            "role": "executive",
+            "birthday": member["bio"]["birthday"],
+            "terms": member["terms"],
+            "title": ""
+        }
+
+        for term in member["terms"]:
+            info['title']= "Vice President of the United States"
+            info['party'] = term["party"]
+            if term["type"] == "prez":
+                info['title'] = "President of the United States"
+                info['party'] = term["party"]
+                break
+
+        return info
 
     def __str__(self):
-        return "Exec Branch"
+        return "Executive"
+
+
+
+def find_party(abrev):
+    if abrev == "R":
+        return "Republican"
+    elif abrev == "D":
+        return "Democrat"
+    else:
+        return "Other"
+
+def download_data():
+    headers = {"X-API-Key": "KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
+
+    house = {}
+    house_term = 115
+    while house_term >= 102:
+        print("H:", house_term)
+        url = "https://api.propublica.org/congress/v1/" + str(house_term)+ "/house/members"
+        response = requests.get(url, headers=headers)
+        house[str(house_term)] = response.json()['results']
+        house_term -= 1
+
+    senate = {}
+    senate_term = 115
+    while senate_term >= 80:
+        print("S:", senate_term)
+        url = "https://api.propublica.org/congress/v1/" + str(senate_term)+ "/senate/members"
+        response = requests.get(url, headers=headers)
+        senate[str(senate_term)] = response.json()['results']
+        senate_term -= 1
+
+    with open('house.json', 'w') as house_file:  
+        json.dump(house, house_file)
+
+    with open('senate.json', 'w') as senate_file:  
+        json.dump(senate, senate_file)
+    
+    return
+
+
         

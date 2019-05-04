@@ -26,13 +26,14 @@ const styles = theme => ({
         fontSize: 20,
         fontWeight: "bold",
         textAlign: "center",
-        paddingBottom: 10  
+        paddingBottom: 10
     },
     heading: {
         fontSize: 20,
         fontStyle: "bold",
         textDecoration: "underline",
-        paddingBottom: 10
+        paddingBottom: 5,
+        paddingTop: 15
     },
     actions: {
         display: "flex"
@@ -76,12 +77,12 @@ class ActorCard extends React.Component {
                 </Typography>
             </CardContent>
             <CardActions className={classes.actions} disableActionSpacing>
-                <IconButton aria-label="Add to favorites">
+                {/*}<IconButton aria-label="Add to favorites">
                     <FavoriteIcon />
                 </IconButton>
                 <IconButton aria-label="Share">
                     <ShareIcon />
-                </IconButton>
+                </IconButton>*/}
                 <IconButton
                     className={classnames(classes.expand, {
                     [classes.expandOpen]: this.state.expanded
@@ -96,11 +97,27 @@ class ActorCard extends React.Component {
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                     <Typography className={classes.heading}>
-                        Heading/Title
+                        Awards
                     </Typography>
                     <Typography>
-                        Info/Content blah blah blah
-                    </Typography>  
+                        <div className={classes.content}>{celeb.info['awards']}</div>
+                    </Typography>
+                    <Typography className={classes.heading}>
+                        Titles
+                    </Typography>
+                    <Typography>
+                        {celeb.info['titles'].map((item, index) =>
+                            <div className={classes.content} key={index}>{item}</div>
+                        )}
+                    </Typography>
+                    <Typography className={classes.heading}>
+                        Upcoming
+                    </Typography>
+                    <Typography>
+                        {celeb.info['upcoming'].map((item, index) =>
+                            <div className={classes.content} key={index}>{item}</div>
+                        )}
+                    </Typography>
                 </CardContent>
             </Collapse>
         </Card>

@@ -1,59 +1,81 @@
+import requests
+import json
+
 from .politicianstrategy import HouseRepStrategy
 from .politicianstrategy import SenateRepStrategy
 from .politicianstrategy import ExecBranchStrategy
 from .celebrity import Celebrity
-from .wikiAPI import search_wiki
-from .wikiAPI import get_image
-
-house_rep= HouseRepStrategy()
-senate_rep= SenateRepStrategy()
-exec_branch= ExecBranchStrategy()
+from .utilsAPI import WikiAPI, GoogleAPI
 
 class Politician(Celebrity):
     def __init__(self, name, occupations):
-        self.name= self.get_name(name)
-        self.occupations= occupations
+        Celebrity.__init__ (self, name, occupations)
+        self.name = self.get_full_name(name)
         self.occID = 'politician'
-        self.member_ID= 0
-        self.strategy= self.determine_strategy()
+        self.strategy = self.determine_strategy()
         self.info = self.retrieve_info(name)
 
-    def get_name(self, name):
+    def get_full_name(self, name):
         split_name= name.split(" ")
         last_name= split_name[1]
-        wiki_data = search_wiki(name)
-        wiki_desc = wiki_data[2][0]
+        wiki_desc = WikiAPI().get_bio(name)
         first_para= wiki_desc.split(" ")
         first_name= first_para[0]
         new_name= first_name + " " + last_name
         return new_name
 
+    def checkHouseRep(self):
+        with open('./crawler/asset/house.json') as house_file:    
+            data = json.load(house_file)
+
+        name = self.name.split(" ")
+
+        for term, result in data.items():
+            for member in result[0]["members"]:
+                if(member["last_name"] == name[1]) and (member["first_name"]== name[0]):
+                    return term, member
+        return 0, None
+
+    def checkSenate(self):
+        with open('./crawler/asset/senate.json') as senate_file:    
+            data = json.load(senate_file)
+        
+        name = self.name.split(" ")
+
+        for term, result in data.items():
+            for member in result[0]["members"]:
+                if(member["last_name"] == name[1]) and (member["first_name"]== name[0]):
+                    return term, member
+        return 0, None   
+
+    def checkExecs(self):
+        data = requests.get("https://theunitedstates.io/congress-legislators/executive.json").json()
+        name = self.name.split(" ")
+        for exec in data:
+            if(exec["name"]["first"] == name[0] and exec["name"]["last"] == name[1]):
+                return 1, exec
+        return 0, None
+
+
     def determine_strategy(self):
-        self.strategy= senate_rep
-        member_ID= self.strategy.find_role(self)
-        if member_ID== 0:
-            self.strategy= house_rep
-            member_ID= self.strategy.find_role(self)
-        self.member_ID= member_ID
-        if(member_ID==0):
-            self.strategy= None
-        old_strategy= self.strategy
-        self.strategy= exec_branch
-        check= self.strategy.find_role(self)
-        if check==1:
-            self.strategy= exec_branch
+        exec, member = self.checkExecs()
+        if exec == 0:
+            senateTerm, member = self.checkSenate()
+            if senateTerm == 0:
+                _, member = self.checkHouseRep()
+                return HouseRepStrategy(member)
+            else:
+                return SenateRepStrategy(member)
         else:
-            self.strategy= old_strategy
-        strategy=self.strategy
-        return strategy 
+            return ExecBranchStrategy(member)
+        return None
 
     def retrieve_info(self, name):
-        info= {}
-        if self.strategy != None:
-            info= self.strategy.construct_profile(self)
-        wiki_data = search_wiki(name)
-        wiki_desc = wiki_data[2][0]
+        info = {}
+        if self.strategy:
+            info = self.strategy.collect_info()
+        wiki_desc = WikiAPI().get_bio(name)
         info['bio']= wiki_desc
-        info['image']= get_image(name)
+        info['image']= GoogleAPI().get_image(name)
         return info
 
