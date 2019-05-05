@@ -6,8 +6,9 @@ class PoliticianStrategyAbstract(object):
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def __init__(self, member):
+    def __init__(self, member, term):
         self.member = member
+        self.term = term
 
     @abc.abstractmethod
     def collect_info(self):
@@ -17,7 +18,7 @@ class HouseRepStrategy(PoliticianStrategyAbstract):
     def collect_info(self):
         member = self.member
         info = {
-            "title": "U.S Representative",
+            "title": "Former U.S Representative",
             "party": find_party(member["party"]),
             "state": member["state"],
             "website": member["url"],
@@ -27,6 +28,9 @@ class HouseRepStrategy(PoliticianStrategyAbstract):
             "address": member["office"],
             "loyalty": member["votes_with_party_pct"]
         }
+
+        if self.term == "115":
+            info["title"] = "U.S Representative"
 
         return info
 
@@ -37,7 +41,7 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
     def collect_info(self):
         member = self.member
         info = {
-            "title": "U.S. Senator",
+            "title": "Former U.S. Senator",
             "party": find_party(member["party"]),
             "state": member["state"],
             "website": member["url"],
@@ -47,6 +51,10 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
             "address": member["office"],
             "loyalty": member["votes_with_party_pct"]
         }
+
+        if self.term == "115":
+            info["title"] = "U.S Senator"
+
         return info
 
     def __str__(self):
@@ -64,12 +72,17 @@ class ExecBranchStrategy(PoliticianStrategyAbstract):
         }
 
         for term in member["terms"]:
-            info['title']= "Vice President of the United States"
+            info['title']= "Former Vice President of the United States"
             info['party'] = term["party"]
             if term["type"] == "prez":
-                info['title'] = "President of the United States"
+                info['title'] = "Former President of the United States"
                 info['party'] = term["party"]
                 break
+                
+        if member["name"]["first"] + " " + member["name"]["last"] == "Donald Trump":
+            info['title'] = "President of the UNited States"
+        if member["name"]["first"] + " " + member["name"]["last"] == "Mike Pence":
+            info['title'] = "Vice President of the United States"
 
         return info
 

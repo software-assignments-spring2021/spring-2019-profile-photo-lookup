@@ -10,7 +10,7 @@ from .utilsAPI import WikiAPI, GoogleAPI
 class Politician(Celebrity):
     def __init__(self, name, occupations):
         Celebrity.__init__ (self, name, occupations)
-        self.name = self.get_full_name(name)
+        self.full_name = self.get_full_name(self.name)
         self.occID = 'politician'
         self.strategy = self.determine_strategy()
         self.info = self.retrieve_info(name)
@@ -28,7 +28,7 @@ class Politician(Celebrity):
         with open('./crawler/asset/house.json') as house_file:    
             data = json.load(house_file)
 
-        name = self.name.split(" ")
+        name = self.full_name.split(" ")
 
         for term, result in data.items():
             for member in result[0]["members"]:
@@ -40,7 +40,7 @@ class Politician(Celebrity):
         with open('./crawler/asset/senate.json') as senate_file:    
             data = json.load(senate_file)
         
-        name = self.name.split(" ")
+        name = self.full_name.split(" ")
 
         for term, result in data.items():
             for member in result[0]["members"]:
@@ -62,12 +62,12 @@ class Politician(Celebrity):
         if exec == 0:
             senateTerm, member = self.checkSenate()
             if senateTerm == 0:
-                _, member = self.checkHouseRep()
-                return HouseRepStrategy(member)
+                houseTerm, member = self.checkHouseRep()
+                return HouseRepStrategy(member, houseTerm)
             else:
-                return SenateRepStrategy(member)
+                return SenateRepStrategy(member, senateTerm)
         else:
-            return ExecBranchStrategy(member)
+            return ExecBranchStrategy(member, exec)
         return None
 
     def retrieve_info(self, name):
