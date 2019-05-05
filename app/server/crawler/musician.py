@@ -1,6 +1,9 @@
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials as SpotifyCC
-
+import requests
+from bs4 import BeautifulSoup
+import webbrowser
+import urllib
 from .celebrity import Celebrity
 from .utilsAPI import WikiAPI, GoogleAPI
 
@@ -46,6 +49,32 @@ class Musician(Celebrity):
 
         return output
 
+    def get_twitter(self,name):
+        search = self.name + " twitter"
+        search = urllib.parse.quote_plus(search)
+        url = 'https://google.com/search?q=' + search
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, 'lxml')
+        for g in soup.find_all(class_ =  'r'):
+            print(g.text)
+            res = g.text.split()[2]
+            twitter_handle = res[2:(len(res)-1)]
+            return twitter_handle
+
+
+
+    def get_insta(self, name):
+        search = self.name + " instagram"
+        search = urllib.parse.quote_plus(search)
+        url = 'https://google.com/search?q=' + search
+        response = requests.get(url)
+
+
+        soup = BeautifulSoup(response.text, 'lxml')
+        for g in soup.find_all(class_ =  'r'):
+            res = g.text.split()[2]
+            insta_handle = res[2:(len(res)-1)]
+            return insta_handle 
 
     def retrieve_info(self):
         data = spotify.search(q = self.name, 
@@ -64,7 +93,8 @@ class Musician(Celebrity):
         info['related artists'] = self.find_related_artists(artistID)
         info['related tracks'] = self.find_related_tracks(info['genres'])
         info['video'] = GoogleAPI().get_youtube_video(self.name + "music video (official)", "musician")
-
+        info['twitter'] = self.get_twitter(self.name)
+        info['insta'] = self.get_insta(self.name)
         return info
 
 
