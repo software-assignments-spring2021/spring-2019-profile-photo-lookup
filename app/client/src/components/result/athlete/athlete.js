@@ -12,6 +12,8 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import YouTube from 'react-youtube';
 import _ from "lodash";
+import { SocialIcon } from 'react-social-icons';
+
 
 const styles = theme => ({
     card: {
@@ -27,6 +29,14 @@ const styles = theme => ({
         fontWeight: "bold",
         textAlign: "center",
         paddingBottom: 10
+    },
+    social: {
+        textAlign: "center"
+    },
+    social_icon: {
+        paddingLeft: 5,
+        paddingRight: 10,
+        display: "inline",
     },
     heading: {
         fontSize: 20,
@@ -105,6 +115,23 @@ class AthleteCard extends React.Component {
             );
         }
     }
+    renderSocial() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        const twitter = "http://twitter.com/" + celeb.info.twitter
+        const instagram = "http://instagram.com/" + celeb.info.insta
+        return (
+            <div className={classes.social}>
+                <div className={classes.social_icon}>
+                    <SocialIcon url={twitter} />
+                </div>
+                <div className={classes.social_icon}>
+                    <SocialIcon url={instagram} />
+                </div>
+            </div>
+        ); 
+    }
+
 
     render() {
         const classes = this.props.classes;
@@ -126,6 +153,7 @@ class AthleteCard extends React.Component {
                 </Typography>
             </CardContent>
             <CardActions className={classes.actions} disableActionSpacing>
+            {this.renderSocial()}
                 <IconButton
                     className={classnames(classes.expand, {
                     [classes.expandOpen]: this.state.expanded
