@@ -9,15 +9,13 @@ import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-// import FavoriteIcon from "@material-ui/icons/Favorite";
-// import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import YouTube from 'react-youtube';
 import _ from "lodash";
 
 const styles = theme => ({
     card: {
-        maxWidth: 500,
+        maxWidth: 700,
         margin: "auto",
     },
     media: {
@@ -58,9 +56,7 @@ const styles = theme => ({
 
 const opts = {
     width: '100%',
-    playerVars: { // https://developers.google.com/youtube/player_parameters
-        autoplay: 1
-    }
+    playerVars: {autoplay: 0}
 };
 
 class AthleteCard extends React.Component {
@@ -71,7 +67,6 @@ class AthleteCard extends React.Component {
     };
 
     _onReady(event) {
-        // access to player in all event handlers via event.target
         event.target.pauseVideo();
     }
 
@@ -101,7 +96,7 @@ class AthleteCard extends React.Component {
                     </Typography>
                     <Typography component="div">
                         <YouTube
-                          videoId={celeb.info.highlights[0].id.videoID}
+                          videoId={celeb.info.highlights}
                           opts={opts}
                           onReady={this._onReady}
                         />
@@ -131,12 +126,6 @@ class AthleteCard extends React.Component {
                 </Typography>
             </CardContent>
             <CardActions className={classes.actions} disableActionSpacing>
-                {/*}<IconButton aria-label="Add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="Share">
-                    <ShareIcon />
-                </IconButton>*/}
                 <IconButton
                     className={classnames(classes.expand, {
                     [classes.expandOpen]: this.state.expanded
@@ -150,8 +139,8 @@ class AthleteCard extends React.Component {
             </CardActions>
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    {celeb.info.highlights ? this.renderHighlights() : null}}
-                    {celeb.info['personal_life'] ? this.renderPersonalLife() : null}}
+                    {celeb.info.highlights ? this.renderHighlights() : null}
+                    {celeb.info['personal_life'] ? this.renderPersonalLife() : null}
                 </CardContent>
             </Collapse>
         </Card>

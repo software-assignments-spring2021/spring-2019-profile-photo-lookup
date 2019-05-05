@@ -73,7 +73,8 @@ class GoogleAPI(object):
         
     def get_youtube_video(self, keyword, occupation):
 
-        DEVELOPER_KEY = "AIzaSyClNjMhsLYyFo-e3AqFeqgtjzA02cHfA2M"
+        # DEVELOPER_KEY = "AIzaSyClNjMhsLYyFo-e3AqFeqgtjzA02cHfA2M"
+        DEVELOPER_KEY = "AIzaSyA3a9G_aBAfROe6uVPOfOGxdqSiOEcR8wE"
         youtube = googleapiclient.discovery.build(
             "youtube", "v3", developerKey = DEVELOPER_KEY)
 
