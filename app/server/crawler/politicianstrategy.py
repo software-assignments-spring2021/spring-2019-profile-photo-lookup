@@ -49,9 +49,12 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
             "twitter": member["twitter_account"],
             "facebook": member["facebook_account"],
             "phone": member["phone"],
-            "address": re.sub(" ", "%20", member["office"]),
+            "address": member["office"],
             "loyalty": member["votes_with_party_pct"]
         }
+
+        if member["office"]:
+            info["address"] = re.sub(" ", "%20", member["office"])
 
         if self.term == "115":
             info["title"] = "U.S Senator"
