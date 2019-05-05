@@ -1,6 +1,8 @@
 import json
 import requests
 import re
+import urllib
+import webbrowser
 import googleapiclient.discovery
 from bs4 import BeautifulSoup
 
@@ -106,3 +108,32 @@ class GoogleAPI(object):
         return videoID
         '''
         return "dQw4w9WgXcQ"
+
+
+
+    def get_twitter(self, name):
+        search = name + " twitter"
+        search = urllib.parse.quote_plus(search)
+        url = 'https://google.com/search?q=' + search
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, 'lxml')
+        for g in soup.find_all(class_ =  'r'):
+            res = g.text.split()[2]
+            twitter_handle = res[2:(len(res)-1)]
+            return twitter_handle
+
+
+
+    def get_insta(self, name):
+        search = name + " instagram"
+        search = urllib.parse.quote_plus(search)
+        url = 'https://google.com/search?q=' + search
+        response = requests.get(url)
+
+
+        soup = BeautifulSoup(response.text, 'lxml')
+        for g in soup.find_all(class_ =  'r'):
+            res = g.text.split()[2]
+            insta_handle = res[2:(len(res)-1)]
+            return insta_handle 
+            

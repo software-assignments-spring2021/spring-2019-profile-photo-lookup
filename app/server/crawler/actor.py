@@ -4,8 +4,7 @@ from bs4 import BeautifulSoup
 from .celebrity import Celebrity
 from abc import ABCMeta, abstractclassmethod
 from .utilsAPI import WikiAPI, GoogleAPI
-import webbrowser
-import urllib
+
 class Actor(Celebrity):
 
     def __init__(self, name, occupations):
@@ -26,10 +25,9 @@ class Actor(Celebrity):
         self.known_titles = getKnownTitles(page)
         self.known_posters = getKnownPosters(page)
         self.upcoming_titles = getUpcomingTitles(page)
-        self.twitter = get_twitter(self.name)
-        self.insta = get_insta(self.name)
+        self.twitter = GoogleAPI().get_twitter(self.name)
+        self.insta = GoogleAPI().get_insta(self.name)
         info = {
-            
             'bio': self.bio,
             'image': GoogleAPI().get_image(self.name),
             'known titles': self.known_titles,
@@ -133,32 +131,3 @@ def getUpcomingTitles(actor_page):
 
     upcoming = list(dict.fromkeys(upcoming)) 
     return upcoming
-
-
-
-def get_twitter(name):
-    search = name + " twitter"
-    search = urllib.parse.quote_plus(search)
-    url = 'https://google.com/search?q=' + search
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'lxml')
-    for g in soup.find_all(class_ =  'r'):
-        res = g.text.split()[2]
-        twitter_handle = res[2:(len(res)-1)]
-        return twitter_handle
-
-
-
-def get_insta(name):
-    search = name + " instagram"
-    search = urllib.parse.quote_plus(search)
-    url = 'https://google.com/search?q=' + search
-    response = requests.get(url)
-
-
-    soup = BeautifulSoup(response.text, 'lxml')
-    for g in soup.find_all(class_ =  'r'):
-        res = g.text.split()[2]
-        insta_handle = res[2:(len(res)-1)]
-        return insta_handle 
-        
