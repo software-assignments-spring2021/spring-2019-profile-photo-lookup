@@ -39,23 +39,29 @@ const styles = theme => ({
         paddingTop: 15
     },
     title: {
-        fontSize: 20,
+        fontSize: 30,
         fontWeight: "bold",
-        textAlign: "center"
+        textAlign: "center",
+        paddingBottom: 10
     },
     party: {
         textAlign: "center",
-        fontWeight: "bold",
+        color: "grey",
         fontSize: 25
     },
-    party_image: {
+    party_symbol: {
         display: "block",
         marginLeft: "auto",
         marginRight: "auto",
         width: "100px",
     },
     social: {
-        textAlign: "center"
+        textAlign: "center",
+    },
+    social_icon: {
+        paddingLeft: 5,
+        paddingRight: 10,
+        display: "inline"
     },
     map: {
         textAlign: "center",  
@@ -99,34 +105,43 @@ class PoliticianCard extends React.Component {
         const celeb = this.props.celeb;
         const twitter = "http://twitter.com/" + celeb.info.twitter;
         const facebook = "http://facebook.com/" + celeb.info.facebook;
+        const instagram = "http://instagram.com/"
         return (
             <div className={classes.social}>
-                <SocialIcon url={facebook} />
-                <SocialIcon url={twitter} />
+                <div className={classes.social_icon} >
+                    <SocialIcon url={facebook}/>
+                </div>
+                <div className={classes.social_icon}>
+                    <SocialIcon url={twitter} />
+                </div>
+                <div className={classes.social_icon}>
+                    <SocialIcon url={instagram} />
+                </div>
             </div>
         ); 
     }
+
     renderParty() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
         if (celeb.info['party'] === "Republican"){
             return(
                 <div>
-                    <img src={Republican} alt="bbox" className={classes.party_image}/>
+                    <img src={Republican} alt="bbox" className={classes.party_symbol}/>
                     <h1 className={classes.party}>Republican Party </h1>
                 </div>
             );
         } else if (celeb.info['party'] === "Democrat") {
             return(
                 <div>
-                    <img src={Democrat} alt="bbox" className={classes.party_image}/>
+                    <img src={Democrat} alt="bbox" className={classes.party_symbol}/>
                     <h1 className={classes.party}> Democrat Party </h1>
                 </div>
             );
         }
         return (
             <div>
-                <img src={Other} alt="bbox" className={classes.party_image}/>
+                <img src={Other} alt="bbox" className={classes.party_symbol}/>
                 <h1 className={classes.party}> Independent/Third Party </h1>
             </div>
         );
@@ -194,6 +209,7 @@ class PoliticianCard extends React.Component {
                 </Typography>
             </CardContent>
             <CardActions className={classes.actions} disableActionSpacing>
+                {this.renderSocial()}
                 <IconButton
                     className={classnames(classes.expand, {
                     [classes.expandOpen]: this.state.expanded
@@ -208,7 +224,6 @@ class PoliticianCard extends React.Component {
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                     {celeb.info.title ? this.renderTitle() : null}
-                    {this.renderSocial()}
                     {celeb.info.party ? this.renderParty() : null}
                     {celeb.info.birthday ? this.renderBirthday() : null}
                     {celeb.info.address ? this.renderOffice() : null}
