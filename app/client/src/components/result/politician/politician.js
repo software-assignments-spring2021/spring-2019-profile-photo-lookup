@@ -100,6 +100,21 @@ class PoliticianCard extends React.Component {
         );
     }
 
+    renderState() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        return (
+            <div>
+                <Typography className={classes.heading}>
+                    State Represented
+                </Typography>
+                <Typography component="div">
+                    <div className={classes.content}>{celeb.info['state']}</div>
+                </Typography>
+            </div>
+        );
+    }
+
     renderTerms() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
@@ -268,6 +283,7 @@ class PoliticianCard extends React.Component {
                     {celeb.info.title ? this.renderTitle() : null}
                     {(celeb.info.website && celeb.info.twitter && celeb.info.facebook) ? this.renderSocial : null}
                     {celeb.info.party ? this.renderParty() : null}
+                    {celeb.info.state ? this.renderState(): null}
                     {celeb.info.terms ? this.renderTerms(): null}
                     {celeb.info.birthday ? this.renderBirthday() : null}
                     {celeb.info.address ? this.renderOffice() : null}
