@@ -60,7 +60,7 @@ class About extends Component {
                         <div className="card-body">
                             <h5 className="card-title">Wei Jie Chua</h5>
                             <p className="card-text text-muted">CAS Class of 2019</p>
-                            <p className="card-text">Phasellus eget enim eu lectus faucibus vestibulum.</p>
+                            <p className="card-text">Wei Jie is graduating double majors in Economics and Computer Science in spring 2019. He plans to work in public policy think tank in Malaysia.</p>
                             <p><a href="https://github.com/weijie9512">Github</a> </p>
                             <p><a href="https://www.linkedin.com/in/weijiechua9512/">LinkedIn</a> </p>
                         </div>
