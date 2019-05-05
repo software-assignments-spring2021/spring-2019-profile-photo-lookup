@@ -10,14 +10,14 @@ ACTOR = ['Actor', 'Actress', 'Filmmaker', 'Director', 'Producer']
 
 SPORT1 = ["basketball", "badminton", "archery", "baseball", "volleyball",
           "bmx", "bobsleigh", "canoe", "equestrian", "football", "soccer",
-          "golf", "hockey", "judo","karate", "luge", "pentathlon", "rugby",
+          "golf", "hockey", "judo", "karate", "luge", "pentathlon", "rugby",
           "softball",  "table tennis", "taekwondo", "tennis", "trampoline",
           "triathlon", "water polo"]
 
-SPORT2 = ["gymnast", "ski", "swimm", "box", "curl", "dive", "fenc",
-          "figure skat", "mountain bik", "cycl","speed skat", "row",
-          "sail", "shoot", "ski jump", "snow board", "surf", "weightlift",
-          "wrestl", "driv", "sprint", "runn"]
+SPORT2 = [" gymnast", " ski", " swimm", " box", " curl", " dive", " fenc",
+          " figure skat", " mountain bik", " cycl", " speed skat", " row",
+          " sail", " shoot", " ski jump", " snow board", " surf", " weightlift",
+          " wrestl", " driv", " sprint", " runn"]
 
 
 def checkMusician(name, wiki_desc):
@@ -66,14 +66,13 @@ def checkAthlete(name, wiki_desc):
                     sport= sport + 'er'
                 else:
                     sport= sport + 'r'
-            athlete_type= 'Professional ' + sport.title()
+            athlete_type= 'Professional' + sport.title()
             roles.append(athlete_type)
 
     return (rank, 'athlete'), roles
 
 
 def find_occupations(name):
-    
     wiki_desc = WikiAPI().get_bio(name)
     occupations = []
 
