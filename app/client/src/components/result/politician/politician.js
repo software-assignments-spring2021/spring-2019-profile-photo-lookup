@@ -103,11 +103,24 @@ class PoliticianCard extends React.Component {
     renderSocial() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
-        const twitter = "http://twitter.com/" + celeb.info.twitter;
-        const facebook = "http://facebook.com/" + celeb.info.facebook;
+        const twitter = "http://twitter.com/" + celeb.info['twitter'];
+        const facebook = "http://facebook.com/" + celeb.info['facebook'];
         const instagram = "http://instagram.com/"
+        var website= ""
+        if(celeb.info['website'] != "" && celeb.info['website']!=null)
+        {
+            website= "Website: " + celeb.info['website'];
+        }
+        
+
         return (
-            <div className={classes.social}>
+            <div>
+                <Typography className={classes.heading}>
+                    Social Media
+                </Typography>
+                <Typography component="div">
+                    <div className={classes.content}>{website}</div>
+                </Typography>
                 <div className={classes.social_icon} >
                     <SocialIcon url={facebook}/>
                 </div>
@@ -222,6 +235,7 @@ class PoliticianCard extends React.Component {
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                     {celeb.info.title ? this.renderTitle() : null}
+                    {(celeb.info.website && celeb.info.twitter && celeb.info.facebook) ? this.renderSocial : null}
                     {celeb.info.party ? this.renderParty() : null}
                     {celeb.info.birthday ? this.renderBirthday() : null}
                     {celeb.info.address ? this.renderOffice() : null}
