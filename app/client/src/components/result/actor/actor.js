@@ -8,15 +8,15 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
+import Grid from '@material-ui/core/Grid';
 import Typography from "@material-ui/core/Typography";
-// import FavoriteIcon from "@material-ui/icons/Favorite";
-// import ShareIcon from "@material-ui/icons/Share";
+import YouTube from 'react-youtube';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import _ from "lodash";
 
 const styles = theme => ({
     card: {
-        maxWidth: 500,
+        maxWidth: 700,
         margin: "auto",
     },
     media: {
@@ -31,10 +31,22 @@ const styles = theme => ({
     },
     heading: {
         fontSize: 20,
-        fontStyle: "bold",
+        fontWeight: "bold",
         textDecoration: "underline",
-        paddingBottom: 5,
+        paddingBottom: 10,
         paddingTop: 15
+    },
+    poster: {
+        width: "150px",
+        height: "auto"
+    },
+    title: {
+        textAlign: "center",
+        fontSize: 17
+    },
+    upcoming: {
+        fontSize: 20,
+        textAlign: "center"
     },
     actions: {
         display: "flex"
@@ -51,6 +63,11 @@ const styles = theme => ({
     }
 });
 
+const opts = {
+    width: '100%',
+    playerVars: {autoplay: 0}
+};
+
 class ActorCard extends React.Component {
     state = { expanded: false };
 
@@ -61,17 +78,28 @@ class ActorCard extends React.Component {
     renderTitles() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
-        if (!_.isEmpty(celeb.info['titles'])) {
+        if (!_.isEmpty(celeb.info["known titles"])) {
+            const titles =  celeb.info["known titles"];
+            const posters = celeb.info["known posters"];
             return (
-                <div>
+                <div className={classes.info}>
                     <Typography className={classes.heading}>
-                        Titles
+                        Known For
                     </Typography>
-                    <Typography component="div">
-                        {celeb.info['titles'].map((item, i) =>
-                            <div className={classes.content} key={i}>{item}</div>
-                        )}
-                    </Typography>
+                    <Grid container spacing={24}>
+                        <Grid item xs={4}>
+                            <img src= {posters[0]} className = {classes.poster} ></img>
+                            <p className = {classes.title}> {titles[0]} </p>
+                        </Grid>
+                        <Grid item xs={4} >
+                            <img src= {posters[1]} className = {classes.poster} ></img>
+                            <p className = {classes.title}> {titles[1]} </p>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <img src= {posters[2]} className = {classes.poster} ></img>
+                            <p className = {classes.title}> {titles[2]}</p>
+                        </Grid>
+                    </Grid>
                 </div>
             );
         }
@@ -80,16 +108,38 @@ class ActorCard extends React.Component {
     renderUpcoming() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
-        if (!_.isEmpty(celeb.info['upcoming'])) {
+        if (!_.isEmpty(celeb.info["upcoming titles"])) {
             return (
                 <div>
                     <Typography className={classes.heading}>
                         Upcoming
                     </Typography>
-                    <Typography component="div">
-                        {celeb.info['upcoming'].map((item, i) =>
-                            <div className={classes.content} key={i}>{item}</div>
+                    <Typography>
+                        {celeb.info["upcoming titles"].map((item, i) =>
+                            <div className={classes.upcoming} key={i}>{item}</div>
                         )}
+                    </Typography>
+                </div>
+            );
+        }
+    }
+
+
+    renderTrailerVideo() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+            if (!_.isEmpty(celeb.info["trailer"])) {
+            return (
+                <div className={classes.info}>
+                    <Typography className={classes.heading}>
+                        Recent Trailer
+                    </Typography>
+                    <Typography component="div">
+                        <YouTube
+                            videoId={celeb.info.trailer}
+                            opts={opts}
+                            onReady={this._onReady}
+                        />
                     </Typography>
                 </div>
             );
@@ -116,12 +166,6 @@ class ActorCard extends React.Component {
                 </Typography>
             </CardContent>
             <CardActions className={classes.actions} disableActionSpacing>
-                {/*}<IconButton aria-label="Add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="Share">
-                    <ShareIcon />
-                </IconButton>*/}
                 <IconButton
                     className={classnames(classes.expand, {
                     [classes.expandOpen]: this.state.expanded
@@ -135,8 +179,9 @@ class ActorCard extends React.Component {
             </CardActions>
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    {celeb.info.titles ? this.renderTitles() : null}
-                    {celeb.info.upcoming ? this.renderUpcoming() : null}
+                    {celeb.info["known titles"] ? this.renderTitles() : null}
+                    {celeb.info["upcoming titles"] ? this.renderUpcoming() : null}
+                    {celeb.info["trailer"] ? this.renderTrailerVideo() : null}
                 </CardContent>
             </Collapse>
         </Card>
