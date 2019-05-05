@@ -1,6 +1,7 @@
 import abc
 import json
 import requests 
+import re
 
 class PoliticianStrategyAbstract(object):
     __metaclass__ = abc.ABCMeta
@@ -48,7 +49,7 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
             "twitter": member["twitter_account"],
             "facebook": member["facebook_account"],
             "phone": member["phone"],
-            "address": member["office"],
+            "address": re.sub(" ", "%20", member["office"]),
             "loyalty": member["votes_with_party_pct"]
         }
 

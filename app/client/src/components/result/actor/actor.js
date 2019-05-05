@@ -88,15 +88,15 @@ class ActorCard extends React.Component {
                     </Typography>
                     <Grid container spacing={24}>
                         <Grid item xs={4}>
-                            <img src= {posters[0]} className = {classes.poster} ></img>
+                            <img src= {posters[0]} className = {classes.poster} alt="poster1"></img>
                             <p className = {classes.title}> {titles[0]} </p>
                         </Grid>
                         <Grid item xs={4} >
-                            <img src= {posters[1]} className = {classes.poster} ></img>
+                            <img src= {posters[1]} className = {classes.poster} alt="poster2"></img>
                             <p className = {classes.title}> {titles[1]} </p>
                         </Grid>
                         <Grid item xs={4}>
-                            <img src= {posters[2]} className = {classes.poster} ></img>
+                            <img src= {posters[2]} className = {classes.poster} alt="poster2"></img>
                             <p className = {classes.title}> {titles[2]}</p>
                         </Grid>
                     </Grid>

@@ -166,15 +166,15 @@ class MusicianCard extends React.Component {
                         </Typography>
                         <Grid container spacing={24}>
                             <Grid item xs={4}>
-                                <img src= {artists[0].image.url} className = {classes.relatedImg} ></img>
+                                <img src= {artists[0].image.url} className = {classes.relatedImg} alt="related1" ></img>
                                 <p className = {classes.relatedName}> {artists[0].name} </p>
                             </Grid>
                             <Grid item xs={4} >
-                                <img src= {artists[1].image.url} className = {classes.relatedImg} ></img>
+                                <img src= {artists[1].image.url} className = {classes.relatedImg} alt="related2"></img>
                                 <p className = {classes.relatedName}> {artists[1].name} </p>
                             </Grid>
                             <Grid item xs={4}>
-                                <img src= {artists[2].image.url} className = {classes.relatedImg} ></img>
+                                <img src= {artists[2].image.url} className = {classes.relatedImg} alt="related3"></img>
                                 <p className = {classes.relatedName}> {artists[2].name} </p>
                             </Grid>
                         </Grid>

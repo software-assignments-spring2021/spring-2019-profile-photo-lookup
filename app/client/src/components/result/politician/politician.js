@@ -9,13 +9,16 @@ import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-// import FavoriteIcon from "@material-ui/icons/Favorite";
-// import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { SocialIcon } from 'react-social-icons';
+import Democrat from "./democrat.png"
+import Republican from "./republican.png"
+import Other from "./other.jpg"
+
 
 const styles = theme => ({
     card: {
-        maxWidth: 500,
+        maxWidth: 700,
         margin: "auto",
     },
     media: {
@@ -30,10 +33,32 @@ const styles = theme => ({
     },
     heading: {
         fontSize: 20,
-        fontStyle: "bold",
+        fontWeight: "bold",
         textDecoration: "underline",
         paddingBottom: 5,
         paddingTop: 15
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: "bold",
+        textAlign: "center"
+    },
+    party: {
+        textAlign: "center",
+        fontWeight: "bold",
+        fontSize: 25
+    },
+    party_image: {
+        display: "block",
+        marginLeft: "auto",
+        marginRight: "auto",
+        width: "100px",
+    },
+    social: {
+        textAlign: "center"
+    },
+    map: {
+        textAlign: "center",  
     },
     actions: {
         display: "flex"
@@ -47,10 +72,6 @@ const styles = theme => ({
     },
     expandOpen: {
         transform: "rotate(180deg)"
-    },
-    content: {
-        textTransform: "capitalize",
-        fontSize: 15,
     }
 });
 
@@ -66,27 +87,47 @@ class PoliticianCard extends React.Component {
         const celeb = this.props.celeb;
         return (
             <div>
-                <Typography className={classes.heading}>
-                    Title
-                </Typography>
-                <Typography component="div">
-                    <div className={classes.content}>{celeb.info['title']}</div>
+                <Typography>
+                    <div className={classes.title}>{celeb.info['title']}</div>
                 </Typography>
             </div>
         );
     }
 
+    renderSocial() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        const twitter = "http://twitter.com/" + celeb.info.twitter;
+        const facebook = "http://facebook.com/" + celeb.info.facebook;
+        return (
+            <div className={classes.social}>
+                <SocialIcon url={facebook} />
+                <SocialIcon url={twitter} />
+            </div>
+        ); 
+    }
     renderParty() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
+        if (celeb.info['party'] === "Republican"){
+            return(
+                <div>
+                    <img src={Republican} alt="bbox" className={classes.party_image}/>
+                    <h1 className={classes.party}>Republican Party </h1>
+                </div>
+            );
+        } else if (celeb.info['party'] === "Democrat") {
+            return(
+                <div>
+                    <img src={Democrat} alt="bbox" className={classes.party_image}/>
+                    <h1 className={classes.party}> Democrat Party </h1>
+                </div>
+            );
+        }
         return (
             <div>
-                <Typography className={classes.heading}>
-                    Party
-                </Typography>
-                <Typography component="div">
-                    <div className={classes.content}>{celeb.info['party']}</div>
-                </Typography>
+                <img src={Other} alt="bbox" className={classes.party_image}/>
+                <h1 className={classes.party}> Independent/Third Party </h1>
             </div>
         );
     }
@@ -102,6 +143,33 @@ class PoliticianCard extends React.Component {
                 <Typography component="div">
                     <div className={classes.content}>{celeb.info['birthday']}</div>
                 </Typography>
+            </div>
+        );
+    }
+
+    renderOffice() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        const address = celeb.info.address;
+        const API_KEY = "AIzaSyBK2czXLGiGmzUv5vgwJVIdpSo7G37omzQ";
+        const url = "https://www.google.com/maps/embed/v1/place?key=" + API_KEY + "&q=" + address
+
+        console.log(url)
+
+        return (
+            <div>
+                <Typography className={classes.heading}>
+                    Office Address
+                </Typography>
+                <div className={classes.map}>
+                    <iframe
+                        title="office"
+                        width="500"
+                        height="600"
+                        frameborder="0"
+                        src={url} allowfullscreen>
+                    </iframe>
+                </div>
             </div>
         );
     }
@@ -126,12 +194,6 @@ class PoliticianCard extends React.Component {
                 </Typography>
             </CardContent>
             <CardActions className={classes.actions} disableActionSpacing>
-                {/*}<IconButton aria-label="Add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="Share">
-                    <ShareIcon />
-                </IconButton>*/}
                 <IconButton
                     className={classnames(classes.expand, {
                     [classes.expandOpen]: this.state.expanded
@@ -146,8 +208,10 @@ class PoliticianCard extends React.Component {
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                     {celeb.info.title ? this.renderTitle() : null}
+                    {this.renderSocial()}
                     {celeb.info.party ? this.renderParty() : null}
                     {celeb.info.birthday ? this.renderBirthday() : null}
+                    {celeb.info.address ? this.renderOffice() : null}
                 </CardContent>
             </Collapse>
         </Card>
