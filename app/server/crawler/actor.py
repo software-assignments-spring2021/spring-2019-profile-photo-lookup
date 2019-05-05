@@ -4,7 +4,8 @@ from bs4 import BeautifulSoup
 from .celebrity import Celebrity
 from abc import ABCMeta, abstractclassmethod
 from .utilsAPI import WikiAPI, GoogleAPI
-
+import webbrowser
+import urllib
 class Actor(Celebrity):
 
     def __init__(self, name, occupations):
@@ -14,6 +15,8 @@ class Actor(Celebrity):
         self.known_titles = None
         self.known_posters = None
         self.upcoming_titles = None
+        self.twitter = None
+        self.insta = None
         self.info = self.retrieve_info()
 
     def retrieve_info(self):
@@ -23,12 +26,17 @@ class Actor(Celebrity):
         self.known_titles = getKnownTitles(page)
         self.known_posters = getKnownPosters(page)
         self.upcoming_titles = getUpcomingTitles(page)
+        self.twitter = get_twitter(self.name)
+        self.insta = get_insta(self.name)
         info = {
+            
             'bio': self.bio,
             'image': GoogleAPI().get_image(self.name),
             'known titles': self.known_titles,
             'known posters': self.known_posters,
             'upcoming titles': self.upcoming_titles,
+            'twitter': self.twitter,
+            'insta': self.insta,
             'trailer': GoogleAPI().get_youtube_video(self.name + 'trailer', 'actor')
         }
         return info
@@ -40,6 +48,8 @@ class Builder(Actor):
     def set_known_titles(self, value): pass
     def set_known_posters(self, value): pass
     def set_upcoming_titles(self, value): pass
+    def set_twitter(self, value): pass
+    def set_insta(self, value): pass
     def get_result(self): pass
 
 
@@ -59,14 +69,20 @@ class ActorBuilder(Builder):
     def set_upcoming_titles(self, value):
         self.actor.upcoming_titles = value
         return self
+    def set_twitter(self, value):
+        self.actor.twitter = value
+        return self
+    def set_insta(self, value):
+        self.actor.insta = value
+        return self
     def get_actor(self):
         return self.actor
 
 
 class ActorBuilderDirector(object):
     @staticmethod
-    def construct(name, occupations, bio, titles, upcoming, interview):
-        return ActorBuilder(name, occupations).set_bio(bio).set_known_titles(titles).set_known_posters(posters).set_upcoming_titles(upcoming).get_actor()
+    def construct(name, occupations, bio, titles, upcoming, interview, insta, twitter):
+        return ActorBuilder(name, occupations).set_bio(bio).set_known_titles(titles).set_known_posters(posters).set_upcoming_titles(upcoming).set_twitter(twitter).set_insta(insta).get_actor()
 
 
 # Takes actor name and returns their imdb id
@@ -108,6 +124,7 @@ def getKnownPosters(actor_page):
 
 # Takes actor imdb page and returns their upcoming films
 def getUpcomingTitles(actor_page):
+
     response = actor_page.find_all("a", {"class": "in_production"})
     upcoming = []
     for link in response:
@@ -116,3 +133,32 @@ def getUpcomingTitles(actor_page):
 
     upcoming = list(dict.fromkeys(upcoming)) 
     return upcoming
+
+
+
+def get_twitter(name):
+    search = name + " twitter"
+    search = urllib.parse.quote_plus(search)
+    url = 'https://google.com/search?q=' + search
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'lxml')
+    for g in soup.find_all(class_ =  'r'):
+        res = g.text.split()[2]
+        twitter_handle = res[2:(len(res)-1)]
+        return twitter_handle
+
+
+
+def get_insta(name):
+    search = name + " instagram"
+    search = urllib.parse.quote_plus(search)
+    url = 'https://google.com/search?q=' + search
+    response = requests.get(url)
+
+
+    soup = BeautifulSoup(response.text, 'lxml')
+    for g in soup.find_all(class_ =  'r'):
+        res = g.text.split()[2]
+        insta_handle = res[2:(len(res)-1)]
+        return insta_handle 
+        
