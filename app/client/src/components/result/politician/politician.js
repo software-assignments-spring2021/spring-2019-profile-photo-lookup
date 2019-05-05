@@ -100,6 +100,37 @@ class PoliticianCard extends React.Component {
         );
     }
 
+    renderTerms() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        const terms= celeb.info['terms'];
+        var num_terms= "Number of Presidential Terms: " + terms.length;
+        var term_span1= "From " + terms[0]['start'] + " to " + terms[0]['end'];
+        var term_span2= "";
+        
+        if(terms.length>1)
+        {
+            term_span2= "From " + terms[1]['start'] + " to " + terms[1]['end'];
+        }
+
+        return (
+            <div>
+                <Typography className={classes.heading}>
+                    Presidential Terms 
+                </Typography>
+                <Typography component="div">
+                    <div className={classes.content}>{num_terms}</div>
+                </Typography>
+                <Typography component="div">
+                    <div className={classes.content}>{term_span1}</div>
+                </Typography>
+                <Typography component="div">
+                    <div className={classes.content}>{term_span2}</div>
+                </Typography>
+            </div>
+        );    
+    }
+
     renderSocial() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
@@ -237,6 +268,7 @@ class PoliticianCard extends React.Component {
                     {celeb.info.title ? this.renderTitle() : null}
                     {(celeb.info.website && celeb.info.twitter && celeb.info.facebook) ? this.renderSocial : null}
                     {celeb.info.party ? this.renderParty() : null}
+                    {celeb.info.terms ? this.renderTerms(): null}
                     {celeb.info.birthday ? this.renderBirthday() : null}
                     {celeb.info.address ? this.renderOffice() : null}
                 </CardContent>
