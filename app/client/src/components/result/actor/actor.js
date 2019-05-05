@@ -37,12 +37,14 @@ const styles = theme => ({
         paddingTop: 15
     },
     poster: {
-        width: "150px",
+        width: "100%",
         height: "auto"
     },
     title: {
         textAlign: "center",
-        fontSize: 17
+        fontSize: 17,
+        paddingTop: 8,
+        lineHeight: 1.1
     },
     upcoming: {
         fontSize: 20,
