@@ -116,7 +116,7 @@ class ActorCard extends React.Component {
                     <Typography className={classes.heading}>
                         Upcoming
                     </Typography>
-                    <Typography>
+                    <Typography component="div">
                         {celeb.info["upcoming titles"].map((item, i) =>
                             <div className={classes.upcoming} key={i}>{item}</div>
                         )}

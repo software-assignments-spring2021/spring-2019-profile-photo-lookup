@@ -64,7 +64,7 @@ const styles = theme => ({
         display: "inline"
     },
     map: {
-        textAlign: "center",  
+        textAlign: "center",
     },
     actions: {
         display: "flex"
@@ -93,7 +93,7 @@ class PoliticianCard extends React.Component {
         const celeb = this.props.celeb;
         return (
             <div>
-                <Typography>
+                <Typography component="div">
                     <div className={classes.title}>{celeb.info['title']}</div>
                 </Typography>
             </div>
@@ -118,7 +118,7 @@ class PoliticianCard extends React.Component {
                     <SocialIcon url={instagram} />
                 </div>
             </div>
-        ); 
+        );
     }
 
     renderParty() {
@@ -168,8 +168,6 @@ class PoliticianCard extends React.Component {
         const address = celeb.info.address;
         const API_KEY = "AIzaSyBK2czXLGiGmzUv5vgwJVIdpSo7G37omzQ";
         const url = "https://www.google.com/maps/embed/v1/place?key=" + API_KEY + "&q=" + address
-
-        console.log(url)
 
         return (
             <div>
@@ -235,7 +233,7 @@ class PoliticianCard extends React.Component {
 }
 
 PoliticianCard.propTypes = {
-  classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(PoliticianCard);
