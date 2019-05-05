@@ -59,7 +59,7 @@ class GoogleAPI(object):
             'num': 10,
             'imageType': 'face'
         }
-
+        '''
         response = requests.get(url, params=params).json()
 
         for result in response["items"]:
@@ -67,6 +67,8 @@ class GoogleAPI(object):
                 return(result["link"])
         
         return response["items"][0]["link"]
+        '''
+        return "placeholder"
 
         
     def get_youtube_video(self, keyword, occupation):
@@ -83,7 +85,7 @@ class GoogleAPI(object):
             publishedTime = "2010-01-01T00:00:00Z"
         elif occupation == "actor":
             sort = "relevance"
-            publishedTime = "2019-01-01T00:00:00Z"
+            publishedTime = "2010-01-01T00:00:00Z"
         elif occupation == "musician":
             sort = "relevance"
             publishedTime = "2000-01-01T00:00:00Z"

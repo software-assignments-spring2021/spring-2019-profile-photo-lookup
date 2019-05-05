@@ -10,32 +10,36 @@ class Actor(Celebrity):
     def __init__(self, name, occupations):
         Celebrity.__init__(self, name, occupations)
         self.occID = 'actor'
-        self.info = self.retrieve_info()
         self.bio = None
-        self.titles = None
-        self.upcoming = None
+        self.known_titles = None
+        self.known_posters = None
+        self.upcoming_titles = None
+        self.info = self.retrieve_info()
 
     def retrieve_info(self):
-        nameID = getActorID(self.name)
-        page = getActorPage(nameID)
+        nameID = getID(self.name)
+        page = getPage(nameID)
         self.bio = WikiAPI().get_bio(self.name)
-        self.titles = getKnownForTitles(page)
-        self.upcoming = getUpcomingTitles(page)
+        self.known_titles = getKnownTitles(page)
+        self.known_posters = getKnownPosters(page)
+        self.upcoming_titles = getUpcomingTitles(page)
         info = {
             'bio': self.bio,
             'image': GoogleAPI().get_image(self.name),
-            'titles': self.titles,
-            'upcoming': self.upcoming,
+            'known titles': self.known_titles,
+            'known posters': self.known_posters,
+            'upcoming titles': self.upcoming_titles,
+            'trailer': GoogleAPI().get_youtube_video(self.name + 'trailer', 'actor')
         }
         return info
 
 
 class Builder(Actor):
     __metaclass__ = ABCMeta
-    def set_name(self, value): pass
     def set_bio(self, value): pass
-    def set_titles(self, value): pass
-    def set_upcoming(self, value): pass
+    def set_known_titles(self, value): pass
+    def set_known_posters(self, value): pass
+    def set_upcoming_titles(self, value): pass
     def get_result(self): pass
 
 
@@ -46,11 +50,14 @@ class ActorBuilder(Builder):
     def set_bio(self, value):
         self.actor.bio = value
         return self
-    def set_titles(self, value):
-        self.actor.titles = value
+    def set_known_titles(self, value):
+        self.actor.known_titles = value
         return self
-    def set_upcoming(self, value):
-        self.actor.upcoming = value
+    def set_known_posters(self, value):
+        self.actor.known_posters = value
+        return self
+    def set_upcoming_titles(self, value):
+        self.actor.upcoming_titles = value
         return self
     def get_actor(self):
         return self.actor
@@ -59,11 +66,11 @@ class ActorBuilder(Builder):
 class ActorBuilderDirector(object):
     @staticmethod
     def construct(name, occupations, bio, titles, upcoming, interview):
-        return ActorBuilder(name, occupations).set_bio(bio).set_titles(titles).set_upcoming(upcoming).get_actor()
+        return ActorBuilder(name, occupations).set_bio(bio).set_known_titles(titles).set_known_posters(posters).set_upcoming_titles(upcoming).get_actor()
 
 
 # Takes actor name and returns their imdb id
-def getActorID(name):
+def getID(name):
     name = name.split(" ")
     query = name[0] + name[1]
     request = PreparedRequest()
@@ -76,23 +83,30 @@ def getActorID(name):
     return id_num
 
 # Takes actor imdb id and returns their imdb page
-def getActorPage(actorID):
+def getPage(actorID):
     url = 'https://www.imdb.com/name/' + actorID
     html = requests.get(url).content
     actor_page = BeautifulSoup(html, features="html.parser")
     return actor_page
    
 # Takes actor imdb page and returns films they are most known for
-def getKnownForTitles(actor_page):
-    titles = actor_page.find_all("a", {"class": "knownfor-ellipsis"})
-    data = []
-    i = 0
-    while i < len(titles):
-        att = (titles[i].attrs)
-        data.append(att['title'])
-        i+=1
-    return data
+def getKnownTitles(actor_page):
+    div = actor_page.find_all("a", {"class": "knownfor-ellipsis"})
+    titles = []
+    for title in div:
+        titles.append(title.getText())
+    return titles
 
+# Return the poster of the films they are known for
+def getKnownPosters(actor_page):
+    div = actor_page.find_all("div", {"class": "knownfor-title"})
+    posters = []
+    for child in div:
+        poster = child.find("div", {"class": "uc-add-wl-widget-container"}).find("a").find('img')['src']
+        posters.append(poster)
+    return posters
+
+# Takes actor imdb page and returns their upcoming films
 def getUpcomingTitles(actor_page):
     response = actor_page.find_all("a", {"class": "in_production"})
     upcoming = []
