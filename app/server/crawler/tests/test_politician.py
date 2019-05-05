@@ -11,7 +11,7 @@ class PoliticianTest(TestCase):
         self.politician = Politician(self.name, self.occupations)
 
     def test_name(self):
-        self.assertEqual(self.politician.name, "Bernard Sanders")
+        self.assertEqual(self.politician.name, "Bernie Sanders")
 
     def test_strategy(self):
         self.assertEqual(str(self.politician.strategy), "Senate")
