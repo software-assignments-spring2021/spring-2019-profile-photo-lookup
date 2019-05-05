@@ -97,7 +97,7 @@ class PoliticianCard extends React.Component {
         return (
             <div>
                 <Typography className={classes.heading}>
-                    Party
+                    Birthday
                 </Typography>
                 <Typography component="div">
                     <div className={classes.content}>{celeb.info['birthday']}</div>
