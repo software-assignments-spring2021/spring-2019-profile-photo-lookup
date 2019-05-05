@@ -59,7 +59,7 @@ class GoogleAPI(object):
             'num': 10,
             'imageType': 'face'
         }
-        '''
+
         response = requests.get(url, params=params).json()
 
         for result in response["items"]:
@@ -67,14 +67,13 @@ class GoogleAPI(object):
                 return(result["link"])
         
         return response["items"][0]["link"]
-        '''
-        return "placeholder"
 
         
     def get_youtube_video(self, keyword, occupation):
 
-        # DEVELOPER_KEY = "AIzaSyClNjMhsLYyFo-e3AqFeqgtjzA02cHfA2M"
-        DEVELOPER_KEY = "AIzaSyA3a9G_aBAfROe6uVPOfOGxdqSiOEcR8wE"
+        '''
+        DEVELOPER_KEY = "AIzaSyClNjMhsLYyFo-e3AqFeqgtjzA02cHfA2M"
+        # DEVELOPER_KEY = "AIzaSyA3a9G_aBAfROe6uVPOfOGxdqSiOEcR8wE"
         youtube = googleapiclient.discovery.build(
             "youtube", "v3", developerKey = DEVELOPER_KEY)
 
@@ -105,3 +104,5 @@ class GoogleAPI(object):
         # url = "https://www.youtube.com/embed/" + videoID
 
         return videoID
+        '''
+        return "dQw4w9WgXcQ"

@@ -12,6 +12,7 @@ class PoliticianTest(TestCase):
 
     def test_name(self):
         self.assertEqual(self.politician.name, "Bernie Sanders")
+        self.assertEqual(self.politician.full_name, "Bernard Sanders")
 
     def test_strategy(self):
         self.assertEqual(str(self.politician.strategy), "Senate")
@@ -29,5 +30,5 @@ class PoliticianTest(TestCase):
         self.assertEqual(self.politician.info['website'], "https://www.sanders.senate.gov")
         self.assertEqual(self.politician.info['twitter'], "SenSanders")
         self.assertEqual(self.politician.info['facebook'], "senatorsanders")
-       # self.assertEqual(self.politician.info['address'], "332 Dirksen Building")
+        self.assertEqual(self.politician.info['address'], "332%20Dirksen%20Building")
         self.assertEqual(self.politician.info['phone'], "202-224-5141")
