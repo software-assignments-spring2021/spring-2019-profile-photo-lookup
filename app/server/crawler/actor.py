@@ -4,7 +4,8 @@ from bs4 import BeautifulSoup
 from .celebrity import Celebrity
 from abc import ABCMeta, abstractclassmethod
 from .utilsAPI import WikiAPI, GoogleAPI
-
+import webbrowser
+import urllib
 class Actor(Celebrity):
 
     def __init__(self, name, occupations):
@@ -108,6 +109,7 @@ def getKnownPosters(actor_page):
 
 # Takes actor imdb page and returns their upcoming films
 def getUpcomingTitles(actor_page):
+
     response = actor_page.find_all("a", {"class": "in_production"})
     upcoming = []
     for link in response:
@@ -116,3 +118,32 @@ def getUpcomingTitles(actor_page):
 
     upcoming = list(dict.fromkeys(upcoming)) 
     return upcoming
+
+
+
+def get_twitter(name):
+    search = name + " twitter"
+    search = urllib.parse.quote_plus(search)
+    url = 'https://google.com/search?q=' + search
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'lxml')
+    for g in soup.find_all(class_ =  'r'):
+        res = g.text.split()[2]
+        twitter_handle = res[2:(len(res)-1)]
+        return twitter_handle
+
+
+
+def get_insta(name):
+    search = name + " instagram"
+    search = urllib.parse.quote_plus(search)
+    url = 'https://google.com/search?q=' + search
+    response = requests.get(url)
+
+
+    soup = BeautifulSoup(response.text, 'lxml')
+    for g in soup.find_all(class_ =  'r'):
+        res = g.text.split()[2]
+        insta_handle = res[2:(len(res)-1)]
+        return insta_handle 
+        
