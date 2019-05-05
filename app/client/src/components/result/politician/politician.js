@@ -179,8 +179,8 @@ class PoliticianCard extends React.Component {
                         title="office"
                         width="500"
                         height="600"
-                        frameborder="0"
-                        src={url} allowfullscreen>
+                        frameBorder="0"
+                        src={url} allowFullScreen>
                     </iframe>
                 </div>
             </div>
