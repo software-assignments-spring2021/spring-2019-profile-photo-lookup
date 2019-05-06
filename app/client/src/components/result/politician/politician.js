@@ -56,15 +56,18 @@ const styles = theme => ({
         width: "100px",
     },
     social: {
-        textAlign: "center",
+        textAlign: "center"
     },
     social_icon: {
         paddingLeft: 5,
         paddingRight: 10,
-        display: "inline"
+        display: "inline",
     },
     map: {
         textAlign: "center",
+    },
+    website: {
+        fontSize: 15
     },
     actions: {
         display: "flex"
@@ -100,16 +103,83 @@ class PoliticianCard extends React.Component {
         );
     }
 
+    renderState() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        return (
+            <div>
+                <Typography className={classes.heading}>
+                    State Represented
+                </Typography>
+                <Typography component="div">
+                    <div className={classes.content}>{celeb.info['state']}</div>
+                </Typography>
+            </div>
+        );
+    }
+
+    renderTerms() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        const terms= celeb.info['terms'];
+        var num_terms= "Number of Presidential Terms: " + terms.length;
+        var term_span1= "From " + terms[0]['start'] + " to " + terms[0]['end'];
+        var term_span2= "";
+        
+        if(terms.length>1)
+        {
+            term_span2= "From " + terms[1]['start'] + " to " + terms[1]['end'];
+        }
+
+        return (
+            <div>
+                <Typography className={classes.heading}>
+                    Presidential Terms 
+                </Typography>
+                <Typography component="div">
+                    <div className={classes.content}>{num_terms}</div>
+                </Typography>
+                <Typography component="div">
+                    <div className={classes.content}>{term_span1}</div>
+                </Typography>
+                <Typography component="div">
+                    <div className={classes.content}>{term_span2}</div>
+                </Typography>
+            </div>
+        );    
+    }
+
+    renderWebsite(){
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        if(celeb.info['website'] !== "" && celeb.info['website'] !== null)
+        {
+            return (
+                <div>
+                    <Typography className={classes.heading}>
+                        Website
+                    </Typography>
+                    <Typography component="div">
+                        <div className={classes.website}>
+                            <a href = {celeb.info['website']}> {celeb.info['website']} </a>
+                        </div>
+                    </Typography>
+                </div>
+            );
+        }
+    }
+
     renderSocial() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
-        const twitter = "http://twitter.com/" + celeb.info.twitter;
-        const facebook = "http://facebook.com/" + celeb.info.facebook;
-        const instagram = "http://instagram.com/"
+        const twitter = "http://twitter.com/" + celeb.info.twitter
+        const instagram = "http://instagram.com/" + celeb.info.insta
+        const facebook = "http://facebook.com/" + celeb.info.facebook
+
         return (
             <div className={classes.social}>
-                <div className={classes.social_icon} >
-                    <SocialIcon url={facebook}/>
+                <div className={classes.social_icon}>
+                    <SocialIcon url={facebook} />
                 </div>
                 <div className={classes.social_icon}>
                     <SocialIcon url={twitter} />
@@ -118,7 +188,7 @@ class PoliticianCard extends React.Component {
                     <SocialIcon url={instagram} />
                 </div>
             </div>
-        );
+        ); 
     }
 
     renderParty() {
@@ -223,7 +293,10 @@ class PoliticianCard extends React.Component {
                 <CardContent>
                     {celeb.info.title ? this.renderTitle() : null}
                     {celeb.info.party ? this.renderParty() : null}
+                    {celeb.info.state ? this.renderState(): null}
+                    {celeb.info.terms ? this.renderTerms(): null}
                     {celeb.info.birthday ? this.renderBirthday() : null}
+                    {celeb.info.website ? this.renderWebsite() : null}
                     {celeb.info.address ? this.renderOffice() : null}
                 </CardContent>
             </Collapse>
