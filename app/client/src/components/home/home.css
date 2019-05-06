@@ -14,6 +14,59 @@ h1.display-4{
 
 }
 
+.carousel {
+    height: 93vh;
+    text-align: center;
+    background-color:rgba(0,0,0,0.9);
+    opacity: 1;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    object-fit: cover;
+}
+
+.carousel .caption {
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    vertical-align: middle;
+    bottom: initial;
+}
+
+.carousel .caption h3 {
+    font-size: 55pt;
+    vertical-align: middle;
+}
+
+.carousel .caption p {
+    font-size: 25pt;
+    vertical-align: middle;
+}
+
+.btn {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 8px 32px;
+    border-radius: 50px;
+    transition: 0.5s;
+    margin: 10px;
+    color: #fff;
+    background: #18d26e;
+}
+
+.btn:hover {
+    background: #fff;
+    color: #18d26e;
+}
+
 .lead{
     text-align: center;
 }
@@ -29,6 +82,18 @@ h1.display-4{
 .homepage {
     padding-left: 0px;
     padding-right: 0px;
+	width: 100vw;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px;
+    margin-bottom: 0px;
+    min-width: 100vh;
+	color: white;
+	background: linear-gradient(-45deg, #3a926c, #57BC90, #77C9D4, #CEEBEF);
+	background-size: 500% 500%;
+	-webkit-animation: Gradient 5s ease infinite;
+	-moz-animation: Gradient 5s ease infinite;
+	animation: Gradient 5s ease infinite;
 }
 
 .btn-header {
@@ -92,7 +157,8 @@ h1.display-4{
 }
 
 .section {
-    margin-top: 50px;
+    margin-top: 100px;
+    height: 400px;
 }
 
 .modal-left {
@@ -108,7 +174,7 @@ h1.display-4{
     display: block;
     background-color: transparent;
     border-style: solid;
-    border-width: 2px;
+    border-width: 3px;
     border-color: white;
     color: white;
     width: 300px;
@@ -116,6 +182,8 @@ h1.display-4{
     text-align: center;
     text-transform: uppercase;
     padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin: 0 auto;
     font-size: 60px;
     font-weight: lighter;

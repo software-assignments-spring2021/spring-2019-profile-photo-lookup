@@ -1,5 +1,12 @@
+.navbar-brand {
+    font-weight: bold;
+    font-size: 23pt;
+    letter-spacing: 2px;
+}
+
 .navbar-text {
     color: #015249 !important;
+    font-size: 18pt;
 }
 
 .navbar-text:hover {
