@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { FaBookReader } from 'react-icons/fa';
 import Carousel from 'react-bootstrap/Carousel';
-import { Link } from 'react-router-dom'
 
 import './home.css';
 import NYU from  './nyu.jpg'
@@ -24,7 +23,7 @@ class Home extends Component {
                         <Carousel.Caption className="caption">
                             <h3>R.I.S.E</h3>
                             <p>Welcome to Reverse Image Search Engine</p>
-                            <Link to="/about" className="btn"> Learn More </Link>
+                            <a href="/about" className="btn" role="button"> Learn More </a>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item className="carousel">
@@ -35,7 +34,7 @@ class Home extends Component {
                         <Carousel.Caption className="caption">
                             <h3>Celebrity Recognition</h3>
                             <p>Keep up on pop culture.</p>
-                            <Link to="/celebrity" className="btn"> Try Me </Link>
+                            <a href="/celebrity" className="btn" role="button"> Try Me </a>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item className="carousel">
@@ -46,7 +45,7 @@ class Home extends Component {
                         <Carousel.Caption className="caption">
                             <h3>Student Recognition</h3>
                             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                            <Link to="/student" className="btn"> Try Me </Link>
+                            <a href="/student" className="btn" role="button"> Try Me </a>
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
