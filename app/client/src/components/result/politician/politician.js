@@ -56,15 +56,18 @@ const styles = theme => ({
         width: "100px",
     },
     social: {
-        textAlign: "center",
+        textAlign: "center"
     },
     social_icon: {
         paddingLeft: 5,
         paddingRight: 10,
-        display: "inline"
+        display: "inline",
     },
     map: {
         textAlign: "center",
+    },
+    website: {
+        fontSize: 15
     },
     actions: {
         display: "flex"
@@ -146,29 +149,37 @@ class PoliticianCard extends React.Component {
         );    
     }
 
+    renderWebsite(){
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+        if(celeb.info['website'] !== "" && celeb.info['website'] !== null)
+        {
+            return (
+                <div>
+                    <Typography className={classes.heading}>
+                        Website
+                    </Typography>
+                    <Typography component="div">
+                        <div className={classes.website}>
+                            <a href = {celeb.info['website']}> {celeb.info['website']} </a>
+                        </div>
+                    </Typography>
+                </div>
+            );
+        }
+    }
+
     renderSocial() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
-        const twitter = "http://twitter.com/" + celeb.info['twitter'];
-        const facebook = "http://facebook.com/" + celeb.info['facebook'];
-        const instagram = "http://instagram.com/"
-        var website= ""
-        if(celeb.info['website'] != "" && celeb.info['website']!=null)
-        {
-            website= "Website: " + celeb.info['website'];
-        }
-        
+        const twitter = "http://twitter.com/" + celeb.info.twitter
+        const instagram = "http://instagram.com/" + celeb.info.insta
+        const facebook = "http://facebook.com/" + celeb.info.facebook
 
         return (
-            <div>
-                <Typography className={classes.heading}>
-                    Social Media
-                </Typography>
-                <Typography component="div">
-                    <div className={classes.content}>{website}</div>
-                </Typography>
-                <div className={classes.social_icon} >
-                    <SocialIcon url={facebook}/>
+            <div className={classes.social}>
+                <div className={classes.social_icon}>
+                    <SocialIcon url={facebook} />
                 </div>
                 <div className={classes.social_icon}>
                     <SocialIcon url={twitter} />
@@ -177,7 +188,7 @@ class PoliticianCard extends React.Component {
                     <SocialIcon url={instagram} />
                 </div>
             </div>
-        );
+        ); 
     }
 
     renderParty() {
@@ -281,11 +292,11 @@ class PoliticianCard extends React.Component {
             <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                     {celeb.info.title ? this.renderTitle() : null}
-                    {(celeb.info.website && celeb.info.twitter && celeb.info.facebook) ? this.renderSocial : null}
                     {celeb.info.party ? this.renderParty() : null}
                     {celeb.info.state ? this.renderState(): null}
                     {celeb.info.terms ? this.renderTerms(): null}
                     {celeb.info.birthday ? this.renderBirthday() : null}
+                    {celeb.info.website ? this.renderWebsite() : null}
                     {celeb.info.address ? this.renderOffice() : null}
                 </CardContent>
             </Collapse>
