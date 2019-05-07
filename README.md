@@ -3,7 +3,7 @@
 # Reverse Profile Image Search
 
 ## Introduction
-This project aims to create a website that provides a social-media-oriented facial recognition service of NYU students and public figures using facial detection and recognition algorithms. Given an user-input image, the system applies machine learning algorithms to detect and identify human faces that are present. If there is a potential match to a NYU student or a public figure, the system will return key information about the queried person, which could include name, occupation, social media profiles, and/or Wikipedia/IMDB pages(if available).
+Our project aims to create a general purpose reverse image search engine. Specifically, we implemented two individual modules, one focuses on celebrity and another focuses for NYU students, by using Amazon’s facial recognition API and natural language processing libraries. Given an user-uploaded image, the system detects and identifies human faces present in the image. If there is a potential match to a NYU student or a public figure, the system will return key information about the queried person, such as their name, picture, college, and facebook profile for an NYU student, or for celebrities, it returns information specific to the celebrities occupation. For example, if the celebrity is a musician, our system would return their music genres, a spotify playlist of their top songs, and their related artists. And currently, we have implemented four categories for celebrities and they are politician, actor, musician, athlete. We return different information for each category.
 
 
 ## Built With
