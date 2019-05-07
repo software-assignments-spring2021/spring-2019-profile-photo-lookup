@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import YouTube from 'react-youtube';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { SocialIcon } from 'react-social-icons';
-
+import PLACEHOLDER from './poster.png';
 import _ from "lodash";
 
 const styles = theme => ({
@@ -35,7 +35,7 @@ const styles = theme => ({
         fontSize: 15
     },
     heading: {
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: "bold",
         textDecoration: "underline",
         paddingBottom: 10,
@@ -47,7 +47,7 @@ const styles = theme => ({
     },
     title: {
         textAlign: "center",
-        fontSize: 17,
+        fontSize: 20,
         paddingTop: 8,
         lineHeight: 1.1
     },
@@ -124,16 +124,26 @@ class ActorCard extends React.Component {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
         if (!_.isEmpty(celeb.info["upcoming titles"])) {
+            const titles =  celeb.info["upcoming titles"];
             return (
-                <div>
+                <div className={classes.info}>
                     <Typography className={classes.heading}>
                         Upcoming
                     </Typography>
-                    <Typography component="div">
-                        {celeb.info["upcoming titles"].map((item, i) =>
-                            <div className={classes.upcoming} key={i}>{item}</div>
-                        )}
-                    </Typography>
+                    <Grid container spacing={24}>
+                        <Grid item xs={4}>
+                            <img src= {PLACEHOLDER} className = {classes.poster} alt="poster1"></img>
+                            <p className = {classes.title}> {titles[0]} </p>
+                        </Grid>
+                        <Grid item xs={4} >
+                            <img src= {PLACEHOLDER}  className = {classes.poster} alt="poster2"></img>
+                            <p className = {classes.title}> {titles[1]} </p>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <img src= {PLACEHOLDER} className = {classes.poster} alt="poster2"></img>
+                            <p className = {classes.title}> {titles[2]}</p>
+                        </Grid>
+                    </Grid>
                 </div>
             );
         }

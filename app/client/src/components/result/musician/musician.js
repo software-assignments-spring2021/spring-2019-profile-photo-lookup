@@ -13,9 +13,9 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import SpotifyPlaylist from "./spotifyplaylist";
 import Grid from '@material-ui/core/Grid';
 import YouTube from 'react-youtube';
-import _ from "lodash";
-import './musician.css';
 import { SocialIcon } from 'react-social-icons';
+import _ from "lodash";
+
 
 
 const styles = theme => ({
@@ -48,7 +48,7 @@ const styles = theme => ({
         paddingBottom: 15
     },
     heading: {
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: "bold",
         textDecoration: "underline",
         paddingBottom: 10,

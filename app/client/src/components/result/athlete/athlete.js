@@ -42,7 +42,7 @@ const styles = theme => ({
         display: "inline",
     },
     heading: {
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: "bold",
         textDecoration: "underline",
         paddingBottom: 10,

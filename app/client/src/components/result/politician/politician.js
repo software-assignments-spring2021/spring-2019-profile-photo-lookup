@@ -35,7 +35,7 @@ const styles = theme => ({
         fontSize: 15
     },
     heading: {
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: "bold",
         textDecoration: "underline",
         paddingBottom: 10,
