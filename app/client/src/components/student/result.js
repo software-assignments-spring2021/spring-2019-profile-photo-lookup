@@ -14,14 +14,20 @@ const styles = theme => ({
         marginLeft: "auto",
         marginRight: "auto",
     },
-
     paper: {
         padding: theme.spacing.unit * 2,
         textAlign: 'center',
         color: theme.palette.text.secondary,
+        width: 350
     },
-    profile: {
+    img: {
         width: "100%",
+    },
+    imgContainer: {
+        textAlign: "center",
+        width: 300,
+        marginLeft: "auto",
+        marginRight: "auto"
     },
     social: {
         padding: "5px 5px"
@@ -30,10 +36,9 @@ const styles = theme => ({
         padding: "0px 30px",
         textAlign: "center",
         color: "black",
-        fontSize: theme.typography.pxToRem(40),
+        fontSize: theme.typography.pxToRem(30),
         fontWeight: theme.typography.fontWeightRegular,
     },
-
     info: {
         padding: "0px 30px",
         textAlign: "center",
@@ -61,8 +66,8 @@ class InfoCard extends Component {
                 html.push(
                     <Grid item key={i}>
                         <Paper className = {classes.paper}>
-                            <div>
-                                <img src={imgURL} className={classes.profile} alt="profile"/>
+                            <div className= {classes.imgContainer}>
+                                <img src={imgURL} className={classes.img} alt="profile"/>
                             </div>
                             <div className = {classes.social}>
                                 <SocialIcon url={profileURL} target="_blank"/>
