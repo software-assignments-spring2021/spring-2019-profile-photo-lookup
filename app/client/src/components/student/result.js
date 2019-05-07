@@ -24,12 +24,11 @@ const styles = theme => ({
     social: {
         padding: "5px 5px"
     },
-
     name: {
         padding: "0px 30px",
         textAlign: "center",
         color: "black",
-        fontSize: theme.typography.pxToRem(25),
+        fontSize: theme.typography.pxToRem(40),
         fontWeight: theme.typography.fontWeightRegular,
     },
 
@@ -37,7 +36,7 @@ const styles = theme => ({
         padding: "0px 30px",
         textAlign: "center",
         color: "black",
-        fontSize: theme.typography.pxToRem(15),
+        fontSize: theme.typography.pxToRem(20),
         fontWeight: theme.typography.fontWeightRegular,
     }
 
@@ -60,7 +59,7 @@ class InfoCard extends Component {
                 html.push(
                     <Grid item key={i}>
                         <Paper className = {classes.paper}>
-                            <div >
+                            <div>
                                 <img src={imgURL} alt="profile"/>
                             </div>
                             <div className = {classes.social}>

@@ -37,7 +37,7 @@ class ResultPage extends Component {
 
                     bbox.forEach((b) => {
                         ctx.strokeStyle = "#FF0000";
-                        ctx.lineWidth = 3;
+                        ctx.lineWidth = canvas.height / 100;
                         ctx.rect(b.Left, b.Top, b.Width, b.Height);
                         ctx.stroke();
                     });

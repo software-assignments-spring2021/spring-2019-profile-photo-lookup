@@ -205,7 +205,7 @@ class PoliticianCard extends React.Component {
             return(
                 <div>
                     <img src={Democrat} alt="bbox" className={classes.party_symbol}/>
-                    <h1 className={classes.party}> Democrat Party </h1>
+                    <h1 className={classes.party}> Democratic Party </h1>
                 </div>
             );
         }
