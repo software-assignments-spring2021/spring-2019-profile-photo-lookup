@@ -7,14 +7,14 @@
   }
   
 
-h1 {
+.layers h1 {
     color: #ffffff;
     font-size: 35pt;
     position: relative;
     text-transform: uppercase;
 }
 
-    h1::before {
+    .layers h1::before {
         content:attr(title);
         color: #ff1ead;
         position: absolute;
@@ -23,7 +23,7 @@ h1 {
         z-index: -2;
     }
 
-    h1::after {
+    .layers h1::after {
         content:attr(title);
         color: #000;
         position: absolute;
