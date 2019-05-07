@@ -20,7 +20,9 @@ const styles = theme => ({
         textAlign: 'center',
         color: theme.palette.text.secondary,
     },
-
+    profile: {
+        width: "100%",
+    },
     social: {
         padding: "5px 5px"
     },
@@ -60,7 +62,7 @@ class InfoCard extends Component {
                     <Grid item key={i}>
                         <Paper className = {classes.paper}>
                             <div>
-                                <img src={imgURL} alt="profile"/>
+                                <img src={imgURL} className={classes.profile} alt="profile"/>
                             </div>
                             <div className = {classes.social}>
                                 <SocialIcon url={profileURL} target="_blank"/>
