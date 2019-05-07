@@ -11,6 +11,8 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { SocialIcon } from 'react-social-icons';
+import { Chart } from "react-google-charts";
+
 import Democrat from "./democrat.png"
 import Republican from "./republican.png"
 import Other from "./other.jpg"
@@ -78,7 +80,15 @@ const styles = theme => ({
         textAlign: "center",
     },
     website: {
-        fontSize: 15
+        fontSize: 20,
+        paddingBottom: 20
+    },
+    state: {
+        fontSize: 20,
+        paddingBottom: 20
+    },
+    pie: {
+        overflow: "hidden"
     },
     content: {
         fontsize: 20
@@ -125,8 +135,8 @@ class PoliticianCard extends React.Component {
                 <Typography className={classes.heading}>
                     State Represented
                 </Typography>
-                <Typography component="div">
-                    <div className={classes.content}>{celeb.info['state']}</div>
+                <Typography className={classes.state}>
+                   {celeb.info['state']}
                 </Typography>
             </div>
         );
@@ -261,7 +271,7 @@ class PoliticianCard extends React.Component {
                 <div className={classes.map}>
                     <iframe
                         title="office"
-                        width="500"
+                        width="600"
                         height="600"
                         frameBorder="0"
                         src={url} allowFullScreen>
@@ -271,6 +281,32 @@ class PoliticianCard extends React.Component {
         );
     }
 
+    renderLoyalty() {
+        const classes = this.props.classes;
+        const celeb = this.props.celeb;
+
+        return (
+            <div>
+                <Typography className={classes.heading}>
+                    Voting Record
+                </Typography>
+                <div className={classes.pie}>
+                    <Chart
+                        width={'800px'}
+                        height={'400px'}
+                        chartType="PieChart"
+                        loader={<div>Loading Chart</div>}
+                        data={[
+                            ['Party', 'Percentage'],
+                            ['With Party', celeb.info.loyalty],
+                            ['Against Party', 100 - celeb.info.loyalty]
+                        ]}
+                        rootProps={{ 'data-testid': '1' }}
+                    />
+                </div>
+            </div>
+        );
+    }
     render() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
@@ -311,6 +347,7 @@ class PoliticianCard extends React.Component {
                     {celeb.info.terms ? this.renderTerms(): null}
                     {celeb.info.birthday ? this.renderBirthday() : null}
                     {celeb.info.website ? this.renderWebsite() : null}
+                    {celeb.info.loyalty ? this.renderLoyalty() : null}
                     {celeb.info.address ? this.renderOffice() : null}
                 </CardContent>
             </Collapse>
