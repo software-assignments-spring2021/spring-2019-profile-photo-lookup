@@ -47,12 +47,13 @@ def match_face_from_collection(image):
                                 FaceMatchThreshold = 70,
                                 MaxFaces = 2)
     faceMatches=response['FaceMatches']
-    print ('Matching faces')
+    print ('Matching Faces:')
     for match in faceMatches:
-            print ('FaceId:' + match['Face']['ExternalImageId'])
-            print ('Similarity: ' + "{:.2f}".format(match['Similarity']) + "%")
-            print
-    return match['Face']['ExternalImageId']
+        print ('\tInformation:' + match['Face']['ExternalImageId'])
+        print ('\tSimilarity: ' + "{:.2f}".format(match['Similarity']) + "%")
+        print ('\tFaceID: ' + match['Face']['FaceId'])
+        print ('\n')
+    return
 
 
 def add_face_to_collection(image_path, ID):
