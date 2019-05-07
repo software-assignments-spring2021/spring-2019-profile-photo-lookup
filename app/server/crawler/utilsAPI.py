@@ -73,7 +73,6 @@ class GoogleAPI(object):
         
     def get_youtube_video(self, keyword, occupation):
 
-        '''
         DEVELOPER_KEY = "AIzaSyClNjMhsLYyFo-e3AqFeqgtjzA02cHfA2M"
         # DEVELOPER_KEY = "AIzaSyA3a9G_aBAfROe6uVPOfOGxdqSiOEcR8wE"
         youtube = googleapiclient.discovery.build(
@@ -106,9 +105,6 @@ class GoogleAPI(object):
         # url = "https://www.youtube.com/embed/" + videoID
 
         return videoID
-        '''
-        return "dQw4w9WgXcQ"
-
 
 
     def get_twitter(self, name):
