@@ -32,7 +32,10 @@ class Student extends Component {
     render() {
         return (
             <div className = "App container-fluid upload-page">
-                <h1 className="upload-header">Capture with Webcam or Upload an Image!</h1>
+                <header className="student-upload-header">
+                    <h3>Student</h3>
+                    <p> Capture with Webcam or Upload an Image!</p>
+                </header>
                 <Switch onChange={this.changeDisplay} checked={this.state.display}/>
                 {this.renderInner()}
             </div>

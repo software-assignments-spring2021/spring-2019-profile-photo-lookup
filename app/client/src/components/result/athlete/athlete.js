@@ -25,10 +25,13 @@ const styles = theme => ({
         paddingTop: "56.25%" // 16:9
     },
     name: {
-        fontSize: 20,
+        fontSize: 30,
         fontWeight: "bold",
         textAlign: "center",
         paddingBottom: 10
+    },
+    bio: {
+        fontSize: 15
     },
     social: {
         textAlign: "center"
@@ -40,9 +43,9 @@ const styles = theme => ({
     },
     heading: {
         fontSize: 20,
-        fontStyle: "bold",
+        fontWeight: "bold",
         textDecoration: "underline",
-        paddingBottom: 5,
+        paddingBottom: 10,
         paddingTop: 15
     },
     actions: {
@@ -148,7 +151,7 @@ class AthleteCard extends React.Component {
                 <Typography className={classes.name}>
                     {celeb.name}
                 </Typography>
-                <Typography component="p">
+                <Typography className={classes.bio}>
                     {celeb.info.bio}
                 </Typography>
             </CardContent>

@@ -26,16 +26,19 @@ const styles = theme => ({
         paddingTop: "56.25%" // 16:9 aspect ratio
     },
     name: {
-        fontSize: 20,
+        fontSize: 30,
         fontWeight: "bold",
         textAlign: "center",
         paddingBottom: 10
+    },
+    bio: {
+        fontSize: 15
     },
     heading: {
         fontSize: 20,
         fontWeight: "bold",
         textDecoration: "underline",
-        paddingBottom: 5,
+        paddingBottom: 10,
         paddingTop: 15
     },
     title: {
@@ -43,6 +46,14 @@ const styles = theme => ({
         fontWeight: "bold",
         textAlign: "center",
         paddingBottom: 10
+    },
+    terms: {
+        textAlign: "center",
+        fontSize: 20,
+    },
+    birthday:{
+        textAlign: "center",
+        fontSize: 20
     },
     party: {
         textAlign: "center",
@@ -68,6 +79,9 @@ const styles = theme => ({
     },
     website: {
         fontSize: 15
+    },
+    content: {
+        fontsize: 20
     },
     actions: {
         display: "flex"
@@ -137,13 +151,13 @@ class PoliticianCard extends React.Component {
                     Presidential Terms 
                 </Typography>
                 <Typography component="div">
-                    <div className={classes.content}>{num_terms}</div>
+                    <div className={classes.terms}>{num_terms}</div>
                 </Typography>
                 <Typography component="div">
-                    <div className={classes.content}>{term_span1}</div>
+                    <div className={classes.terms}>{term_span1}</div>
                 </Typography>
                 <Typography component="div">
-                    <div className={classes.content}>{term_span2}</div>
+                    <div className={classes.terms}>{term_span2}</div>
                 </Typography>
             </div>
         );    
@@ -226,7 +240,7 @@ class PoliticianCard extends React.Component {
                     Birthday
                 </Typography>
                 <Typography component="div">
-                    <div className={classes.content}>{celeb.info['birthday']}</div>
+                    <div className={classes.birthday}>{celeb.info['birthday']}</div>
                 </Typography>
             </div>
         );
@@ -272,7 +286,7 @@ class PoliticianCard extends React.Component {
                 <Typography className={classes.name}>
                     {celeb.name}
                 </Typography>
-                <Typography>
+                <Typography className={classes.bio}>
                     {celeb.info.bio}
                 </Typography>
             </CardContent>

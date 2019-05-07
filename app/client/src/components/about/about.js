@@ -6,7 +6,7 @@ class About extends Component {
     render() {
         return (
             <div className="about-page">
-                <div className="section-header">
+                <div className="about-header">
                     <h3>About</h3>
                 </div>
                 <div className="about-body">
@@ -19,7 +19,7 @@ class About extends Component {
                     <p>Visit our <a className="about-link" href="https://github.com/nyu-software-engineering/profile-photo-lookup">GitHub page</a> to learn more.</p>
                 </div>
 
-                <div className="section-header">
+                <div className="about-header">
                     <h3>Meet Our Team</h3>
                 </div>
                 <div className="card-deck" id="team">

@@ -28,10 +28,13 @@ const styles = theme => ({
         paddingTop: "56.25%" // 16:9
     },
     name: {
-        fontSize: 25,
+        fontSize: 30,
         fontWeight: "bold",
         textAlign: "center",
         paddingBottom: 10
+    },
+    bio: {
+        fontSize: 15
     },
     social: {
         textAlign: "center"
@@ -40,9 +43,6 @@ const styles = theme => ({
         paddingLeft: 5,
         paddingRight: 10,
         display: "inline",
-    },
-    bio:{
-        fontSize: 15
     },
     info: {
         paddingBottom: 15

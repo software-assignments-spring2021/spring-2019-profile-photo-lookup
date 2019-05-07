@@ -2,18 +2,6 @@
     text-align: center;
 }
 
-.logo-text{
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-h1.display-4{
-    text-align: center;
-    font-size: 8em;
-    letter-spacing: .1em;
-
-}
-
 .carousel {
     height: 93vh;
     text-align: center;
@@ -67,17 +55,6 @@ h1.display-4{
     color: #18d26e;
 }
 
-.lead{
-    text-align: center;
-}
-
-.button-primary{
-    text-align: center;
-}
-
-.my-4{
-    text-align: center;
-}
 
 .homepage {
     padding-left: 0px;
@@ -214,13 +191,6 @@ h1.display-4{
     padding-bottom: 15px;
 }
 
-
-.section-header p {
-    text-align: center;
-    padding-bottom: 30px;
-    color: #333;
-}
-
 .section-header h4::before {
     content: '';
     position: absolute;
@@ -242,3 +212,9 @@ h1.display-4{
     bottom: 0;
     left: calc(50% - 20px);
   }
+
+.section-header p {
+    text-align: center;
+    padding-bottom: 30px;
+    color: #333;
+}

@@ -7,7 +7,10 @@ class CelebrityUpload extends Component {
     render() {
         return (
             <div className = "App container-fluid upload-page">
-                <h1 className="upload-header">Upload a photo of your favorite celebrity!</h1>
+                <header className="celeb-upload-header">
+                    <h3>Celebrity</h3>
+                    <p> Upload a photo of your favorite celebrity! </p>
+                </header>
                 <div><UploadDropzone /></div>
             </div>
         );

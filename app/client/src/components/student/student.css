@@ -5,8 +5,41 @@
     background: linear-gradient(-45deg, #57BC90, #77C9D4);
 }
 
-.upload-header {
-    padding-top: 40px;
+.student-upload-header h3 {
+    font-size: 60px;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
     padding-bottom: 15px;
-    font-weight: 200;
+    padding-top: 30px;
+}
+
+.student-upload-header h3::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+  }
+
+.student-upload-header h3::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #18d26e;
+    bottom: 0;
+    left: calc(50% - 20px);
+}
+
+.student-upload-header p {
+    font-size: 30px;
+    text-align: center;
+    color: white;
 }

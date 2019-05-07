@@ -26,10 +26,13 @@ const styles = theme => ({
         paddingTop: "56.25%" // 16:9
     },
     name: {
-        fontSize: 20,
+        fontSize: 30,
         fontWeight: "bold",
         textAlign: "center",
         paddingBottom: 10
+    },
+    bio: {
+        fontSize: 15
     },
     heading: {
         fontSize: 20,
@@ -189,7 +192,7 @@ class ActorCard extends React.Component {
                 <Typography className={classes.name}>
                     {celeb.name}
                 </Typography>
-                <Typography component="p">
+                <Typography className={classes.bio}>
                     {celeb.info.bio}
                 </Typography>
             </CardContent>

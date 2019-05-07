@@ -44,7 +44,7 @@
     }
 
     
-.section-header h3 {
+.about-header h3 {
     padding-top: 100px;
     font-size: 40px;
     color:white;
@@ -55,7 +55,7 @@
     padding-bottom: 15px;
   }
   
-  .section-header h3::before {
+  .about-header h3::before {
     content: '';
     position: absolute;
     display: block;
@@ -66,7 +66,7 @@
     left: calc(50% - 60px);
   }
   
-  .section-header h3::after {
+  .about-header h3::after {
     content: '';
     position: absolute;
     display: block;
@@ -77,7 +77,7 @@
     left: calc(50% - 20px);
   }
   
-  .section-header p {
+  .about-header p {
     text-align: center;
     padding-bottom: 30px;
     color: #333;
