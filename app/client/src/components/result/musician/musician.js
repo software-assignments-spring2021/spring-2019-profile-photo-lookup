@@ -55,12 +55,15 @@ const styles = theme => ({
         paddingTop: 15
     },
     relatedImg: {
-        width: "150px",
-        height: "auto"
+        marginLeft:"auto",
+        marginRight: "auto",
+        width: "100%",
+        height: "auto",
+        paddingBottom: 5
     },
     relatedName: {
         textAlign: "center",
-        fontSize: 17
+        fontSize: 20
     },
     genres: {
         textAlign: "center",
@@ -174,7 +177,7 @@ class MusicianCard extends React.Component {
                         <Typography className={classes.heading}>
                             Related Artists
                         </Typography>
-                        <Grid container spacing={24}>
+                        <Grid container spacing={24} justify="flex-start" alignItems="flex-start">
                             <Grid item xs={4}>
                                 <img src= {artists[0].image.url} className = {classes.relatedImg} alt="related1" ></img>
                                 <p className = {classes.relatedName}> {artists[0].name} </p>

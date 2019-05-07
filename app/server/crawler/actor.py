@@ -29,7 +29,7 @@ class Actor(Celebrity):
         self.insta = GoogleAPI().get_insta(self.name)
         info = {
             'bio': self.bio,
-            'image': GoogleAPI().get_image(self.name),
+            'image': GoogleAPI().get_image(self.name + "portrait"),
             'known titles': self.known_titles,
             'known posters': self.known_posters,
             'upcoming titles': self.upcoming_titles,
