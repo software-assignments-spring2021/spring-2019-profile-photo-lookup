@@ -4,9 +4,9 @@ import { FaBookReader } from 'react-icons/fa';
 import Carousel from 'react-bootstrap/Carousel';
 
 import './home.css';
-import NYU from  './nyu.jpg'
-import CELEB from './celeb.jpg'
-import FACE from './face.jpg'
+import NYU from  './img/nyu.jpg'
+import CELEB from './img/celeb.jpg'
+import FACE from './img/face.jpg'
 
 
 class Home extends Component {
