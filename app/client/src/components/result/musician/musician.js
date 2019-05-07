@@ -16,6 +16,7 @@ import YouTube from 'react-youtube';
 import { SocialIcon } from 'react-social-icons';
 import _ from "lodash";
 
+import './musician.css'
 
 
 const styles = theme => ({
@@ -66,9 +67,7 @@ const styles = theme => ({
         fontSize: 20
     },
     genres: {
-        textAlign: "center",
-        textTransform: "capitalize",
-        fontSize: 25
+        paddingTop: 20
     },
     actions: {
         display: "flex"
@@ -136,9 +135,11 @@ class MusicianCard extends React.Component {
                     <Typography className={classes.heading}>
                         Genres
                     </Typography>
-                    <Typography component="div">
+                    <Typography className={classes.genres}>
                         {celeb.info['genres'].map((item, index) =>
-                            <p className={classes.genres} key={index}>{item}</p>
+                            <div className="layers" key={index}>
+                                <h1 title={item}>{item}</h1>
+                            </div>
                         )}
                     </Typography>
                 </div>
@@ -155,13 +156,11 @@ class MusicianCard extends React.Component {
                     <Typography className={classes.heading}>
                         Music Video
                     </Typography>
-                    <Typography component="div">
-                        <YouTube
-                            videoId={celeb.info.video}
-                            opts={opts}
-                            onReady={this._onReady}
-                        />
-                    </Typography>
+                    <YouTube
+                        videoId={celeb.info.video}
+                        opts={opts}
+                        onReady={this._onReady}
+                    />
                 </div>
             );
         }

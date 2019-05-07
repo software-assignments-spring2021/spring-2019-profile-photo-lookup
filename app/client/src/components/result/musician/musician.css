@@ -1,0 +1,33 @@
+
+.layers {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+  
+
+h1 {
+    color: #ffffff;
+    font-size: 35pt;
+    position: relative;
+    text-transform: uppercase;
+}
+
+    h1::before {
+        content:attr(title);
+        color: #ff1ead;
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        z-index: -2;
+    }
+
+    h1::after {
+        content:attr(title);
+        color: #000;
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        z-index: -1;
+    }
