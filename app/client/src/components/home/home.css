@@ -130,7 +130,7 @@
     color: #000;
     text-align: center;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 25px;
     padding: 0;
     margin: 40px 0 12px 0;
   }
@@ -144,8 +144,10 @@
   }
   
   #service .about-col p {
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 16px;
+    word-break: normal;
+    hyphens: auto;
+    line-height: 22px;
     color: #333;
     margin-bottom: 0;
     padding: 0 20px 20px 20px;
@@ -170,11 +172,11 @@
     margin-left: 60px;
     font-weight: 700;
     margin-bottom: 15px;
-    font-size: 18px;
+    font-size: 25px;
   }
   
   #application .description {
-    font-size: 14px;
+    font-size: 18px;
     margin-left: 60px;
     line-height: 24px;
     margin-bottom: 0;
