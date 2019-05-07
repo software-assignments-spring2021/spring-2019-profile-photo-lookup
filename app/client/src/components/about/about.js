@@ -6,7 +6,7 @@ class About extends Component {
     render() {
         return (
             <div className="about-page">
-                <div class="section-header">
+                <div className="section-header">
                     <h3>About</h3>
                 </div>
                 <div className="about-body">
@@ -19,20 +19,20 @@ class About extends Component {
                     <p>Visit our <a className="about-link" href="https://github.com/nyu-software-engineering/profile-photo-lookup">GitHub page</a> to learn more.</p>
                 </div>
 
-                <div class="section-header">
+                <div className="section-header">
                     <h3>Meet Our Team</h3>
                 </div>
                 <div className="card-deck" id="team">
                     <div className="card">
-                        <div class="member">
-                            <img src={require("./images/zach.jpg")} class="img-fluid" alt=""></img>
-                            <div class="member-info">
-                                <div class="member-info-content">
+                        <div className="member">
+                            <img src={require("./images/zach.jpg")} className="img-fluid" alt=""></img>
+                            <div className="member-info">
+                                <div className="member-info-content">
                                     <h4>Zach Li</h4>
                                     <span>NYU Class of 2020</span>
-                                    <div class="social">
-                                        <a href=""><FaFacebook className="icon"/></a>
-                                        <a href=""><FaTwitter className="icon"/></a>
+                                    <div className="social">
+                                        <a href="https://facebook.com"><FaFacebook className="icon"/></a>
+                                        <a href="https://twitter.com"><FaTwitter className="icon"/></a>
                                         <a href="https://github.com/zichenli6"><FaGithub className="icon"/></a>
                                         <a href="https://www.linkedin.com/in/zichenli/"><FaLinkedin className="icon"/></a>
                                     </div>
@@ -49,15 +49,15 @@ class About extends Component {
                         </div>
                     </div>
                     <div className="card">
-                        <div class="member">
-                            <img src={require("./images/kayli.jpg")} class="img-fluid" alt=""></img>
-                            <div class="member-info">
-                                <div class="member-info-content">
+                        <div className="member">
+                            <img src={require("./images/kayli.jpg")} className="img-fluid" alt=""></img>
+                            <div className="member-info">
+                                <div className="member-info-content">
                                     <h4>Kayli O'Keefe</h4>
                                     <span>NYU Class of 2019</span>
-                                    <div class="social">
-                                        <a href=""><FaFacebook className="icon"/></a>
-                                        <a href=""><FaTwitter className="icon"/></a>
+                                    <div className="social">
+                                        <a href="https://facebook.com"><FaFacebook className="icon"/></a>
+                                        <a href="https://twitter.com"><FaTwitter className="icon"/></a>
                                         <a href="https://github.com/kokeefe32"><FaGithub className="icon"/></a>
                                         <a href="https://www.linkedin.com/in/kayli-okeefe/"><FaLinkedin className="icon"/></a>
                                     </div>
@@ -74,15 +74,15 @@ class About extends Component {
                         </div>
                     </div>
                     <div className="card">
-                        <div class="member">
-                            <img src={require("./images/amanda.jpg")} class="img-fluid" alt=""></img>
-                            <div class="member-info">
-                                <div class="member-info-content">
+                        <div className="member">
+                            <img src={require("./images/amanda.jpg")} className="img-fluid" alt=""></img>
+                            <div className="member-info">
+                                <div className="member-info-content">
                                     <h4>Amanda Labuda</h4>
                                     <span>NYU Class of 2020</span>
-                                    <div class="social">
-                                        <a href=""><FaFacebook className="icon"/></a>
-                                        <a href=""><FaTwitter className="icon"/></a>
+                                    <div className="social">
+                                        <a href="https://facebook.com"><FaFacebook className="icon"/></a>
+                                        <a href="https://twitter.com"><FaTwitter className="icon"/></a>
                                         <a href="https://github.com/alabuda98"><FaGithub className="icon"/></a>
                                         <a href="https://www.linkedin.com/in/amanda-labuda-029070185/"><FaLinkedin className="icon"/></a>
                                     </div>
@@ -99,15 +99,15 @@ class About extends Component {
                             </div>
                     </div>
                     <div className="card">
-                        <div class="member">
-                            <img src={require("./images/jinghwan.jpg")} class="img-fluid" alt=""></img>
-                            <div class="member-info">
-                                <div class="member-info-content">
+                        <div className="member">
+                            <img src={require("./images/jinghwan.jpg")} className="img-fluid" alt=""></img>
+                            <div className="member-info">
+                                <div className="member-info-content">
                                     <h4>Jing Hwan</h4>
                                     <span>NYU Class of 2019</span>
-                                    <div class="social">
-                                        <a href=""><FaFacebook className="icon"/></a>
-                                        <a href=""><FaTwitter className="icon"/></a>
+                                    <div className="social">
+                                        <a href="https://facebook.com"><FaFacebook className="icon"/></a>
+                                        <a href="https://twitter.com"><FaTwitter className="icon"/></a>
                                         <a href="https://github.com/khoojh"><FaGithub className="icon"/></a>
                                         <a href="https://www.linkedin.com/in/jing-hwan-khoo-b22864105/"><FaLinkedin className="icon"/></a>
                                     </div>
@@ -124,15 +124,15 @@ class About extends Component {
                         </div>
                     </div>
                     <div className="card">
-                        <div class="member">
-                            <img src={require("./images/weijie.jpg")} class="img-fluid" alt=""></img>
-                            <div class="member-info">
-                                <div class="member-info-content">
+                        <div className="member">
+                            <img src={require("./images/weijie.jpg")} className="img-fluid" alt=""></img>
+                            <div className="member-info">
+                                <div className="member-info-content">
                                     <h4>Weijie Chua</h4>
                                     <span>NYU Class of 2019</span>
-                                    <div class="social">
-                                        <a href=""><FaFacebook className="icon"/></a>
-                                        <a href=""><FaTwitter className="icon"/></a>
+                                    <div className="social">
+                                        <a href="https://facebook.com"><FaFacebook className="icon"/></a>
+                                        <a href="https://twitter.com"><FaTwitter className="icon"/></a>
                                         <a href="https://github.com/weijie9512"><FaGithub className="icon"/></a>
                                         <a href="https://www.linkedin.com/in/weijiechua9512/"><FaLinkedin className="icon"/></a>
                                     </div>

@@ -88,7 +88,6 @@ h1.display-4{
     border-radius: 0px;
     margin-bottom: 0px;
     min-width: 100vh;
-	color: white;
 	background: linear-gradient(-45deg, #3a926c, #57BC90, #77C9D4, #CEEBEF);
 	background-size: 500% 500%;
 	-webkit-animation: Gradient 5s ease infinite;
@@ -105,110 +104,141 @@ h1.display-4{
     color: #57BC90;
 }
 
-.header {
-	width: 100vw;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0px;
-    margin-bottom: 0px;
-    min-width: 100vh;
-	color: white;
-	background: linear-gradient(-45deg, #3a926c, #57BC90, #77C9D4, #CEEBEF);
-	background-size: 500% 500%;
-	-webkit-animation: Gradient 5s ease infinite;
-	-moz-animation: Gradient 5s ease infinite;
-	animation: Gradient 5s ease infinite;
-}
 
-@-webkit-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
-
-@-moz-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
-
-@keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
-
-.section {
-    margin-top: 100px;
-    height: 400px;
-}
-
-.modal-left {
-    width: 50%;
-    float: left;
-}
-
-.modal-right {
-    margin-left: 50%;
-}
-
-.modal-bubble {
-    display: block;
-    background-color: transparent;
-    border-style: solid;
-    border-width: 3px;
-    border-color: white;
-    color: white;
-    width: 300px;
+#service {
+    background: url("./img/about-bg.jpg") center top no-repeat fixed;
+    background-size: cover;
+    padding: 60px 0 40px 0;
+    position: relative;
+  }
+  
+  #service::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.92);
+    z-index: 9;
+  }
+  
+  #service .container {
+    position: relative;
+    z-index: 10;
+  }
+  
+  #service .about-col {
+    background: #fff;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+  }
+  
+  #service .about-col .img {
+    position: relative;
+    overflow: hidden;
     height: 200px;
+    margin-bottom: -20px;
+  }
+  
+  #service .about-col .img img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+    border-radius: 4px 4px 0 0;
+  }
+
+  #service .about-col h2 {
+    color: #000;
     text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 0;
+    margin: 40px 0 12px 0;
+  }
+  
+  #service .about-col h2 a {
+    color: #000;
+  }
+  
+  #service .about-col h2 a:hover {
+    color: #18d26e;
+  }
+  
+  #service .about-col p {
+    font-size: 14px;
+    line-height: 24px;
+    color: #333;
+    margin-bottom: 0;
+    padding: 0 20px 20px 20px;
+  }
+  
+
+
+  
+  #application {
+    background: #fff;
+    background-size: cover;
+    padding: 60px 0 40px 0;
+    height: 600px;
+  }
+  
+  #application .box {
+    margin-bottom: 30px;
+  }
+  
+  #application .title {
+    color: #111;
+    margin-left: 60px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  
+  #application .description {
+    font-size: 14px;
+    margin-left: 60px;
+    line-height: 24px;
+    margin-bottom: 0;
+  }
+  
+
+.section-header h4 {
+    font-size: 40px;
+    color: black;
     text-transform: uppercase;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: 0 auto;
-    font-size: 60px;
-    font-weight: lighter;
-    cursor: pointer;
-    transition: 0.3s ease;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
 }
 
-.modal-bubble-left {
-    margin-right: 40px;
+
+.section-header p {
+    text-align: center;
+    padding-bottom: 30px;
+    color: #333;
 }
 
-.modal-bubble-right {
-    margin-left: 40px;
-}
-
-.modal-bubble:hover {
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-    box-shadow: 0 0 10px 5px;
-    color: white;
-    text-decoration: none;
-}
-
-.modal-bubble:active {
-    background-color: white;
-    color: #77C9D4;
-}
+.section-header h4::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+  }
+  
+  .section-header h4::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #18d26e;
+    bottom: 0;
+    left: calc(50% - 20px);
+  }
