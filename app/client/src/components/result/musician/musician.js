@@ -65,7 +65,7 @@ const styles = theme => ({
     genres: {
         textAlign: "center",
         textTransform: "capitalize",
-        fontSize: 25 
+        fontSize: 25
     },
     actions: {
         display: "flex"
@@ -206,13 +206,12 @@ class MusicianCard extends React.Component {
                     <SocialIcon url={instagram} />
                 </div>
             </div>
-        ); 
+        );
     }
 
     render() {
         const classes = this.props.classes;
         const celeb = this.props.celeb;
-
         return (
         <Card className={classes.card}>
             <CardMedia

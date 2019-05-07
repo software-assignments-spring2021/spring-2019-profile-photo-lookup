@@ -33,7 +33,7 @@ class Home extends Component {
                         />
                         <Carousel.Caption className="caption">
                             <h3>Celebrity Recognition</h3>
-                            <p>Keep up on pop culture.</p>
+                            <p>Keep up with pop culture</p>
                             <a href="/celebrity" className="btn" role="button"> Try Me </a>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -44,7 +44,7 @@ class Home extends Component {
                         />
                         <Carousel.Caption className="caption">
                             <h3>Student Recognition</h3>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                            <p>Get connected to your fellow students</p>
                             <a href="/student" className="btn" role="button"> Try Me </a>
                         </Carousel.Caption>
                     </Carousel.Item>
