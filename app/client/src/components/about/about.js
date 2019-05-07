@@ -50,7 +50,7 @@ class About extends Component {
                     </div>
                     <div className="card">
                         <div className="member">
-                            <img src={require("./images/kayli.jpg")} className="img-fluid" alt=""></img>
+                            <img src={require("./images/kayli.png")} className="img-fluid" alt=""></img>
                             <div className="member-info">
                                 <div className="member-info-content">
                                     <h4>Kayli O'Keefe</h4>
