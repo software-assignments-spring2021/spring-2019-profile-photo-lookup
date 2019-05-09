@@ -13,8 +13,9 @@ import Typography from "@material-ui/core/Typography";
 import YouTube from 'react-youtube';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { SocialIcon } from 'react-social-icons';
-import PLACEHOLDER from './poster.png';
 import _ from "lodash";
+
+import PLACEHOLDER from './poster.png';
 
 const styles = theme => ({
     card: {

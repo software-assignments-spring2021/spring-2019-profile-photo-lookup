@@ -202,9 +202,9 @@
     background: #ddd;
     bottom: 1px;
     left: calc(50% - 60px);
-  }
+}
   
-  .section-header h4::after {
+.section-header h4::after {
     content: '';
     position: absolute;
     display: block;
@@ -213,7 +213,7 @@
     background: #18d26e;
     bottom: 0;
     left: calc(50% - 20px);
-  }
+}
 
 .section-header p {
     text-align: center;

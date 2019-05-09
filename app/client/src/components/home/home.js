@@ -27,7 +27,7 @@ class Home extends Component {
                     <Carousel.Item className="carousel">
                         <img
                             src={CELEB}
-                            alt="Third slide"
+                            alt="Second slide"
                         />
                         <Carousel.Caption className="caption">
                             <h3>Celebrity Recognition</h3>
