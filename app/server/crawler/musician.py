@@ -2,6 +2,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials as SpotifyCC
 import requests
 from bs4 import BeautifulSoup
+
 from .celebrity import Celebrity
 from .utilsAPI import WikiAPI, GoogleAPI
 
@@ -19,10 +20,6 @@ class Musician(Celebrity):
         Celebrity.__init__ (self, name, occupations)
         self.occID = 'musician'
         self.info = self.retrieve_info()
-
-
-    def get_bio(self):
-        return WikiAPI().get_bio(self.name)
 
 
     def find_related_tracks(self, seed_genres):
@@ -47,6 +44,7 @@ class Musician(Celebrity):
 
         return output
 
+
     def retrieve_info(self):
         data = spotify.search(q = self.name, 
                               type='artist',
@@ -57,7 +55,7 @@ class Musician(Celebrity):
         image = GoogleAPI().get_image(self.name)
 
         info = {}
-        info['bio'] = self.get_bio()
+        info['bio'] = WikiAPI().get_bio(self.name)
         info['genres'] = data['items'][0]['genres']
         info['image'] = image
         info['top tracks'] = "https://open.spotify.com/embed/artist/" + artistID

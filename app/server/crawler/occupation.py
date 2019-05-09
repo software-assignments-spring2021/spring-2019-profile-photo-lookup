@@ -99,6 +99,7 @@ def find_occupations(name):
     # Determine Primary Occupation
     if musician_rank[0] == actor_rank[0] == politician_rank[0] == athlete_rank[0]:
         occID = "other"
+        occupations = ["Public Figure"]
     else:
         rankings = [musician_rank, actor_rank, politician_rank, athlete_rank]
         occID = min(rankings, key = lambda t: t[0])[1]

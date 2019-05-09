@@ -3,7 +3,7 @@ from .musician import Musician
 from .politician import Politician
 from .actor import Actor
 from .athlete import Athlete
-from .othercelebrity import OtherCelebrity
+from .public_figure import PublicFigure
 
 
 class CelebrityFactory(object):
@@ -28,7 +28,6 @@ class CelebrityFactory(object):
                 profile = Athlete(name, occupations).generate_profile()
                 output.append(profile)
             elif occID == 'other':
-                occupations = ["Public Figure"]
-                profile = OtherCelebrity(name, occupations).generate_profile()
+                profile = PublicFigure(name, occupations).generate_profile()
                 output.append(profile)
         return output
