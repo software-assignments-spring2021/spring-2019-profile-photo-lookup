@@ -3,7 +3,6 @@ from rest_framework.test import APITestCase
 
 from ..views import CelebrityCrawler
 
-
 class CelebrityCrawlerTest(APITestCase):
     def test_POST(self):
         names = {"names": ["Bradley Cooper", "Lindsey Graham"]}
