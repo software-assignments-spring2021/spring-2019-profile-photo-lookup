@@ -39,7 +39,7 @@ Deactivate the environment
 
 Replace <env_name> with the name of your environment. For more instructions, see [here](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
 
-**If you have Anaconda, please activate your conda environment BEFORE you do the following steps.**
+If you have Anaconda, please activate your conda environment BEFORE you do the following steps.
 
 ### AWS Command-Line-Interface(CLI)
 If you have Anaconda installed, then run
@@ -54,6 +54,13 @@ On your terminal, run `aws configure`
 It will prompt you to enter __"AWS Access Key ID"__, __"AWS Secret Access Key"__, __"Default Region Name"__(you should enter "us-east-1"), and leave the __"output format"__ blank by just pressing enter. Check Slack for the credentials.
 
 If it says something like "aws: command not found" you should go back [here](https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html) and keep following the instructions to set the program PATH and bash profile. It was really messy for me so I'd suggest you download Anaconda and use conda install if you run into this problem.
+
+### API Setup
+All API credentials should be entered in __.envs__ under app/server. There are only placeholder values in the current file.
+
+**NOTE: the code will not run properly if API credentials are not valid!**
+
+Our Django backend uses Google Custom Search API for image query, Youtube API for video query, and Spotify API for playlist query.
 
 ## ReactJS
 Go to __app/client__ and run
