@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 # Refactored to have a cloneable class, so that information only need to be retrieved
 # once. When youtube information is included, this prototype will help save a lot of
 # bandwidth
-#(Pushed to the wrong branch, now rebranching)
 class pageInformation:
     def __init__(self, name):
         name_with_underscore = name.replace(" ", "_")
