@@ -10,7 +10,6 @@ matrix:
       before_script:
         - cd app/server
       script:
-        - python manage.py migrate
         - python manage.py test
 
     - language: node_js
