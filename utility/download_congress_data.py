@@ -1,8 +1,10 @@
 import json
 import requests 
 
+API_KEY = "ENTER YOUR PROPUBLICA API KEY HERE"
+
 def download_data():
-    headers = {"X-API-Key": "KgI2lOueGBFwLYWYsicnT4PSQUblFGDEpfj2Gcdd"}
+    headers = {"X-API-Key": API_KEY}
 
     house = {}
     house_term = 115
