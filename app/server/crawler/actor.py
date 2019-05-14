@@ -1,9 +1,11 @@
 import requests
 from requests.models import PreparedRequest
 from bs4 import BeautifulSoup
-from .celebrity import Celebrity
 from abc import ABCMeta, abstractclassmethod
+
+from .celebrity import Celebrity
 from .utilsAPI import WikiAPI, GoogleAPI
+
 
 class Actor(Celebrity):
 
@@ -79,7 +81,7 @@ class ActorBuilder(Builder):
 
 class ActorBuilderDirector(object):
     @staticmethod
-    def construct(name, occupations, bio, titles, upcoming, interview, insta, twitter):
+    def construct(name, occupations, bio, titles, posters, upcoming, insta, twitter):
         return ActorBuilder(name, occupations).set_bio(bio).set_known_titles(titles).set_known_posters(posters).set_upcoming_titles(upcoming).set_twitter(twitter).set_insta(insta).get_actor()
 
 
@@ -96,6 +98,7 @@ def getID(name):
     id_num = str(page.find("td", {"class": "result_text"}).contents[1]).split('/')[2]
     return id_num
 
+
 # Takes actor imdb id and returns their imdb page
 def getPage(actorID):
     url = 'https://www.imdb.com/name/' + actorID
@@ -103,6 +106,7 @@ def getPage(actorID):
     actor_page = BeautifulSoup(html, features="html.parser")
     return actor_page
    
+
 # Takes actor imdb page and returns films they are most known for
 def getKnownTitles(actor_page):
     div = actor_page.find_all("a", {"class": "knownfor-ellipsis"})
@@ -110,6 +114,7 @@ def getKnownTitles(actor_page):
     for title in div:
         titles.append(title.getText())
     return titles
+
 
 # Return the poster of the films they are known for
 def getKnownPosters(actor_page):
@@ -119,6 +124,7 @@ def getKnownPosters(actor_page):
         poster = child.find("div", {"class": "uc-add-wl-widget-container"}).find("a").find('img')['src']
         posters.append(poster)
     return posters
+
 
 # Takes actor imdb page and returns their upcoming films
 def getUpcomingTitles(actor_page):

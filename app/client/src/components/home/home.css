@@ -59,17 +59,17 @@
 .homepage {
     padding-left: 0px;
     padding-right: 0px;
-	width: 100vw;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     border-radius: 0px;
     margin-bottom: 0px;
     min-width: 100vh;
-	background: linear-gradient(-45deg, #3a926c, #57BC90, #77C9D4, #CEEBEF);
-	background-size: 500% 500%;
-	-webkit-animation: Gradient 5s ease infinite;
-	-moz-animation: Gradient 5s ease infinite;
-	animation: Gradient 5s ease infinite;
+    background: linear-gradient(-45deg, #3a926c, #57BC90, #77C9D4, #CEEBEF);
+    background-size: 500% 500%;
+    -webkit-animation: Gradient 5s ease infinite;
+    -moz-animation: Gradient 5s ease infinite;
+    animation: Gradient 5s ease infinite;
 }
 
 .btn-header {
@@ -82,106 +82,107 @@
 }
 
 
+
 #service {
     background: url("./img/about-bg.jpg") center top no-repeat fixed;
     background-size: cover;
     padding: 60px 0 40px 0;
     position: relative;
-  }
-  
-  #service::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.92);
-    z-index: 9;
-  }
-  
-  #service .container {
-    position: relative;
-    z-index: 10;
-  }
-  
-  #service .about-col {
-    background: #fff;
-    border-radius: 0 0 4px 4px;
-    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
-    margin-bottom: 20px;
-  }
-  
-  #service .about-col .img {
-    position: relative;
-    overflow: hidden;
-    height: 200px;
-    margin-bottom: -20px;
-  }
-  
-  #service .about-col .img img {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%;
-    border-radius: 4px 4px 0 0;
-  }
+}
+    
+    #service::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.92);
+        z-index: 9;
+    }
+    
+    #service .container {
+        position: relative;
+        z-index: 10;
+    }
+    
+    #service .card {
+        background: #fff;
+        border-radius: 0 0 4px 4px;
+        box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+        margin-bottom: 20px;
+    }
+    
+    #service .card .img {
+        position: relative;
+        overflow: hidden;
+        height: 200px;
+        margin-bottom: -20px;
+    }
+    
+    #service .card .img img {
+        flex-shrink: 0;
+        min-width: 100%;
+        min-height: 100%;
+        border-radius: 4px 4px 0 0;
+    }
 
-  #service .about-col h2 {
-    color: #000;
-    text-align: center;
-    font-weight: 700;
-    font-size: 25px;
-    padding: 0;
-    margin: 40px 0 12px 0;
-  }
-  
-  #service .about-col h2 a {
-    color: #000;
-  }
-  
-  #service .about-col h2 a:hover {
-    color: #18d26e;
-  }
-  
-  #service .about-col p {
-    font-size: 16px;
-    word-break: normal;
-    hyphens: auto;
-    line-height: 22px;
-    color: #333;
-    margin-bottom: 0;
-    padding: 0 20px 20px 20px;
-  }
+    #service .card h2 {
+        color: #000;
+        text-align: center;
+        font-weight: 700;
+        font-size: 25px;
+        padding: 0;
+        margin: 40px 0 12px 0;
+    }
+    
+    #service .card h2 a {
+        color: #000;
+    }
+    
+    #service .card h2 a:hover {
+        color: #18d26e;
+    }
+    
+    #service .card p {
+        font-size: 16px;
+        word-break: normal;
+        hyphens: auto;
+        line-height: 22px;
+        color: #333;
+        margin-bottom: 0;
+        padding: 0 20px 20px 20px;
+    }
   
 
 
-  
-  #application {
+#application {
     background: #fff;
     background-size: cover;
     padding: 60px 0 40px 0;
     height: 600px;
-  }
+}
+    
+    #application .box {
+        margin-bottom: 30px;
+    }
+    
+    #application .title {
+        color: #111;
+        margin-left: 60px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        font-size: 25px;
+    }
+    
+    #application .description {
+        font-size: 18px;
+        margin-left: 60px;
+        line-height: 24px;
+        margin-bottom: 0;
+    }
   
-  #application .box {
-    margin-bottom: 30px;
-  }
-  
-  #application .title {
-    color: #111;
-    margin-left: 60px;
-    font-weight: 700;
-    margin-bottom: 15px;
-    font-size: 25px;
-  }
-  
-  #application .description {
-    font-size: 18px;
-    margin-left: 60px;
-    line-height: 24px;
-    margin-bottom: 0;
-  }
-  
+
 
 .section-header h4 {
     font-size: 40px;

@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 
 from .utilsAPI import WikiAPI, GoogleAPI
 
+
 MUSICIAN = ['Musician', 'Singer', 'Songwriter', 'DJ']
 
 ACTOR = ['Actor', 'Actress', 'Filmmaker', 'Director', 'Producer']

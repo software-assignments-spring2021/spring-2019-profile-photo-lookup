@@ -1,6 +1,7 @@
 from django.test import TestCase
 from ..actor import Actor
 
+
 class ActorTest(TestCase):
     def test_actor_info(self):
         actor = Actor("Tom Cruise", ["Actor"])

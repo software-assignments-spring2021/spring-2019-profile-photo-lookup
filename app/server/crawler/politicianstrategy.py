@@ -3,6 +3,7 @@ import json
 import requests 
 import re
 
+
 class PoliticianStrategyAbstract(object):
     __metaclass__ = abc.ABCMeta
 
@@ -14,6 +15,7 @@ class PoliticianStrategyAbstract(object):
     @abc.abstractmethod
     def collect_info(self):
         pass
+
 
 class HouseRepStrategy(PoliticianStrategyAbstract):
     def collect_info(self):
@@ -37,6 +39,7 @@ class HouseRepStrategy(PoliticianStrategyAbstract):
 
     def __str__(self):
         return "House"
+
 
 class SenateRepStrategy(PoliticianStrategyAbstract):
     def collect_info(self):
@@ -63,6 +66,7 @@ class SenateRepStrategy(PoliticianStrategyAbstract):
 
     def __str__(self):
         return "Senate"
+
 
 class ExecBranchStrategy(PoliticianStrategyAbstract):
 
@@ -92,7 +96,6 @@ class ExecBranchStrategy(PoliticianStrategyAbstract):
 
     def __str__(self):
         return "Executive"
-
 
 
 def find_party(abrev):

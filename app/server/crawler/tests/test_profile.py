@@ -1,6 +1,7 @@
 from django.test import TestCase
 from ..profile import CelebrityFactory
 
+
 class CelebrityFactoryTest(TestCase):
     def test_generateProfile(self):
         names = ["Donald Trump", "Brad Pitt", "Lebron James", "Avicii", "Melania Trump"]

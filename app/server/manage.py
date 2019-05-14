@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 import os
 import sys
+from dotenv import load_dotenv
+
+# Loading Secret API Keys
+load_dotenv()
 
 if __name__ == '__main__':
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'RISE.settings')

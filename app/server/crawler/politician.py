@@ -7,6 +7,7 @@ from .politicianstrategy import ExecBranchStrategy
 from .celebrity import Celebrity
 from .utilsAPI import WikiAPI, GoogleAPI
 
+
 class Politician(Celebrity):
     def __init__(self, name, occupations):
         Celebrity.__init__ (self, name, occupations)

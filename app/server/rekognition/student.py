@@ -4,12 +4,14 @@ import boto3
 
 client = boto3.client('rekognition', region_name='us-east-1')
 
+
 def filter_name(name):
     name = re.sub(":", "'", name)
     lst = name.split('-')
     if len(lst[0]) == 1:
         name = re.sub('-', '. ', name)
     return name
+
 
 def construct_student_profile(ID):
     info = ID.split('_')
@@ -21,6 +23,7 @@ def construct_student_profile(ID):
         'year': info[4]
     }
     return student
+
 
 # calculate extended corner locations for face crop
 def crop_face(x1, y1, x2, y2, img):

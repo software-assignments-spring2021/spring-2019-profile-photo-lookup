@@ -47,9 +47,9 @@ class Home extends Component {
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
+
                 <section id="service">
                 <div className="container">
-
                     <div className="section-header">
                         <h4>Our Services</h4>
                         <p>
@@ -59,9 +59,9 @@ class Home extends Component {
                         </p>
                     </div>
 
-                    <div className="row about-cols">
+                    <div className="row">
                     <div className="col-md-4">
-                        <div className="about-col">
+                        <div className="card">
                         <div className="img">
                             <img src={CELEB} alt="" className="img-fluid"/>
                         </div>
@@ -74,7 +74,7 @@ class Home extends Component {
                     </div>
 
                     <div className="col-md-4">
-                        <div className="about-col">
+                        <div className="card">
                         <div className="img">
                             <img src={NYU} alt="" className="img-fluid"/>
                         </div>
@@ -85,8 +85,9 @@ class Home extends Component {
                         </p>
                         </div>
                     </div>
+                    
                     <div className="col-md-4">
-                        <div className="about-col">
+                        <div className="card">
                         <div className="img">
                             <img src={FACE} alt="" className="img-fluid"/>
                         </div>

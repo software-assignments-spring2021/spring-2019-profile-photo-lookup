@@ -1,6 +1,7 @@
 from .celebrity import Celebrity
 from .utilsAPI import WikiAPI, GoogleAPI
 
+
 class PublicFigure(Celebrity):
     def __init__(self, name, occupations):
         Celebrity.__init__ (self, name, occupations)

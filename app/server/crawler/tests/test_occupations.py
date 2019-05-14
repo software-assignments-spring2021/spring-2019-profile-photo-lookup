@@ -1,6 +1,7 @@
 from django.test import TestCase
 from ..occupation import find_occupations
 
+
 class OccupationsTest(TestCase):
     def testOccupation(self):
         occID, occupations= find_occupations("Barack Obama")

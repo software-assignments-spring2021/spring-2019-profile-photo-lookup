@@ -1,10 +1,17 @@
 import json
 import requests
 import re
+import os
 import urllib
 import webbrowser
 import googleapiclient.discovery
 from bs4 import BeautifulSoup
+
+
+GOOGLE_SEARCH_API_KEY = os.getenv("Google_Search_API_Key")
+GOOGLE_SEARCH_ID = os.getenv("Google_Search_Engine_ID")
+YOUTUBE_API_KEY = os.getenv("Youtube_API_Key")
+
 
 class WikiAPI(object):
     
@@ -49,13 +56,11 @@ class GoogleAPI(object):
         
     def get_image(self, keyword):
         url = "https://www.googleapis.com/customsearch/v1"
-        API_KEY = "AIzaSyD49c5nykh6f1HXBnujidJhi6tEbVwrksk"
-        ID = "013224824088471738258:vahaiv5q6kk"
 
         params = {
             'q': keyword,
-            'cx': ID,
-            'key': API_KEY,
+            'cx': GOOGLE_SEARCH_ID,
+            'key': GOOGLE_SEARCH_API_KEY,
             'searchType': 'image',
             'imgSize': 'xlarge',
             'num': 10,
@@ -73,9 +78,8 @@ class GoogleAPI(object):
         
     def get_youtube_video(self, keyword, occupation):
 
-        DEVELOPER_KEY = "AIzaSyA3a9G_aBAfROe6uVPOfOGxdqSiOEcR8wE"
         youtube = googleapiclient.discovery.build(
-            "youtube", "v3", developerKey = DEVELOPER_KEY)
+            "youtube", "v3", developerKey = YOUTUBE_API_KEY)
 
         sort = "relevance"
         publishedTime = "2000-01-01T00:00:00Z"
@@ -116,7 +120,6 @@ class GoogleAPI(object):
             res = g.text.split()[2]
             twitter_handle = res[2:(len(res)-1)]
             return twitter_handle
-
 
 
     def get_insta(self, name):

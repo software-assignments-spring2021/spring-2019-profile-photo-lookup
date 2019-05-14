@@ -1,7 +1,9 @@
-from .celebrity import Celebrity
-from .utilsAPI import WikiAPI, GoogleAPI
 from bs4 import BeautifulSoup
 import requests
+
+from .celebrity import Celebrity
+from .utilsAPI import WikiAPI, GoogleAPI
+
 
 class Athlete(Celebrity):
     def __init__(self, name, occupations):

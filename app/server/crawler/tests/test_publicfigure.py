@@ -1,6 +1,7 @@
 from django.test import TestCase
 from ..public_figure import PublicFigure
 
+
 class PublicFigureTest(TestCase):
     def test_public_figure(self):
         public_figure = PublicFigure("Michelle Obama", ["Public Figure"])

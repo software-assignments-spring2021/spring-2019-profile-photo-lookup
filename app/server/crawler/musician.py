@@ -1,3 +1,4 @@
+import os
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials as SpotifyCC
 import requests
@@ -7,11 +8,12 @@ from .celebrity import Celebrity
 from .utilsAPI import WikiAPI, GoogleAPI
 
 
-CCManager = SpotifyCC(client_id = 'a1ea005deef446c2861253ea2f998105',
-                      client_secret = '039d31abe6a74350999938feab8906e7')
+SPOTIFY_CLIENT_ID = os.getenv("Spotify_Client_ID")
+SPOTIFY_SECRET_KEY = os.getenv("Spotify_Secret_Key")
 
+CCManager = SpotifyCC(client_id = SPOTIFY_CLIENT_ID,
+                      client_secret = SPOTIFY_SECRET_KEY)
 spotify = spotipy.Spotify(client_credentials_manager= CCManager)
-
 
 
 class Musician(Celebrity):
