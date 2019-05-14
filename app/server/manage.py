@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import os
 import sys
-from dotenv import load_dotenv
+import dotenv
 
 if __name__ == '__main__':
-    load_dotenv() # Load API Keys
+    dotenv.read_dotenv() # Load API Keys
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'RISE.settings')
     try:
         from django.core.management import execute_from_command_line

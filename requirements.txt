@@ -16,4 +16,4 @@ tqdm
 unidecode
 google-api-python-client
 wikipedia
-python-dotenv
+django-dotenv
