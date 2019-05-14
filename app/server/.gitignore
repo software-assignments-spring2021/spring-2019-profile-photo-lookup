@@ -13,3 +13,5 @@
 *.sqlite3
 
 rekognition/asset
+
+.env
