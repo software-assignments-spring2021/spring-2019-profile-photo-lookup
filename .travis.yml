@@ -10,7 +10,7 @@ matrix:
       before_script:
         - cd app/server
       script:
-        - python manage.py test
+        - python manage.py test crawler rekognition
 
     - language: node_js
       node_js: '11.10.0'
