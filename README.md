@@ -62,7 +62,7 @@ All API credentials should be entered in __.envs__ under app/server. There are o
 
 Our Django backend uses Google Custom Search API for image query, Youtube API for video query, and Spotify API for playlist query.
 
-## ReactJS
+### ReactJS
 Go to __app/client__ and run
 
     $ npm install
