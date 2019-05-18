@@ -51,14 +51,14 @@ If you don't, then you have to follow the instruction [here](https://docs.aws.am
 ### AWS Set Up
 On your terminal, run `aws configure`
 
-It will prompt you to enter __"AWS Access Key ID"__, __"AWS Secret Access Key"__, __"Default Region Name"__(you should enter "us-east-1"), and leave the __"output format"__ blank by just pressing enter. Please message me if you need the credentials for grading purposes.
+It will prompt you to enter __"AWS Access Key ID"__, __"AWS Secret Access Key"__, __"Default Region Name"__(you should enter "us-east-1"), and leave the __"output format"__ blank by just pressing enter. Please message me if you need the credentials for grading purposes(I have already slacked it to both the tutor and professor).
 
 If it says something like "aws: command not found" you should go back [here](https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html) and keep following the instructions to set the program PATH and bash profile. It was really messy for me so I'd suggest you download Anaconda and use conda install if you run into this problem.
 
 ### API Setup
 All API credentials should be entered in __.envs__ under app/server. There are only placeholder values in the current file.
 
-**NOTE: the code will not run properly if API credentials are not valid! Please message me if you need the credentials for grading purposes**
+**NOTE: the code will not run properly if API credentials are not valid!Please message me if you need the credentials for grading purposes(I have already slacked it to both the tutor and professor). If you already have a .envs file with the proper API keys, simply replace the placeholder .envs file under app/server with the .envs file that I sent you**
 
 Our Django backend uses Google Custom Search API for image query, Youtube API for video query, and Spotify API for playlist query.
 
