@@ -58,7 +58,7 @@ If it says something like "aws: command not found" you should go back [here](htt
 ### API Setup
 All API credentials should be entered in __.envs__ under app/server. There are only placeholder values in the current file.
 
-**NOTE: the code will not run properly if API credentials are not valid!Please message me if you need the credentials for grading purposes(I have already slacked it to both the tutor and professor). If you already have a .envs file with the proper API keys, simply replace the placeholder .envs file under app/server with the .envs file that I sent you**
+**NOTE: the code will not run properly if API credentials are not valid! Please message me if you need the credentials for grading purposes(I have already slacked it to both the tutor and professor). If you already have a .envs file with the proper API keys, simply replace the placeholder .envs file under app/server with the .envs file that I sent you**
 
 Our Django backend uses Google Custom Search API for image query, Youtube API for video query, and Spotify API for playlist query.
 
@@ -83,7 +83,7 @@ It should install all necesary libraries for the Django Environment(new librarie
     - `python manage.py migrate` (if starting first time)
     - `python manage.py runserver`
 
-Once you are on our website with both the client and server system running, there are sample images of students and celebrities under the __images__ folder that you can use to test our system
+Once you are on our website with both the client and server systems running, there are sample images of students and celebrities under the __images__ folder that you can use to test our system
 
 ## Unit Test Coverage
 ### Front-End
@@ -99,12 +99,9 @@ Once you are on our website with both the client and server system running, ther
 ### Back-End
 1. Go to __app/server__
 2. To run tests
-    - `python manage.py test`
-3. To see coverage report
     - `coverage run --source='.' manage.py test crawler rekognition`
-    - `coverage report`
-4. To see a detailed coverage report
-    - run `coverage html` instead of `coverage report`
+3. To see coverage report
+    - `coverage report` or `coverage html`(for a more detailed report)
     - the report will be save in a folder named "htmlcov" inside the "server" folder
     - open "index.html" inside "htmlcov" to see the detailed report
 
