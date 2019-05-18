@@ -83,6 +83,8 @@ It should install all necesary libraries for the Django Environment(new librarie
     - `python manage.py migrate` (if starting first time)
     - `python manage.py runserver`
 
+Once you are on our website with both the client and server system running, there are sample images of students and celebrities under the __images__ folder that you can use to test our system
+
 ## Unit Test Coverage
 ### Front-End
 1. Go to __app/client__
@@ -99,7 +101,7 @@ It should install all necesary libraries for the Django Environment(new librarie
 2. To run tests
     - `python manage.py test`
 3. To see coverage report
-    - `coverage run --source='.' manage.py test rekognition`
+    - `coverage run --source='.' manage.py test crawler rekognition`
     - `coverage report`
 4. To see a detailed coverage report
     - run `coverage html` instead of `coverage report`
